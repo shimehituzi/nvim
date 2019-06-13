@@ -1,0 +1,197 @@
+[[plugins]]
+    repo = 'Shougo/deoplete.nvim'
+    on_ft = ['ruby', 'eruby', 'tex', 'slim', 'python']
+    hook_source = '''
+        let g:deoplete#enable_at_startup = 1
+
+        " <C-h>, <BS>: close popup and delete backword char.
+        inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+        inoremap <silent><expr> <C-j>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "" :
+        \ deoplete#mappings#manual_complete()
+        function! s:check_back_space() abort "{{{
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+        endfunction"}}}
+        inoremap <silent><expr><C-k> pumvisible() ? "\<c-p>" : ""
+        inoremap <silent><expr>jj pumvisible() ? "\<C-y>" : ""
+
+
+        call deoplete#custom#option({
+        \ 'auto_complete_delay': 0,
+        \ 'smart_case': v:true,
+        \ 'max_list': 20,
+        \ 'on_insert_enter' : v:false,
+        \ 'on_text_changed_i': v:true,
+        \ 'min_pattern_length': 1,
+        \ })
+
+        call deoplete#custom#option('keyword_patterns', {'ruby': '[a-zA-Z_]\w*[!?]?',})
+        call deoplete#custom#source('omni', 'functions', {'ruby':  'rubycomplete#Complete',})
+        call deoplete#custom#var('omni', 'input_patterns', {'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],})
+
+        call deoplete#custom#option('keyword_patterns', {'slim': '[a-zA-Z_]\w*[!?]?',})
+        call deoplete#custom#var('omni', 'input_patterns', {'slim': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],})
+
+        call deoplete#custom#var('omni', 'input_patterns', {
+                \ 'tex': g:vimtex#re#deoplete
+                \})
+
+        " 補完のプレビューウィンドウを表示させない
+        set completeopt-=preview
+        " 補完が一つであってもポップアップメニューを使う
+        set completeopt+=menuone
+        " 補完のカーソルを一つ目に合わせておく
+        set completeopt+=noinsert
+        " 補完関連のメッセージを表示しない
+        set shortmess+=c
+    '''
+
+
+[[plugins]]
+    repo = 'w0rp/ale'
+    on_ft = ['ruby', 'eruby', 'python']
+    hook_source = '''
+        let g:ale_sign_error = '⨉'
+        let g:ale_sign_warning = '⚠'
+        let g:ale_lint_on_enter = 1
+        let g:ale_lint_on_save = 1
+        let g:ale_lint_on_text_changed = 0
+
+        " flake8をLinterとして登録
+        let g:ale_linters = {
+            \ 'python': ['flake8'],
+            \ }
+
+        " 各ツールをFixerとして登録
+        let g:ale_fixers = {
+            \ 'python': ['autopep8', 'black', 'isort']
+            \ }
+
+        " 各ツールの実行オプションを変更してPythonパスを固定
+        let g:ale_python_flake8_executable = g:python3_host_prog
+        let g:ale_python_flake8_options = '-m flake8 --ignore=I201,W391,I100,E203'
+        let g:ale_python_autopep8_executable = g:python3_host_prog
+        let g:ale_python_autopep8_options = '-m autopep8'
+        let g:ale_python_isort_executable = g:python3_host_prog
+        let g:ale_python_isort_options = '-m isort -fss'
+        let g:ale_python_black_executable = g:python3_host_prog
+        let g:ale_python_black_options = '-m black --line-length=79'
+
+        " ついでにFixを実行するマッピングしとく
+        nmap <silent> <Leader>x <Plug>(ale_fix)
+        " ファイル保存時に自動的にFixするオプションもあるのでお好みで
+        let g:ale_fix_on_save = 1
+    '''
+
+
+[[plugins]]
+    repo = 'tpope/vim-endwise'
+    on_i = 1
+    on_ft = ['ruby']
+    hook_source = '''
+        let g:endwise_abbreviations = 1
+    '''
+
+
+[[plugins]]
+    repo = 'slim-template/vim-slim'
+    on_ft = ['slim']
+
+
+[[plugins]]
+    repo = 'Vimjas/vim-python-pep8-indent'
+    on_ft = ['python']
+
+
+[[plugins]]
+    repo = 'deoplete-plugins/deoplete-jedi'
+    on_ft = ['python']
+    hook_source = '''
+        " nvimのpythonのpath
+        let g:deoplete#sources#jedi#python_path = $PYENV_PATH . '/versions/neovim3/bin/python'
+        " 型情報で補完を選別する
+        let g:deoplete#sources#jedi#enable_typeinfo = 1
+        " docをプレビューウィンドウに表示させない
+        let g:deoplete#sources#jedi#show_docstring = 0
+    '''
+
+[[plugins]]
+    repo = 'fs111/pydoc.vim'
+    on_ft = ['python']
+    hook_source = '''
+        " PATHを通す代わり
+        let g:pydoc_cmd = 'python -m pydoc'
+        " 縦分割で開く
+        let g:pydoc_open_cmd = 'vertical botright split'
+        " ハイライトを無効
+        let g:pydoc_highlight = 0
+        " マッピングを無効
+        let g:pydoc_perform_mappings = 0
+        " 補完のプレビューウィンドウを表示させない
+        set completeopt-=preview
+        " 補完が一つであってもポップアップメニューを使う
+        set completeopt+=menuone
+        " 補完のカーソルを一つ目に合わせておく
+        set completeopt+=noinsert
+        " 補完関連のメッセージを表示しない
+        set shortmess+=c
+    '''
+
+
+[[plugins]]
+    repo = 'previm/previm'
+    on_ft = ['markdown']
+    hook_source = '''
+        let g:previm_enable_realtime = 1
+        let g:previm_show_header = 1
+        let g:previm_disable_default_css = 1
+        let g:previm_custom_css_path = '/Users/shimehituzi/.config/nvim/markdown/markdown.css'
+    '''
+
+
+[[plugins]]
+    repo = 'tyru/open-browser.vim'
+    on_ft = ['markdown']
+
+
+[[plugins]]
+    repo = 'cespare/vim-toml'
+    on_ft = ['toml']
+
+
+[[plugins]]
+    repo = 'inkarkat/vim-SyntaxRange'
+    on_ft = ['toml']
+
+
+# call map(dein#check_clean(), "delete(v:val, 'rf')")が使えなくなる
+[[plugins]]
+    repo = 'lervag/vimtex'
+    on_ft = ['tex']
+    hook_source = '''
+        " skimとの連携の設定このurlの場所からパクった
+        " https://qiita.com/KeitaNakamura/items/87dad47dc09ae8bf6abf
+        let g:vimtex_compiler_progname = 'nvr'
+        let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+        let g:vimtex_view_general_options = '@line @pdf @tex'
+        " 消してなければ自分で書いたドキュメントにこの後の設定の説明があるはず
+        let g:vimtex_complete_close_braces = 1
+        let g:vimtex_imaps_enabled = 0
+        let g:vimtex_mappings_disable = {
+            \ 'n': ['<localleader>lr', '<localleader>lm', 'tsc', 'tse', 'tsd', 'tsD', '<F7>'],
+            \ 'x': ['tsd', 'tsD', '<F7>'],
+            \ 'i': ['<F7>'],
+            \}
+        nmap @ <plug>(vimtex-compile)
+        nmap # <plug>(vimtex-view)
+        nmap $ <plug>(vimtex-toc-open)
+        nmap ^ <plug>(vimtex-errors)
+        imap <C-e> <plug>(vimtex-delim-close)
+        nmap <Space>k <plug>(vimtex-doc-package)
+        " 警告のみの時はquickfixを開かない
+        let g:vimtex_quickfix_open_on_warning = 0
+    '''
