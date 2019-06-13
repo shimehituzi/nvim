@@ -45,8 +45,6 @@
         nnoremap <silent> [denite]h :<C-u>Denite help<CR>
         nnoremap <silent> [denite]d :<C-u>Denite change<CR>
         nnoremap <silent> [denite]c :<C-u>Denite command<CR>
-        nnoremap <silent> [denite]i :<C-u>Denite -resume -immediately -select=+1<CR>
-        nnoremap <silent> [denite]o :<C-u>Denite -resume -immediately -select=-1<CR>
 
         call denite#custom#option('default', 'prompt', '>')
     '''
