@@ -10,29 +10,21 @@
 [[plugins]]
     repo = 'Shougo/denite.nvim'
     hook_add = '''
-        let s:menus = {}
-        let s:menus.file = {'description': 'File search (buffer, file, file_rec, file_mru)'}
-        let s:menus.line = {'description': 'Line search (change, grep, line, tag)'}
-        let s:menus.others = {'description': 'Others (command, command_history, help)'}
-        let s:menus.file.command_candidates = [
-              \ ['buffer', 'Denite buffer'],
-              \ ['file: Files in the current directory', 'Denite file'],
-              \ ['file_rec: Files, recursive list under the current directory', 'Denite file_rec'],
-              \ ['file_mru: Most recently used files', 'Denite file_mru']
-              \ ]
-        let s:menus.line.command_candidates = [
-              \ ['change', 'Denite change'],
-              \ ['grep :grep', 'Denite grep'],
-              \ ['line', 'Denite line'],
-              \ ['tag', 'Denite tag']
-              \ ]
-        let s:menus.others.command_candidates = [
-              \ ['command', 'Denite command'],
-              \ ['command_history', 'Denite command_history'],
-              \ ['help', 'Denite help']
-              \ ]
-
-        call denite#custom#var('menu', 'menus', s:menus)
+        autocmd FileType denite call s:denite_my_settings()
+        function! s:denite_my_settings() abort
+          nnoremap <silent><buffer><expr> <CR>
+          \ denite#do_map('do_action')
+          nnoremap <silent><buffer><expr> d
+          \ denite#do_map('do_action', 'delete')
+          nnoremap <silent><buffer><expr> p
+          \ denite#do_map('do_action', 'preview')
+          nnoremap <silent><buffer><expr> q
+          \ denite#do_map('quit')
+          nnoremap <silent><buffer><expr> i
+          \ denite#do_map('open_filter_buffer')
+          nnoremap <silent><buffer><expr> <Space>
+          \ denite#do_map('toggle_select').'j'
+        endfunction
 
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
