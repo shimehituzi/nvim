@@ -42,7 +42,7 @@
         nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]f :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]r :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]e :<C-u>Denite file/old -filter-updatetime= -start-filter1<CR>
+        nnoremap <silent> [denite]e :<C-u>Denite file/old -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]g :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]d :<C-u>Denite change -filter-updatetime=1 -start-filter<CR>
