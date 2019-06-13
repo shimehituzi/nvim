@@ -39,25 +39,17 @@
         nmap <Space>j [denite]
         nnoremap <silent> [denite]j :<C-u>Denite -resume<CR>
         nnoremap <silent> [denite]k :<C-u>Denite buffer<CR>
-        " nnoremap <silent> [denite]; :<C-u>Denite file_mru<CR>
         nnoremap <silent> [denite]l :<C-u>Denite line<CR>
-        " nnoremap <silent> [denite]r :<C-u>Denite file_rec<CR>
         nnoremap <silent> [denite]f :<C-u>Denite file<CR>
         nnoremap <silent> [denite]g :<C-u>Denite grep<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help<CR>
-        " nnoremap <silent> [denite]m :<C-u>Denite menu<CR>
         nnoremap <silent> [denite]d :<C-u>Denite change<CR>
         nnoremap <silent> [denite]c :<C-u>Denite command<CR>
-        " nnoremap <silent> [denite]t :<C-u>Denite tag<CR>
         nnoremap <silent> [denite]i :<C-u>Denite -resume -immediately -select=+1<CR>
         nnoremap <silent> [denite]o :<C-u>Denite -resume -immediately -select=-1<CR>
 
         call denite#custom#option('default', 'prompt', '>')
     '''
-
-
-[[plugins]]
-    repo = 'Shougo/neomru.vim'
 
 
 [[plugins]]
