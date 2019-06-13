@@ -30,7 +30,6 @@
         function! s:denite_filter_my_setting() abort
             nnoremap <silent><buffer><expr> <esc>   denite#do_map('quit')
             inoremap <silent><buffer><expr> <esc>   denite#do_map('quit')
-            nnoremap <silent><buffer>       jk      <Plug>(denite_filter_quit)
             inoremap <silent><buffer>       jk      <esc>
             nnoremap <silent><buffer><expr> <BS>    denite#do_map('nop')
         endfunction
@@ -38,12 +37,12 @@
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
         nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]f :<C-u>Denite file -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]e :<C-u>Denite file/old -filter-updatetime=1<CR>
         nnoremap <silent> [denite]; :<C-u>Denite register -filter-updatetime=1<CR>
+        nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]f :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]r :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]e :<C-u>Denite file/old -filter-updatetime= -start-filter1<CR>
         nnoremap <silent> [denite]g :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]d :<C-u>Denite change -filter-updatetime=1 -start-filter<CR>
