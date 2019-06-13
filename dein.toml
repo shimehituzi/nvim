@@ -26,6 +26,15 @@
           \ denite#do_map('toggle_select').'j'
         endfunction
 
+        autocmd FileType denite-filter call s:denite_filter_my_setting()
+        function! s:denite_filter_my_setting() abort
+        " 一つ上のディレクトリを開き直す
+        inoremap <silent><buffer><expr> <BS>    denite#do_map('move_up_path')
+        " Denite を閉じる
+        inoremap <silent><buffer><expr> <C-c>   denite#do_map('quit')
+        nnoremap <silent><buffer><expr> <C-c>   denite#do_map('quit')
+        endfunction
+
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
         nnoremap <silent> [denite]j :<C-u>Denite -resume<CR>
