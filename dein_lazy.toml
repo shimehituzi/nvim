@@ -94,6 +94,9 @@
     on_ft = ['ruby']
     hook_source = '''
         let g:endwise_abbreviations = 1
+        " 補完のカーソルを一つ目に合わせておく
+        " なぜか無効になってしまうので
+        set completeopt+=noinsert
     '''
 
 
