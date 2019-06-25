@@ -197,4 +197,6 @@
         nmap <Space>k <plug>(vimtex-doc-package)
         " 警告のみの時はquickfixを開かない
         let g:vimtex_quickfix_open_on_warning = 0
+        " 折りたたみを有効にする
+        let g:vimtex_fold_enabled = 1
     '''
