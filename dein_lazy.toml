@@ -200,3 +200,7 @@
         " 折りたたみを有効にする
         let g:vimtex_fold_enabled = 1
     '''
+
+[[plugins]]
+    repo = 'fuenor/jpmoveword.vim'
+    of_ft = ['tex']
