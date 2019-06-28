@@ -200,3 +200,13 @@
         " 折りたたみを有効にする
         let g:vimtex_fold_enabled = 1
     '''
+
+
+[[plugins]]
+    repo = 'deton/jasegment.vim'
+    on_ft = ['tex']
+
+
+[[plugins]]
+    repo = 'deton/jasentence.vim'
+    on_ft = ['tex']
