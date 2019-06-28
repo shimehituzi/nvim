@@ -204,9 +204,9 @@
 
 [[plugins]]
     repo = 'deton/jasegment.vim'
-    on_ft = ['tex']
+    on_ft = ['tex', 'markdown']
 
 
 [[plugins]]
     repo = 'deton/jasentence.vim'
-    on_ft = ['tex']
+    on_ft = ['tex', 'markdown']
