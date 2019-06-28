@@ -106,7 +106,8 @@ noremap 0 <C-l>
 noremap gu gU
 noremap gU gu
 " -------------------------------------------------------------------------------------
-inoremap jk <esc>
+inoremap jk <C-o>
+inoremap jl <esc>
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
 nnoremap <S-Tab> <C-i>
