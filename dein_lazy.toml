@@ -48,6 +48,12 @@
         set completeopt+=noinsert
         " 補完関連のメッセージを表示しない
         set shortmess+=c
+
+        " <CR> で補完を閉じて改行する
+       inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+       function! s:my_cr_function() abort
+         return deoplete#close_popup() . "\<CR>"
+       endfunction
     '''
 
 
