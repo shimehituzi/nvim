@@ -49,11 +49,8 @@
         " 補完関連のメッセージを表示しない
         set shortmess+=c
 
-        " <CR> で補完を閉じて改行する
-       inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-       function! s:my_cr_function() abort
-         return deoplete#close_popup() . "\<CR>"
-       endfunction
+        " <CR> で補完をしないで改行する
+        inoremap <expr><cr> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
     '''
 
 
@@ -96,7 +93,6 @@
 
 [[plugins]]
     repo = 'tpope/vim-endwise'
-    on_i = 1
     on_ft = ['ruby']
     hook_source = '''
         let g:endwise_abbreviations = 1
