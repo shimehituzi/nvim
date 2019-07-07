@@ -36,19 +36,16 @@
 
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
-        nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]; :<C-u>Denite register -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]f :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]r :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]e :<C-u>Denite file/old -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]g :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]d :<C-u>Denite change -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]c :<C-u>Denite command -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]i :<C-u>Denite -resume -immediately -cursor-pos=+1<CR>
-        nnoremap <silent> [denite]o :<C-u>Denite -resume -immediately -cursor-pos=-1<CR>
+        nnoremap <silent> J :<C-u>Denite -resume -immediately -cursor-pos=+1<CR>
+        nnoremap <silent> K :<C-u>Denite -resume -immediately -cursor-pos=-1<CR>
+        nnoremap <silent> [denite]k :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]l :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]j :<C-u>Denite register -filter-updatetime=1<CR>
+        nnoremap <silent> [denite]h :<C-u>Denite -resume -filter-updatetime=1<CR>
+        nnoremap <silent> [denite]i :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]o :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite], :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
 
         call denite#custom#option('default', 'prompt', '>')
     '''
