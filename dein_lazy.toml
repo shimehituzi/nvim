@@ -193,7 +193,7 @@
             \}
         nmap @ <plug>(vimtex-compile)
         nmap # <plug>(vimtex-view)
-        nmap $ <plug>(vimtex-toc-open)
+        nmap $ <plug>(vimtex-toc-toggle)
         nmap ^ <plug>(vimtex-errors)
         imap <C-e> <plug>(vimtex-delim-close)
         nmap <Space>k <plug>(vimtex-doc-package)
@@ -203,9 +203,12 @@
         let g:vimtex_quickfix_autoclose_after_keystrokes = 2
         " 折りたたみを有効にする
         let g:vimtex_fold_enabled = 1
-        " お試し
+        " toc を左側に幅広く表じさせる
         let g:vimtex_toc_config = {
-            \ 'name': 'test'
+            \ 'show_help': 0,
+            \ 'split_pos': 'vert rightbelow',
+            \ 'split_width' : 60,
+            \ 'todo_sorted': 0,
             \}
     '''
 
