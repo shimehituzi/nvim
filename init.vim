@@ -91,8 +91,8 @@ set wrapscan
 set hlsearch
 
 " noremap
-nnoremap J <nop>
-nnoremap K <nop>
+nnoremap J :<C-U>echo "バッファの順方向移動は CTRL-J に変更しました"<CR>
+nnoremap K :<C-U>echo "バッファの逆方向移動は CTRL-K に変更しました"<CR>
 
 " map
 " -------------------------------------------------------------------------------------
