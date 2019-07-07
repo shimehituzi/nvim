@@ -106,6 +106,16 @@ noremap 0 <C-l>
 noremap gu gU
 noremap gU gu
 " -------------------------------------------------------------------------------------
+" Angle brackets
+onoremap aa a>
+onoremap ia i>
+" bRackets
+onoremap ar a[
+onoremap ir i[
+" Double quote
+onoremap ad a"
+onoremap id i"
+" -------------------------------------------------------------------------------------
 inoremap jk <C-o>
 inoremap jl <esc>
 nnoremap <C-j> <C-w>w
