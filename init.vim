@@ -1,5 +1,5 @@
 " 使ってないマッピング
-"           
+"          
 
 " Setting
 colorscheme lucario
@@ -120,6 +120,7 @@ inoremap jk <C-o>
 inoremap jl <esc>
 nnoremap <C-j> <C-w>w
 nnoremap <C-k> <C-w>W
+nnoremap <C-e> @:
 nnoremap <S-Tab> <C-i>
 nnoremap <BS> <C-o>
 nnoremap t <C-a>
