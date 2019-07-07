@@ -1,4 +1,5 @@
 " 使ってないマッピング
+" J K
 "           
 
 " Setting
@@ -89,6 +90,9 @@ set incsearch
 set wrapscan
 set hlsearch
 
+" noremap
+nnoremap J <nop>
+nnoremap K <nop>
 
 " map
 " -------------------------------------------------------------------------------------
