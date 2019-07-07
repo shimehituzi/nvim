@@ -23,8 +23,9 @@ function! Transtermbg()
 endfunction
 augroup latexfiles
     au!
-    au BufNewFile,BufRead *.tex set background=light
+    au BufNewFile,BufRead *.tex set background=dark
     au BufNewFile,BufRead *.tex let g:solarized_termtrans=1
+    au BufNewFile,BufRead *.tex let g:solarized_termcolors = 256
     au BufNewFile,BufRead *.tex colorscheme solarized
     au BufNewFile,BufRead *.tex AirlineRefresh
 augroup END
