@@ -197,10 +197,16 @@
         nmap ^ <plug>(vimtex-errors)
         imap <C-e> <plug>(vimtex-delim-close)
         nmap <Space>k <plug>(vimtex-doc-package)
-        " 警告のみの時はquickfixを開かない
+        " 警告のみの時は quickfix を開かない
         let g:vimtex_quickfix_open_on_warning = 0
+        " quickfix を自動的に閉じる
+        let g:vimtex_quickfix_autoclose_after_keystrokes = 2
         " 折りたたみを有効にする
         let g:vimtex_fold_enabled = 1
+        " お試し
+        let g:vimtex_toc_config = {
+            \ 'name': 'test'
+            \}
     '''
 
 
