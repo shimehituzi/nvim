@@ -126,8 +126,8 @@ nnoremap G ~
 nnoremap U J
 " -------------------------------------------------------------------------------------
 nnoremap <Space><Esc> <nop>
-nnoremap <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
-nnoremap <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap <silent><Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <silent><Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 " nnoremap <silent> <Space><Space> :let @/ = '\v<<C-r><C-w>>\C'<CR>:set hlsearch<CR>
 nnoremap <silent> <Space><Space> :let @/ = '<C-r><C-w>'<CR>:set hlsearch<CR>
 nnoremap <silent> ` :nohl<CR>
