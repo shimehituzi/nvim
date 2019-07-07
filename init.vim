@@ -118,8 +118,6 @@ onoremap id i"
 " -------------------------------------------------------------------------------------
 inoremap jk <C-o>
 inoremap jl <esc>
-nnoremap <C-j> <C-w>w
-nnoremap <C-k> <C-w>W
 nnoremap <S-Tab> <C-i>
 nnoremap <BS> <C-o>
 nnoremap t <C-a>

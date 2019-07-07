@@ -81,8 +81,8 @@
         let g:airline_powerline_fonts = 1
         let g:airline_theme = 'deus'
         let g:airline#extensions#tabline#enabled = 1
-        nmap J <Plug>AirlineSelectNextTab
-        nmap K <Plug>AirlineSelectPrevTab
+        nmap <C-j> <Plug>AirlineSelectNextTab
+        nmap <C-k> <Plug>AirlineSelectPrevTab
         let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
         " Powerline系フォントを利用する
