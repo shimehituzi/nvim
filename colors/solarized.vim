@@ -300,22 +300,31 @@ elseif g:solarized_termcolors != 256 && &t_Co >= 16
     let s:green       = "2"
 elseif g:solarized_termcolors == 256
     let s:vmode       = "cterm"
-    let s:base03      = "234" "黒
-    let s:base02      = "235" "ちょっと薄い黒
-    let s:base01      = "239" "ねずみ色
-    let s:base00      = "240" "ちょっと薄いねずみ色
-    let s:base0       = "244" "灰色
-    let s:base1       = "245" "ちょっと薄い灰色
-    let s:base2       = "187" "薄い肌色
-    let s:base3       = "230" "とても薄い肌色
-    let s:yellow      = "136" "黄土色
-    let s:orange      = "166" "オレンジ
-    let s:red         = "124" "真っ赤
-    let s:magenta     = "125" "ショッキングピンクと赤の間
-    let s:violet      = "61"
-    let s:blue        = "33"
-    let s:cyan        = "37"
-    let s:green       = "64"
+
+    let s:base02      = "232" "black    適当
+    let s:base03      = "240" "brblack  適当
+
+    let s:base2       = "250" "white    
+    let s:base3       = "231" "brwhite  適当
+
+    let s:red         = "203" "red      
+    let s:orange      = "214" "brred    
+
+    let s:magenta     = "60" "magenta  
+    let s:violet      = "177" "brmagenta
+
+    let s:yellow      = "186" "yellow   
+    let s:base00      = "223" "bryellow 
+
+    let s:blue        = "68" "blue     
+    let s:base0       = "74" "brblue   
+
+    let s:cyan        = "44" "cyan     
+    let s:base1       = "81" "brcyan   
+
+    let s:green       = "71" "green    
+    let s:base01      = "77" "brgreen  適当
+
 else
     let s:vmode       = "cterm"
     let s:bright      = "* term=bold cterm=bold"
