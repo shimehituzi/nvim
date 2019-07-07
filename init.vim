@@ -1,3 +1,6 @@
+" 使ってないマッピング
+"           
+
 " Setting
 colorscheme lucario
 set fenc=utf-8
