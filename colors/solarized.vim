@@ -584,7 +584,7 @@ exe "hi! Type"           .s:fmt_none   .s:fg_yellow .s:bg_none
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_none   .s:fg_base2    .s:bg_none
+exe "hi! Special"        .s:fmt_none   .s:fg_base00    .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
@@ -616,8 +616,8 @@ exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
 "}}}
 " Extended highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! Folded"         .s:fmt_none   .s:fg_base00  .s:bg_none  .s:sp_base03
-exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base00  .s:bg_none
+exe "hi! Folded"         .s:fmt_none   .s:fg_base2  .s:bg_none  .s:sp_base03
+exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base2  .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base00 .s:bg_none
 
 exe "hi! Visual"         .s:fmt_none   .s:fg_base02 .s:bg_none .s:fmt_revbb
@@ -630,6 +630,8 @@ exe "hi! IncSearch"      .s:fmt_stnd   .s:fg_orange .s:bg_none
 exe "hi! Search"         .s:fmt_revr   .s:fg_yellow .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
 exe "hi! WarningMsg"     .s:fmt_bold   .s:fg_red    .s:bg_none
+exe "hi! MoreMsg"        .s:fmt_none   .s:fg_base01 .s:bg_none
+exe "hi! ModeMsg"        .s:fmt_none   .s:fg_base01 .s:bg_none
 
 hi! link lCursor Cursor
 exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
@@ -646,8 +648,6 @@ exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
 exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
 exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow
 exe "hi! Directory"      .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
-exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
 exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
 exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none   .s:bg_base02 .s:fmt_revbb
