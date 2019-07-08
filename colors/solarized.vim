@@ -550,7 +550,7 @@ exe "hi! Normal"         .s:fmt_none   .s:fg_base3  .s:bg_back
 exe "hi! Comment"        .s:fmt_ital   .s:fg_cyan .s:bg_none
 "       *Comment         any comment
 
-exe "hi! Constant"       .s:fmt_none   .s:fg_violet   .s:bg_none
+exe "hi! Constant"       .s:fmt_none   .s:fg_base1   .s:bg_none
 "       *Constant        any constant
 "        String          a string constant: "this is a string"
 "        Character       a character constant: 'c', '\n'
@@ -584,7 +584,7 @@ exe "hi! Type"           .s:fmt_none   .s:fg_yellow .s:bg_none
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_none   .s:fg_base1    .s:bg_none
+exe "hi! Special"        .s:fmt_none   .s:fg_base2    .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
@@ -601,14 +601,14 @@ exe "hi! Ignore"         .s:fmt_none   .s:fg_none   .s:bg_none
 exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
 "       *Error           any erroneous construct
 
-exe "hi! Todo"           .s:fmt_bold   .s:fg_red .s:bg_none
+exe "hi! Todo"           .s:fmt_bold   .s:fg_violet .s:bg_none
 "       *Todo            anything that needs extra attention; mostly the
 "                        keywords TODO FIXME and XXX
 "
 "}}}
 " tex highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! texStatement"   . s:fg_base2  .s:bg_back   .s:fmt_none
+exe "hi! texStatement"   . s:fg_base1  .s:bg_back   .s:fmt_none
 exe "hi! texMathZoneX"   . s:fg_yellow .s:bg_back   .s:fmt_none
 exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
 exe "hi! texMathMatcher" . s:fg_yellow .s:bg_back   .s:fmt_none
