@@ -304,7 +304,7 @@ elseif g:solarized_termcolors == 256
     let s:base02      = "232" "black    適当
     let s:base03      = "240" "brblack  適当
 
-    let s:base2       = "250" "white    
+    let s:base2       = "252" "white    
     let s:base3       = "231" "brwhite  適当
 
     let s:red         = "203" "red      
@@ -584,7 +584,7 @@ exe "hi! Type"           .s:fmt_none   .s:fg_yellow .s:bg_none
 "        Structure       struct, union, enum, etc.
 "        Typedef         A typedef
 
-exe "hi! Special"        .s:fmt_none   .s:fg_base00    .s:bg_none
+exe "hi! Special"        .s:fmt_none   .s:fg_base2   .s:bg_none
 "       *Special         any special symbol
 "        SpecialChar     special character in a constant
 "        Tag             you can use CTRL-] on this
@@ -616,8 +616,8 @@ exe "hi! texRefLabel"    . s:fg_yellow .s:bg_back   .s:fmt_none
 "}}}
 " Extended highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! Folded"         .s:fmt_none   .s:fg_base2  .s:bg_none  .s:sp_base03
-exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base2  .s:bg_none
+exe "hi! Folded"         .s:fmt_none   .s:fg_base00  .s:bg_none  .s:sp_base03
+exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base00  .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base00 .s:bg_none
 
 exe "hi! Visual"         .s:fmt_none   .s:fg_base02 .s:bg_none .s:fmt_revbb
@@ -632,6 +632,7 @@ exe "hi! ErrorMsg"       .s:fmt_revr   .s:fg_red    .s:bg_none
 exe "hi! WarningMsg"     .s:fmt_bold   .s:fg_red    .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none   .s:fg_base01 .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_base01 .s:bg_none
+exe "hi! Conceal"        .s:fmt_none   .s:fg_base01   .s:bg_none
 
 hi! link lCursor Cursor
 exe "hi! CursorColumn"   .s:fmt_none   .s:fg_none   .s:bg_base02
@@ -653,7 +654,6 @@ exe "hi! Title"          .s:fmt_bold   .s:fg_orange .s:bg_none
 exe "hi! VisualNOS"      .s:fmt_stnd   .s:fg_none   .s:bg_base02 .s:fmt_revbb
 exe "hi! WildMenu"       .s:fmt_none   .s:fg_base2  .s:bg_base02 .s:fmt_revbb
 exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0
-exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
 
 
 if      (g:solarized_visibility=="high")
