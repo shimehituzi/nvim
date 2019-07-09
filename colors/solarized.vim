@@ -304,7 +304,7 @@ elseif g:solarized_termcolors == 256
     let s:base02      = "232" "black    適当
     let s:base03      = "240" "brblack  適当
 
-    let s:base2       = "252" "white    
+    let s:base2       = "250" "white    
     let s:base3       = "231" "brwhite  適当
 
     let s:red         = "203" "red      
