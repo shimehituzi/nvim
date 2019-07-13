@@ -89,7 +89,6 @@ noremap H ^
 noremap L $
 noremap j gj
 noremap k gk
-noremap <CR> zt10<C-y>
 noremap <C-f> <C-d>
 noremap <C-d> <C-u>
 noremap <C-s> M
@@ -108,27 +107,29 @@ onoremap id i"
 " -------------------------------------------------------------------------------------
 inoremap jk <C-o>
 inoremap jl <esc>
-nnoremap <S-Tab> <C-i>
-nnoremap <BS> <C-o>
+inoremap <C-l> <Esc>gUawea
+" -------------------------------------------------------------------------------------
+nnoremap <silent> <CR> :w<CR>
+nnoremap <silent> <C-_> :bw<CR>:clearjumps<CR>
+nnoremap <silent> - *<C-o>
+nnoremap <silent> _ g*<C-o>
+nnoremap <Space><Space> <nop>
+nnoremap + :nnoremap <Space><Space> <CR><Left><Left><Left><Left>
+nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <silent> <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+nnoremap Y y$
 nnoremap t <C-a>
 nnoremap T <C-x>
-nnoremap Y y$
+nnoremap <S-Tab> <C-i>
+nnoremap <BS> <C-o>
 nnoremap G ~
 nnoremap U J
-" -------------------------------------------------------------------------------------
-nnoremap <Space><Esc> <nop>
-nnoremap <silent><Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
-nnoremap <silent><Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
-" nnoremap <silent> <Space><Space> :let @/ = '\v<<C-r><C-w>>\C'<CR>:set hlsearch<CR>
-nnoremap <silent> <Space><Space> :let @/ = '<C-r><C-w>'<CR>:set hlsearch<CR>
-nnoremap <silent> ` :nohl<CR>
-nnoremap <silent> - :w<CR>
-nnoremap <silent> _ :bw<CR> :clearjumps<CR>
-nnoremap <silent> ~ :let @z = @"<CR>xp:let @" = @z<CR>
-nnoremap <silent> + mzGVgg=`z:delmarks z<CR>
 nnoremap S :%s///gc<Left><Left><Left>
-nnoremap & :let @/ = '\v<<C-r><C-w>>\C'<CR>:set hlsearch<CR>:%s///gc<Left><Left><Left>
-inoremap <C-l> <Esc>gUawea
+nnoremap & *<c-o>:%s///gc<Left><Left><Left>
+nnoremap <silent> ` :nohl<CR>
+nnoremap <silent> ~ :let @z = @"<CR>xp:let @" = @z<CR>
+nnoremap <Space><Esc> <nop>
+nnoremap ^ zt10<C-y>
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz
@@ -148,7 +149,6 @@ nnoremap <Space>p "+p
 nnoremap <Space>P "+P
 " -------------------------------------------------------------------------------------
 nnoremap Q @
-nnoremap ^ :nnoremap
 nnoremap $ <nop>
 nnoremap # <nop>
 nnoremap @ <nop>
