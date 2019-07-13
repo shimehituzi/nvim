@@ -14,13 +14,6 @@ let g:python3_host_prog = $PYENV_PATH . '/versions/neovim3/bin/python'
 
 
 " colorscheme
-function! Transtermbg()
-    highlight Normal ctermbg=none
-    highlight NonText ctermbg=none
-    highlight LineNr ctermbg=none
-    highlight Folded ctermbg=none
-    highlight EndOfBuffer ctermbg=none
-endfunction
 augroup latexfiles
     au!
     au BufNewFile,BufRead *.tex set background=dark
@@ -29,17 +22,13 @@ augroup latexfiles
     au BufNewFile,BufRead *.tex colorscheme solarized
     au BufNewFile,BufRead *.tex AirlineRefresh
 augroup END
-augroup markdwonfiles
+augroup markdownfiles
     au!
-    au BufNewFile,BufRead *.md set t_Co=256
-    au BufNewFile,BufRead *.md let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    au BufNewFile,BufRead *.md let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     au BufNewFile,BufRead *.md set background=dark
-    au BufNewFile,BufRead *.md colorscheme deus
-    au BufNewFile,BufRead *.md let g:deus_termcolors=256
-    au BufNewFile,BufRead *.md let g:deus_inverse=1
+    au BufNewFile,BufRead *.md let g:solarized_termtrans=1
+    au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
+    au BufNewFile,BufRead *.md colorscheme solarized
     au BufNewFile,BufRead *.md AirlineRefresh
-    au BufNewFile,BufRead *.md call Transtermbg()
 augroup END
 
 
