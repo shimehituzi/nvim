@@ -155,13 +155,14 @@
         let g:vim_markdown_folding_disabled = 1
         " 強調を一行に制限
         let g:vim_markdown_emphasis_multiline = 0
+        " conceal を無効化
+        set conceallevel=0
         " イタリックなどを conceal しない
         let g:vim_markdown_conceal = 0
         " コードブロックを conceal しない
         let g:vim_markdown_conceal_code_blocks = 0
         " 数式を conceal しない
-        " let g:tex_conceal = ""
-        " let g:vim_markdown_math = 1
+        let g:tex_conceal = ""
         " $x$ でインライン数式 $$x$$ でディスプレイ数式
         let g:vim_markdown_math = 1
         " 自動で箇条書きの接頭語を挿入しない
