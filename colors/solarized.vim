@@ -316,7 +316,7 @@ elseif g:solarized_termcolors == 256
     let s:yellow      = "186" "yellow   
     let s:base00      = "223" "bryellow 
 
-    let s:blue        = "68" "blue     
+    let s:blue        = "79" "blue     
     let s:base0       = "74" "brblue   
 
     let s:cyan        = "44" "cyan     
