@@ -188,7 +188,7 @@
         " use custom IP to open preview page useful when you work in remote vim and preview on local browser
         let g:mkdp_open_ip = ''
         " プレビューページを開くブラウザを指定する
-        let g:mkdp_browser = ''
+        let g:mkdp_browser = 'Google Chrome' 
         " set to 1, echo preview page url in command line when open preview page
         let g:mkdp_echo_preview_url = 0
         " a custom vim function name to open preview page. this function will receive url as param
