@@ -228,6 +228,11 @@
 
 
 [[plugins]]
+    repo = 'godlygeek/tabular'
+    on_ft = ['markdown']
+
+
+[[plugins]]
     repo = 'cespare/vim-toml'
     on_ft = ['toml']
 
