@@ -113,8 +113,6 @@ nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-_> :bw<CR>:clearjumps<CR>
 nnoremap <silent> - *<C-o>
 nnoremap <silent> _ g*<C-o>
-nnoremap <Space><Space> <nop>
-nnoremap + :nnoremap <Space><Space> <CR><Left><Left><Left><Left>
 nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
 nnoremap <silent> <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 nnoremap Y y$
@@ -128,8 +126,8 @@ nnoremap S :%s///gc<Left><Left><Left>
 nnoremap & *<c-o>:%s///gc<Left><Left><Left>
 nnoremap <silent> ` :nohl<CR>
 nnoremap <silent> ~ :let @z = @"<CR>xp:let @" = @z<CR>
-nnoremap <Space><Esc> <nop>
 nnoremap ^ zt10<C-y>
+nnoremap <Space><Esc> <nop>
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz

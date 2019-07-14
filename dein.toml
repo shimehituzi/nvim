@@ -36,16 +36,16 @@
 
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
+        nnoremap <silent> <space><space> :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> J :<C-u>Denite -resume -immediately -cursor-pos=+1<CR>
         nnoremap <silent> K :<C-u>Denite -resume -immediately -cursor-pos=-1<CR>
+        nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
         nnoremap <silent> [denite]k :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]l :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]j :<C-u>Denite register -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]h :<C-u>Denite -resume -filter-updatetime=1<CR>
+        nnoremap <silent> [denite]l :<C-u>Denite register -filter-updatetime=1<CR>
         nnoremap <silent> [denite]i :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]o :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite], :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
 
         call denite#custom#option('default', 'prompt', '>')
     '''
@@ -181,23 +181,14 @@
 
 
 [[plugins]]
-    repo = 'Shougo/deol.nvim'
-    hook_add = '''
-        nnoremap <silent><Space>s :Deol -no-start-insert -split<CR><C-w>L<C-w>=<C-w>40<
-        nnoremap <silent><Space>S :DeolEdit<CR><ESC>ggVG"_d<C-W>10+
-        tnoremap <ESC> <C-\><C-n>
-        tnoremap <C-j> <C-\><C-n><C-w>w
-        tnoremap <C-k> <C-\><C-n><C-w>W
-        let g:deol#prompt_pattern = '% \|%$'
-    '''
-
-
-[[plugins]]
     repo = 'tpope/vim-commentary'
 
 
 [[plugins]]
     repo = 'tpope/vim-surround'
+    hook_add = '''
+        nmap + ysiw
+    '''
 
 
 [[plugins]]
