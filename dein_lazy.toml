@@ -176,7 +176,7 @@
     hook_source = '''
         nmap @ <Plug>MarkdownPreviewToggle
         " markdown バッファを開いたときにプレビューを表示する
-        let g:mkdp_auto_start = 1
+        let g:mkdp_auto_start = 0
         " 違うバッファに映った時にプレビューを閉じる
         let g:mkdp_auto_close = 0
         " セーブしたタイミングのみプレビューを更新する
