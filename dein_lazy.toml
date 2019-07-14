@@ -152,7 +152,7 @@
     on_ft = ['markdown']
     hook_source = '''
         " 折りたたみを無効
-        let g:vim_markdown_folding_disabled = 1
+        let g:vim_markdown_folding_disabled = 0
         " 強調を一行に制限
         let g:vim_markdown_emphasis_multiline = 0
         " イタリックなどを conceal しない
