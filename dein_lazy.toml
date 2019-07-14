@@ -230,6 +230,9 @@
 [[plugins]]
     repo = 'godlygeek/tabular'
     on_ft = ['markdown']
+    hook_source = '''
+        nnoremap <silent> # :<C-u>TableFormat<CR>
+    '''
 
 
 [[plugins]]
