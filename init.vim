@@ -108,6 +108,7 @@ onoremap id i"
 inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-l> <Esc>gUawea
+inoremap <C-a> <Esc>A
 " -------------------------------------------------------------------------------------
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-_> :bw<CR>:clearjumps<CR>
