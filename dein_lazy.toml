@@ -153,7 +153,7 @@
     hook_source = '''
         " surrondvim から markdown 用のマッピング
         nmap $ ysiW$E
-        imap  <esc>ysiW$Ea
+        imap <C-e> <esc>ysiW$Ea
         " 折りたたみを無効
         let g:vim_markdown_folding_disabled = 0
         " 折りたたみのレベルを設定
