@@ -122,8 +122,7 @@ nnoremap <S-Tab> <C-i>
 nnoremap <BS> <C-o>
 nnoremap G ~
 nnoremap U J
-nnoremap S :%s///gc<Left><Left><Left>
-nnoremap & *<c-o>:%s///gc<Left><Left><Left>
+nnoremap & :%s///gc<Left><Left><Left>
 nnoremap <silent> ` :nohl<CR>
 nnoremap <silent> ~ :let @z = @"<CR>xp:let @" = @z<CR>
 nnoremap ^ zt10<C-y>

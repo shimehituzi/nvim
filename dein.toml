@@ -187,8 +187,8 @@
 [[plugins]]
     repo = 'tpope/vim-surround'
     hook_add = '''
-        nmap + ysiW
-        nmap ++ ysiw<space><space>
+        nmap S ysiW
+        nmap SS ysiw<space><space>
     '''
 
 
