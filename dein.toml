@@ -172,6 +172,15 @@
 
 
 [[plugins]]
+    repo = 'rhysd/clever-f.vim'
+    hook_add = '''
+        let g:clever_f_not_overwrites_standard_mappings = 1
+        nmap f <Plug>(clever-f-f)
+        nmap F <Plug>(clever-f-F)
+    '''
+
+
+[[plugins]]
     repo = 'tpope/vim-commentary'
 
 
