@@ -50,7 +50,7 @@
         set shortmess+=c
 
         " <CR> で補完をしないで改行する
-        inoremap <expr><cr> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
+        inoremap <expr><CR> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
     '''
 
 
