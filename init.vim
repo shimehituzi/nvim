@@ -108,7 +108,6 @@ onoremap id i"
 inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-a> <Esc>A
-inoremap <C-i> <Esc>gUawea
 inoremap <expr><C-c> pumvisible() ? "\<C-e>" : "\<C-c>"
 " -------------------------------------------------------------------------------------
 nnoremap <silent> <CR> :w<CR>
