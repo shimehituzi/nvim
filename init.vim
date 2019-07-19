@@ -109,6 +109,7 @@ inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-a> <Esc>A
 inoremap <C-i> <Esc>gUawea
+inoremap <expr><C-c> pumvisible() ? "\<C-e>" : "\<C-c>"
 " -------------------------------------------------------------------------------------
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-_> :bw<CR>:clearjumps<CR>
@@ -239,13 +240,6 @@ if dein#check_install()
     call dein#install()
 endif
 " ======================================== dein ========================================
-
-" ===================================== after dein =====================================
-
-" 括弧の補完と競合する．
-" inoremap <expr><CR> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
-
-" ===================================== after dein =====================================
 
 
 " ======================================== PyDoc =======================================
