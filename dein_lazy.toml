@@ -4,8 +4,6 @@
     hook_source = '''
         let g:deoplete#enable_at_startup = 1
 
-        " <C-h>, <BS>: close popup and delete backword char.
-        inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
         inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
 
         inoremap <silent><expr> <C-j>
@@ -48,9 +46,6 @@
         set completeopt+=noinsert
         " 補完関連のメッセージを表示しない
         set shortmess+=c
-
-        " <CR> で補完をしないで改行する
-        inoremap <expr><CR> pumvisible() ? "\<c-e>\<cr>" : "\<cr>"
     '''
 
 
