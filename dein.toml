@@ -107,8 +107,7 @@
 [[plugins]]
     repo = 'Shougo/defx.nvim'
     hook_add = '''
-        nnoremap <silent> <Space>f :Defx -new -listed -buffer-name= <CR>
-        nnoremap <silent> <Space>F :Defx -new -listed -auto-cd -buffer-name= <CR>
+        nnoremap <silent> <Space>F :Defx -new -listed -buffer-name=""<CR>
         nnoremap <silent> <Space>u :b \[defx]\ -<CR>
 
         autocmd FileType defx call s:defx_my_settings()
@@ -177,6 +176,7 @@
         let g:clever_f_not_overwrites_standard_mappings = 1
         map f <Plug>(clever-f-f)
         map F <Plug>(clever-f-F)
+        nmap <space>f <Plug>(clever-f-reset)
         let g:clever_f_smart_case = 1
         let g:clever_f_mark_direct = 1
         let g:clever_f_chars_match_any_signs = ";"
