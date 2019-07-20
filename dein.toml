@@ -107,8 +107,11 @@
 [[plugins]]
     repo = 'tpope/vim-fugitive'
     hook_add = '''
-        command! Gs vertical bo Gstatus
-        command! Gc vertical bo Gcommit
+        command GS vertical bo Gstatus
+        command GC vertical bo Gcommit
+        command GD vertical bo Gdiff
+        command GW Gwrite
+        command GR Gread
     '''
 
 
