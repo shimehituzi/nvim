@@ -125,6 +125,7 @@
         nmap <Leader>hs <Plug>GitGutterStageHunk
         nmap <Leader>hu <Plug>GitGutterUndoHunk
         nmap <Leader>hp <Plug>GitGutterPreviewHunk
+        nnoremap + :GitGutterBufferToggle<CR>
     '''
 
 
