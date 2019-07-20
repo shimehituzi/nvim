@@ -181,6 +181,14 @@
 
 
 [[plugins]]
+    repo = 'easymotion/vim-easymotion'
+    hook_add = '''
+        nmap ; <Plug>(easymotion-overwin-f2)
+        vmap ; <Plug>(easymotion-bd-f2)
+    '''
+
+
+[[plugins]]
     repo = 'tpope/vim-commentary'
 
 
