@@ -105,6 +105,10 @@
 
 
 [[plugins]]
+    repo = 'tpope/vim-fugitive'
+
+
+[[plugins]]
     repo = 'Shougo/defx.nvim'
     hook_add = '''
         nnoremap <silent> <Space>F :Defx -new -listed -buffer-name=""<CR>
