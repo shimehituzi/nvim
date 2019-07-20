@@ -255,7 +255,6 @@
         nmap @ <plug>(vimtex-compile)
         nmap # <plug>(vimtex-view)
         nmap $ <plug>(vimtex-toc-open)
-        nmap ^ <plug>(vimtex-errors)
         imap <C-e> <plug>(vimtex-delim-close)
         nmap <Space>k <plug>(vimtex-doc-package)
         " 警告のみの時は quickfix を開かない
