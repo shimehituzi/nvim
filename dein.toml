@@ -175,8 +175,11 @@
     repo = 'rhysd/clever-f.vim'
     hook_add = '''
         let g:clever_f_not_overwrites_standard_mappings = 1
-        nmap f <Plug>(clever-f-f)
-        nmap F <Plug>(clever-f-F)
+        map f <Plug>(clever-f-f)
+        map F <Plug>(clever-f-F)
+        let g:clever_f_smart_case = 1
+        let g:clever_f_mark_direct = 1
+        let g:clever_f_chars_match_any_signs = ";"
     '''
 
 
