@@ -109,6 +109,13 @@
 
 
 [[plugins]]
+    repo = 'airblade/vim-gitgutter'
+    hook_add = '''
+        let g:gitgutter_map_keys = 0
+    '''
+
+
+[[plugins]]
     repo = 'Shougo/defx.nvim'
     hook_add = '''
         nnoremap <silent> <Space>F :Defx -new -listed -buffer-name=""<CR>
