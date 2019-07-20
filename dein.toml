@@ -118,6 +118,7 @@
 [[plugins]]
     repo = 'airblade/vim-gitgutter'
     hook_add = '''
+        set updatetime=100
         let g:gitgutter_map_keys = 0
         nmap ]c <Plug>GitGutterNextHunk
         nmap [c <Plug>GitGutterPrevHunk
