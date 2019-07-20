@@ -108,7 +108,6 @@
     repo = 'Shougo/defx.nvim'
     hook_add = '''
         nnoremap <silent> <Space>F :Defx -new -listed -buffer-name=""<CR>
-        nnoremap <silent> <Space>u :b \[defx]\ -<CR>
 
         autocmd FileType defx call s:defx_my_settings()
         function! s:defx_my_settings() abort
@@ -131,8 +130,6 @@
             \ defx#do_action('change_vim_cwd')
             nnoremap <silent><buffer><expr> u
             \ defx#do_action('cd', $PWD)
-            nnoremap <silent><buffer> U
-            \ :.+,$bw<CR> :clearjump<CR>
             nnoremap <silent><buffer><expr> c
             \ defx#do_action('copy')
             nnoremap <silent><buffer><expr> x
