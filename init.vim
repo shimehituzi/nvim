@@ -110,10 +110,13 @@ inoremap jl <esc>
 inoremap <C-a> <Esc>A
 inoremap <expr><C-c> pumvisible() ? "\<C-e>" : "\<C-c>"
 " -------------------------------------------------------------------------------------
+nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
-nnoremap <silent> <C-_> :bw<CR>:clearjumps<CR>
-nnoremap <silent> - *<C-o>
-nnoremap <silent> _ g*<C-o>
+nnoremap <silent> <C-_> zt15<C-y>
+nnoremap <silent> - <C-e>
+nnoremap <silent> _ <C-y>
+nnoremap <silent> * *<C-o>
+nnoremap <silent> ^ g*<C-o>
 nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
 nnoremap <silent> <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 nnoremap Y y$
