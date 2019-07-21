@@ -194,10 +194,10 @@ nnoremap <Up> <nop>
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
 
-nnoremap <S-Down> M
+nnoremap <S-Down> <nop>
 nnoremap <S-Up> <nop>
-nnoremap <S-Left> H
-nnoremap <S-Right> L
+nnoremap <S-Left> <nop>
+nnoremap <S-Right> <nop>
 
 nnoremap <C-S-Down> <C-w>J
 nnoremap <C-S-Up> <C-w>K
