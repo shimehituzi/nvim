@@ -28,6 +28,7 @@ augroup markdownfiles
     au BufNewFile,BufRead *.md let g:solarized_termtrans=1
     au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
     au BufNewFile,BufRead *.md colorscheme solarized
+    au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
     au BufNewFile,BufRead *.md AirlineRefresh
 augroup END
 
