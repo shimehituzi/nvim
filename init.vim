@@ -1,5 +1,5 @@
 " 使ってないマッピング
-"           
+"         
 
 " Setting
 colorscheme lucario
