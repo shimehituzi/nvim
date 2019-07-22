@@ -50,7 +50,6 @@ set timeoutlen=4000
 
 " Appearance
 set number
-set showmatch
 set matchtime=1
 set laststatus=2
 set display=lastline
