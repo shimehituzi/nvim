@@ -107,6 +107,7 @@ onoremap ir i[
 onoremap ad a"
 onoremap id i"
 " -------------------------------------------------------------------------------------
+inoremap j<space> j
 inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-a> <Esc>A
