@@ -199,8 +199,8 @@
     repo = 'rhysd/clever-f.vim'
     hook_add = '''
         let g:clever_f_not_overwrites_standard_mappings = 1
-        map f <Plug>(clever-f-f)
-        map F <Plug>(clever-f-F)
+        map <expr> f expand("<cword>")!~"^$" ? "<Plug>(clever-f-f)" : ""
+        map <expr> F expand("<cword>")!~"^$" ? "<Plug>(clever-f-F)" : ""
         nmap <space>f <Plug>(clever-f-reset)
         let g:clever_f_smart_case = 1
         let g:clever_f_mark_direct = 1
