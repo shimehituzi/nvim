@@ -136,6 +136,7 @@
     on_ft = ['markdown']
     hook_source = '''
         nnoremap $ <esc>o<div style="text-align:center;"><img src="" width=50%><div/><esc>F"i
+        inoremap <expr> <C-e> expand("<cWORD>")=~"^\\" ? "\<esc>yyplcwend\<esc>O\<Tab>" : ""
         " 折りたたみを無効
         let g:vim_markdown_folding_disabled = 0
         " 折りたたみのレベルを設定
