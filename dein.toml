@@ -187,8 +187,9 @@
     hook_add = '''
         call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': ['tex', 'markdown']})
         call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': ['tex', 'markdown']})
-        call lexima#add_rule({'char': '<CR>', 'at': '\$\$\%#', 'input_after': '<CR>$$', 'filetype': ['markdown'] })
         call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': ['tex', 'markdown']})
+        call lexima#add_rule({'char': '<CR>', 'at': '\$\$\%#', 'input_after': '<CR>$$', 'filetype': ['markdown'] })
+        call lexima#add_rule({'char': '<BS>', 'at': '\$\$\n\%#\n\$\$', 'delete': 3, 'filetype': ['markdown']})
         inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
         inoremap <C-h> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>LEFT>')<CR>
     '''
