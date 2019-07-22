@@ -621,7 +621,7 @@ exe "hi! FoldColumn"     .s:fmt_none   .s:fg_base00  .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base00 .s:bg_none
 
 exe "hi! Visual"         .s:fmt_none   .s:fg_base02 .s:bg_none .s:fmt_revbb
-exe "hi! MatchParen"     .s:fmt_bold   .s:fg_base1    .s:bg_base3
+exe "hi! MatchParen"     .s:fmt_none   .s:fg_red    .s:bg_none
 exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_none    .s:fmt_revbb
 exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base1  .s:bg_none    .s:fmt_revbb
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_none   .s:bg_none    .s:fmt_revbb
