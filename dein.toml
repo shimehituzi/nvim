@@ -42,8 +42,8 @@
         nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
         nnoremap <silent> [denite]k :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]l :<C-u>Denite register -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]i :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]o :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]i :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]o :<C-u>Denite file -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
 
