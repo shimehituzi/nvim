@@ -107,12 +107,10 @@
 [[plugins]]
     repo = 'tpope/vim-fugitive'
     hook_add = '''
-        nnoremap <silent> <Leader>gg :vertical bo Gstatus<CR>
-        nnoremap <silent> <Leader>gc :vertical bo Gcommit<CR>
-        nnoremap <silent> <Leader>gd :vertical bo Gdiff<CR>
-        nnoremap <Leader>gw :Gwrite<CR>
+        nnoremap <silent>gg :vertical bo Gstatus<CR>
+        nnoremap <Leader>gg :vertical bo Gdiff<CR>
         nnoremap <Leader>gr :Gread<CR>
-        nnoremap <silent> <Leader>gh :h fugitive<CR>
+        nnoremap <Leader>gh :h fugitive<CR>
     '''
 
 
