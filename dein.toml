@@ -205,6 +205,7 @@
 
         inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
         inoremap <C-h> <C-r>=lexima#insmode#leave_all('<LT>C-G>U<LT>LEFT>')<CR>
+        inoremap <Tab> <C-r>=lexima#insmode#leave_all('<LT>TAB>')<CR>
     '''
 
 
