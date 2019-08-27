@@ -127,7 +127,7 @@
         xmap ic <Plug>GitGutterTextObjectInnerVisual
         xmap ac <Plug>GitGutterTextObjectOuterVisual
         nnoremap + :GitGutterBufferToggle<CR>
-        nnoremap <Space>g :GitGutterAll<CR>
+        nnoremap <silent> <Space>g :GitGutterAll<CR>
     '''
 
 
