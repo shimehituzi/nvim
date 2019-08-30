@@ -53,7 +53,6 @@ set number
 set matchtime=1
 set laststatus=2
 set display=lastline
-set cursorline
 
 
 " Indent
