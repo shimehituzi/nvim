@@ -224,7 +224,6 @@
     on_ft = ['toml']
 
 
-# call map(dein#check_clean(), "delete(v:val, 'rf')")が使えなくなる
 [[plugins]]
     repo = 'lervag/vimtex'
     on_ft = ['tex']
