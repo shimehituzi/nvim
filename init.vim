@@ -10,6 +10,7 @@ set autoread
 set hidden
 set showcmd
 set shada="NONE"
+let g:netrw_dirhistmax=0
 let g:python3_host_prog = $PYENV_PATH . '/versions/neovim3/bin/python'
 
 
