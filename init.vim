@@ -222,11 +222,6 @@ let s:toml_dir = expand('~/.config/nvim')
 if dein#load_state('~/.cache/dein')
     call dein#begin('~/.cache/dein')
 
-    "delete plugin"
-    " call map(dein#check_clean(), "delete(v:val, 'rf')")
-    " call dein#recache_runtimepath()
-    "delete plugin"
-
     let s:toml = s:toml_dir . '/dein.toml'
     let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
     call dein#load_toml(s:toml, {'lazy': 0})
