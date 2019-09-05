@@ -158,14 +158,6 @@ nnoremap @ <nop>
 nnoremap <Space>` :source ~/.config/nvim/init.vim<CR>
 
 
-" cmdline-emacs-keybind
-cnoremap <C-A> <Home>
-cnoremap <C-E> <End>
-cnoremap <C-B> <Left>
-cnoremap <C-F> <Right>
-cnoremap <C-N> <Down>
-cnoremap <C-p> <Up>
-
 
 
 " ======================== スクリプトローカルな関数のSID取得 =========================
