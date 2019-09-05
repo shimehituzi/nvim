@@ -147,7 +147,40 @@
 | `<C-^>`                 | 1個前のファイルに戻る        |                                                |
 | `<C-&>` `<C-->` `<C-/>` | 特になし?                    |                                                |
 | `<C-*>`                 | `<BS>` と同じキーコード      | `<BS>` と同じキーコード                        |
- 
+
+
+###### 複数ストローク
+
+| map                              | function                                 |
+|:---------------------------------|:-----------------------------------------|
+| `<space><esc>`                   | `<nop>`                                  |
+| `<space><space>`                 | denite buffer                            |
+| `<space>jj`                      | denite -resume                           |
+| `<space>jk`                      | denite line                              |
+| `<space>jl`                      | denite register                          |
+| `<space>ji`                      | denite file/rec                          |
+| `<space>jo`                      | denite file                              |
+| `<space>jh`                      | denite help                              |
+| `<space>j;`                      | denite grep                              |
+| `<space>F`                       | defx                                     |
+| `<space>f`                       | clever-f-reset                           |
+| `<space>r`                       | quick run                                |
+| `<space>e`                       | quick run を閉じる                       |
+| `<space>o`                       | 下に count 行追加                        |
+| `<space>O`                       | 上に count 行追加                        |
+| `<space>y`                       | カーソル行を os のクリップボードにコピー |
+| `<space>Y`                       | 行末までを os のクリップボードにコピー   |
+| `<space>p`                       | os のクリップボードから前方にペースト    |
+| `<space>P`                       | os のクリップボードから後方にペースト    |
+| `<space>g`                       | git gutter を再描画                      |
+| `<space>m`                       | マーク                                   |
+| <code>&lt;space&gt;&#096;</code> | 設定ファイルを再読み込み                 |
+| `SS`                             | word の周りにスペースを挿入              |
+| `gu`                             | `gU`                                     |
+| `gU`                             | `gu`                                     |
+
+
+
 
 ### ビジュアルモード
 
