@@ -200,10 +200,10 @@ nnoremap <S-Up> <C-w>K
 nnoremap <S-Left> <C-w>H
 nnoremap <S-Right> <C-W>L
 
-nnoremap <C-S-Down> <nop>
-nnoremap <C-S-Up> <nop>
-nnoremap <C-S-Left> <nop>
-nnoremap <C-S-Right> <nop>
+nnoremap <C-S-Down> <C-w>-
+nnoremap <C-S-Up> <C-w>+
+nnoremap <C-S-Left> <C-w><
+nnoremap <C-S-Right> <C-w>>
 
 " ======================================= arrow =======================================
 
