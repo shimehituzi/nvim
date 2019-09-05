@@ -93,7 +93,6 @@ noremap j gj
 noremap k gk
 noremap <C-f> <C-d>
 noremap <C-d> <C-u>
-noremap <C-s> M
 noremap <C-h> H
 noremap <C-l> L
 noremap 0 <C-l>
@@ -115,7 +114,7 @@ inoremap <expr><C-c> pumvisible() ? "\<C-e>" : "\<C-c>"
 " -------------------------------------------------------------------------------------
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
-nnoremap <C-_> zt15<C-y>
+nnoremap <C-s> zt15<C-y>
 nnoremap - <C-e>
 nnoremap _ <C-y>
 nnoremap * *<C-o>
