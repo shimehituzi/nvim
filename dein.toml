@@ -106,9 +106,8 @@
 [[plugins]]
     repo = 'tpope/vim-fugitive'
     hook_add = '''
-        nnoremap <silent><C-g> :vertical bo Gstatus<CR>
-        nnoremap <C-t> :Gpush<CR>
-        nnoremap <silent><C-b> :vertical bo Gdiff<CR>
+        nnoremap <silent><C-s> :vertical bo Gstatus<CR>
+        nnoremap <silent><C-x> :vertical bo Gdiff<CR>
     '''
 
 
@@ -117,11 +116,9 @@
     hook_add = '''
         set updatetime=500
         let g:gitgutter_map_keys = 0
+        nmap - <Plug>(GitGutterNextHunk)
+        nmap _ <Plug>(GitGutterPrevHunk)
         nmap <C-u> <Plug>(GitGutterUndoHunk)
-        nmap <C-n> <Plug>(GitGutterStageHunk)
-        nmap <C-a> <Plug>(GitGutterNextHunk)
-        nmap <C-x> <Plug>(GitGutterPrevHunk)
-        nmap <C-o> <Plug>(GitGutterPreviewHunk)
         omap ic <Plug>(GitGutterTextObjectInnerPending)
         omap ac <Plug>(GitGutterTextObjectOuterPending)
         xmap ic <Plug>(GitGutterTextObjectInnerVisual)

@@ -1,5 +1,5 @@
 " 使ってないマッピング
-"   
+"      
 
 " Setting
 colorscheme lucario
@@ -112,11 +112,10 @@ inoremap jl <esc>
 inoremap <C-a> <Esc>A
 inoremap <expr><C-c> pumvisible() ? "\<C-e>" : "\<C-c>"
 " -------------------------------------------------------------------------------------
+nnoremap <C-Space> <C-y>
+nnoremap <C-a> zt15<C-y>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
-nnoremap <C-s> zt15<C-y>
-nnoremap - <C-e>
-nnoremap _ <C-y>
 nnoremap * *<C-o>
 nnoremap ^ g*<C-o>
 nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
