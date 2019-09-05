@@ -1,5 +1,5 @@
 " 使ってないマッピング
-"      
+"       <C-^> <C-/>
 
 " Setting
 colorscheme lucario
@@ -116,6 +116,7 @@ nnoremap <C-Space> <C-y>
 nnoremap <C-a> zt15<C-y>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
+nnoremap <C-\> <C-^>
 nnoremap * *<C-o>
 nnoremap ^ g*<C-o>
 nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
