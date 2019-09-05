@@ -189,20 +189,20 @@ endfunction
 
 " ======================================= arrow =======================================
 
-nnoremap <Down> <nop>
-nnoremap <Up> <nop>
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
+nnoremap <Down> <C-w>j
+nnoremap <Up> <C-w>k
+nnoremap <Left> <C-w>h
+nnoremap <Right> <C-w>l
 
-nnoremap <S-Down> <nop>
-nnoremap <S-Up> <nop>
-nnoremap <S-Left> <nop>
-nnoremap <S-Right> <nop>
+nnoremap <S-Down> <C-w>J
+nnoremap <S-Up> <C-w>K
+nnoremap <S-Left> <C-w>H
+nnoremap <S-Right> <C-W>L
 
-nnoremap <C-S-Down> <C-w>J
-nnoremap <C-S-Up> <C-w>K
-nnoremap <C-S-Left> <C-w>H
-nnoremap <C-S-Right> <C-W>L
+nnoremap <C-S-Down> <nop>
+nnoremap <C-S-Up> <nop>
+nnoremap <C-S-Left> <nop>
+nnoremap <C-S-Right> <nop>
 
 " ======================================= arrow =======================================
 
