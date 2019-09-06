@@ -130,8 +130,7 @@ nnoremap G ~
 nnoremap U J
 nnoremap & :%s///gc<Left><Left><Left>
 nnoremap <silent> ` :nohl<CR>
-nnoremap <silent> ~ :let @z=@"<CR>xp:let @"=@z<CR>:let @z=@_<CR>:let @-=@_<CR>
-" ↑レジスタを汚さないようにしている，機能的には `xp` としているだけ
+nnoremap <silent> ~ :BeforeReg<CR>xp:AfterReg<CR>
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz
@@ -156,28 +155,6 @@ nnoremap # <nop>
 nnoremap @ <nop>
 " -------------------------------------------------------------------------------------
 nnoremap <Space>` :source ~/.config/nvim/init.vim<CR>
-
-
-
-
-" ======================== スクリプトローカルな関数のSID取得 =========================
-
-function! GetScriptID(fname)
-    let snlist = ''
-    redir => snlist
-    silent! scriptnames
-    redir END
-    let smap = {}
-    let mx = '^\s*\(\d\+\):\s*\(.*\)$'
-    for line in split(snlist, "\n")
-        let smap[tolower(substitute(line, mx, '\2', ''))] = substitute(line, mx, '\1', '')
-    endfor
-    return smap[tolower(a:fname)]
-endfunction
-
-" ======================== スクリプトローカルな関数のSID取得 =========================
-
-
 
 
 " ======================================= arrow =======================================
@@ -209,6 +186,21 @@ nnoremap <C-S-Right> <C-w>>
 " ======================================= arrow =======================================
 
 
+" ============================= マッピングのための自作関数 ============================
+
+function! BeforeRegFunc()
+    let @z=@"
+endfunction
+function! AfterRegFunc()
+    let @"=@z
+    let @z=@_
+    let @-=@_
+endfunction
+
+command! BeforeReg call BeforeRegFunc()
+command! AfterReg call AfterRegFunc()
+
+" ============================= マッピングのための自作関数 ============================
 
 
 " ======================================== dein ========================================
@@ -239,6 +231,25 @@ if dein#check_install()
     call dein#install()
 endif
 " ======================================== dein ========================================
+
+
+
+" ======================== スクリプトローカルな関数のSID取得 =========================
+
+function! GetScriptID(fname)
+    let snlist = ''
+    redir => snlist
+    silent! scriptnames
+    redir END
+    let smap = {}
+    let mx = '^\s*\(\d\+\):\s*\(.*\)$'
+    for line in split(snlist, "\n")
+        let smap[tolower(substitute(line, mx, '\2', ''))] = substitute(line, mx, '\1', '')
+    endfor
+    return smap[tolower(a:fname)]
+endfunction
+
+" ======================== スクリプトローカルな関数のSID取得 =========================
 
 
 " ======================================== PyDoc =======================================
