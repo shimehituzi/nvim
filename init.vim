@@ -110,7 +110,6 @@ inoremap j<space> j
 inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-a> <Esc>A
-inoremap <expr><C-c> pumvisible() ? "\<C-e>" : "\<C-c>"
 " -------------------------------------------------------------------------------------
 nnoremap <C-Space> <C-y>
 nnoremap <C-a> zt15<C-y>
@@ -278,7 +277,7 @@ set completeopt+=menuone
 set completeopt+=noinsert
 " 補完関連のメッセージを表示しない
 set shortmess+=c
-" <CR> は保管の確定に使わない
-inoremap <expr><CR> pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
+" <CR> 補完のポップアップ時→補完をやめる それ以外→改行 
+inoremap <expr><CR> pumvisible() ? "\<C-e>" : lexima#expand('<LT>CR>', 'i')
 
 " ======================================== 補完 ========================================
