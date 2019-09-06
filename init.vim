@@ -111,6 +111,7 @@ inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-a> <Esc>A
 " -------------------------------------------------------------------------------------
+nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
 nnoremap <C-a> zt15<C-y>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
@@ -129,8 +130,8 @@ nnoremap G ~
 nnoremap U J
 nnoremap & :%s///gc<Left><Left><Left>
 nnoremap <silent> ` :nohl<CR>
-nnoremap <silent> ~ :let @z = @"<CR>xp:let @" = @z<CR>
-nnoremap <Space><Esc> <nop>
+nnoremap <silent> ~ :let @z=@"<CR>xp:let @"=@z<CR>:let @z=@_<CR>:let @-=@_<CR>
+" ↑レジスタを汚さないようにしている，機能的には `xp` としているだけ
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz
@@ -186,10 +187,19 @@ nnoremap <Up> <C-w>k
 nnoremap <Left> <C-w>h
 nnoremap <Right> <C-w>l
 
-nnoremap <S-Down> <C-w>J
-nnoremap <S-Up> <C-w>K
-nnoremap <S-Left> <C-w>H
-nnoremap <S-Right> <C-W>L
+nnoremap <space><Down> <C-w>J
+nnoremap <space><Up> <C-w>K
+nnoremap <space><Left> <C-w>H
+nnoremap <space><Right> <C-W>L
+
+nnoremap <S-Down> Vj
+xnoremap <S-Down> j
+nnoremap <S-Up> Vk
+xnoremap <S-Up> k
+" nnoremap <S-Left>
+" xnoremap <S-Left>
+" nnoremap <S-Right>
+" xnoremap <S-Right>
 
 nnoremap <C-S-Down> <C-w>-
 nnoremap <C-S-Up> <C-w>+
