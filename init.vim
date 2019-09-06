@@ -130,7 +130,7 @@ nnoremap G ~
 nnoremap U J
 nnoremap & :%s///gc<Left><Left><Left>
 nnoremap <silent> ` :nohl<CR>
-nnoremap <silent> ~ :BeforeReg<CR>xp:AfterReg<CR>
+nnoremap <silent> ~ :Typo<CR>
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz
@@ -188,17 +188,15 @@ nnoremap <C-S-Right> <C-w>>
 
 " ============================= マッピングのための自作関数 ============================
 
-function! BeforeRegFunc()
+function! TypoFunc()
     let @z=@"
-endfunction
-function! AfterRegFunc()
+    normal! xp
     let @"=@z
     let @z=@_
     let @-=@_
 endfunction
 
-command! BeforeReg call BeforeRegFunc()
-command! AfterReg call AfterRegFunc()
+command! Typo call TypoFunc()
 
 " ============================= マッピングのための自作関数 ============================
 
