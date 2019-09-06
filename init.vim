@@ -159,24 +159,24 @@ nnoremap <Space>` :source ~/.config/nvim/init.vim<CR>
 
 " ======================================= arrow =======================================
 
-nnoremap <Down> <C-w>j
-nnoremap <Up> <C-w>k
-nnoremap <Left> <C-w>h
-nnoremap <Right> <C-w>l
+nnoremap <Down> Vj
+xnoremap <Down> j
+nnoremap <Up> Vk
+xnoremap <Up> k
+nnoremap <Left> :m.-2<CR>gv
+xnoremap <Left> :m.-2<CR>gv
+nnoremap <Right> :m.+1<CR>gv
+" xnoremap <Right> :VisualMoveDown<CR>
 
-nnoremap <space><Down> <C-w>J
-nnoremap <space><Up> <C-w>K
-nnoremap <space><Left> <C-w>H
-nnoremap <space><Right> <C-W>L
+nnoremap <S-Down> <C-w>j
+nnoremap <S-Up> <C-w>k
+nnoremap <S-Left> <C-w>h
+nnoremap <S-Right> <C-w>l
 
-nnoremap <S-Down> Vj
-xnoremap <S-Down> j
-nnoremap <S-Up> Vk
-xnoremap <S-Up> k
-" nnoremap <S-Left>
-" xnoremap <S-Left>
-" nnoremap <S-Right>
-" xnoremap <S-Right>
+nnoremap <space><S-Down> <C-w>J
+nnoremap <space><S-Up> <C-w>K
+nnoremap <space><S-Left> <C-w>H
+nnoremap <space><S-Right> <C-W>L
 
 nnoremap <C-S-Down> <C-w>-
 nnoremap <C-S-Up> <C-w>+
@@ -197,6 +197,14 @@ function! TypoFunc()
 endfunction
 
 command! Typo call TypoFunc()
+
+
+" function! VisualMoveDownFunc()
+"     let size = 
+"     return ":m.+" . size
+" endfunction
+
+" command! VisualMoveDown call VisualMoveDownFunc()
 
 " ============================= マッピングのための自作関数 ============================
 
