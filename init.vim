@@ -278,5 +278,7 @@ set completeopt+=menuone
 set completeopt+=noinsert
 " 補完関連のメッセージを表示しない
 set shortmess+=c
+" <CR> は保管の確定に使わない
+inoremap <expr><CR> pumvisible() ? "\<C-e>\<CR>" : "\<CR>"
 
 " ======================================== 補完 ========================================
