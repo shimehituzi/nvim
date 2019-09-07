@@ -127,7 +127,7 @@
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
         nnoremap + :GitGutterBufferToggle<CR>
         nnoremap <silent> <Space>g :GitGutterAll<CR>
-        nnoremap <C-_> :bw gitgutter://hunk-preview<CR>
+        nnoremap <silent> <C-_> :bw gitgutter://hunk-preview<CR>
     '''
 
 

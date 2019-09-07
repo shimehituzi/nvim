@@ -111,14 +111,6 @@
         let g:pydoc_highlight = 0
         " マッピングを無効
         let g:pydoc_perform_mappings = 0
-        " 補完のプレビューウィンドウを表示させない
-        set completeopt-=preview
-        " 補完が一つであってもポップアップメニューを使う
-        set completeopt+=menuone
-        " 補完のカーソルを一つ目に合わせておく
-        set completeopt+=noinsert
-        " 補完関連のメッセージを表示しない
-        set shortmess+=c
     '''
 
 
