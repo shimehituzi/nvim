@@ -106,8 +106,8 @@
 [[plugins]]
     repo = 'tpope/vim-fugitive'
     hook_add = '''
-        nnoremap <silent><C-s> :vertical bo Gstatus<CR>
-        nnoremap <silent><C-x> :vertical bo Gdiff<CR>
+        nnoremap <silent><C-a> :vertical bo Gstatus<CR>
+        nnoremap <silent><C-s> :vertical bo Gdiff<CR>
     '''
 
 
