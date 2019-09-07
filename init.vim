@@ -95,7 +95,6 @@ noremap <C-f> <C-d>
 noremap <C-d> <C-u>
 noremap <C-h> H
 noremap <C-l> L
-noremap <expr> ` BufferRedraw()
 noremap gu gU
 noremap gU gu
 " -------------------------------------------------------------------------------------
@@ -114,6 +113,7 @@ inoremap <C-a> <Esc>A
 nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
 nnoremap 0 zt15<C-y>
+nnoremap <silent> ` <C-l>:nohl<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
 nnoremap <C-\> <C-^>
@@ -182,12 +182,6 @@ nnoremap <C-S-Right> <C-w>>
 
 " ============================= マッピングのための自作関数 ============================
 
-function! BufferRedraw()
-    normal <C-l>
-    nohl
-endfunction
-
-
 function! TypoFunc()
     let @z=@"
     normal! xp
@@ -201,7 +195,6 @@ command! Typo call TypoFunc()
 function! VisualMoveDown() range
     return ":m.+" . (a:lastline - a:firstline + 1) . "\<CR>" . "gv"
 endfunction
-
 
 " ============================= マッピングのための自作関数 ============================
 
