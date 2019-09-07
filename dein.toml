@@ -106,8 +106,8 @@
 [[plugins]]
     repo = 'tpope/vim-fugitive'
     hook_add = '''
-        nnoremap <silent><C-a> :vertical bo Gstatus<CR>
-        nnoremap <silent><C-s> :vertical bo Gdiff<CR>
+        nnoremap <silent><C-s> :vertical bo Gstatus<CR>
+        nnoremap <silent><C-x> :vertical bo Gdiff<CR>
     '''
 
 
@@ -119,7 +119,7 @@
         nmap - <Plug>(GitGutterNextHunk)
         nmap _ <Plug>(GitGutterPrevHunk)
         nmap 0 <Plug>(GitGutterPreviewHunk)
-        nmap <C-_> <Plug>(GitGutterStageHunk)
+        nmap <C-a> <Plug>(GitGutterStageHunk)
         nmap <C-u> <Plug>(GitGutterUndoHunk)
         omap ic <Plug>(GitGutterTextObjectInnerPending)
         omap ac <Plug>(GitGutterTextObjectOuterPending)
@@ -127,7 +127,7 @@
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
         nnoremap + :GitGutterBufferToggle<CR>
         nnoremap <silent> <Space>g :GitGutterAll<CR>
-        nnoremap <C-x> :bw gitgutter://hunk-preview<CR>
+        nnoremap <C-_> :bw gitgutter://hunk-preview<CR>
     '''
 
 
