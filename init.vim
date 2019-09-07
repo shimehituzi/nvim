@@ -112,7 +112,7 @@ inoremap <C-a> <Esc>A
 " -------------------------------------------------------------------------------------
 nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
-nnoremap 0 zt15<C-y>
+nnoremap ' zt15<C-y>
 nnoremap <silent> ` <C-l>:nohl<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
@@ -137,7 +137,7 @@ nnoremap x "_x
 nnoremap X "_X
 nnoremap s "_s
 nnoremap <space>m m
-nnoremap ' `
+nnoremap <C-^> `
 " -------------------------------------------------------------------------------------
 vnoremap <silent> <C-y> y']
 nnoremap <silent> <C-p> p']
