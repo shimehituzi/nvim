@@ -196,7 +196,7 @@ function! VisualMoveDown() range
     let l:size = a:lastline - a:firstline
     execute a:firstline ',' a:lastline 'move.+' l:size
     unlet l:size
-    normal gv
+    normal! gv
 endfunction
 
 command! -range Vmd <line1>,<line2>:call VisualMoveDown()
