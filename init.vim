@@ -1,5 +1,5 @@
 " 使ってないマッピング
-"       <C-^> <C-/>
+" <C-a> <C-y> <C-n> <C-o> <C-t> <C-g> <C-b> <C-^> <C-/>
 
 " Setting
 colorscheme lucario
@@ -95,7 +95,7 @@ noremap <C-f> <C-d>
 noremap <C-d> <C-u>
 noremap <C-h> H
 noremap <C-l> L
-noremap 0 <C-l>
+noremap <expr> ` BufferRedraw()
 noremap gu gU
 noremap gU gu
 " -------------------------------------------------------------------------------------
@@ -113,7 +113,7 @@ inoremap <C-a> <Esc>A
 " -------------------------------------------------------------------------------------
 nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
-nnoremap <C-a> zt15<C-y>
+nnoremap 0 zt15<C-y>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap <silent> <CR> :w<CR>
 nnoremap <C-\> <C-^>
@@ -129,7 +129,6 @@ nnoremap <BS> <C-o>
 nnoremap G ~
 nnoremap U J
 nnoremap & :%s///gc<Left><Left><Left>
-nnoremap <silent> ` :nohl<CR>
 nnoremap <silent> ~ :Typo<CR>
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
@@ -168,15 +167,10 @@ xnoremap <Left> :m.-2<CR>gv
 nnoremap <Right> :m.+1<CR>
 xnoremap <expr> <Right> VisualMoveDown()
 
-nnoremap <S-Down> <C-w>j
-nnoremap <S-Up> <C-w>k
-nnoremap <S-Left> <C-w>h
-nnoremap <S-Right> <C-w>l
-
-nnoremap <space><S-Down> <C-w>J
-nnoremap <space><S-Up> <C-w>K
-nnoremap <space><S-Left> <C-w>H
-nnoremap <space><S-Right> <C-W>L
+nnoremap <S-Down> <C-w>J
+nnoremap <S-Up> <C-w>K
+nnoremap <S-Left> <C-w>H
+nnoremap <S-Right> <C-W>L
 
 nnoremap <C-S-Down> <C-w>-
 nnoremap <C-S-Up> <C-w>+
@@ -187,6 +181,12 @@ nnoremap <C-S-Right> <C-w>>
 
 
 " ============================= マッピングのための自作関数 ============================
+
+function! BufferRedraw()
+    normal <C-l>
+    nohl
+endfunction
+
 
 function! TypoFunc()
     let @z=@"
@@ -199,7 +199,7 @@ endfunction
 command! Typo call TypoFunc()
 
 function! VisualMoveDown() range
-    return ":m.+" . (a:lastline - a:firstline + 2) . "\<CR>" . "gv"
+    return ":m.+" . (a:lastline - a:firstline + 1) . "\<CR>" . "gv"
 endfunction
 
 
