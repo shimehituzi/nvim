@@ -118,6 +118,8 @@
         let g:gitgutter_map_keys = 0
         nmap - <Plug>(GitGutterNextHunk)
         nmap _ <Plug>(GitGutterPrevHunk)
+        nmap 0 <Plug>(GitGutterPreviewHunk)
+        nmap <C-_> <Plug>(GitGutterStageHunk)
         nmap <C-u> <Plug>(GitGutterUndoHunk)
         omap ic <Plug>(GitGutterTextObjectInnerPending)
         omap ac <Plug>(GitGutterTextObjectOuterPending)
@@ -125,6 +127,7 @@
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
         nnoremap + :GitGutterBufferToggle<CR>
         nnoremap <silent> <Space>g :GitGutterAll<CR>
+        nnoremap <C-x> :bw gitgutter://hunk-preview<CR>
     '''
 
 

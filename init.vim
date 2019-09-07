@@ -1,5 +1,5 @@
 " 使ってないマッピング
-" <C-a> <C-y> <C-n> <C-o> <C-t> <C-g> <C-b> <C-^> <C-/>
+" <C-y> <C-n> <C-o> <C-t> <C-g> <C-b>
 
 " Setting
 colorscheme lucario
