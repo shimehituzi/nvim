@@ -163,10 +163,10 @@ nnoremap <Down> Vj
 xnoremap <Down> j
 nnoremap <Up> Vk
 xnoremap <Up> k
-nnoremap <Left> :m.-2<CR>gv
+nnoremap <Left> :m.-2<CR>
 xnoremap <Left> :m.-2<CR>gv
-nnoremap <Right> :m.+1<CR>gv
-" xnoremap <Right> :VisualMoveDown<CR>
+nnoremap <Right> :m.+1<CR>
+xnoremap <expr> <Right> VisualMoveDown()
 
 nnoremap <S-Down> <C-w>j
 nnoremap <S-Up> <C-w>k
@@ -198,13 +198,10 @@ endfunction
 
 command! Typo call TypoFunc()
 
+function! VisualMoveDown() range
+    return ":m.+" . (a:lastline - a:firstline + 2) . "\<CR>" . "gv"
+endfunction
 
-" function! VisualMoveDownFunc()
-"     let size = 
-"     return ":m.+" . size
-" endfunction
-
-" command! VisualMoveDown call VisualMoveDownFunc()
 
 " ============================= マッピングのための自作関数 ============================
 
