@@ -1,5 +1,5 @@
 " 使ってないマッピング
-" <C-y> <C-n> <C-o> <C-t> <C-g> <C-b>
+" <C-n> <C-o> <C-t> <C-g> <C-b>
 
 " Setting
 colorscheme lucario
@@ -131,6 +131,7 @@ nnoremap G ~
 nnoremap U J
 nnoremap & :%s///gc<Left><Left><Left>
 nnoremap <silent> ~ :Typo<CR>
+nnoremap <C-y> :%yank +<CR>
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz
