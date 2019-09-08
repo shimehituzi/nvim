@@ -108,7 +108,7 @@ onoremap id i"
 inoremap j<space> j
 inoremap jk <C-o>
 inoremap jl <esc>
-inoremap <C-a> <Esc>A
+inoremap <C-a> <Del>
 " -------------------------------------------------------------------------------------
 nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
