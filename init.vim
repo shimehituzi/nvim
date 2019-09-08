@@ -108,7 +108,7 @@ onoremap id i"
 inoremap j<space> j
 inoremap jk <C-o>
 inoremap jl <esc>
-inoremap <C-a> <Del>
+inoremap <C-d> <Del>
 " -------------------------------------------------------------------------------------
 nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
@@ -303,5 +303,9 @@ set shortmess+=c
 inoremap <expr><BS> deoplete#smart_close_popup().lexima#expand('<LT>BS>', 'i')
 " <CR> 補完のポップアップ時→補完をやめる それ以外→改行 
 inoremap <expr><CR> pumvisible() ? "\<C-e>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR>"
+" <Tab> で補完を抜ける or インデントを深くする
+inoremap <Tab> <C-r>=lexima#insmode#leave_all('<LT>C-t>')<CR>
+" <S-Tab> でインデントを浅くする
+inoremap <S-Tab> <C-d>
 
 " ======================================== 補完 ========================================
