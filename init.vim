@@ -299,7 +299,9 @@ set completeopt+=menuone
 set completeopt+=noinsert
 " 補完関連のメッセージを表示しない
 set shortmess+=c
+" <BS> に lexima の機能と deoplete の機能を合成した
+inoremap <expr><BS> deoplete#smart_close_popup().lexima#expand('<LT>BS>', 'i')
 " <CR> 補完のポップアップ時→補完をやめる それ以外→改行 
-inoremap <expr><CR> pumvisible() ? "\<C-e>" : lexima#expand('<LT>CR>', 'i')
+inoremap <expr><CR> pumvisible() ? "\<C-e>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR>"
 
 " ======================================== 補完 ========================================

@@ -4,8 +4,6 @@
     hook_source = '''
         let g:deoplete#enable_at_startup = 1
 
-        inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
         inoremap <silent><expr> <C-j>
         \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "" :
