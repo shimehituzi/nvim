@@ -109,6 +109,7 @@ inoremap j<space> j
 inoremap jk <C-o>
 inoremap jl <esc>
 inoremap <C-d> <Del>
+inoremap <C-f> <Esc>gUawea
 " -------------------------------------------------------------------------------------
 nnoremap <Space><Esc> <nop>
 nnoremap <C-Space> <C-y>
