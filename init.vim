@@ -131,10 +131,6 @@ nnoremap G ~
 nnoremap U J
 nnoremap & :%s///gc<Left><Left><Left>
 nnoremap <silent> ~ :Typo<CR>
-nnoremap <C-y> :%yank +<CR>
-" -------------------------------------------------------------------------------------
-xnoremap >> >gv
-xnoremap << <gv
 " -------------------------------------------------------------------------------------
 nnoremap n nzz
 nnoremap N Nzz
