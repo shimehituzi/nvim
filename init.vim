@@ -163,10 +163,10 @@ nnoremap <Down> Vj
 xnoremap <Down> j
 nnoremap <Up> Vk
 xnoremap <Up> k
-nnoremap <Left> :m.-2<CR>
-xnoremap <Left> :m.-2<CR>gv
-nnoremap <Right> :m.+1<CR>
-xnoremap <Right> :Vmd<CR>
+nnoremap <silent><Left> :m.-2<CR>
+xnoremap <silent><Left> :m.-2<CR>gv
+nnoremap <silent><Right> :m.+1<CR>
+xnoremap <silent><Right> :Vmd<CR>
 
 nnoremap <S-Down> <C-w>J
 nnoremap <S-Up> <C-w>K
