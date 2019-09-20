@@ -32,9 +32,11 @@
         call deoplete#custom#option('keyword_patterns', {'slim': '[a-zA-Z_]\w*[!?]?',})
         call deoplete#custom#var('omni', 'input_patterns', {'slim': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],})
 
-        call deoplete#custom#var('omni', 'input_patterns', {
-                \ 'tex': g:vimtex#re#deoplete
-                \})
+        if &filetype == "tex"
+            call deoplete#custom#var('omni', 'input_patterns', {
+                    \ 'tex': g:vimtex#re#deoplete
+                    \})
+        endif 
     '''
 
 
