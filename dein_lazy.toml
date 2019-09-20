@@ -15,7 +15,6 @@
         inoremap <silent><expr><C-k> pumvisible() ? "\<c-p>" : ""
         inoremap <silent><expr>jj pumvisible() ? "\<C-y>" : ""
 
-
         call deoplete#custom#option({
         \ 'auto_complete_delay': 0,
         \ 'smart_case': v:true,
@@ -24,13 +23,6 @@
         \ 'on_text_changed_i': v:true,
         \ 'min_pattern_length': 1,
         \ })
-
-        call deoplete#custom#option('keyword_patterns', {'ruby': '[a-zA-Z_]\w*[!?]?',})
-        call deoplete#custom#source('omni', 'functions', {'ruby':  'rubycomplete#Complete',})
-        call deoplete#custom#var('omni', 'input_patterns', {'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],})
-
-        call deoplete#custom#option('keyword_patterns', {'slim': '[a-zA-Z_]\w*[!?]?',})
-        call deoplete#custom#var('omni', 'input_patterns', {'slim': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],})
 
         if &filetype == "tex"
             call deoplete#custom#var('omni', 'input_patterns', {
