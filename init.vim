@@ -79,6 +79,7 @@ augroup latexfiles
     au BufNewFile,BufRead *.tex let g:solarized_termtrans=1
     au BufNewFile,BufRead *.tex let g:solarized_termcolors = 256
     au BufNewFile,BufRead *.tex colorscheme solarized
+    au BufNewFile,BufRead *.tex AirlineTheme deus
     au BufNewFile,BufRead *.tex AirlineRefresh
 augroup END
 augroup markdownfiles
@@ -88,6 +89,7 @@ augroup markdownfiles
     au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
     au BufNewFile,BufRead *.md colorscheme solarized
     au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
+    au BufNewFile,BufRead *.md AirlineTheme deus
     au BufNewFile,BufRead *.md AirlineRefresh
 augroup END
 
