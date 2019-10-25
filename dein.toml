@@ -274,6 +274,6 @@
         let g:indent_guides_guide_size = 1
         let g:indent_guides_exclude_filetypes = ['help']
         let g:indent_guides_auto_colors = 0
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=214
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=75
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=214 guibg=#c1c95c
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=75 guibg=#51a2c5
     '''
