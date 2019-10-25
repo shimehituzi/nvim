@@ -158,10 +158,14 @@ onoremap is i[
 onoremap ad a"
 onoremap id i"
 
-" インサートモードのマッピング
+" 補完
+inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : ""
+inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : ""
+inoremap <expr><silent> jj pumvisible() ? "\<C-y>" : "\<C-o>"
+inoremap <expr><silent> jk pumvisible() ? "\<C-e>" : "\<esc>"
 inoremap j<space> j
-inoremap jk <C-o>
-inoremap jl <esc>
+
+" インサートモードのマッピング
 inoremap <C-d> <Del>
 inoremap <C-f> <Esc>gUawea
 inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-t>')<CR>
