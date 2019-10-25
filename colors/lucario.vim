@@ -30,6 +30,7 @@ hi IncSearch    ctermfg=23 ctermbg=186 cterm=NONE guifg=#2b3e50 guibg=#f5f499 gu
 hi Search       ctermfg=23 ctermbg=186 cterm=NONE guifg=#2b3e50 guibg=#d8e4f8 gui=underline
 hi Directory    ctermfg=177 ctermbg=NONE cterm=NONE guifg=#ca94ff guibg=NONE gui=NONE
 hi Folded       ctermfg=68 ctermbg=23 cterm=NONE guifg=#5c98cd guibg=NONE gui=bold
+hi NormalFloat  guifg=#f8f8f2 guibg=#546e7a
 
 " Colors for tabs in cterm
 hi TabLineFill  ctermfg=12
