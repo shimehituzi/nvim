@@ -43,6 +43,8 @@ set showcmd
 set shada="NONE"
 let g:netrw_dirhistmax=0
 set timeoutlen=4000
+set pumblend=10
+set termguicolors
 
 " 見た目の設定
 set number

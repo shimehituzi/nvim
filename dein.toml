@@ -11,8 +11,9 @@
     repo = 'vim-airline/vim-airline'
     depends = ['vim-airline-themes']
     hook_add = '''
+        set termguicolors
         let g:airline_powerline_fonts = 1
-        let g:airline_theme = 'deus'
+        let g:airline_theme = 'zenburn'
         let g:airline#extensions#tabline#enabled = 1
         nmap <C-j> <Plug>AirlineSelectNextTab
         nmap <C-k> <Plug>AirlineSelectPrevTab
@@ -100,6 +101,24 @@
         nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
 
         call denite#custom#option('default', 'prompt', '>')
+
+        let s:denite_win_width_percent = 0.85
+        let s:denite_win_height_percent = 0.7
+
+        " Change denite default options
+        call denite#custom#option('default', {
+            \ 'split': 'floating',
+            \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+            \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+            \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+            \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+            \ })
+
+        augroup transparent-windows
+          autocmd!
+          autocmd FileType denite set winblend=20
+          autocmd FileType denite-filter set winblend=20
+        augroup END
     '''
 
 [[plugins]]
