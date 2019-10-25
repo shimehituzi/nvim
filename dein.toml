@@ -89,16 +89,16 @@
 
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
-        nnoremap <silent> <space><space> :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> J :<C-u>Denite -resume -immediately -cursor-pos=+1<CR>
         nnoremap <silent> K :<C-u>Denite -resume -immediately -cursor-pos=-1<CR>
         nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]k :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]l :<C-u>Denite register -filter-updatetime=1<CR>
+        nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]i :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]o :<C-u>Denite file file:new -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]p :<C-u>Denite register -filter-updatetime=1<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
 
         call denite#custom#option('default', 'prompt', '>')
 
@@ -145,7 +145,6 @@
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
         nnoremap + :GitGutterBufferToggle<CR>
         nnoremap <silent> <Space>g :GitGutterAll<CR>
-        nnoremap <silent> <C-_> :bw gitgutter://hunk-preview<CR>
     '''
 
 [[plugins]]
