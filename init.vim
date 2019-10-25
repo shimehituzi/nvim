@@ -153,8 +153,8 @@ noremap gU gu
 " オペレータのテキストオブジェクトを押しやすく再定義
 onoremap aa a>
 onoremap ia i>
-onoremap ar a[
-onoremap ir i[
+onoremap as a[
+onoremap is i[
 onoremap ad a"
 onoremap id i"
 
