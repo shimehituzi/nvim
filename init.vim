@@ -43,8 +43,10 @@ set showcmd
 set shada="NONE"
 let g:netrw_dirhistmax=0
 set timeoutlen=4000
-set pumblend=10
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
+set pumblend=10
 
 " 見た目の設定
 set number

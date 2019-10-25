@@ -11,7 +11,10 @@
     repo = 'vim-airline/vim-airline'
     depends = ['vim-airline-themes']
     hook_add = '''
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
         set termguicolors
+
         let g:airline_powerline_fonts = 1
         let g:airline_theme = 'zenburn'
         let g:airline#extensions#tabline#enabled = 1
@@ -116,8 +119,8 @@
 
         augroup transparent-windows
           autocmd!
-          autocmd FileType denite set winblend=15
-          autocmd FileType denite-filter set winblend=15
+          autocmd FileType denite set winblend=10
+          autocmd FileType denite-filter set winblend=10
         augroup END
     '''
 
