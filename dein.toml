@@ -116,8 +116,8 @@
 
         augroup transparent-windows
           autocmd!
-          autocmd FileType denite set winblend=20
-          autocmd FileType denite-filter set winblend=20
+          autocmd FileType denite set winblend=15
+          autocmd FileType denite-filter set winblend=15
         augroup END
     '''
 
