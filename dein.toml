@@ -11,8 +11,9 @@
     repo = 'vim-airline/vim-airline'
     depends = ['vim-airline-themes']
     hook_add = '''
+        set termguicolors
         let g:airline_powerline_fonts = 1
-        let g:airline_theme = 'deus'
+        let g:airline_theme = 'zenburn'
         let g:airline#extensions#tabline#enabled = 1
         nmap <C-j> <Plug>AirlineSelectNextTab
         nmap <C-k> <Plug>AirlineSelectPrevTab
@@ -88,18 +89,36 @@
 
         nnoremap [denite] <Nop>
         nmap <Space>j [denite]
-        nnoremap <silent> <space><space> :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> J :<C-u>Denite -resume -immediately -cursor-pos=+1<CR>
         nnoremap <silent> K :<C-u>Denite -resume -immediately -cursor-pos=-1<CR>
         nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
-        nnoremap <silent> [denite]k :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]l :<C-u>Denite register -filter-updatetime=1<CR>
+        nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]i :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]o :<C-u>Denite file file:new -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]p :<C-u>Denite register -filter-updatetime=1<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
 
         call denite#custom#option('default', 'prompt', '>')
+
+        let s:denite_win_width_percent = 0.85
+        let s:denite_win_height_percent = 0.7
+
+        " Change denite default options
+        call denite#custom#option('default', {
+            \ 'split': 'floating',
+            \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+            \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+            \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+            \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+            \ })
+
+        augroup transparent-windows
+          autocmd!
+          autocmd FileType denite set winblend=15
+          autocmd FileType denite-filter set winblend=15
+        augroup END
     '''
 
 [[plugins]]
@@ -126,7 +145,6 @@
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
         nnoremap + :GitGutterBufferToggle<CR>
         nnoremap <silent> <Space>g :GitGutterAll<CR>
-        nnoremap <silent> <C-_> :bw gitgutter://hunk-preview<CR>
     '''
 
 [[plugins]]
@@ -256,6 +274,6 @@
         let g:indent_guides_guide_size = 1
         let g:indent_guides_exclude_filetypes = ['help']
         let g:indent_guides_auto_colors = 0
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=214
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=75
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=214 guibg=#c1c95c
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=75 guibg=#51a2c5
     '''
