@@ -13,14 +13,14 @@
         nnoremap [coc] <nop>
         nmap <space><space> [coc]
         " cocList
-        nnoremap <silent> [coc]w :<C-u>CocList diagnostics<cr>
-        nnoremap <silent> [coc]e :<C-u>CocList extensions<cr>
-        nnoremap <silent> [coc]r :<C-u>CocList commands<cr>
-        nnoremap <silent> [coc]t :<C-u>CocList outline<cr>
-        nnoremap <silent> [coc]g :<C-u>CocList -I symbols<cr>
         nnoremap <silent> [coc]f :<C-u>CocNext<CR>
         nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
         nnoremap <silent> [coc]s :<C-u>CocListResume<CR>
+        nnoremap <silent> [coc]a :<C-u>CocList commands<cr>
+        nnoremap <silent> [coc]r :<C-u>CocList diagnostics<cr>
+        nnoremap <silent> [coc]e :<C-u>CocList -I symbols<cr>
+        nnoremap <silent> [coc]w :<C-u>CocList outline<cr>
+        nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
         " LSP
         nnoremap <silent> [coc]j :call <SID>show_documentation()<CR>
         nmap     <silent> [coc]k <Plug>(coc-references)
