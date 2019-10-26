@@ -12,6 +12,8 @@
         " マッピングのリーダー
         nnoremap [coc] <nop>
         nmap <space><space> [coc]
+        " 情報を表示
+        nnoremap <silent> [coc]<space> :<C-u>call CocAction('doHover')<CR>
         " cocList
         nnoremap <silent> [coc]f :<C-u>CocNext<CR>
         nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
@@ -22,7 +24,7 @@
         nnoremap <silent> [coc]w :<C-u>CocList outline<cr>
         nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
         " LSP
-        nnoremap <silent> [coc]j :call <SID>show_documentation()<CR>
+        nnoremap <silent> [coc]j :<C-u>call <SID>show_documentation()<CR>
         nmap     <silent> [coc]k <Plug>(coc-references)
         nmap     <silent> [coc]i <Plug>(coc-definition)
         nmap     <silent> [coc]o <Plug>(coc-type-definition)
