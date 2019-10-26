@@ -134,8 +134,8 @@ endfunction
 " ==================================== 補完（マッピングも含む） ====================================
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-n>"
-inoremap <expr> <C-K> pumvisible() ? "\<C-p>" : "\<C-p>"
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
 inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
 inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') : lexima#expand('<LT>CR>', 'i')
