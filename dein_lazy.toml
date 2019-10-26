@@ -3,6 +3,10 @@
     rev = 'release'
     on_i = 1
     merged = '0'
+    hook_source = '''
+        let g:coc_snippet_next = "\<C-f>"
+        let g:coc_snippet_prev = "\<C-d>"
+    '''
 
 
 [[plugins]]
