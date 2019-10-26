@@ -131,6 +131,19 @@ endfunction
 
 
 
+" ==================================== 補完（マッピングも含む） ====================================
+
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-n>"
+inoremap <expr> <C-K> pumvisible() ? "\<C-p>" : "\<C-p>"
+inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
+inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
+inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') : lexima#expand('<LT>CR>', 'i')
+inoremap j<space> j
+
+
+
+
 " ==================================== マッピング ====================================
 
 " 基本的な移動系コマンドを押しやすく再定義
@@ -157,13 +170,6 @@ onoremap as a[
 onoremap is i[
 onoremap ad a"
 onoremap id i"
-
-" 補完
-inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : ""
-inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : ""
-inoremap <expr><silent> jj pumvisible() ? "\<C-y>" : "\<C-o>"
-inoremap <expr><silent> jk pumvisible() ? "\<C-e>" : "\<esc>"
-inoremap j<space> j
 
 " インサートモードのマッピング
 inoremap <C-d> <Del>
