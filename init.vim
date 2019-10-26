@@ -135,7 +135,7 @@ endfunction
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
-inoremap <expr><silent> <C-k> pumvisible() ? "\<C-k>" : coc#refresh()
+inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : coc#refresh()
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
 inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
 inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') : lexima#expand('<LT>CR>', 'i')
