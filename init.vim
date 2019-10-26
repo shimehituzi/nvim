@@ -134,8 +134,8 @@ endfunction
 " ==================================== 補完（マッピングも含む） ====================================
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <C-j> <C-n>
-inoremap <C-k> <C-p>
+inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
+inoremap <expr><silent> <C-k> pumvisible() ? "\<C-k>" : coc#refresh()
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
 inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
 inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') : lexima#expand('<LT>CR>', 'i')
@@ -173,9 +173,9 @@ onoremap id i"
 
 " インサートモードのマッピング
 inoremap <C-d> <Del>
-inoremap <C-f> <Esc>gUawea
 inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-t>')<CR>
 inoremap <S-Tab> <C-d>
+inoremap jl <Esc>gUawea
 
 "  ノーマルモードのマッピング 1
 nnoremap <silent> <CR> :w<CR>
