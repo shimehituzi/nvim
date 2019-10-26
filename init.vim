@@ -36,6 +36,7 @@ syntax enable
 colorscheme lucario
 set fenc=utf-8
 set nobackup
+set nowritebackup
 set noswapfile
 set autoread
 set hidden
@@ -43,16 +44,19 @@ set showcmd
 set shada="NONE"
 let g:netrw_dirhistmax=0
 set timeoutlen=4000
+set updatetime=300
+
+" 見た目の設定
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-set pumblend=10
-
-" 見た目の設定
 set number
 set matchtime=1
 set laststatus=2
 set display=lastline
+set pumblend=10
+set cmdheight=2
+set signcolumn=yes
 
 " 検索の設定
 set ignorecase
@@ -134,6 +138,7 @@ endfunction
 " ==================================== 補完（マッピングも含む） ====================================
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+set shortmess+=c
 inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : coc#refresh()
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
