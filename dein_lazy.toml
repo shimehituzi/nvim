@@ -25,15 +25,15 @@
         nnoremap <silent> [coc]s :<C-u>CocListResume<CR>
         nnoremap <silent> [coc]a :<C-u>CocList commands<cr>
         nnoremap <silent> [coc]r :<C-u>CocList diagnostics<cr>
-        nnoremap <silent> [coc]e :<C-u>CocList -I symbols<cr>
-        nnoremap <silent> [coc]w :<C-u>CocList outline<cr>
+        nnoremap <silent> [coc]e :<C-u>CocList outline<cr>
+        nnoremap <silent> [coc]w :<C-u>CocList -I symbols<cr>
         nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
         " LSP
         nnoremap <silent> [coc]j :<C-u>call <SID>show_documentation()<CR>
-        nmap     <silent> [coc]k <Plug>(coc-references)
-        nmap     <silent> [coc]i <Plug>(coc-definition)
+        nmap     <silent> [coc]k <Plug>(coc-definition)
         nmap     <silent> [coc]o <Plug>(coc-type-definition)
-        nmap     <silent> [coc]l <Plug>(coc-implementation)
+        nmap     <silent> [coc]i <Plug>(coc-implementation)
+        nmap     <silent> [coc]l <Plug>(coc-references)
         nmap              [coc]h <Plug>(coc-rename)
         nmap              [coc]u <Plug>(coc-format-selected)
         xmap              [coc]u <Plug>(coc-format-selected)
