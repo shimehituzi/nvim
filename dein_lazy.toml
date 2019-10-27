@@ -18,7 +18,7 @@
         nnoremap [coc] <nop>
         nmap <space><space> [coc]
         " 情報を表示
-        nnoremap <silent> [coc]<space> :<C-u>call CocAction('doHover')<CR>
+        nnoremap <silent> [coc]<space> :<C-u>call <SID>show_documentation()<CR>
         " cocList
         nnoremap <silent> [coc]f :<C-u>CocNext<CR>
         nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
@@ -29,12 +29,11 @@
         nnoremap <silent> [coc]w :<C-u>CocList -I symbols<cr>
         nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
         " LSP
-        nnoremap <silent> [coc]j :<C-u>call <SID>show_documentation()<CR>
+        nmap     <silent> [coc]j <Plug>(coc-references)
         nmap     <silent> [coc]k <Plug>(coc-definition)
-        nmap     <silent> [coc]o <Plug>(coc-type-definition)
+        nmap     <silent> [coc]l <Plug>(coc-type-definition)
         nmap     <silent> [coc]i <Plug>(coc-implementation)
-        nmap     <silent> [coc]l <Plug>(coc-references)
-        nmap              [coc]h <Plug>(coc-rename)
+        nmap              [coc]o <Plug>(coc-rename)
         nmap              [coc]u <Plug>(coc-format-selected)
         xmap              [coc]u <Plug>(coc-format-selected)
 
