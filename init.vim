@@ -36,6 +36,7 @@ syntax enable
 colorscheme lucario
 set fenc=utf-8
 set nobackup
+set nowritebackup
 set noswapfile
 set autoread
 set hidden
@@ -43,16 +44,19 @@ set showcmd
 set shada="NONE"
 let g:netrw_dirhistmax=0
 set timeoutlen=4000
+set updatetime=300
+
+" 見た目の設定
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-set pumblend=10
-
-" 見た目の設定
 set number
 set matchtime=1
 set laststatus=2
 set display=lastline
+set pumblend=10
+set cmdheight=2
+set signcolumn=yes
 
 " 検索の設定
 set ignorecase
@@ -72,61 +76,16 @@ set smartindent
 
 
 
-" ==================================== ファイルタイプ毎の基本設定 ====================================
+" ==================================== 補完（マッピングも含む） ====================================
 
-" lucario が上手く効かない時のカラースキーム
-augroup latexfiles
-    au!
-    au BufNewFile,BufRead *.tex set background=dark
-    au BufNewFile,BufRead *.tex let g:solarized_termtrans=1
-    au BufNewFile,BufRead *.tex let g:solarized_termcolors = 256
-    au BufNewFile,BufRead *.tex colorscheme solarized
-    au BufNewFile,BufRead *.tex AirlineTheme deus
-    au BufNewFile,BufRead *.tex AirlineRefresh
-augroup END
-augroup markdownfiles
-    au!
-    au BufNewFile,BufRead *.md set background=dark
-    au BufNewFile,BufRead *.md let g:solarized_termtrans=1
-    au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
-    au BufNewFile,BufRead *.md colorscheme solarized
-    au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
-    au BufNewFile,BufRead *.md AirlineTheme deus
-    au BufNewFile,BufRead *.md AirlineRefresh
-augroup END
-
-" ファイルタイプ毎のシステム的な設定
-let g:tex_flavor = "latex"
-au BufRead,BufNewFile *.md set filetype=markdown
-augroup helpfiles
-    au!
-    au BufRead,BufEnter */doc/* if &filetype=='help' | wincmd L | endif
-augroup END
-
-" ファイルタイプ毎のインデントの設定（インデントを4にする設定）
-augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.vim setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.toml setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.json setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
-augroup END
-
-" tomlにvimのsyntax highlightを効かせる
-augroup MyVimrcTOML
-    autocmd!
-augroup END
-autocmd MyVimrcTOML BufNewFile,BufRead dein*.toml call s:syntax_range_dein()
-function! s:syntax_range_dein() abort
-  let start = '^\s*hook_\%('.
-  \           'add\|source\|post_source\|post_update'.
-  \           '\)\s*=\s*%s'
-  call SyntaxRange#Include(printf(start, "'''"), "'''", 'vim', '')
-  call SyntaxRange#Include(printf(start, '"""'), '"""', 'vim', '')
-endfunction
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+set shortmess+=c
+inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
+inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : coc#refresh()
+inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
+inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
+inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') : lexima#expand('<LT>CR>', 'i')
+inoremap j<space> j
 
 
 
@@ -153,19 +112,16 @@ noremap gU gu
 " オペレータのテキストオブジェクトを押しやすく再定義
 onoremap aa a>
 onoremap ia i>
-onoremap ar a[
-onoremap ir i[
+onoremap as a[
+onoremap is i[
 onoremap ad a"
 onoremap id i"
 
 " インサートモードのマッピング
-inoremap j<space> j
-inoremap jk <C-o>
-inoremap jl <esc>
 inoremap <C-d> <Del>
-inoremap <C-f> <Esc>gUawea
 inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-t>')<CR>
 inoremap <S-Tab> <C-d>
+inoremap jl <Esc>gUawea
 
 "  ノーマルモードのマッピング 1
 nnoremap <silent> <CR> :w<CR>
@@ -242,6 +198,8 @@ nnoremap <C-S-Right> <C-w>>
 " 使ってないマッピング: <C-n> <C-o> <C-t> <C-g> <C-b>
 
 
+
+
 " ==================================== マッピングのための自作関数 ====================================
 
 " タイポ修正
@@ -262,3 +220,62 @@ function! VisualMoveDown() range
     normal! gv
 endfunction
 command! -range Vmd <line1>,<line2>:call VisualMoveDown()
+
+
+
+
+" ==================================== ファイルタイプ毎の基本設定 ====================================
+
+" lucario が上手く効かない時のカラースキーム
+augroup latexfiles
+    au!
+    au BufNewFile,BufRead *.tex set background=dark
+    au BufNewFile,BufRead *.tex let g:solarized_termtrans=1
+    au BufNewFile,BufRead *.tex let g:solarized_termcolors = 256
+    au BufNewFile,BufRead *.tex colorscheme solarized
+    au BufNewFile,BufRead *.tex AirlineTheme deus
+    au BufNewFile,BufRead *.tex AirlineRefresh
+augroup END
+augroup markdownfiles
+    au!
+    au BufNewFile,BufRead *.md set background=dark
+    au BufNewFile,BufRead *.md let g:solarized_termtrans=1
+    au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
+    au BufNewFile,BufRead *.md colorscheme solarized
+    au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
+    au BufNewFile,BufRead *.md AirlineTheme deus
+    au BufNewFile,BufRead *.md AirlineRefresh
+augroup END
+
+" ファイルタイプ毎のシステム的な設定
+let g:tex_flavor = "latex"
+au BufRead,BufNewFile *.md set filetype=markdown
+augroup helpfiles
+    au!
+    au BufRead,BufEnter */doc/* if &filetype=='help' | wincmd L | endif
+augroup END
+
+" ファイルタイプ毎のインデントの設定（インデントを4にする設定）
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.md setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.vim setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.toml setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.json setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+
+" tomlにvimのsyntax highlightを効かせる
+augroup MyVimrcTOML
+    autocmd!
+augroup END
+autocmd MyVimrcTOML BufNewFile,BufRead dein*.toml call s:syntax_range_dein()
+function! s:syntax_range_dein() abort
+  let start = '^\s*hook_\%('.
+  \           'add\|source\|post_source\|post_update'.
+  \           '\)\s*=\s*%s'
+  call SyntaxRange#Include(printf(start, "'''"), "'''", 'vim', '')
+  call SyntaxRange#Include(printf(start, '"""'), '"""', 'vim', '')
+endfunction

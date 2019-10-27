@@ -57,6 +57,11 @@
         let g:airline_symbols.readonly = ''
         let g:airline_symbols.linenr = '☰'
         let g:airline_symbols.maxlinenr = ''
+
+        " airline-coc
+        let g:airline#extensions#coc#enabled = 1
+        let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+        let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
     '''
 
 
@@ -97,7 +102,8 @@
         nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
         nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]; :<C-u>Denite command -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]' :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]i :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]o :<C-u>Denite file file:new -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]p :<C-u>Denite register -filter-updatetime=1<CR>
@@ -221,8 +227,8 @@
         call lexima#add_rule({'char': '{', 'at': '\\\%#', 'input_after': ' \}', 'filetype' : ['tex', 'markdown']})
         call lexima#add_rule({'char': '<BS>', 'at': '\\{\%#', 'input': '<BS><BS><Del><Del><Del>', 'filetype' : ['tex', 'markdown']})
 
-        inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
-        inoremap <C-h> <C-r>=lexima#insmode#leave_all('<LT>C-G>U<LT>LEFT>')<CR>
+        inoremap <silent><C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
+        inoremap <silent><C-h> <C-r>=lexima#insmode#leave_all('<LT>C-G>U<LT>LEFT>')<CR>
     '''
 
 
