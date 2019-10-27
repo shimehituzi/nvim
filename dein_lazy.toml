@@ -4,6 +4,9 @@
     on_i = 1
     merged = '0'
     hook_source = '''
+        " コマンドラインで実行した → ~/.config/coc/extensions/node_modules に拡張が追加
+        " CocInstall coc-json coc-solargraph coc-tsserver coc-eslint
+        
         " これをしないと <C-j> と <C-k> にスニペットの移動がマッピングされて補完の選択ができなくなってしまう
         let g:coc_snippet_next = "\<C-f>"
         let g:coc_snippet_prev = "\<C-d>"
