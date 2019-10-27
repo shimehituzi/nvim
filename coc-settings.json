@@ -1,0 +1,8 @@
+{
+    "suggest.noselect": true,
+    "suggest.preferCompleteThanJumpPlaceholder": true,
+    "suggest.enablePreselect": true,
+    "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph",
+    "tsserver.enableJavascript": true,
+    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"]
+}

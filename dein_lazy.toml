@@ -1,109 +1,101 @@
 [[plugins]]
-    repo = 'Shougo/deoplete.nvim'
-    on_i = 1 
+    repo = 'neoclide/coc.nvim'
+    rev = 'release'
+    on_i = 1
+    merged = '0'
     hook_source = '''
-        let g:deoplete#enable_at_startup = 1
+        " コマンドラインで実行した → ~/.config/coc/extensions/node_modules に拡張が追加
+        " :CocInstall coc-json coc-solargraph coc-tsserver coc-eslint
+        " Solargraph のために
+        " $gem install solargraph; gem install neovim
+        
+        " これをしないと <C-j> と <C-k> にスニペットの移動がマッピングされて補完の選択ができなくなってしまう
+        let g:coc_snippet_next = "\<C-f>"
+        let g:coc_snippet_prev = "\<C-d>"
 
-        inoremap <silent><expr> <C-j>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "" :
-        \ deoplete#mappings#manual_complete()
-        function! s:check_back_space() abort "{{{
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
-        endfunction"}}}
-        inoremap <silent><expr><C-k> pumvisible() ? "\<c-p>" : ""
-        inoremap <silent><expr>jj pumvisible() ? "\<C-y>" : ""
 
-        call deoplete#custom#option({
-        \ 'auto_complete_delay': 0,
-        \ 'smart_case': v:true,
-        \ 'max_list': 20,
-        \ 'on_insert_enter' : v:false,
-        \ 'on_text_changed_i': v:true,
-        \ 'min_pattern_length': 1,
-        \ })
+        " マッピングのリーダー
+        nnoremap [coc] <nop>
+        nmap <space><space> [coc]
+        " 情報を表示
+        nnoremap <silent> [coc]<space> :<C-u>call <SID>show_documentation()<CR>
+        " cocList
+        nnoremap <silent> [coc]f :<C-u>CocNext<CR>
+        nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
+        nnoremap <silent> [coc]s :<C-u>CocListResume<CR>
+        nnoremap <silent> [coc]a :<C-u>CocList commands<cr>
+        nnoremap <silent> [coc]r :<C-u>CocList diagnostics<cr>
+        nnoremap <silent> [coc]e :<C-u>CocList outline<cr>
+        nnoremap <silent> [coc]w :<C-u>CocList -I symbols<cr>
+        nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
+        " LSP
+        nmap     <silent> [coc]j <Plug>(coc-references)
+        nmap     <silent> [coc]k <Plug>(coc-definition)
+        nmap     <silent> [coc]l <Plug>(coc-type-definition)
+        nmap     <silent> [coc]i <Plug>(coc-implementation)
+        nmap              [coc]o <Plug>(coc-rename)
+        nmap              [coc]u <Plug>(coc-format-selected)
+        xmap              [coc]u <Plug>(coc-format-selected)
 
-        if &filetype == "tex"
-            call deoplete#custom#var('omni', 'input_patterns', {
-                    \ 'tex': g:vimtex#re#deoplete
-                    \})
-        endif 
+        " 移動
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+        " テキストオブジェクト （関数）
+        xmap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
+        omap if <Plug>(coc-funcobj-i)
+        omap af <Plug>(coc-funcobj-a)
+
+        " 不明
+        " nmap <silent> <C-d> <Plug>(coc-range-select)
+        " xmap <silent> <C-d> <Plug>(coc-range-select)
+        " xmap <leader>a  <Plug>(coc-codeaction-selected)
+        " nmap <leader>a  <Plug>(coc-codeaction-selected)
+        " nmap <leader>ac  <Plug>(coc-codeaction)
+        " nmap <leader>qf  <Plug>(coc-fix-current)
+
+
+        " コマンド定義
+        command! -nargs=0 Format :call CocAction('format')
+        command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+        command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+
+        " 関数（定義参照で使う関数）
+        function! s:show_documentation()
+            if (index(['vim','help'], &filetype) >= 0)
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
+
+
+        " オートコマンド
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+        augroup mygroup
+            autocmd!
+            " Setup formatexpr specified filetype(s).
+            autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+            " Update signature help on jump placeholder
+            autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+        augroup end
+
+
+        " ステータスラインの設定
+        set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
     '''
 
 
 [[plugins]]
-    repo = 'w0rp/ale'
-    on_ft = ['ruby', 'eruby', 'python']
-    hook_source = '''
-        let g:ale_sign_error = '⨉'
-        let g:ale_sign_warning = '⚠'
-        let g:ale_lint_on_enter = 1
-        let g:ale_lint_on_save = 1
-        let g:ale_lint_on_text_changed = 0
-
-        " flake8をLinterとして登録
-        let g:ale_linters = {
-            \ 'python': ['flake8'],
-            \ }
-
-        " 各ツールをFixerとして登録
-        let g:ale_fixers = {
-            \ 'python': ['autopep8', 'black', 'isort']
-            \ }
-
-        " 各ツールの実行オプションを変更してPythonパスを固定
-        let g:ale_python_flake8_executable = g:python3_host_prog
-        let g:ale_python_flake8_options = '-m flake8 --ignore=I201,W391,I100,E203'
-        let g:ale_python_autopep8_executable = g:python3_host_prog
-        let g:ale_python_autopep8_options = '-m autopep8'
-        let g:ale_python_isort_executable = g:python3_host_prog
-        let g:ale_python_isort_options = '-m isort -fss'
-        let g:ale_python_black_executable = g:python3_host_prog
-        let g:ale_python_black_options = '-m black --line-length=79'
-
-        " ついでにFixを実行するマッピングしとく
-        nmap <silent> <Leader>x <Plug>(ale_fix)
-        " ファイル保存時に自動的にFixするオプションもあるのでお好みで
-        let g:ale_fix_on_save = 1
-    '''
+    repo = 'cespare/vim-toml'
+    on_ft = ['toml']
 
 
 [[plugins]]
-    repo = 'slim-template/vim-slim'
-    on_ft = ['slim']
-
-
-[[plugins]]
-    repo = 'Vimjas/vim-python-pep8-indent'
-    on_ft = ['python']
-
-
-[[plugins]]
-    repo = 'deoplete-plugins/deoplete-jedi'
-    on_ft = ['python']
-    hook_source = '''
-        " nvimのpythonのpath
-        let g:deoplete#sources#jedi#python_path = $PYENV_PATH . '/versions/neovim3/bin/python'
-        " 型情報で補完を選別する
-        let g:deoplete#sources#jedi#enable_typeinfo = 1
-        " docをプレビューウィンドウに表示させない
-        let g:deoplete#sources#jedi#show_docstring = 0
-    '''
-
-[[plugins]]
-    repo = 'fs111/pydoc.vim'
-    on_ft = ['python']
-    hook_source = '''
-        " PATHを通す代わり
-        let g:pydoc_cmd = 'python -m pydoc'
-        " 縦分割で開く
-        let g:pydoc_open_cmd = 'vertical botright split'
-        " ハイライトを無効
-        let g:pydoc_highlight = 0
-        " マッピングを無効
-        let g:pydoc_perform_mappings = 0
-    '''
+    repo = 'inkarkat/vim-SyntaxRange'
+    on_ft = ['toml']
 
 
 [[plugins]]
@@ -151,7 +143,7 @@
         " use custom IP to open preview page useful when you work in remote vim and preview on local browser
         let g:mkdp_open_ip = ''
         " プレビューページを開くブラウザを指定する
-        let g:mkdp_browser = 'Google Chrome' 
+        let g:mkdp_browser = 'Google Chrome'
         " set to 1, echo preview page url in command line when open preview page
         let g:mkdp_echo_preview_url = 0
         " a custom vim function name to open preview page. this function will receive url as param
@@ -196,16 +188,6 @@
     hook_source = '''
         nnoremap <silent> # :<C-u>TableFormat<CR>
     '''
-
-
-[[plugins]]
-    repo = 'cespare/vim-toml'
-    on_ft = ['toml']
-
-
-[[plugins]]
-    repo = 'inkarkat/vim-SyntaxRange'
-    on_ft = ['toml']
 
 
 [[plugins]]
