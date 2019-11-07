@@ -143,11 +143,12 @@ nnoremap G ~
 nnoremap U J
 nnoremap Q @
 nnoremap <silent> ` <C-l>:nohl<CR>
-nnoremap * *<C-o>
-nnoremap ^ g*<C-o>
+nnoremap * *N
+nnoremap ^ g*N
 nnoremap & :%s///gc<Left><Left><Left>
 
 " ノーマルモードのマッピング 2
+nnoremap <C-t> :HighlightInfo<CR>
 nnoremap <Space><Esc> <nop>
 nnoremap n nzz
 nnoremap N Nzz
@@ -221,6 +222,20 @@ function! VisualMoveDown() range
 endfunction
 command! -range Vmd <line1>,<line2>:call VisualMoveDown()
 
+" カーソル下のハイライト情報を得る
+function! s:get_syn_id(transparent)
+    let synid = synID(line('.'), col('.'), 1)
+    return a:transparent ? synIDtrans(synid) : synid
+endfunction
+function! s:get_syn_name(synid)
+    return synIDattr(a:synid, 'name')
+endfunction
+function! s:get_highlight_info()
+    execute "highlight " . s:get_syn_name(s:get_syn_id(0))
+    execute "highlight " . s:get_syn_name(s:get_syn_id(1))
+endfunction
+command! HighlightInfo call s:get_highlight_info()
+
 
 
 
@@ -236,16 +251,16 @@ augroup latexfiles
     au BufNewFile,BufRead *.tex AirlineTheme deus
     au BufNewFile,BufRead *.tex AirlineRefresh
 augroup END
-augroup markdownfiles
-    au!
-    au BufNewFile,BufRead *.md set background=dark
-    au BufNewFile,BufRead *.md let g:solarized_termtrans=1
-    au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
-    au BufNewFile,BufRead *.md colorscheme solarized
-    au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
-    au BufNewFile,BufRead *.md AirlineTheme deus
-    au BufNewFile,BufRead *.md AirlineRefresh
-augroup END
+" augroup markdownfiles
+"     au!
+"     au BufNewFile,BufRead *.md set background=dark
+"     au BufNewFile,BufRead *.md let g:solarized_termtrans=1
+"     au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
+"     au BufNewFile,BufRead *.md colorscheme solarized
+"     au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
+"     au BufNewFile,BufRead *.md AirlineTheme deus
+"     au BufNewFile,BufRead *.md AirlineRefresh
+" augroup END
 
 " ファイルタイプ毎のシステム的な設定
 let g:tex_flavor = "latex"
