@@ -135,4 +135,9 @@ hi pythonStatement ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE g
 hi pythonBuiltin   ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 
 " markdown
-hi mkdHeading guifg=#e6db74
+hi mkdHeading guifg=#ffe0b2
+hi htmlH1 guifg=#ffa726
+hi mkdNonListItemBlock guifg=#ffffff
+hi mkdLineBreak guifg=NONE guibg=NONE gui=underline
+hi mkdListItem guifg=#00bcd4
+hi mkdListItemLine guifg=#e0f7fa
