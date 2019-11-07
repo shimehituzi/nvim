@@ -241,31 +241,6 @@ command! HighlightInfo call s:get_highlight_info()
 
 " ==================================== ファイルタイプ毎の基本設定 ====================================
 
-" lucario が上手く効かない時のカラースキーム
-augroup latexfiles
-    if &termguicolors == 0
-        au!
-        au BufNewFile,BufRead *.tex set background=dark
-        au BufNewFile,BufRead *.tex let g:solarized_termtrans=1
-        au BufNewFile,BufRead *.tex let g:solarized_termcolors = 256
-        au BufNewFile,BufRead *.tex colorscheme solarized
-        au BufNewFile,BufRead *.tex AirlineTheme deus
-        au BufNewFile,BufRead *.tex AirlineRefresh
-    endif
-augroup END
-augroup markdownfiles
-    if &termguicolors == 0
-        au!
-        au BufNewFile,BufRead *.md set background=dark
-        au BufNewFile,BufRead *.md let g:solarized_termtrans=1
-        au BufNewFile,BufRead *.md let g:solarized_termcolors = 256
-        au BufNewFile,BufRead *.md colorscheme solarized
-        au BufNewFile,BufRead *.md highlight SignColumn ctermbg=NONE
-        au BufNewFile,BufRead *.md AirlineTheme deus
-        au BufNewFile,BufRead *.md AirlineRefresh
-    endif
-augroup END
-
 " ファイルタイプ毎のシステム的な設定
 let g:tex_flavor = "latex"
 au BufRead,BufNewFile *.md set filetype=markdown
