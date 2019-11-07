@@ -134,10 +134,33 @@ hi cssBraces        ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE g
 hi pythonStatement ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi pythonBuiltin   ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 
-" markdown
-hi mkdHeading guifg=#ffe0b2
-hi htmlH1 guifg=#ffa726
-hi mkdNonListItemBlock guifg=#ffffff
-hi mkdLineBreak guifg=NONE guibg=NONE gui=underline
-hi mkdListItem guifg=#00bcd4
-hi mkdListItemLine guifg=#e0f7fa
+" Markdown
+hi mkdHeading                 guifg=#ff6d00
+hi htmlH1                     guifg=#ffa726
+hi mkdNonListItemBlock        guifg=#fbe9e7
+hi mkdLineBreak               guifg=NONE guibg=NONE gui=underline
+hi htmlTag                    guifg=#5c6bc0
+hi htmlEndTag                 guifg=#5c6bc0
+hi htmlTagName                guifg=#c5cae9
+hi htmlArg                    guifg=#82b1ff
+hi htmlString                 guifg=#b39ddb
+hi htmlValue                  guifg=#b39ddb
+hi htmlSpecialChar            guifg=#b39ddb
+hi htmllink                   guifg=#f48fb1
+hi mkdDelimiter               guifg=#90a4ae
+hi mkdListItem                guifg=#ff5722
+hi mkdListItemLine            guifg=#ff9e80
+hi mkdBold                    guifg=#ffd54f
+hi htmlBold                   guifg=#ffd54f
+hi mkdItalic                  guifg=#ffecb3
+hi htmlItalic                 guifg=#ffecb3
+
+" Tex
+hi texStatement               guifg=#81c784
+hi texMathMatcher             guifg=#c5e1a5
+hi texMathOper                guifg=#eeff41
+hi texMathDelim               guifg=#dce775
+hi texMathZoneX               guifg=#ccff90
+hi texMathZoneY               guifg=#ccff90
+hi texSpecialChar             guifg=#b9f6ca
+hi texLength                  guifg=#8bc34a
