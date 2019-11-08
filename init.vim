@@ -84,7 +84,7 @@ inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : coc#refresh()
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
 inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
-inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR>"
+inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>"
 inoremap j<space> j
 
 
