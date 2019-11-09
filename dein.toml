@@ -205,6 +205,10 @@
 
 
 [[plugins]]
+    repo = 'kristijanhusak/defx-icons'
+
+
+[[plugins]]
     repo = 'cohama/lexima.vim'
     hook_add = '''
         call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': ['tex', 'markdown']})
