@@ -129,6 +129,9 @@ inoremap jl <Esc>gUawea
 inoremap ji <C-o>
 
 "  ノーマルモードのマッピング 1
+nmap 0 %
+nnoremap - *N
+nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap ' zt15<C-y>
@@ -148,9 +151,6 @@ nnoremap G ~
 nnoremap U J
 nnoremap Q @
 nnoremap <silent> ` <C-l>:nohl<CR>
-nnoremap * *N
-nnoremap ^ g*N
-nnoremap & :%s///gc<Left><Left><Left>
 
 " ノーマルモードのマッピング 2
 nnoremap <Space><Esc> <nop>
@@ -169,11 +169,6 @@ vnoremap <Space>y "+y
 vnoremap <Space>d "+d
 nnoremap <Space>p "+p
 nnoremap <Space>P "+P
-
-" <shift> + 2, 3, 4 をファイルタイプ毎のショートカットキーとするためにマッピングをなくす
-nnoremap $ <nop>
-nnoremap # <nop>
-nnoremap @ <nop>
 
 " vim の設定ファイルを再読み込み
 nnoremap <Space>` :source ~/.config/nvim/init.vim<CR>
@@ -194,7 +189,23 @@ nnoremap <S-C-Up> <C-w>K
 nnoremap <S-C-Left> <C-w>H
 nnoremap <S-C-Right> <C-W>L
 
-" 使ってないマッピング: <C-n> <C-o> <C-t> <C-g> <C-b>
+" 今んとこ使ってないマッピング
+nnoremap <expr> ! ThisKeyIsNop()
+nnoremap <expr> @ ThisKeyIsNop()
+nnoremap <expr> # ThisKeyIsNop()
+nnoremap <expr> $ ThisKeyIsNop()
+nnoremap <expr> % ThisKeyIsNop()
+nnoremap <expr> ^ ThisKeyIsNop()
+nnoremap <expr> & ThisKeyIsNop()
+nnoremap <expr> * ThisKeyIsNop()
+nnoremap <expr> + ThisKeyIsNop()
+nnoremap <expr> <C-t> ThisKeyIsNop()
+nnoremap <expr> <C-g> ThisKeyIsNop()
+nnoremap <expr> <C-b> ThisKeyIsNop()
+nnoremap <expr> <C-y> ThisKeyIsNop()
+nnoremap <expr> <C-n> ThisKeyIsNop()
+nnoremap <expr> <C-o> ThisKeyIsNop()
+nnoremap <expr> <C-_> ThisKeyIsNop()
 
 
 
@@ -234,6 +245,10 @@ function! s:get_highlight_info()
 endfunction
 command! HighlightInfo call s:get_highlight_info()
 
+" マッピングされてない事を伝える
+function! ThisKeyIsNop()
+    echo 'このキーには何もマッピングされていません'
+endfunction
 
 
 
