@@ -153,7 +153,6 @@ nnoremap ^ g*N
 nnoremap & :%s///gc<Left><Left><Left>
 
 " ノーマルモードのマッピング 2
-nnoremap <C-t> :HighlightInfo<CR>
 nnoremap <Space><Esc> <nop>
 nnoremap n nzz
 nnoremap N Nzz
