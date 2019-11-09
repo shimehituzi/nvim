@@ -92,6 +92,10 @@ inoremap j<space> j
 
 " ==================================== マッピング ====================================
 
+" ローカルなマッピング用のプレフィックス
+nnoremap [localmap] <nop>
+nmap <C-a> [localmap]
+
 " 基本的な移動系コマンドを押しやすく再定義
 noremap <Tab> G
 noremap m ge
@@ -197,7 +201,7 @@ nnoremap <C-S-Up> <C-w>+
 nnoremap <C-S-Left> <C-w><
 nnoremap <C-S-Right> <C-w>>
 
-" 使ってないマッピング: <C-a> <C-n> <C-o> <C-t> <C-g> <C-b>
+" 使ってないマッピング: <C-n> <C-o> <C-t> <C-g> <C-b>
 
 
 
