@@ -179,26 +179,20 @@ nnoremap @ <nop>
 nnoremap <Space>` :source ~/.config/nvim/init.vim<CR>
 
 " 矢印で行の移動を可能に
-nnoremap <Down> Vj
-xnoremap <Down> j
-nnoremap <Up> Vk
-xnoremap <Up> k
-nnoremap <silent><Left> :m.-2<CR>
-xnoremap <silent><Left> :m.-2<CR>gv
-nnoremap <silent><Right> :m.+1<CR>
-xnoremap <silent><Right> :Vmd<CR>
+nnoremap <S-Down> Vj
+xnoremap <S-Down> j
+nnoremap <S-Up> Vk
+xnoremap <S-Up> k
+nnoremap <silent><S-Left> :m.-2<CR>
+xnoremap <silent><S-Left> :m.-2<CR>gv
+nnoremap <silent><S-Right> :m.+1<CR>
+xnoremap <silent><S-Right> :Vmd<CR>
 
 " ウィンドウの位置を移動
-nnoremap <S-Down> <C-w>J
-nnoremap <S-Up> <C-w>K
-nnoremap <S-Left> <C-w>H
-nnoremap <S-Right> <C-W>L
-
-" ウィンドウのサイズを変更
-nnoremap <C-S-Down> <C-w>-
-nnoremap <C-S-Up> <C-w>+
-nnoremap <C-S-Left> <C-w><
-nnoremap <C-S-Right> <C-w>>
+nnoremap <S-C-Down> <C-w>J
+nnoremap <S-C-Up> <C-w>K
+nnoremap <S-C-Left> <C-w>H
+nnoremap <S-C-Right> <C-W>L
 
 " 使ってないマッピング: <C-n> <C-o> <C-t> <C-g> <C-b>
 

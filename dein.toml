@@ -143,17 +143,15 @@
     hook_add = '''
         set updatetime=500
         let g:gitgutter_map_keys = 0
-        nmap - <Plug>(GitGutterNextHunk)
-        nmap _ <Plug>(GitGutterPrevHunk)
-        nmap 0 <Plug>(GitGutterPreviewHunk)
-        nmap + <Plug>(GitGutterStageHunk)
+        nmap <Down> <Plug>(GitGutterNextHunk)
+        nmap <Up> <Plug>(GitGutterPrevHunk)
+        nmap <Left> <Plug>(GitGutterPreviewHunk)
+        nmap <Right> <Plug>(GitGutterStageHunk)
         nmap <C-u> <Plug>(GitGutterUndoHunk)
         omap ic <Plug>(GitGutterTextObjectInnerPending)
         omap ac <Plug>(GitGutterTextObjectOuterPending)
         xmap ic <Plug>(GitGutterTextObjectInnerVisual)
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
-        nnoremap <C-_> :GitGutterBufferToggle<CR>
-        nnoremap <silent> <Space>g :GitGutterAll<CR>
     '''
 
 [[plugins]]
