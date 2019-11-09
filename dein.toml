@@ -157,7 +157,16 @@
 [[plugins]]
     repo = 'Shougo/defx.nvim'
     hook_add = '''
-        nnoremap <silent> <Space>F :Defx -columns=icons:indent:filename:type -new -listed -buffer-name="" <CR>
+        nnoremap <silent> + 
+        \ :Defx
+        \ -columns=icons:indent:filename:type 
+        \ -sort=extension
+        \ -toggle
+        \ -split=vertical
+        \ -direction=botright
+        \ -winwidth=60
+        \ <CR>
+
 
         autocmd FileType defx call s:defx_my_settings()
         function! s:defx_my_settings() abort
