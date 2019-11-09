@@ -146,13 +146,13 @@
         nmap - <Plug>(GitGutterNextHunk)
         nmap _ <Plug>(GitGutterPrevHunk)
         nmap 0 <Plug>(GitGutterPreviewHunk)
-        nmap <C-a> <Plug>(GitGutterStageHunk)
+        nmap + <Plug>(GitGutterStageHunk)
         nmap <C-u> <Plug>(GitGutterUndoHunk)
         omap ic <Plug>(GitGutterTextObjectInnerPending)
         omap ac <Plug>(GitGutterTextObjectOuterPending)
         xmap ic <Plug>(GitGutterTextObjectInnerVisual)
         xmap ac <Plug>(GitGutterTextObjectOuterVisual)
-        nnoremap + :GitGutterBufferToggle<CR>
+        nnoremap <C-_> :GitGutterBufferToggle<CR>
         nnoremap <silent> <Space>g :GitGutterAll<CR>
     '''
 
