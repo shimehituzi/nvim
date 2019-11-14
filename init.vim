@@ -130,8 +130,8 @@ inoremap j; <C-o>
 
 "  ノーマルモードのマッピング 1
 nmap 0 %
-nnoremap <silent>( <C-w>W
-nnoremap <silent>) <C-w>w
+nnoremap ( <C-w>W
+nnoremap ) <C-w>w
 nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
