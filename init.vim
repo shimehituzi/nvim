@@ -106,8 +106,8 @@ noremap j gj
 noremap k gk
 noremap <C-f> <C-d>
 noremap <C-d> <C-u>
-noremap <C-h> H
-noremap <C-l> L
+noremap ( H
+noremap ) L
 
 " 小文字か大文字化を入れ替え
 noremap gu gU
@@ -130,8 +130,8 @@ inoremap j; <C-o>
 
 "  ノーマルモードのマッピング 1
 nmap 0 %
-nnoremap ( <C-w>W
-nnoremap ) <C-w>w
+nnoremap <C-l> <C-w>w
+nnoremap <C-h> <C-w>W
 nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
