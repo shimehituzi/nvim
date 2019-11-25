@@ -4,5 +4,26 @@
     "suggest.enablePreselect": true,
     "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph",
     "tsserver.enableJavascript": true,
-    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"]
+    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsxB"],
+    "coc.preferences.formatOnSaveFiletypes": ["haskell"],
+    "languageserver": {
+        "haskell": {
+            "command": "hie-wrapper",
+            "rootPatterns": [
+                ".stack.yaml",
+                "cabal.config",
+                "package.yaml"
+            ],
+            "filetypes": [
+                "hs",
+                "lhs",
+                "haskell"
+            ],
+            "initializationOptions": {
+                "languageServerHaskell": {
+                    "hlint": true
+                }
+            }
+        }
+    }
 }
