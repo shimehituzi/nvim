@@ -127,7 +127,6 @@ inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
 inoremap <S-Tab> <Tab>
 inoremap <C-f> <C-t>
 inoremap jl <Esc>gUawea
-inoremap j; <C-o>
 
 "  ノーマルモードのマッピング 1
 nmap 0 %
