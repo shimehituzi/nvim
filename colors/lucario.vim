@@ -166,57 +166,57 @@ hi texSpecialChar             guifg=#b9f6ca
 hi texLength                  guifg=#8bc34a
 
 " Haskell
-" hi haskellBackpackStructure          guifg=
-" hi haskellBackpackDependency         guifg=
-" hi haskellBlock                      guifg=
+hi haskellBackpackStructure          guifg=#000000 gui=bold
+hi haskellBackpackDependency         guifg=#000000 gui=bold
+hi haskellBlock                      guifg=#000000 gui=bold
 hi haskellIdentifier                 guifg=#84ffff gui=italic
 hi haskellOperators                  guifg=#ffd180
 hi haskellSeparator                  guifg=#b0bec5
 hi haskellParens                     guifg=#ffff8d
-" hi haskellRecordField                guifg=
+hi haskellRecordField                guifg=#000000 gui=bold
 hi haskellWhere                      guifg=#ff8a80
 hi haskellLet                        guifg=#ff8a80
-" hi haskellDefault                    guifg=
-" hi haskellTypeSig                    guifg=
-" hi HaskellDerive                     guifg=
+hi haskellDefault                    guifg=#000000 gui=bold
+hi haskellTypeSig                    guifg=#000000 gui=bold
+hi HaskellDerive                     guifg=#000000 gui=bold
 hi haskellDeclKeyword                guifg=#ff8a80
-" hi haskellDecl                       guifg=
-" hi haskellImportKeywords             guifg=
-" hi haskellForeignKeywords            guifg=
+hi haskellDecl                       guifg=#000000 gui=bold
+hi haskellImportKeywords             guifg=#000000 gui=bold
+hi haskellForeignKeywords            guifg=#000000 gui=bold
 hi haskellString                     guifg=#b9f6ca
-" hi haskellForeignImport              guifg=
+hi haskellForeignImport              guifg=#000000 gui=bold
 hi haskellType                       guifg=#82b1ff
 hi haskellLineComment                guifg=#bcaaa4
 hi haskellBlockComment               guifg=#bcaaa4
-" hi haskellPragma                     guifg=
-" hi haskellImport                     guifg=
+hi haskellPragma                     guifg=#000000 gui=bold
+hi haskellImport                     guifg=#000000 gui=bold
 hi haskellKeyword                    guifg=#ff8a80
-" hi haskellStatic                     guifg=
+hi haskellStatic                     guifg=#000000 gui=bold
 hi haskellConditional                guifg=#ff8a80
 hi haskellNumber                     guifg=#b388ff
 hi haskellFloat                      guifg=#b388ff
 hi haskellDelimiter                  guifg=#b0bec5
 hi haskellBrackets                   guifg=#ffff8d
-" hi haskellInfix                      guifg=
+hi haskellInfix                      guifg=#000000 gui=bold
 hi haskellBottom                     guifg=#ff8a80
 hi haskellQuote                      guifg=#b9f6ca
 hi haskellQuotedType                 guifg=#b9f6ca
 hi haskellQuoted                     guifg=#b9f6ca
-" hi haskellTodo                       guifg=
+hi haskellTodo                       guifg=#000000 gui=bold
 hi haskellBacktick                   guifg=#ffd180
 hi haskellChar                       guifg=#b9f6ca
-" hi haskellLiquid                     guifg=
-" hi haskellPreProc                    guifg=
-" hi haskellShebang                    guifg=
-" hi haskellQuasiQuote                 guifg=
-" hi haskellQuasiQuoted                guifg=
-" hi haskellTH                         guifg=
-" hi haskellTHBlock                    guifg=
-" hi haskellTHDoubleBlock              guifg=
-" hi haskellTypeRoles                  guifg=
-" hi haskellTypeRoleBlock              guifg=
-" hi haskellForall                     guifg=
-" hi haskellRecursiveDo                guifg=
-" hi haskellArrowSyntax                guifg=
-" hi haskellPatternKeyword             guifg=
-" hi haskellAssocType                  guifg=
+hi haskellLiquid                     guifg=#000000 gui=bold
+hi haskellPreProc                    guifg=#000000 gui=bold
+hi haskellShebang                    guifg=#000000 gui=bold
+hi haskellQuasiQuote                 guifg=#000000 gui=bold
+hi haskellQuasiQuoted                guifg=#000000 gui=bold
+hi haskellTH                         guifg=#000000 gui=bold
+hi haskellTHBlock                    guifg=#000000 gui=bold
+hi haskellTHDoubleBlock              guifg=#000000 gui=bold
+hi haskellTypeRoles                  guifg=#000000 gui=bold
+hi haskellTypeRoleBlock              guifg=#000000 gui=bold
+hi haskellForall                     guifg=#000000 gui=bold
+hi haskellRecursiveDo                guifg=#000000 gui=bold
+hi haskellArrowSyntax                guifg=#000000 gui=bold
+hi haskellPatternKeyword             guifg=#000000 gui=bold
+hi haskellAssocType                  guifg=#000000 gui=bold
