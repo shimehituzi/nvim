@@ -163,6 +163,7 @@ nnoremap X "_X
 nnoremap s "_s
 nnoremap <space>m m
 nnoremap <C-^> `
+nnoremap <C-g> :HighlightInfo<CR>
 
 " os のクリップボードとの連携
 nnoremap <Space>y "+yy
@@ -201,7 +202,6 @@ nnoremap <expr> ^ ThisKeyIsNop()
 nnoremap <expr> & ThisKeyIsNop()
 nnoremap <expr> * ThisKeyIsNop()
 nnoremap <expr> <C-t> ThisKeyIsNop()
-nnoremap <expr> <C-g> ThisKeyIsNop()
 nnoremap <expr> <C-b> ThisKeyIsNop()
 nnoremap <expr> <C-y> ThisKeyIsNop()
 nnoremap <expr> <C-n> ThisKeyIsNop()
