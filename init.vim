@@ -83,7 +83,7 @@ set shortmess+=c
 inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : coc#refresh()
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
-inoremap <expr><silent> jj pumvisible() ? "\<C-e>" : "\<esc>"
+inoremap <expr><silent> jj pumvisible() ? "\<C-o>\<esc>" : "\<C-o>"
 inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>"
 inoremap j<space> j
 
@@ -94,7 +94,9 @@ inoremap j<space> j
 
 " ローカルなマッピング用のプレフィックス
 nnoremap [localmap] <nop>
+inoremap [Ilocalmap] <nop>
 nmap <C-a> [localmap]
+imap <C-a> [Ilocalmap]
 
 " 基本的な移動系コマンドを押しやすく再定義
 noremap <Tab> G
@@ -122,10 +124,11 @@ onoremap ad a"
 onoremap id i"
 
 " インサートモードのマッピング
-inoremap <C-a> <Del>
+inoremap <C-s> <Del>
+inoremap <C-d> <C-d>
+inoremap <C-f> <C-t>
 inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
 inoremap <S-Tab> <Tab>
-inoremap <C-f> <C-t>
 inoremap jl <Esc>gUawea
 
 "  ノーマルモードのマッピング 1
