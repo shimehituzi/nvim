@@ -127,9 +127,9 @@ onoremap id i"
 inoremap <C-s> <Del>
 inoremap <C-d> <C-d>
 inoremap <C-f> <C-t>
+inoremap <C-t> <Esc>gUawea
 inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
 inoremap <S-Tab> <Tab>
-inoremap jl <Esc>gUawea
 
 "  ノーマルモードのマッピング 1
 nmap 0 %
