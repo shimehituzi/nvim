@@ -181,7 +181,7 @@ hi haskellTypeSig                    guifg=#000000 gui=bold
 hi HaskellDerive                     guifg=#000000 gui=bold
 hi haskellDeclKeyword                guifg=#ff8a80
 hi haskellDecl                       guifg=#000000 gui=bold
-hi haskellImportKeywords             guifg=#ff8a80
+hi haskellImportKeywords             guifg=#ccff90
 hi haskellForeignKeywords            guifg=#000000 gui=bold
 hi haskellString                     guifg=#b9f6ca
 hi haskellForeignImport              guifg=#000000 gui=bold
