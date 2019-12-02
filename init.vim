@@ -86,6 +86,7 @@ inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
 inoremap <expr><silent> jj pumvisible() ? "\<C-o>\<esc>" : "\<C-o>"
 inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" . lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>"
 inoremap j<space> j
+inoremap jl <esc>
 
 
 
@@ -95,6 +96,7 @@ inoremap j<space> j
 " ローカルなマッピング用のプレフィックス
 nnoremap [localmap] <nop>
 nmap <C-a> [localmap]
+inoremap <C-a> <nop>
 
 " 基本的な移動系コマンドを押しやすく再定義
 noremap <Tab> G
