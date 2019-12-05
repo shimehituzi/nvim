@@ -178,9 +178,9 @@ hi haskellWhere                      guifg=#ff8a80
 hi haskellLet                        guifg=#ff8a80
 hi haskellDefault                    guifg=#000000 gui=bold
 hi haskellTypeSig                    guifg=#000000 gui=bold
-hi HaskellDerive                     guifg=#000000 gui=bold
+hi HaskellDerive                     guifg=#ff9e80
 hi haskellDeclKeyword                guifg=#ff8a80
-hi haskellDecl                       guifg=#000000 gui=bold
+hi haskellDecl                       guifg=#ff9e80
 hi haskellImportKeywords             guifg=#ccff90
 hi haskellForeignKeywords            guifg=#000000 gui=bold
 hi haskellString                     guifg=#b9f6ca
@@ -197,7 +197,7 @@ hi haskellNumber                     guifg=#b388ff
 hi haskellFloat                      guifg=#b388ff
 hi haskellDelimiter                  guifg=#b0bec5
 hi haskellBrackets                   guifg=#ffff8d
-hi haskellInfix                      guifg=#000000 gui=bold
+hi haskellInfix                      guifg=#ff9e80
 hi haskellBottom                     guifg=#ff8a80
 hi haskellQuote                      guifg=#b9f6ca
 hi haskellQuotedType                 guifg=#b9f6ca
