@@ -36,16 +36,16 @@
         nmap     <silent> [coc]l <Plug>(coc-type-definition)
         nmap     <silent> [coc]i <Plug>(coc-implementation)
         nmap              [coc]o <Plug>(coc-rename)
-        nmap              [coc]u <Plug>(coc-format-selected)
-        xmap              [coc]u <Plug>(coc-format-selected)
+        nmap              [coc]h  <Plug>(coc-fix-current)
+        nmap              [coc]u  <Plug>(coc-codeaction)
 
         " LSP2
+        xmap              [coc]y  <Plug>(coc-codeaction-selected)
+        nmap              [coc]y  <Plug>(coc-codeaction-selected)
         nmap <silent>     [coc]g <Plug>(coc-range-select)
         xmap <silent>     [coc]g <Plug>(coc-range-select)
-        xmap              [coc]h  <Plug>(coc-codeaction-selected)
-        nmap              [coc]h  <Plug>(coc-codeaction-selected)
-        nmap              [coc]t  <Plug>(coc-codeaction)
-        nmap              [coc]y  <Plug>(coc-fix-current)
+        nmap              [coc]t <Plug>(coc-format-selected)
+        xmap              [coc]t <Plug>(coc-format-selected)
 
         " 移動
         nmap <silent> [g <Plug>(coc-diagnostic-prev)
