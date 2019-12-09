@@ -39,6 +39,14 @@
         nmap              [coc]u <Plug>(coc-format-selected)
         xmap              [coc]u <Plug>(coc-format-selected)
 
+        " LSP2
+        nmap <silent>     [coc]g <Plug>(coc-range-select)
+        xmap <silent>     [coc]g <Plug>(coc-range-select)
+        xmap              [coc]h  <Plug>(coc-codeaction-selected)
+        nmap              [coc]h  <Plug>(coc-codeaction-selected)
+        nmap              [coc]t  <Plug>(coc-codeaction)
+        nmap              [coc]y  <Plug>(coc-fix-current)
+
         " 移動
         nmap <silent> [g <Plug>(coc-diagnostic-prev)
         nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -48,14 +56,6 @@
         xmap af <Plug>(coc-funcobj-a)
         omap if <Plug>(coc-funcobj-i)
         omap af <Plug>(coc-funcobj-a)
-
-        " 不明
-        " nmap <silent> <C-d> <Plug>(coc-range-select)
-        " xmap <silent> <C-d> <Plug>(coc-range-select)
-        " xmap <leader>a  <Plug>(coc-codeaction-selected)
-        " nmap <leader>a  <Plug>(coc-codeaction-selected)
-        " nmap <leader>ac  <Plug>(coc-codeaction)
-        " nmap <leader>qf  <Plug>(coc-fix-current)
 
 
         " コマンド定義
