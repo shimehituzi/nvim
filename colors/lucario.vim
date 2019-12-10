@@ -168,7 +168,7 @@ hi texLength                  guifg=#8bc34a
 " Haskell
 hi haskellBackpackStructure          guifg=#000000 gui=bold
 hi haskellBackpackDependency         guifg=#000000 gui=bold
-hi haskellBlock                      guifg=#000000 gui=bold
+hi haskellBlock                      guifg=#a7ffeb
 hi haskellIdentifier                 guifg=#84ffff gui=italic
 hi haskellOperators                  guifg=#ffd180
 hi haskellSeparator                  guifg=#b0bec5
