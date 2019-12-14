@@ -196,14 +196,6 @@ nnoremap <S-C-Left> <C-w>H
 nnoremap <S-C-Right> <C-W>L
 
 " 今んとこ使ってないマッピング
-nnoremap <expr> ! ThisKeyIsNop()
-nnoremap <expr> @ ThisKeyIsNop()
-nnoremap <expr> # ThisKeyIsNop()
-nnoremap <expr> $ ThisKeyIsNop()
-nnoremap <expr> % ThisKeyIsNop()
-nnoremap <expr> ^ ThisKeyIsNop()
-nnoremap <expr> & ThisKeyIsNop()
-nnoremap <expr> * ThisKeyIsNop()
 nnoremap <expr> <C-t> ThisKeyIsNop()
 nnoremap <expr> <C-b> ThisKeyIsNop()
 nnoremap <expr> <C-y> ThisKeyIsNop()

@@ -4,66 +4,29 @@
     on_i = 1
     merged = '0'
     hook_source = '''
-        " コマンドラインで実行した → ~/.config/coc/extensions/node_modules に拡張が追加
-        " :CocInstall coc-json coc-solargraph coc-tsserver coc-eslint
-        " Solargraph のために ruby のバージョンは 2.5.1 が必要っぽい？
-        " $ gem install neovim; gem install solargraph
-        " $ bundle update --bundler
-        " $ gem install bundler:1.17.3
-        
+        " ----------------------------------マッピング----------------------------------
+        nnoremap <silent> <space><space> :<C-u>call <SID>show_documentation()<CR>
+        nmap              !              <Plug>(coc-codeaction)
+        nmap     <silent> @              <Plug>(coc-references)
+        nmap     <silent> #              <Plug>(coc-definition)
+        nmap              $              <Plug>(coc-rename)
+        nnoremap <silent> %              :<C-u>CocList outline<cr>
+        nnoremap <silent> ^              :<C-u>CocList diagnostics<cr>
+        nmap     <silent> &              <Plug>(coc-diagnostic-prev)
+        nmap     <silent> *              <Plug>(coc-diagnostic-next)
+        " ------------------------------------------------------------------------------
+
+
+
+        " --------------------------------その他の設定--------------------------------
+        " =======プレースホルダーの移動=======
         " これをしないと <C-j> と <C-k> にスニペットの移動がマッピングされて補完の選択ができなくなってしまう
         let g:coc_snippet_next = "\<C-f>"
         let g:coc_snippet_prev = "\<C-d>"
-
-
-        " マッピングのリーダー
-        nnoremap [coc] <nop>
-        nmap <space><space> [coc]
-        " 情報を表示
-        nnoremap <silent> [coc]<space> :<C-u>call <SID>show_documentation()<CR>
-        " cocList
-        nnoremap <silent> [coc]f :<C-u>CocNext<CR>
-        nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
-        nnoremap <silent> [coc]s :<C-u>CocListResume<CR>
-        nnoremap <silent> [coc]a :<C-u>CocList commands<cr>
-        nnoremap <silent> [coc]r :<C-u>CocList diagnostics<cr>
-        nnoremap <silent> [coc]e :<C-u>CocList outline<cr>
-        nnoremap <silent> [coc]w :<C-u>CocList -I symbols<cr>
-        nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
-        " LSP
-        nmap     <silent> [coc]j <Plug>(coc-references)
-        nmap     <silent> [coc]k <Plug>(coc-definition)
-        nmap     <silent> [coc]l <Plug>(coc-type-definition)
-        nmap     <silent> [coc]i <Plug>(coc-implementation)
-        nmap              [coc]o <Plug>(coc-rename)
-        nmap              [coc]h  <Plug>(coc-fix-current)
-        nmap              [coc]u  <Plug>(coc-codeaction)
-
-        " LSP2
-        xmap              [coc]y  <Plug>(coc-codeaction-selected)
-        nmap              [coc]y  <Plug>(coc-codeaction-selected)
-        nmap <silent>     [coc]g <Plug>(coc-range-select)
-        xmap <silent>     [coc]g <Plug>(coc-range-select)
-        nmap              [coc]t <Plug>(coc-format-selected)
-        xmap              [coc]t <Plug>(coc-format-selected)
-
-        " 移動
-        nmap <silent> [g <Plug>(coc-diagnostic-prev)
-        nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-        " テキストオブジェクト （関数）
-        xmap if <Plug>(coc-funcobj-i)
-        xmap af <Plug>(coc-funcobj-a)
-        omap if <Plug>(coc-funcobj-i)
-        omap af <Plug>(coc-funcobj-a)
-
-
-        " コマンド定義
+        " =======コマンド定義=======
         command! -nargs=0 Format :call CocAction('format')
         command! -nargs=? Fold :call     CocAction('fold', <f-args>)
         command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-
         " 関数（定義参照で使う関数）
         function! s:show_documentation()
             if (index(['vim','help'], &filetype) >= 0)
@@ -72,9 +35,7 @@
                 call CocAction('doHover')
             endif
         endfunction
-
-
-        " オートコマンド
+        " =======オートコマンド=======
         autocmd CursorHold * silent call CocActionAsync('highlight')
         augroup mygroup
             autocmd!
@@ -83,10 +44,51 @@
             " Update signature help on jump placeholder
             autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
         augroup end
-
-
-        " ステータスラインの設定
+        " =======ステータスラインの設定=======
         set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+        " ------------------------------------------------------------------------------
+
+
+
+        " -----------------------------使ってないマッピング-----------------------------
+        " =======マッピングのリーダー=======
+        " nnoremap [coc] <nop>
+        " nmap <space><space> [coc]
+        " =======cocList=======
+        " nnoremap <silent> [coc]f :<C-u>CocNext<CR>
+        " nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
+        " nnoremap <silent> [coc]s :<C-u>CocListResume<CR>
+        " nnoremap <silent> [coc]a :<C-u>CocList commands<cr>
+        " nnoremap <silent> [coc]w :<C-u>CocList -I symbols<cr>
+        " nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
+        " =======LSP=======
+        " nmap     <silent> [coc]l <Plug>(coc-type-definition)
+        " nmap     <silent> [coc]i <Plug>(coc-implementation)
+        " nmap              [coc]h <Plug>(coc-fix-current)
+        " =======LSP2=======
+        " xmap             [coc]y <Plug>(coc-codeaction-selected)
+        " nmap             [coc]y <Plug>(coc-codeaction-selected)
+        " map <silent>     [coc]g <Plug>(coc-range-select)
+        " map <silent>     [coc]g <Plug>(coc-range-select)
+        " map              [coc]t <Plug>(coc-format-selected)
+        " map              [coc]t <Plug>(coc-format-selected)
+        " =======テキストオブジェクト （関数）=======
+        " xmap if <Plug>(coc-funcobj-i)
+        " xmap af <Plug>(coc-funcobj-a)
+        " map if <Plug>(coc-funcobj-i)
+        " map af <Plug>(coc-funcobj-a)
+        " ------------------------------------------------------------------------------
+
+
+
+        " -----------------------------------環境構築-----------------------------------
+        " コマンドラインで実行した → ~/.config/coc/extensions/node_modules に拡張が追加
+        " :CocInstall coc-json coc-solargraph coc-tsserver coc-eslint
+        " Solargraph のために ruby のバージョンは 2.5.1 が必要っぽい？
+        " $ gem install neovim; gem install solargraph
+        " $ bundle update --bundler
+        " $ gem install bundler:1.17.3
+        " ------------------------------------------------------------------------------
     '''
 
 
