@@ -12,8 +12,8 @@
         nmap              $              <Plug>(coc-rename)
         nmap     <silent> %              <Plug>(coc-diagnostic-prev)
         nmap     <silent> ^              <Plug>(coc-diagnostic-next)
-        nnoremap <silent> &              :<C-u>CocList outline<cr>
-        nnoremap <silent> *              :<C-u>CocList diagnostics<cr>
+        nnoremap <silent> &              :<C-u>CocList diagnostics<cr>
+        nnoremap <silent> *              :<C-u>CocList outline<cr>
         " ------------------------------------------------------------------------------
 
 
