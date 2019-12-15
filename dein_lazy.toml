@@ -14,6 +14,7 @@
         nmap     <silent> ^              <Plug>(coc-diagnostic-next)
         nnoremap <silent> &              :<C-u>CocList diagnostics<cr>
         nnoremap <silent> *              :<C-u>CocList outline<cr>
+        nnoremap <silent> <space>r       :<C-u>CocReset<CR>:<C-u>GitGutterAll<CR>
         " ------------------------------------------------------------------------------
 
 
