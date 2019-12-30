@@ -139,8 +139,8 @@ hi mkdHeading                 guifg=#ff6d00
 hi htmlH1                     guifg=#ffa726
 hi mkdNonListItemBlock        guifg=#fbe9e7
 hi mkdLineBreak               guifg=NONE guibg=NONE gui=underline
-hi htmlTag                    guifg=#5c6bc0
-hi htmlEndTag                 guifg=#5c6bc0
+hi htmlTag                    guifg=#90caf9
+hi htmlEndTag                 guifg=#90caf9
 hi htmlTagName                guifg=#c5cae9
 hi htmlArg                    guifg=#82b1ff
 hi htmlString                 guifg=#b39ddb
