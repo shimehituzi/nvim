@@ -172,15 +172,15 @@ hi haskellBlock                      guifg=#a7ffeb
 hi haskellIdentifier                 guifg=#84ffff gui=italic
 hi haskellOperators                  guifg=#ffd180
 hi haskellSeparator                  guifg=#b0bec5
-hi haskellParens                     guifg=#ffff8d
+hi haskellParens                     guifg=#ffffff
 hi haskellRecordField                guifg=#000000 gui=bold
 hi haskellWhere                      guifg=#ff8a80
 hi haskellLet                        guifg=#ff8a80
 hi haskellDefault                    guifg=#000000 gui=bold
 hi haskellTypeSig                    guifg=#000000 gui=bold
-hi HaskellDerive                     guifg=#ff9e80
+hi HaskellDerive                     guifg=#ff8a80
 hi haskellDeclKeyword                guifg=#ff8a80
-hi haskellDecl                       guifg=#ff9e80
+hi haskellDecl                       guifg=#ff8a80
 hi haskellImportKeywords             guifg=#ccff90
 hi haskellForeignKeywords            guifg=#000000 gui=bold
 hi haskellString                     guifg=#b9f6ca
@@ -188,8 +188,8 @@ hi haskellForeignImport              guifg=#000000 gui=bold
 hi haskellType                       guifg=#82b1ff
 hi haskellLineComment                guifg=#bcaaa4
 hi haskellBlockComment               guifg=#bcaaa4
-hi haskellPragma                     guifg=#000000 gui=bold
-hi haskellImport                     guifg=#000000 gui=bold
+hi haskellPragma                     guifg=#b0bec5
+hi haskellImport                     guifg=#ffffff
 hi haskellKeyword                    guifg=#ff8a80
 hi haskellStatic                     guifg=#000000 gui=bold
 hi haskellConditional                guifg=#ff8a80
@@ -197,7 +197,7 @@ hi haskellNumber                     guifg=#b388ff
 hi haskellFloat                      guifg=#b388ff
 hi haskellDelimiter                  guifg=#b0bec5
 hi haskellBrackets                   guifg=#ffff8d
-hi haskellInfix                      guifg=#ff9e80
+hi haskellInfix                      guifg=#ff8a80
 hi haskellBottom                     guifg=#ff8a80
 hi haskellQuote                      guifg=#b9f6ca
 hi haskellQuotedType                 guifg=#b9f6ca
