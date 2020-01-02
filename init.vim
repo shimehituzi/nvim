@@ -86,7 +86,6 @@ inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
 inoremap <expr><silent> jj pumvisible() ? "\<C-o>\<esc>" : "\<C-o>"
 inoremap <expr><silent> <CR> pumvisible() ? "\<C-e>" : lexima#expand('<LT>CR>', 'i') . "<C-r>=lexima#insmode#escape()<CR><C-f>"
 inoremap j<space> j
-inoremap jl <esc>
 
 
 
@@ -124,13 +123,17 @@ onoremap ad a"
 onoremap id i"
 
 " インサートモードのマッピング
-inoremap <C-s> <Del>
-inoremap <C-d> <C-d>
-inoremap <C-f> <C-t>
-inoremap <C-e> <Esc>gUawea
-inoremap <silent><Tab> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
+inoremap <Tab> <C-o>
 inoremap <S-Tab> <Tab>
+inoremap <silent><C-f> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
+inoremap <C-e> <Esc>gUawea
+inoremap <C-d> <Del>
+inoremap <C-s> <C-f>
+
+
+" インサートモードのマッピング2
 inoremap <C-t> <C-e>
+
 
 "  ノーマルモードのマッピング 1
 nmap 0 %

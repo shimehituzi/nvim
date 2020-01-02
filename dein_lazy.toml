@@ -22,8 +22,8 @@
         " --------------------------------その他の設定--------------------------------
         " =======プレースホルダーの移動=======
         " これをしないと <C-j> と <C-k> にスニペットの移動がマッピングされて補完の選択ができなくなってしまう
-        let g:coc_snippet_next = "\<C-f>"
-        let g:coc_snippet_prev = "\<C-d>"
+        let g:coc_snippet_next = "\<C-\>"
+        let g:coc_snippet_prev = "\<C-/>"
         " =======コマンド定義=======
         command! -nargs=0 Format :call CocAction('format')
         command! -nargs=? Fold :call     CocAction('fold', <f-args>)
