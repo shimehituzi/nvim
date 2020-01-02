@@ -129,7 +129,7 @@ inoremap <silent><C-e> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
 inoremap <C-f> <Esc>gUawea
 inoremap <C-d> <Del>
 inoremap <C-s> <C-f>
-inoremap <C-c> <esc>u
+inoremap <silent><expr><C-c> pumvisible() ? "\<C-e>" : ""
 
 
 " インサートモードのマッピング2
