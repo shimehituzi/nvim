@@ -134,6 +134,8 @@ inoremap <silent><expr><C-c> pumvisible() ? "\<C-e>" : ""
 
 " インサートモードのマッピング2
 inoremap <C-t> <C-e>
+inoremap <C-n> <Nop>
+inoremap <C-p> <Nop>
 
 
 "  ノーマルモードのマッピング 1
