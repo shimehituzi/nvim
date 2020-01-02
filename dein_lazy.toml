@@ -69,10 +69,10 @@
         " =======LSP2=======
         " xmap             [coc]y <Plug>(coc-codeaction-selected)
         " nmap             [coc]y <Plug>(coc-codeaction-selected)
-        " map <silent>     [coc]g <Plug>(coc-range-select)
-        " map <silent>     [coc]g <Plug>(coc-range-select)
-        " map              [coc]t <Plug>(coc-format-selected)
-        " map              [coc]t <Plug>(coc-format-selected)
+        " xmap <silent>     [coc]g <Plug>(coc-range-select)
+        " nmap <silent>     [coc]g <Plug>(coc-range-select)
+        " xmap              [coc]t <Plug>(coc-format-selected)
+        " nmap              [coc]t <Plug>(coc-format-selected)
         " =======テキストオブジェクト （関数）=======
         " xmap if <Plug>(coc-funcobj-i)
         " xmap af <Plug>(coc-funcobj-a)
