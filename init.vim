@@ -67,7 +67,7 @@ set hlsearch
 
 " インデントの設定
 set expandtab
-set tabstop=2
+set tabstop<
 set softtabstop=2
 set shiftwidth=2
 set autoindent
@@ -269,6 +269,41 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.json setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
+
+" sbt を scala のファイルとして認識
+au BufRead,BufNewFile * if &ft == 'sbt' | set ft=scala | endif
+
+
+" インデント設定のないファイルタイプの設定
+" http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
+if !exists('b:did_indent')
+    setlocal autoindent
+    setlocal indentexpr=GetIndent()
+    setlocal indentkeys=!,o,O
+
+    setlocal expandtab
+    setlocal tabstop<
+    setlocal softtabstop=2
+    setlocal shiftwidth=2
+
+    let b:undo_indent = 'setlocal '.join([
+                \   'autoindent<',
+                \   'expandtab<',
+                \   'indentexpr<',
+                \   'indentkeys<',
+                \   'shiftwidth<',
+                \   'softtabstop<',
+                \   'tabstop<',
+                \ ])
+
+    function! GetIndent()
+        return -1
+    endfunction
+
+    let b:did_indent = 1
+endif
+
+
 
 " tomlにvimのsyntax highlightを効かせる
 augroup MyVimrcTOML
