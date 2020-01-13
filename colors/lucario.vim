@@ -60,7 +60,7 @@ hi Number       ctermfg=177 ctermbg=NONE cterm=NONE guifg=#ca94ff guibg=NONE gui
 hi Operator     ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
 hi PreProc      ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
 hi Parameter    ctermfg=214 ctermbg=NONE cterm=NONE guifg=#ffab28 guibg=NONE gui=italic
-hi Special      ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
+hi Special      ctermfg=231 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
 hi SpecialKey   ctermfg=74 ctermbg=59 cterm=NONE guifg=#61bbc8 guibg=#405160 gui=NONE
 hi Statement    ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
 hi StorageClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
@@ -71,6 +71,8 @@ hi Todo         ctermfg=68 ctermbg=NONE cterm=inverse,bold guifg=#5c98cd guibg=N
 hi Type         ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Underlined   ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 
+" CoC
+hi CocErrorFloat guifg=#FF9E80
 
 " Ruby
 hi rubyClass                    ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
@@ -221,8 +223,7 @@ hi haskellArrowSyntax                guifg=#000000 gui=bold
 hi haskellPatternKeyword             guifg=#000000 gui=bold
 hi haskellAssocType                  guifg=#000000 gui=bold
 
-" CoC
-hi CocFloating guifg=#1565c0 guibg=#e3f2fd
 
+" typescript 
 
-" typescript
+" react
