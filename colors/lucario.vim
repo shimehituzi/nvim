@@ -17,7 +17,7 @@ let g:colors_name = "lucario"
 hi Cursor       cterm=NONE guifg=#2b3e50 guibg=#f8f8f2
 hi Visual       ctermfg=NONE ctermbg=16 cterm=NONE guifg=NONE guibg=#19242f gui=NONE
 hi CursorLine   ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
-hi CursorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=NONE gui=NONE
+hi CursorColumn ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#78909c gui=italic
 hi ColorColumn  ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi LineNr       ctermfg=223 ctermbg=NONE cterm=NONE guifg=#929ba1 guibg=NONE gui=NONE
 hi VertSplit    ctermfg=60 ctermbg=60 cterm=NONE guifg=#5f99cb guibg=NONE gui=NONE
@@ -222,7 +222,7 @@ hi haskellPatternKeyword             guifg=#000000 gui=bold
 hi haskellAssocType                  guifg=#000000 gui=bold
 
 " CoC
-hi CocFloating guifg=#1565C0 guibg=#E3F2FD
+hi CocFloating guifg=#1565c0 guibg=#e3f2fd
 
 
 " typescript
