@@ -228,3 +228,9 @@ hi haskellAssocType                  guifg=#000000 gui=bold
 hi typescriptPredefinedType          guifg=#66d9ef
 hi typescriptVariable                guifg=#ffab40
 hi typescriptAliasKeyword            guifg=#ffab40
+hi tsxTag                            guifg=#B2FF59
+hi tsxCloseTag                       guifg=#40C4FF
+hi tsxCloseString                    guifg=#40C4FF
+hi tsxIntrinsicTagName               guifg=#B2DFDB
+hi tsxTagName                        guifg=#B2DFDB
+hi typescriptDefault                 guifg=#ffab40
