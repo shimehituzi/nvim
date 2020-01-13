@@ -220,3 +220,9 @@ hi haskellRecursiveDo                guifg=#000000 gui=bold
 hi haskellArrowSyntax                guifg=#000000 gui=bold
 hi haskellPatternKeyword             guifg=#000000 gui=bold
 hi haskellAssocType                  guifg=#000000 gui=bold
+
+" CoC
+hi CocFloating guifg=#1565C0 guibg=#E3F2FD
+
+
+" typescript
