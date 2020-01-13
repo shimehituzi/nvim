@@ -105,7 +105,7 @@
 
 [[plugins]]
     repo = 'MaxMEllon/vim-jsx-pretty'
-    on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
+    on_ft = ['javascript', 'javascriptreact']
     hook_source = '''
         let g:vim_jsx_pretty_highlight_close_tag = 1
         let g:vim_jsx_pretty_colorful_config = 1
@@ -114,7 +114,7 @@
 
 [[plugins]]
     repo = 'HerringtonDarkholme/yats.vim'
-    on_ft = ['typescriptreact']
+    on_ft = ['typescript', 'typescriptreact']
 
 
 [[plugins]]
