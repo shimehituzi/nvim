@@ -225,5 +225,7 @@ hi haskellAssocType                  guifg=#000000 gui=bold
 
 
 " typescript 
+hi typescriptPredefinedType          guifg=#66d9ef
+hi typescriptVariable                guifg=#ffd180
 
 " react
