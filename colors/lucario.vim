@@ -68,7 +68,7 @@ hi String       ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui
 hi Tag          ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
 hi Title        ctermfg=231 ctermbg=NONE cterm=bold guifg=#f8f8f2 guibg=NONE gui=bold
 hi Todo         ctermfg=68 ctermbg=NONE cterm=inverse,bold guifg=#5c98cd guibg=NONE gui=inverse,bold
-hi Type         ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+hi Type         ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#FFAB00 guibg=NONE gui=NONE
 hi Underlined   ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 
 " CoC
@@ -222,3 +222,6 @@ hi haskellRecursiveDo                guifg=#000000 gui=bold
 hi haskellArrowSyntax                guifg=#000000 gui=bold
 hi haskellPatternKeyword             guifg=#000000 gui=bold
 hi haskellAssocType                  guifg=#000000 gui=bold
+
+" jsx
+hi jsxAttrib guifg=#ca94ff
