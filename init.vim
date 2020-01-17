@@ -260,6 +260,8 @@ endfunction
 " ファイルタイプ毎のシステム的な設定
 let g:tex_flavor = "latex"
 au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
+
 augroup helpfiles
     au!
     au BufRead,BufEnter */doc/* if &filetype=='help' | wincmd L | endif

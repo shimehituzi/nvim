@@ -82,7 +82,7 @@ hi rubySymbol                   ctermfg=177 ctermbg=NONE cterm=NONE guifg=#ca94f
 hi rubyConstant                 ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi rubyStringDelimiter          ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi rubyBlockParameter           ctermfg=214 ctermbg=NONE cterm=NONE guifg=#ffab28 guibg=NONE gui=italic
-hi rubyInstanceVariable         ctermfg=81 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+hi rubyInstanceVariable         ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi rubyInclude                  ctermfg=203 ctermbg=NONE cterm=NONE guifg=#ff6541 guibg=NONE gui=NONE
 hi rubyGlobalVariable           ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi rubyRegexp                   ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
@@ -222,15 +222,3 @@ hi haskellRecursiveDo                guifg=#000000 gui=bold
 hi haskellArrowSyntax                guifg=#000000 gui=bold
 hi haskellPatternKeyword             guifg=#000000 gui=bold
 hi haskellAssocType                  guifg=#000000 gui=bold
-
-
-" typescript 
-hi typescriptPredefinedType          guifg=#66d9ef
-hi typescriptVariable                guifg=#ffab40
-hi typescriptAliasKeyword            guifg=#ffab40
-hi tsxTag                            guifg=#B2FF59
-hi tsxCloseTag                       guifg=#40C4FF
-hi tsxCloseString                    guifg=#40C4FF
-hi tsxIntrinsicTagName               guifg=#B2DFDB
-hi tsxTagName                        guifg=#B2DFDB
-hi typescriptDefault                 guifg=#ffab40
