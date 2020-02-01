@@ -139,7 +139,7 @@ inoremap <C-p> <Nop>
 
 
 "  ノーマルモードのマッピング 1
-nmap 0 %
+nnoremap 0 %
 nnoremap <C-l> <C-w>w
 nnoremap <C-h> <C-w>W
 nnoremap - *N
