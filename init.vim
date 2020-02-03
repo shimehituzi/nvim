@@ -164,6 +164,7 @@ nnoremap G ~
 nnoremap U J
 nnoremap Q @
 nnoremap <silent> ` <C-l>:nohl<CR>
+nnoremap <C-e> <C-w>w
 
 " ノーマルモードのマッピング 2
 nnoremap <Space><Esc> <nop>
@@ -206,7 +207,6 @@ nnoremap <S-C-Right> <C-W>L
 " 今んとこ使ってないマッピング
 nnoremap <expr> <C-t> ThisKeyIsNop()
 nnoremap <expr> <C-b> ThisKeyIsNop()
-nnoremap <expr> <C-e> ThisKeyIsNop()
 nnoremap <expr> <C-y> ThisKeyIsNop()
 nnoremap <expr> <C-n> ThisKeyIsNop()
 nnoremap <expr> <C-o> ThisKeyIsNop()
