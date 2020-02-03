@@ -10,10 +10,11 @@
         nmap     <silent> @              <Plug>(coc-references)
         nmap     <silent> #              <Plug>(coc-definition)
         nmap              $              <Plug>(coc-rename)
-        nmap     <silent> %              <Plug>(coc-diagnostic-prev)
-        nmap     <silent> ^              <Plug>(coc-diagnostic-next)
+        nnoremap <silent> ^              :<C-u>CocList actions<cr>
         nnoremap <silent> &              :<C-u>CocList diagnostics<cr>
         nnoremap <silent> *              :<C-u>CocList outline<cr>
+        nmap     <silent> (              <Plug>(coc-diagnostic-prev)
+        nmap     <silent> )              <Plug>(coc-diagnostic-next)
         nnoremap <silent> <space>r       :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
         " ------------------------------------------------------------------------------
 

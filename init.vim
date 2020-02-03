@@ -109,8 +109,6 @@ noremap <C-h> <C-y>
 noremap <C-l> <C-e>
 noremap <C-f> <C-d>
 noremap <C-d> <C-u>
-nnoremap ( <C-w>W
-nnoremap ) <C-w>w
 
 
 " 小文字か大文字化を入れ替え
@@ -142,7 +140,9 @@ inoremap <C-p> <Nop>
 
 
 "  ノーマルモードのマッピング 1
-nnoremap 0 %
+nmap 0 %
+nnoremap <C-e> <C-w>w
+nnoremap <C-Space> <C-w>W
 nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
@@ -164,7 +164,6 @@ nnoremap G ~
 nnoremap U J
 nnoremap Q @
 nnoremap <silent> ` <C-l>:nohl<CR>
-nnoremap <C-e> <C-w>w
 
 " ノーマルモードのマッピング 2
 nnoremap <Space><Esc> <nop>
@@ -211,7 +210,6 @@ nnoremap <expr> <C-y> ThisKeyIsNop()
 nnoremap <expr> <C-n> ThisKeyIsNop()
 nnoremap <expr> <C-o> ThisKeyIsNop()
 nnoremap <expr> <C-_> ThisKeyIsNop()
-nnoremap <expr> <C-Space> ThisKeyIsNop()
 
 
 
