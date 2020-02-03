@@ -101,14 +101,17 @@ inoremap <C-a> <nop>
 noremap <Tab> G
 noremap m ge
 noremap M gE
-noremap H ^
-noremap L $
 noremap j gj
 noremap k gk
+noremap H ^
+noremap L $
+noremap <C-h> <C-y>
+noremap <C-l> <C-e>
 noremap <C-f> <C-d>
 noremap <C-d> <C-u>
-noremap ( H
-noremap ) L
+nnoremap ( <C-w>W
+nnoremap ) <C-w>w
+
 
 " 小文字か大文字化を入れ替え
 noremap gu gU
@@ -140,12 +143,11 @@ inoremap <C-p> <Nop>
 
 "  ノーマルモードのマッピング 1
 nnoremap 0 %
-nnoremap <C-l> <C-w>w
-nnoremap <C-h> <C-w>W
 nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
+nnoremap , +
 nnoremap ' zt15<C-y>
 nnoremap t <C-a>
 nnoremap T <C-x>
@@ -155,7 +157,6 @@ nnoremap <silent> <Space>o  :<C-u>for i in range(v:count1) \| call append(line('
 nnoremap <silent> <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
 nnoremap Y y$
 nnoremap <silent> ~ :Typo<CR>
-nnoremap <C-Space> <C-y>
 nnoremap <C-\> <C-^>
 nnoremap <BS> <C-o>
 nnoremap <S-Tab> <C-i>
@@ -205,10 +206,12 @@ nnoremap <S-C-Right> <C-W>L
 " 今んとこ使ってないマッピング
 nnoremap <expr> <C-t> ThisKeyIsNop()
 nnoremap <expr> <C-b> ThisKeyIsNop()
+nnoremap <expr> <C-e> ThisKeyIsNop()
 nnoremap <expr> <C-y> ThisKeyIsNop()
 nnoremap <expr> <C-n> ThisKeyIsNop()
 nnoremap <expr> <C-o> ThisKeyIsNop()
 nnoremap <expr> <C-_> ThisKeyIsNop()
+nnoremap <expr> <C-Space> ThisKeyIsNop()
 
 
 
