@@ -105,8 +105,8 @@ noremap j gj
 noremap k gk
 noremap H ^
 noremap L $
-noremap <C-h> <C-y>
-noremap <C-l> <C-e>
+noremap <C-h> <C-w>W
+noremap <C-l> <C-w>w
 noremap <C-f> <C-d>
 noremap <C-d> <C-u>
 
@@ -141,8 +141,8 @@ inoremap <C-p> <Nop>
 
 "  ノーマルモードのマッピング 1
 nmap 0 %
-nnoremap <C-e> <C-w>w
-nnoremap <C-Space> <C-w>W
+nnoremap <C-e> <C-e>
+nnoremap <C-Space> <C-y>
 nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
