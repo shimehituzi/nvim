@@ -95,6 +95,7 @@ inoremap j<space> j
 " ローカルなマッピング用のプレフィックス
 nnoremap [localmap] <nop>
 nmap <C-a> [localmap]
+nnoremap [localmap]q :qa<CR>
 inoremap <C-a> <nop>
 
 " 基本的な移動系コマンドを押しやすく再定義
