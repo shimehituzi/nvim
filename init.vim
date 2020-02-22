@@ -127,9 +127,8 @@ onoremap id i"
 inoremap <Tab> <C-o>
 inoremap <S-Tab> <Tab>
 inoremap <silent><C-e> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
-inoremap <C-f> <Esc>gUawea
+inoremap <C-s> <Esc>gUawea
 inoremap <C-d> <Del>
-inoremap <C-s> <C-f>
 inoremap <silent><expr><C-c> pumvisible() ? "\<C-e>" : ""
 
 
