@@ -4,11 +4,6 @@
     on_i = 1
     merged = '0'
     hook_source = '''
-        " -------------------------------------temp-------------------------------------
-        " https://github.com/neoclide/coc-tsserver/issues/124
-        nnoremap <space>t :<C-u>CocInstall coc-tsserver@1.4.9<CR>
-        " ------------------------------------------------------------------------------
-
         " ----------------------------------マッピング----------------------------------
         nnoremap <silent> <space><space> :<C-u>call <SID>show_documentation()<CR>
         nmap              !              <Plug>(coc-codeaction)
