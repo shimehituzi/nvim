@@ -263,8 +263,8 @@
     repo = 'easymotion/vim-easymotion'
     hook_add = '''
         let g:EasyMotion_do_mapping = 0
-        nmap ; <Plug>(easymotion-overwin-f2)
-        vmap ; <Plug>(easymotion-bd-f2)
+        nmap ' <Plug>(easymotion-overwin-f2)
+        vmap ' <Plug>(easymotion-bd-f2)
     '''
 
 
