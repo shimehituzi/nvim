@@ -102,10 +102,9 @@
         nnoremap <silent> [denite]j :<C-u>Denite -resume -filter-updatetime=1<CR>
         nnoremap <silent> [denite]k :<C-u>Denite buffer -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]l :<C-u>Denite line -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]' :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
+        nnoremap <silent> [denite]; :<C-u>Denite grep -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]i :<C-u>Denite file/rec -filter-updatetime=1 -start-filter<CR>
         nnoremap <silent> [denite]o :<C-u>Denite file file:new -filter-updatetime=1 -start-filter<CR>
-        nnoremap <silent> [denite]; :<C-u>Denite register -filter-updatetime=1<CR>
         nnoremap <silent> [denite]h :<C-u>Denite help -filter-updatetime=1 -start-filter<CR>
 
         call denite#custom#option('default', 'prompt', '>')
@@ -263,8 +262,8 @@
     repo = 'easymotion/vim-easymotion'
     hook_add = '''
         let g:EasyMotion_do_mapping = 0
-        nmap ; <Plug>(easymotion-overwin-f2)
-        vmap ; <Plug>(easymotion-bd-f2)
+        nmap ' <Plug>(easymotion-overwin-f2)
+        vmap ' <Plug>(easymotion-bd-f2)
     '''
 
 
