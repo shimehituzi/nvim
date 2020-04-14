@@ -147,9 +147,9 @@
     on_ft = ['markdown', 'pandoc.markdown', 'rmd']
     build = 'cd app & yarn install'
     hook_source = '''
+        nnoremap <silent> [localmap]<C-j> :<C-u>TableFormat<CR>
+        nnoremap          [localmap]<C-k> <esc>o<div style="text-align:center;"><img src="" width=50%></div><esc>F"i
         nmap              [localmap]<C-l> <Plug>MarkdownPreviewToggle
-        nnoremap <silent> [localmap]<C-k> :<C-u>TableFormat<CR>
-        nnoremap          [localmap]<C-j> <esc>o<div style="text-align:center;"><img src="" width=50%></div><esc>F"i
         inoremap <expr>   [localmap]<C-j> expand("<cWORD>")=~"^\\" ? "\<esc>yyplcwend\<esc>O\<Tab>" : ""
         " markdown バッファを開いたときにプレビューを表示する
         let g:mkdp_auto_start = 0
