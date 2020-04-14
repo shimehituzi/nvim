@@ -122,8 +122,6 @@
     repo = 'plasticboy/vim-markdown'
     on_ft = ['markdown']
     hook_source = '''
-        nnoremap [localmap]4 <esc>o<div style="text-align:center;"><img src="" width=50%></div><esc>F"i
-        inoremap <expr> <C-a><C-a> expand("<cWORD>")=~"^\\" ? "\<esc>yyplcwend\<esc>O\<Tab>" : ""
         " 折りたたみを無効
         let g:vim_markdown_folding_disabled = 1
         " 折りたたみのレベルを設定
@@ -149,7 +147,10 @@
     on_ft = ['markdown', 'pandoc.markdown', 'rmd']
     build = 'cd app & yarn install'
     hook_source = '''
-        nmap [localmap]2 <Plug>MarkdownPreviewToggle
+        nmap              [localmap]<C-j> <Plug>MarkdownPreviewToggle
+        nnoremap <silent> [localmap]<C-k> :<C-u>TableFormat<CR>
+        nnoremap          [localmap]<C-l> <esc>o<div style="text-align:center;"><img src="" width=50%></div><esc>F"i
+        inoremap <expr>   [localmap]<C-j> expand("<cWORD>")=~"^\\" ? "\<esc>yyplcwend\<esc>O\<Tab>" : ""
         " markdown バッファを開いたときにプレビューを表示する
         let g:mkdp_auto_start = 0
         " 違うバッファに映った時にプレビューを閉じる
@@ -205,9 +206,6 @@
 [[plugins]]
     repo = 'godlygeek/tabular'
     on_ft = ['markdown']
-    hook_source = '''
-        nnoremap <silent> [localmap]3 :<C-u>TableFormat<CR>
-    '''
 
 
 [[plugins]]
