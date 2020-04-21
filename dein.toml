@@ -222,9 +222,9 @@
 [[plugins]]
     repo = 'cohama/lexima.vim'
     hook_add = '''
-        call lexima#add_rule({'char': '<', 'input_after': '>', 'filetype': ['typescript.tsx']})
-        call lexima#add_rule({'char': '>', 'at': '\%#>', 'leave': 1, 'filetype': ['typescript.tsx']})
-        call lexima#add_rule({'char': '<BS>', 'at': '<\%#>', 'delete': 1, 'filetype': ['typescript.tsx']})
+        call lexima#add_rule({'char': '<', 'input_after': '>', 'filetype': ['typescript.tsx', 'typescript']})
+        call lexima#add_rule({'char': '>', 'at': '\%#>', 'leave': 1, 'filetype': ['typescript.tsx', 'typescript']})
+        call lexima#add_rule({'char': '<BS>', 'at': '<\%#>', 'delete': 1, 'filetype': ['typescript.tsx', 'typescript']})
 
         call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': ['tex', 'markdown']})
         call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': ['tex', 'markdown']})
