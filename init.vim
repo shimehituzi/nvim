@@ -148,7 +148,7 @@ nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
-nnoremap , +
+nnoremap ' :!
 nnoremap " zt15<C-y>
 nnoremap t <C-a>
 nnoremap T <C-x>
