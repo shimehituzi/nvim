@@ -5,6 +5,8 @@
     "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph",
     "tsserver.enableJavascript": true,
     "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsxB"],
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "coc.preferences.formatOnSaveFiletypes": ["haskell"],
     "languageserver": {
         "haskell": {

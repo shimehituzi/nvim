@@ -140,7 +140,8 @@ inoremap <C-p> <Nop>
 
 
 "  ノーマルモードのマッピング 1
-nmap 0 %
+let g:loaded_matchit = 1  " matchit を無効にする
+nnoremap 0 %
 nnoremap ; "
 nnoremap <C-e> <C-e>
 nnoremap <C-Space> <C-y>

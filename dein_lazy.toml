@@ -5,19 +5,23 @@
     merged = '0'
     hook_source = '''
         " ----------------------------------マッピング----------------------------------
+        nmap     <silent> !              <Plug>(coc-declaration)
+        nmap     <silent> @              <Plug>(coc-definition)
+        nmap     <silent> #              <Plug>(coc-references)
+        nmap     <silent> $              <Plug>(coc-implementation)
+        nmap     <silent> %              <Plug>(coc-type-definition)
+        nmap              ^              <Plug>(coc-fix-current)
+        nmap              &              <Plug>(coc-codeaction)
+        nmap              *              <Plug>(coc-rename)
+        nmap              )              <Plug>(coc-format)
+        nmap              (              <Plug>(coc-refactor)
+        nmap     <silent> {              <Plug>(coc-diagnostic-prev)
+        nmap     <silent> }              <Plug>(coc-diagnostic-next)
         nnoremap <silent> <space><space> :<C-u>call <SID>show_documentation()<CR>
-        nmap              !              <Plug>(coc-codeaction)
-        nmap     <silent> @              <Plug>(coc-references)
-        nmap     <silent> #              <Plug>(coc-definition)
-        nmap              $              <Plug>(coc-rename)
-        nnoremap <silent> ^              :<C-u>CocList actions<cr>
-        nnoremap <silent> &              :<C-u>CocList diagnostics<cr>
-        nnoremap <silent> *              :<C-u>CocList outline<cr>
-        nmap     <silent> (              <Plug>(coc-diagnostic-prev)
-        nmap     <silent> )              <Plug>(coc-diagnostic-next)
+        nnoremap <silent> <space>l       :<C-u>CocList<cr>
+        nnoremap <silent> <space>k       :<C-u>CocList outline<cr>
         nnoremap <silent> <space>r       :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
         " ------------------------------------------------------------------------------
-
 
 
         " --------------------------------その他の設定--------------------------------
@@ -48,6 +52,9 @@
         augroup end
         " =======ステータスラインの設定=======
         set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+        " =======テキストオブジェクト （関数）=======
+        xmap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
         " ------------------------------------------------------------------------------
 
 
@@ -74,11 +81,6 @@
         " nmap <silent>     [coc]g <Plug>(coc-range-select)
         " xmap              [coc]t <Plug>(coc-format-selected)
         " nmap              [coc]t <Plug>(coc-format-selected)
-        " =======テキストオブジェクト （関数）=======
-        " xmap if <Plug>(coc-funcobj-i)
-        " xmap af <Plug>(coc-funcobj-a)
-        " map if <Plug>(coc-funcobj-i)
-        " map af <Plug>(coc-funcobj-a)
         " ------------------------------------------------------------------------------
 
 
