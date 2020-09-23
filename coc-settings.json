@@ -2,7 +2,7 @@
     "suggest.noselect": true,
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "suggest.enablePreselect": true,
-    "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph",
+    "clangd.disableSnippetCompletion": true,
     "tsserver.enableJavascript": true,
     "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsxB"],
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
@@ -29,5 +29,6 @@
                 }
             }
         }
-    }
+    },
+    "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph"
 }
