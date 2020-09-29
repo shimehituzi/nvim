@@ -45,6 +45,7 @@ set shada="NONE"
 let g:netrw_dirhistmax=0
 set timeoutlen=4000
 set updatetime=300
+set nofixeol
 
 " 見た目の設定
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
