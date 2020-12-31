@@ -8,6 +8,7 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "coc.preferences.formatOnSaveFiletypes": ["haskell"],
+    "prettier.eslintIntegration": true,
     "languageserver": {
         "haskell": {
             "command": "hie-wrapper",
