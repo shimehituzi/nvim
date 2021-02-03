@@ -224,11 +224,12 @@
             \ 'x': ['tsd', 'tsD', '<F7>'],
             \ 'i': ['<F7>'],
             \}
-        nmap [localmap]2 <plug>(vimtex-compile)
-        nmap [localmap]3 <plug>(vimtex-view)
-        nmap [localmap]4 <plug>(vimtex-toc-open)
-        nmap [localmap]k <plug>(vimtex-doc-package)
-        imap <C-a><C-a> <plug>(vimtex-delim-close)
+        nmap [localmap]<C-j> <plug>(vimtex-compile)
+        nmap [localmap]<C-k> <plug>(vimtex-view)
+        nmap [localmap]<C-l> <plug>(vimtex-toc-open)
+        nmap [localmap]<C-e> <plug>(vimtex-errors)
+        nmap [localmap]<C-h> <plug>(vimtex-doc-package)
+        imap <C-a><C-e>  <plug>(vimtex-delim-close)
         " 警告のみの時は quickfix を開かない
         let g:vimtex_quickfix_open_on_warning = 0
         " quickfix を自動的に閉じる
