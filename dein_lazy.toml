@@ -5,22 +5,19 @@
     merged = '0'
     hook_source = '''
         " ----------------------------------マッピング----------------------------------
-        nnoremap <silent> !              :<C-u>CocList<cr>
-        nmap     <silent> @              <Plug>(coc-type-definition)
+        nmap              !              <Plug>(coc-refactor)
+        nmap     <silent> @              <Plug>(coc-references)
         nmap     <silent> #              <Plug>(coc-definition)
-        nmap     <silent> $              <Plug>(coc-implementation)
-        nmap     <silent> %              <Plug>(coc-declaration)
-        nmap              ^              <Plug>(coc-fix-current)
-        nmap              &              <Plug>(coc-codeaction)
+        nnoremap <silent> $              :<C-u>CocList outline<cr>
+        nnoremap <silent> ^              :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
+        nnoremap <silent> &              :<C-u>CocList<CR>
         nmap              *              <Plug>(coc-rename)
-        nmap              (              <Plug>(coc-refactor)
-        nmap              )              <Plug>(coc-format)
+        nmap              (              <Plug>(coc-format)
+        nmap              )              <Plug>(coc-fix-current)
+        nmap              0              <Plug>(coc-codeaction)
         nmap     <silent> {              <Plug>(coc-diagnostic-prev)
         nmap     <silent> }              <Plug>(coc-diagnostic-next)
         nnoremap <silent> <space><space> :<C-u>call <SID>show_documentation()<CR>
-        nmap     <silent> <space>k       <Plug>(coc-references)
-        nnoremap <silent> <space>l       :<C-u>CocList outline<cr>
-        nnoremap <silent> <space>r       :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
         " ------------------------------------------------------------------------------
 
 
