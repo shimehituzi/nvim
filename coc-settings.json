@@ -10,5 +10,13 @@
     "coc.preferences.formatOnSaveFiletypes": ["haskell"],
     "prettier.eslintIntegration": true,
     "typescript.showUnused": false,
-    "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph"
+    "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph",
+    "languageserver": {
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+            "filetypes": ["haskell", "lhaskell"]
+        }
+    }
 }
