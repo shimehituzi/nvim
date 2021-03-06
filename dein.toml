@@ -8,6 +8,10 @@
 
 
 [[plugins]]
+    repo = 'nvim-treesitter/nvim-treesitter'
+
+
+[[plugins]]
     repo = 'vim-airline/vim-airline'
     depends = ['vim-airline-themes']
     hook_add = '''
