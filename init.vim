@@ -331,3 +331,15 @@ function! s:syntax_range_dein() abort
   call SyntaxRange#Include(printf(start, "'''"), "'''", 'vim', '')
   call SyntaxRange#Include(printf(start, '"""'), '"""', 'vim', '')
 endfunction
+
+
+" vim Treesitter の設定
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = { enable = true },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
+  indent = { enable = true },
+}
+EOF
