@@ -94,27 +94,8 @@
 
 
 [[plugins]]
-    repo = 'cespare/vim-toml'
-    on_ft = ['toml']
-
-
-[[plugins]]
     repo = 'inkarkat/vim-SyntaxRange'
     on_ft = ['toml']
-
-
-[[plugins]]
-    repo = 'MaxMEllon/vim-jsx-pretty'
-    on_ft = ['javascript', 'javascriptreact', 'typescriptreact']
-    hook_source = '''
-        let g:vim_jsx_pretty_highlight_close_tag = 1
-        let g:vim_jsx_pretty_colorful_config = 1
-    '''
-
-
-[[plugins]]
-    repo = 'leafgarland/typescript-vim'
-    on_ft = ['typescript', 'typescriptreact']
 
 
 [[plugins]]
@@ -244,22 +225,3 @@
             \ 'todo_sorted': 0,
             \}
     '''
-
-[[plugins]]
-    repo = 'neovimhaskell/haskell-vim'
-    on_ft = ['haskell']
-    hook_source = '''
-        filetype plugin indent on
-        let g:haskell_enable_quantification = 1
-        let g:haskell_enable_recursivedo = 1
-        let g:haskell_enable_arrowsyntax = 1
-        let g:haskell_enable_pattern_synonyms = 1
-        let g:haskell_enable_typeroles = 1
-        let g:haskell_enable_static_pointers = 1
-        let g:haskell_backpack = 1
-    '''
-
-
-[[plugins]]
-    repo = 'derekwyatt/vim-scala'
-    on_ft = ['scala']
