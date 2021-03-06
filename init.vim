@@ -285,9 +285,6 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead * :call MyIndentFunction()
 augroup END
 
-" sbt を scala のファイルとして認識
-au BufRead,BufNewFile * if &ft == 'sbt' | set ft=scala | endif
-
 
 " インデント設定のないファイルタイプの設定
 " http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
