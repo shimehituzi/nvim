@@ -9,6 +9,5 @@
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "coc.preferences.formatOnSaveFiletypes": ["haskell"],
     "prettier.eslintIntegration": true,
-    "typescript.showUnused": false,
-    "solargraph.commandPath": "/Users/shimehituzi/.rbenv/shims/solargraph"
+    "typescript.showUnused": false
 }
