@@ -295,6 +295,7 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
+
 " ==================================== 背景を透過 ====================================
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText guibg=NONE ctermbg=NONE
@@ -322,4 +323,15 @@ hi GitGutterDeleteIntraLine guibg=NONE ctermbg=NONE
 hi GitGutterDeleteInvisible guibg=NONE ctermbg=NONE
 hi GitGutterDeleteLine guibg=NONE ctermbg=NONE
 hi GitGutterDeleteLineNr guibg=NONE ctermbg=NONE
-hi VertSplit ctermfg=60 ctermbg=60 cterm=NONE guifg=#5f99cb guibg=NONE gui=NONE
+
+
+
+" ==================================== カラースキーム修正 ====================================
+hi NonText      ctermfg=74 ctermbg=NONE cterm=NONE guifg=#61bbc8 guibg=NONE gui=NONE
+hi Comment      ctermfg=44 ctermbg=NONE cterm=NONE guifg=#5c98cd guibg=NONE gui=NONE
+hi MatchParen   ctermfg=203 ctermbg=NONE cterm=underline guifg=#ff6541 guibg=NONE gui=underline
+hi LineNr       ctermfg=223 ctermbg=NONE cterm=NONE guifg=#929ba1 guibg=NONE gui=NONE
+hi VertSplit    ctermfg=60 ctermbg=60 cterm=NONE guifg=#5f99cb guibg=NONE gui=NONE
+hi IncSearch    ctermfg=23 ctermbg=186 cterm=NONE guifg=#2b3e50 guibg=#f5f499 gui=NONE
+hi Search       ctermfg=23 ctermbg=186 cterm=NONE guifg=#2b3e50 guibg=#d8e4f8 gui=underline
+hi Folded       ctermfg=68 ctermbg=23 cterm=NONE guifg=#5c98cd guibg=NONE gui=bold
