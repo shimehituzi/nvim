@@ -47,16 +47,6 @@ set timeoutlen=4000
 set updatetime=300
 set nofixeol
 
-" 背景を透過
-augroup TransparentBG
-    autocmd!
-    autocmd Colorscheme * highlight Normal ctermbg=none
-    autocmd Colorscheme * highlight NonText ctermbg=none
-    autocmd Colorscheme * highlight LineNr ctermbg=none
-    autocmd Colorscheme * highlight Folded ctermbg=none
-    autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
-augroup END
-
 " 見た目の設定
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -303,3 +293,32 @@ require'nvim-treesitter.configs'.setup {
   indent = { enable = true },
 }
 EOF
+
+" ==================================== 背景を透過 ====================================
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi Folded guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi StatusLine guibg=NONE ctermbg=NONE
+hi StatusLineNC guibg=NONE ctermbg=NONE
+hi GitGutterAdd guibg=NONE ctermbg=NONE
+hi GitGutterAddIntraLine guibg=NONE ctermbg=NONE
+hi GitGutterAddInvisible guibg=NONE ctermbg=NONE
+hi GitGutterAddLine guibg=NONE ctermbg=NONE
+hi GitGutterAddLineNr guibg=NONE ctermbg=NONE
+hi GitGutterChange guibg=NONE ctermbg=NONE
+hi GitGutterChangeDelete guibg=NONE ctermbg=NONE
+hi GitGutterChangeDeleteInvisible guibg=NONE ctermbg=NONE
+hi GitGutterChangeDeleteLine guibg=NONE ctermbg=NONE
+hi GitGutterChangeDeleteLineNr guibg=NONE ctermbg=NONE
+hi GitGutterChangeInvisible guibg=NONE ctermbg=NONE
+hi GitGutterChangeLine guibg=NONE ctermbg=NONE
+hi GitGutterChangeLineNr guibg=NONE ctermbg=NONE
+hi GitGutterDelete guibg=NONE ctermbg=NONE
+hi GitGutterDeleteIntraLine guibg=NONE ctermbg=NONE
+hi GitGutterDeleteInvisible guibg=NONE ctermbg=NONE
+hi GitGutterDeleteLine guibg=NONE ctermbg=NONE
+hi GitGutterDeleteLineNr guibg=NONE ctermbg=NONE
+hi VertSplit ctermfg=60 ctermbg=60 cterm=NONE guifg=#5f99cb guibg=NONE gui=NONE
