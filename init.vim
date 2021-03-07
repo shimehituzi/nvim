@@ -149,7 +149,6 @@ inoremap <C-p> <Nop>
 
 
 "  ノーマルモードのマッピング 1
-nnoremap ; "
 nnoremap <C-e> <C-e>
 nnoremap <C-Space> <C-y>
 nnoremap - *N
@@ -157,7 +156,7 @@ nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
 nnoremap ' :!
-nnoremap " zt15<C-y>
+nnoremap + zt15<C-y>
 nnoremap t <C-a>
 nnoremap T <C-x>
 vnoremap <silent> <C-y> y']
