@@ -12,6 +12,100 @@
 
 
 [[plugins]]
+    repo = 'neoclide/coc.nvim'
+    rev = 'release'
+    merged = '0'
+    hook_add = '''
+        " ----------------------------------マッピング----------------------------------
+        nmap              !              <Plug>(coc-refactor)
+        nmap     <silent> @              <Plug>(coc-references)
+        nmap     <silent> #              <Plug>(coc-definition)
+        nnoremap <silent> $              :<C-u>CocList outline<cr>
+        nnoremap <silent> ^              :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
+        nnoremap <silent> &              :<C-u>CocList<CR>
+        nmap              *              <Plug>(coc-rename)
+        nmap              (              <Plug>(coc-format)
+        nmap              )              <Plug>(coc-fix-current)
+        nmap              0              <Plug>(coc-codeaction)
+        nmap     <silent> {              <Plug>(coc-diagnostic-prev)
+        nmap     <silent> }              <Plug>(coc-diagnostic-next)
+        nnoremap <silent> <space><space> :<C-u>call <SID>show_documentation()<CR>
+        " ------------------------------------------------------------------------------
+
+
+        " --------------------------------その他の設定--------------------------------
+        " =======プレースホルダーの移動=======
+        " これをしないと <C-j> と <C-k> にスニペットの移動がマッピングされて補完の選択ができなくなってしまう
+        let g:coc_snippet_next = "<C-n>"
+        let g:coc_snippet_prev = "<C-p>"
+        " =======コマンド定義=======
+        command! -nargs=0 Format :call CocAction('format')
+        command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+        command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+        " 関数（定義参照で使う関数）
+        function! s:show_documentation()
+            if (index(['vim','help'], &filetype) >= 0)
+                execute 'h '.expand('<cword>')
+            else
+                call CocAction('doHover')
+            endif
+        endfunction
+        " =======オートコマンド=======
+        autocmd CursorHold * silent call CocActionAsync('highlight')
+        augroup mygroup
+            autocmd!
+            " Setup formatexpr specified filetype(s).
+            autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+            " Update signature help on jump placeholder
+            autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+        augroup end
+        " =======ステータスラインの設定=======
+        set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+        " =======テキストオブジェクト （関数）=======
+        xmap if <Plug>(coc-funcobj-i)
+        xmap af <Plug>(coc-funcobj-a)
+        " ------------------------------------------------------------------------------
+
+
+
+        " -----------------------------使ってないマッピング-----------------------------
+        " =======マッピングのリーダー=======
+        " nnoremap [coc] <nop>
+        " nmap <space><space> [coc]
+        " =======cocList=======
+        " nnoremap <silent> [coc]f :<C-u>CocNext<CR>
+        " nnoremap <silent> [coc]d :<C-u>CocPrev<CR>
+        " nnoremap <silent> [coc]s :<C-u>CocListResume<CR>
+        " nnoremap <silent> [coc]a :<C-u>CocList commands<cr>
+        " nnoremap <silent> [coc]w :<C-u>CocList -I symbols<cr>
+        " nnoremap <silent> [coc]q :<C-u>CocList extensions<cr>
+        " =======LSP=======
+        " nmap     <silent> [coc]l <Plug>(coc-type-definition)
+        " nmap     <silent> [coc]i <Plug>(coc-implementation)
+        " nmap              [coc]h <Plug>(coc-fix-current)
+        " =======LSP2=======
+        " xmap             [coc]y <Plug>(coc-codeaction-selected)
+        " nmap             [coc]y <Plug>(coc-codeaction-selected)
+        " xmap <silent>     [coc]g <Plug>(coc-range-select)
+        " nmap <silent>     [coc]g <Plug>(coc-range-select)
+        " xmap              [coc]t <Plug>(coc-format-selected)
+        " nmap              [coc]t <Plug>(coc-format-selected)
+        " ------------------------------------------------------------------------------
+
+
+
+        " -----------------------------------環境構築-----------------------------------
+        " コマンドラインで実行した → ~/.config/coc/extensions/node_modules に拡張が追加
+        " :CocInstall coc-json coc-solargraph coc-tsserver coc-eslint
+        " Solargraph のために ruby のバージョンは 2.5.1 が必要っぽい？
+        " $ gem install neovim; gem install solargraph
+        " $ bundle update --bundler
+        " $ gem install bundler:1.17.3
+        " ------------------------------------------------------------------------------
+    '''
+
+
+[[plugins]]
     repo = 'vim-airline/vim-airline'
     depends = ['vim-airline-themes']
     hook_add = '''
