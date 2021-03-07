@@ -282,55 +282,7 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.tex setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.json setlocal tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.java setlocal tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead * :call MyIndentFunction()
 augroup END
-
-
-" インデント設定のないファイルタイプの設定
-" http://labs.timedia.co.jp/2011/04/9-points-to-customize-automatic-indentation-in-vim.html
-function! MyIndentFunction()
-    if !exists('b:did_indent')
-        setlocal autoindent
-        setlocal indentexpr=GetIndent()
-        setlocal indentkeys=!,o,O
-
-        setlocal expandtab
-        setlocal tabstop<
-        setlocal softtabstop=2
-        setlocal shiftwidth=2
-
-        let b:undo_indent = 'setlocal '.join([
-                    \   'autoindent<',
-                    \   'expandtab<',
-                    \   'indentexpr<',
-                    \   'indentkeys<',
-                    \   'shiftwidth<',
-                    \   'softtabstop<',
-                    \   'tabstop<',
-                    \ ])
-
-        function! GetIndent()
-            return -1
-        endfunction
-
-        let b:did_indent = 1
-    endif
-endfunction
-
-
-
-" tomlにvimのsyntax highlightを効かせる
-augroup MyVimrcTOML
-    autocmd!
-augroup END
-autocmd MyVimrcTOML BufNewFile,BufRead dein*.toml call s:syntax_range_dein()
-function! s:syntax_range_dein() abort
-  let start = '^\s*hook_\%('.
-  \           'add\|source\|post_source\|post_update'.
-  \           '\)\s*=\s*%s'
-  call SyntaxRange#Include(printf(start, "'''"), "'''", 'vim', '')
-  call SyntaxRange#Include(printf(start, '"""'), '"""', 'vim', '')
-endfunction
 
 
 " vim Treesitter の設定
