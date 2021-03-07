@@ -83,8 +83,8 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 inoremap <expr><silent> <C-j> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap <expr><silent> <C-k> pumvisible() ? "\<C-p>" : coc#refresh()
+inoremap <silent><expr> <C-c> pumvisible() ? "\<C-e>" : ""
 inoremap <silent><expr> jk pumvisible() ? coc#_select_confirm() : coc#refresh()
-inoremap <expr><silent> jj pumvisible() ? "\<C-o>\<esc>" : "\<C-o>"
 inoremap j<space> j
 
 
@@ -130,7 +130,6 @@ inoremap <S-Tab> <Tab>
 inoremap <silent><C-e> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
 inoremap <C-s> <Esc>gUawea
 inoremap <C-d> <Del>
-inoremap <silent><expr><C-c> pumvisible() ? "\<C-e>" : ""
 
 
 " インサートモードのマッピング2
