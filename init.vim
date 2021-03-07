@@ -33,7 +33,7 @@ endif
 
 " 最低限の設定
 syntax enable
-colorscheme lucario
+colorscheme sonokai
 set fenc=utf-8
 set nobackup
 set nowritebackup
@@ -293,6 +293,7 @@ require'nvim-treesitter.configs'.setup {
   indent = { enable = true },
 }
 EOF
+
 
 " ==================================== 背景を透過 ====================================
 hi Normal guibg=NONE ctermbg=NONE

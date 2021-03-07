@@ -12,6 +12,10 @@
 
 
 [[plugins]]
+    repo = 'sainnhe/sonokai'
+
+
+[[plugins]]
     repo = 'neoclide/coc.nvim'
     rev = 'release'
     merged = '0'
