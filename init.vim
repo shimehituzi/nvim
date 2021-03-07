@@ -47,6 +47,16 @@ set timeoutlen=4000
 set updatetime=300
 set nofixeol
 
+" 背景を透過
+augroup TransparentBG
+    autocmd!
+    autocmd Colorscheme * highlight Normal ctermbg=none
+    autocmd Colorscheme * highlight NonText ctermbg=none
+    autocmd Colorscheme * highlight LineNr ctermbg=none
+    autocmd Colorscheme * highlight Folded ctermbg=none
+    autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+augroup END
+
 " 見た目の設定
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -266,6 +276,7 @@ augroup helpfiles
     au!
     au BufRead,BufEnter */doc/* if &filetype=='help' | wincmd L | endif
 augroup END
+
 
 " ファイルタイプ毎のインデントの設定（インデントを4にする設定）
 augroup fileTypeIndent
