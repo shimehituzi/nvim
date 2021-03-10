@@ -297,32 +297,32 @@ EOF
 
 
 " ==================================== 背景を透過 ====================================
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
-hi Folded guibg=NONE ctermbg=NONE
-hi SignColumn guibg=NONE ctermbg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
-hi StatusLine guibg=NONE ctermbg=NONE
-hi StatusLineNC guibg=NONE ctermbg=NONE
-hi GitGutterAdd guibg=NONE ctermbg=NONE
-hi GitGutterAddIntraLine guibg=NONE ctermbg=NONE
-hi GitGutterAddInvisible guibg=NONE ctermbg=NONE
-hi GitGutterAddLine guibg=NONE ctermbg=NONE
-hi GitGutterAddLineNr guibg=NONE ctermbg=NONE
-hi GitGutterChange guibg=NONE ctermbg=NONE
-hi GitGutterChangeDelete guibg=NONE ctermbg=NONE
-hi GitGutterChangeDeleteInvisible guibg=NONE ctermbg=NONE
-hi GitGutterChangeDeleteLine guibg=NONE ctermbg=NONE
-hi GitGutterChangeDeleteLineNr guibg=NONE ctermbg=NONE
-hi GitGutterChangeInvisible guibg=NONE ctermbg=NONE
-hi GitGutterChangeLine guibg=NONE ctermbg=NONE
-hi GitGutterChangeLineNr guibg=NONE ctermbg=NONE
-hi GitGutterDelete guibg=NONE ctermbg=NONE
-hi GitGutterDeleteIntraLine guibg=NONE ctermbg=NONE
-hi GitGutterDeleteInvisible guibg=NONE ctermbg=NONE
-hi GitGutterDeleteLine guibg=NONE ctermbg=NONE
-hi GitGutterDeleteLineNr guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
+" hi NonText guibg=NONE ctermbg=NONE
+" hi LineNr guibg=NONE ctermbg=NONE
+" hi Folded guibg=NONE ctermbg=NONE
+" hi SignColumn guibg=NONE ctermbg=NONE
+" hi EndOfBuffer guibg=NONE ctermbg=NONE
+" hi StatusLine guibg=NONE ctermbg=NONE
+" hi StatusLineNC guibg=NONE ctermbg=NONE
+" hi GitGutterAdd guibg=NONE ctermbg=NONE
+" hi GitGutterAddIntraLine guibg=NONE ctermbg=NONE
+" hi GitGutterAddInvisible guibg=NONE ctermbg=NONE
+" hi GitGutterAddLine guibg=NONE ctermbg=NONE
+" hi GitGutterAddLineNr guibg=NONE ctermbg=NONE
+" hi GitGutterChange guibg=NONE ctermbg=NONE
+" hi GitGutterChangeDelete guibg=NONE ctermbg=NONE
+" hi GitGutterChangeDeleteInvisible guibg=NONE ctermbg=NONE
+" hi GitGutterChangeDeleteLine guibg=NONE ctermbg=NONE
+" hi GitGutterChangeDeleteLineNr guibg=NONE ctermbg=NONE
+" hi GitGutterChangeInvisible guibg=NONE ctermbg=NONE
+" hi GitGutterChangeLine guibg=NONE ctermbg=NONE
+" hi GitGutterChangeLineNr guibg=NONE ctermbg=NONE
+" hi GitGutterDelete guibg=NONE ctermbg=NONE
+" hi GitGutterDeleteIntraLine guibg=NONE ctermbg=NONE
+" hi GitGutterDeleteInvisible guibg=NONE ctermbg=NONE
+" hi GitGutterDeleteLine guibg=NONE ctermbg=NONE
+" hi GitGutterDeleteLineNr guibg=NONE ctermbg=NONE
 
 
 
