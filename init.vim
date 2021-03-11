@@ -125,8 +125,7 @@ onoremap ad a"
 onoremap id i"
 
 " インサートモードのマッピング
-inoremap <Tab> <C-o>
-inoremap <S-Tab> <Tab>
+inoremap <S-Tab> <C-o>
 inoremap <silent><C-e> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
 inoremap <C-l> <C-g>U<Right>
 inoremap <C-h> <C-g>U<Left>
