@@ -7,6 +7,8 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "coc.preferences.formatOnSaveFiletypes": ["haskell"],
+    "typescript.showUnused": false,
     "prettier.eslintIntegration": true,
-    "typescript.showUnused": false
+    "prettier.semi": false,
+    "prettier.singleQuote": true
 }
