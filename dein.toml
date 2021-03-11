@@ -14,7 +14,10 @@
 [[plugins]]
     repo = 'sainnhe/sonokai'
     hook_add = '''
+        let g:sonokai_style = 'maia'
         let g:sonokai_transparent_background = 1
+        let g:sonokai_enable_italic = 1
+        let g:sonokai_disable_italic_comment = 1
     '''
 
 

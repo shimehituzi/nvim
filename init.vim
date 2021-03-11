@@ -306,3 +306,4 @@ hi VertSplit    ctermfg=60 ctermbg=60 cterm=NONE guifg=#5f99cb guibg=NONE gui=NO
 hi IncSearch    ctermfg=23 ctermbg=186 cterm=NONE guifg=#2b3e50 guibg=#f5f499 gui=NONE
 hi Search       ctermfg=23 ctermbg=186 cterm=NONE guifg=#2b3e50 guibg=#d8e4f8 gui=underline
 hi Folded       ctermfg=68 ctermbg=23 cterm=NONE guifg=#5c98cd guibg=NONE gui=bold
+hi! link Grey Purple
