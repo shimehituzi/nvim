@@ -288,10 +288,30 @@ augroup END
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
-  highlight = { enable = true },
-  incremental_selection = { enable = true },
-  textobjects = { enable = true },
-  indent = { enable = true },
+  highlight = {
+    enable = true,
+    disable = {
+      rust,
+    }
+  },
+  incremental_selection = {
+    enable = true,
+    disable = {
+      rust,
+    }
+  },
+  textobjects = {
+    enable = true,
+    disable = {
+      rust,
+    }
+  },
+  indent = {
+    enable = true,
+    disable = {
+      rust,
+    }
+  },
 }
 EOF
 
