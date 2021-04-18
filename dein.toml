@@ -74,6 +74,8 @@
         " =======テキストオブジェクト （関数）=======
         xmap if <Plug>(coc-funcobj-i)
         xmap af <Plug>(coc-funcobj-a)
+        omap if <Plug>(coc-funcobj-i)
+        omap af <Plug>(coc-funcobj-a)
         " ------------------------------------------------------------------------------
 
 
@@ -331,8 +333,8 @@
         call lexima#add_rule({'char': '{', 'at': '\\\%#', 'input_after': ' \}', 'filetype' : ['tex', 'markdown']})
         call lexima#add_rule({'char': '<BS>', 'at': '\\{\%#', 'input': '<BS><BS><Del><Del><Del>', 'filetype' : ['tex', 'markdown']})
 
-        " inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
-        " inoremap <C-h> <C-r>=lexima#insmode#leave_all('<LT>C-G>U<LT>LEFT>')<CR>
+        inoremap <C-l> <C-r>=lexima#insmode#leave(1, '<LT>C-G>U<LT>RIGHT>')<CR>
+        inoremap <C-h> <C-r>=lexima#insmode#leave_all('<LT>C-G>U<LT>LEFT>')<CR>
     '''
 
 

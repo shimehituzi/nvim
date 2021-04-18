@@ -123,18 +123,21 @@ onoremap as a[
 onoremap is i[
 onoremap ad a"
 onoremap id i"
+xnoremap aa a>
+xnoremap ia i>
+xnoremap as a[
+xnoremap is i[
+xnoremap ad a"
+xnoremap id i"
 
 " インサートモードのマッピング
 inoremap <S-Tab> <C-o>
-inoremap <silent><C-e> <C-r>=lexima#insmode#leave_all('<LT>C-f>')<CR>
-inoremap <C-l> <C-g>U<Right>
-inoremap <C-h> <C-g>U<Left>
+inoremap <C-e> <C-o>$
 inoremap <C-s> <Esc>gUawea
 inoremap <C-d> <Del>
 
 
 " インサートモードのマッピング2
-inoremap <C-t> <esc>cit
 inoremap <C-n> <Nop>
 inoremap <C-p> <Nop>
 
@@ -213,7 +216,9 @@ nnoremap <expr> <C-_> ThisKeyIsNop()
 augroup fileTypeMapping
     au FileType rust nnoremap <C-o> A;<ESC>
     au FileType typescript.tsx nnoremap <C-o> O<Tab>
+    au FileType typescript.tsx inoremap <C-t> <esc>cit
 augroup END
+
 
 
 " ==================================== マッピングのための自作関数 ====================================
