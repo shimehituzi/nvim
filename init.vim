@@ -292,7 +292,7 @@ augroup fileTypeIndent
 augroup END
 
 
-" vim Treesitter の設定
+" ==================================== nvim-treesitter の設定 ====================================
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",
