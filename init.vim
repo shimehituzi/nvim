@@ -295,7 +295,7 @@ augroup END
 " vim Treesitter の設定
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = "maintained",
   highlight = {
     enable = true,
     disable = {
