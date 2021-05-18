@@ -6,7 +6,7 @@
     "tsserver.enableJavascript": true,
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "coc.preferences.formatOnSaveFiletypes": ["haskell"],
+    "coc.preferences.formatOnSaveFiletypes": ["go"],
     "typescript.showUnused": false,
     "prettier.eslintIntegration": true,
     "prettier.semi": false,
