@@ -26,6 +26,7 @@
     rev = 'release'
     merged = '0'
     hook_add = '''
+        let g:coc_global_extensions = ['coc-vimlsp', 'coc-json', 'coc-git', 'coc-go', 'coc-tsserver', 'coc-eslint', 'coc-prettier', 'coc-sh', 'coc-clangd', 'coc-html', 'coc-css', 'coc-rust-analyzer']
         " ----------------------------------マッピング----------------------------------
         nmap              !              <Plug>(coc-refactor)
         nmap     <silent> @              <Plug>(coc-references)
