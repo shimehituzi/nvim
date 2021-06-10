@@ -285,7 +285,7 @@
         nnoremap <silent> ;
         \ :Defx
         \ -columns=icons:indent:filename:type
-        \ -sort=extension
+        \ -sort=extension:filename
         \ -toggle
         \ -split=vertical
         \ -direction=botright
