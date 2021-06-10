@@ -33,7 +33,7 @@
 [[plugins]]
     repo = 'iamcco/markdown-preview.nvim'
     on_ft = ['markdown', 'pandoc.markdown', 'rmd']
-    build = 'cd app & yarn install'
+    build = 'sh -c "cd app & yarn install"'
     hook_source = '''
         nnoremap <silent> [localmap]<C-j> :<C-u>TableFormat<CR>
         nnoremap          [localmap]<C-k> <esc>o<div style="text-align:center;"><img src="" width=50%></div><esc>F"i
