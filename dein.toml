@@ -45,9 +45,9 @@
         nmap              !              <Plug>(coc-refactor)
         nmap     <silent> @              <Plug>(coc-references)
         nmap     <silent> #              <Plug>(coc-definition)
-        nnoremap <silent> $              :<C-u>CocList outline<cr>
+        nnoremap <silent> $              :<C-u>CocList diagnostics<cr>
         nnoremap <silent> ^              :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
-        nnoremap <silent> &              :<C-u>CocList<CR>
+        nnoremap <silent> &              :<C-u>CocList outline<CR>
         nmap              *              <Plug>(coc-rename)
         nmap              (              <Plug>(coc-format)
         nmap              )              <Plug>(coc-fix-current)
