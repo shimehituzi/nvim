@@ -43,9 +43,9 @@
 
         " ----------------------------------マッピング----------------------------------
         nnoremap <silent> !              :<C-u>CocList diagnostics<cr>
-        nnoremap <silent> @              :<C-u>CocList outline<CR>
+        nmap     <silent> @              <Plug>(coc-references)
         nmap     <silent> #              <Plug>(coc-definition)
-        nmap     <silent> $              <Plug>(coc-references)
+        nnoremap <silent> $              :<C-u>CocList outline<CR>
         nnoremap <silent> ^              :<C-u>CocRestart<CR>:<C-u>GitGutterAll<CR>
         nmap              &              <Plug>(coc-refactor)
         nmap              *              <Plug>(coc-rename)
