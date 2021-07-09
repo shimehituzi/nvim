@@ -1,14 +1,14 @@
 {
-    "suggest.noselect": true,
-    "suggest.preferCompleteThanJumpPlaceholder": true,
-    "suggest.enablePreselect": true,
-    "clangd.disableSnippetCompletion": true,
-    "tsserver.enableJavascript": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-    "coc.preferences.formatOnSaveFiletypes": ["go"],
-    "typescript.showUnused": false,
-    "prettier.eslintIntegration": true,
-    "prettier.semi": false,
-    "prettier.singleQuote": true
+  "suggest.noselect": true,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "suggest.enablePreselect": true,
+  "clangd.disableSnippetCompletion": true,
+  "tsserver.enableJavascript": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "coc.preferences.formatOnSaveFiletypes": ["go"],
+  "typescript.showUnused": false,
+  "prettier.eslintIntegration": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true
 }
