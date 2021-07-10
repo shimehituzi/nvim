@@ -149,6 +149,7 @@ nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
+nnoremap <silent> <C-x> <C-w>q
 nnoremap ' :!
 nnoremap + zt15<C-y>
 nnoremap t <C-a>
@@ -200,13 +201,12 @@ nnoremap <silent><S-Right> :m.+1<CR>
 xnoremap <silent><S-Right> :Vmd<CR>
 
 " ウィンドウの位置を移動
-nnoremap <S-C-Down> <C-w>J
-nnoremap <S-C-Up> <C-w>K
-nnoremap <S-C-Left> <C-w>H
-nnoremap <S-C-Right> <C-W>L
+nnoremap <silent><S-C-Down> <C-w><
+nnoremap <silent><S-C-Up> <C-w>>
+nnoremap <S-C-Left> <C-w>o
+nnoremap <S-C-Right> <C-W>=
 
 " 今んとこ使ってないマッピング
-nnoremap <expr> <C-t> ThisKeyIsNop()
 nnoremap <expr> <C-b> ThisKeyIsNop()
 nnoremap <expr> <C-y> ThisKeyIsNop()
 nnoremap <expr> <C-n> ThisKeyIsNop()
