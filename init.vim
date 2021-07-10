@@ -149,9 +149,10 @@ nnoremap - *N
 nnoremap _ g*N
 nnoremap <silent> <CR> :w<CR>
 nnoremap <silent> <C-c> :bw<CR>:clearjumps<CR>
-nnoremap <silent> <C-x> <C-w>q
-nnoremap ' :!
-nnoremap + zt15<C-y>
+nnoremap <silent> <C-x> :q<CR>
+nnoremap <silent> <C-s> :o<CR>
+nnoremap ' zt15<C-y>
+nnoremap + :!
 nnoremap t <C-a>
 nnoremap T <C-x>
 vnoremap <silent> <C-y> y']
@@ -177,7 +178,6 @@ nnoremap X "_X
 nnoremap s "_s
 nnoremap <space>m m
 nnoremap <C-^> `
-nnoremap <C-g> :HighlightInfo<CR>
 
 " os のクリップボードとの連携
 nnoremap <Space>y "+yy
@@ -200,14 +200,17 @@ xnoremap <silent><S-Left> :m.-2<CR>gv
 nnoremap <silent><S-Right> :m.+1<CR>
 xnoremap <silent><S-Right> :Vmd<CR>
 
-" ウィンドウの位置を移動
+" ウィンドウのサイズを変更
 nnoremap <silent><S-C-Down> <C-w><
 nnoremap <silent><S-C-Up> <C-w>>
-nnoremap <S-C-Left> <C-w>o
-nnoremap <S-C-Right> <C-W>=
+
+" ウィンドウの位置を移動
+nnoremap <S-C-Left> <C-w>H
+nnoremap <S-C-Right> <C-W>L
 
 " 今んとこ使ってないマッピング
 nnoremap <expr> <C-b> ThisKeyIsNop()
+nnoremap <expr> <C-o> ThisKeyIsNop()
 nnoremap <expr> <C-y> ThisKeyIsNop()
 nnoremap <expr> <C-n> ThisKeyIsNop()
 nnoremap <expr> <C-_> ThisKeyIsNop()
