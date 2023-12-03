@@ -49,6 +49,7 @@ opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = 300 -- Time in milliseconds to wait for a mapped sequence to complete
 opt.undolevels = 10000 -- Maximum number of undo levels
+opt.updatetime = 100 -- The length of time Vim waits after you stop typing before it triggers the plugin
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
