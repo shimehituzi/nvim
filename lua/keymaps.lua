@@ -56,6 +56,7 @@ map('v', 'id', 'i"')
 map('i', '<C-h>', '<C-g>U<Left>')
 map('i', '<C-l>', '<C-g>U<Right>')
 map('i', '<C-e>', '<C-g>U<End>')
+map('i', '<C-d>', '<Del>')
 
 -- **PLUGINS**
 -- normal
@@ -65,6 +66,21 @@ map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '<S-j>', '<cmd>BufferLineMoveNext<cr>')
 map('n', '<S-k>', '<cmd>BufferLineMovePrev<cr>')
 map('n', '^', '<cmd>IBLToggle<cr>')
+map('n', '&', '<cmd>TroubleToggle<cr>')
+map('n', '}', function()
+  local trouble = require('trouble')
+  if not(trouble.is_open()) then
+    trouble.open()
+  end
+  trouble.next({ skip_groups = true, jump = true })
+end)
+map('n', '{', function()
+  local trouble = require('trouble')
+  if not(trouble.is_open()) then
+    trouble.open()
+  end
+  trouble.previous({ skip_groups = true, jump = true })
+end)
 
 -- other
 -- plugins/lsp/nvim-cmp.lua
