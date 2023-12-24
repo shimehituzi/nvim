@@ -34,6 +34,8 @@ map('n', 'X', '"_X')
 map('n', 's', '"_s')
 map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
+map('n', '<S-Up>', '<cmd>m.-2<cr>')
+map('n', '<S-Down>', '<cmd>m.+1<cr>')
 
 -- visual
 map('v', '<C-y>', "y']")
