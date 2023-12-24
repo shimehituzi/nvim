@@ -1,5 +1,5 @@
 local opt = vim.opt
- 
+
 opt.autoindent = true -- Enable auto indentation
 opt.autoread = true -- Automatically read the file if it's changed externally
 opt.backup = false -- Do not create backup files
