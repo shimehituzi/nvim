@@ -4,6 +4,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
       'williamboman/mason.nvim',
+      'folke/neodev.nvim',
     },
   },
   config = function()
@@ -20,6 +21,7 @@ return {
       set("n", "<space>]", "<cmd>lua vim.diagnostic.goto_next()<CR>")
     end
 
+    require("neodev").setup()
     require("mason").setup()
     require('mason-lspconfig').setup({
       ensure_installed = { 'lua_ls', 'tsserver' }
@@ -28,7 +30,14 @@ return {
       function(server_name)
         require("lspconfig")[server_name].setup {
           on_attach = on_attach,
-          capabilities = require('cmp_nvim_lsp').default_capabilities()
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = "Replace"
+              }
+            }
+          }
         }
       end,
     }
