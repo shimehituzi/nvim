@@ -85,5 +85,7 @@ map('n', '{', function()
 end)
 
 -- other
+-- plugins/lsp/nvim-lspconfig.lua
 -- plugins/lsp/nvim-cmp.lua
 -- plugins/ui/neo-tree.lua
+-- plugins/git/gitsigns.lua

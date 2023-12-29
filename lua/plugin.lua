@@ -17,4 +17,5 @@ require("lazy").setup({
   { import = "plugins.lsp" },
   { import = "plugins.ui" },
   { import = "plugins.coding" },
+  { import = "plugins.git" },
 })

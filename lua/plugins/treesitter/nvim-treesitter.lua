@@ -9,6 +9,9 @@ return {
       sync_install = false,
       highlight = { enable = true },
       indent = { enable = true },
+      modules = {},
+      auto_install = true,
+      ignore_install = {}
     })
   end
 }
