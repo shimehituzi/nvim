@@ -17,13 +17,7 @@ return {
           vim.fn["vsnip#anonymous"](args.body)
         end,
       },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ['<C-f>'] = cmp.mapping.complete(),
-        ['<C-c>'] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm { select = true },
-      }),
+      mapping = require('keymaps').nvim_cmp(cmp).mapping,
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
