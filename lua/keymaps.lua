@@ -64,13 +64,13 @@ map('i', '<C-d>', '<Del>')
 -- **PLUGINS**
 -- normal
 map('n', ';', '<cmd>Neotree float<cr>')
-map('n', ',', '<cmd>DiffviewOpen<cr>')
 map('n', '<C-j>', '<cmd>BufferLineCycleNext<cr>')
 map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '<S-j>', '<cmd>BufferLineMoveNext<cr>')
 map('n', '<S-k>', '<cmd>BufferLineMovePrev<cr>')
 map('n', '^', '<cmd>IBLToggle<cr>')
-map('n', '&', '<cmd>TroubleToggle<cr>')
+map('n', '&', '<cmd>DiffviewFileHistory<cr>')
+map('n', '*', '<cmd>DiffviewOpen<cr>')
 map('n', '}', function()
   local trouble = require('trouble')
   if not (trouble.is_open()) then
@@ -235,6 +235,7 @@ M.neo_tree = {
     }
   },
 }
+
 -- plugins/git/gitsigns.lua
 M.gitsigns = {
   on_attach = function(bufnr)
@@ -273,6 +274,7 @@ M.gitsigns = {
   end
 }
 
+-- plugins/git/gitsigns.lua
 M.diffview = function(actions)
   return {
     keymaps = {
@@ -300,6 +302,9 @@ M.diffview = function(actions)
         { "n", "<leader>cB", actions.conflict_choose_all("base"),   { desc = "Choose the BASE version of a conflict for the whole file" } },
         { "n", "<leader>cA", actions.conflict_choose_all("all"),    { desc = "Choose all the versions of a conflict for the whole file" } },
         { "n", "dX",         actions.conflict_choose_all("none"),   { desc = "Delete the conflict region for the whole file" } },
+        { "n", "*",          '<cmd>DiffviewClose<cr>',              { desc = "Close the Diffview Tab" } },
+        { "n", "&",          '<cmd>DiffviewClose<cr>',              { desc = "Close the Diffview Tab" } },
+        { "n", "q",          '<cmd>DiffviewClose<cr>',              { desc = "Close the Diffview Tab" } },
       },
       diff1 = {
         -- Mappings in single window diff layouts
@@ -364,6 +369,8 @@ M.diffview = function(actions)
         { "n", "<leader>cB",    actions.conflict_choose_all("base"),   { desc = "Choose the BASE version of a conflict for the whole file" } },
         { "n", "<leader>cA",    actions.conflict_choose_all("all"),    { desc = "Choose all the versions of a conflict for the whole file" } },
         { "n", "dX",            actions.conflict_choose_all("none"),   { desc = "Delete the conflict region for the whole file" } },
+        { "n", "*",             '<cmd>DiffviewClose<cr>',              { desc = "Close the Diffview Tab" } },
+        { "n", "q",             '<cmd>DiffviewClose<cr>',              { desc = "Close the Diffview Tab" } },
       },
       file_history_panel = {
         { "n", "g!",            actions.options,                    { desc = "Open the option panel" } },
@@ -390,6 +397,8 @@ M.diffview = function(actions)
         { "n", "<leader>b",     actions.toggle_files,               { desc = "Toggle the file panel" } },
         { "n", "g<C-x>",        actions.cycle_layout,               { desc = "Cycle available layouts" } },
         { "n", "g?",            actions.help("file_history_panel"), { desc = "Open the help panel" } },
+        { "n", "&",             '<cmd>DiffviewClose<cr>',           { desc = "Close the Diffview Tab" } },
+        { "n", "q",             '<cmd>DiffviewClose<cr>',           { desc = "Close the Diffview Tab" } },
       },
       option_panel = {
         { "n", "<tab>", actions.select_entry,         { desc = "Change the current option" } },
