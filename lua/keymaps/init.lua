@@ -1,12 +1,4 @@
-local map = function(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-
-  vim.keymap.set(mode, lhs, rhs, options)
-end
+local map = require('utils').map
 
 -- **BASIC**
 -- normal, visual, operator-pending
@@ -14,7 +6,6 @@ map('', 'j', 'gj')
 map('', 'k', 'gk')
 map('', 'H', '^')
 map('', 'L', '$')
-map('', '-', 'G')
 map('', '<End>', 'G')
 map('', '<Home>', 'gg')
 map('', '<C-f>', '<C-d>')
@@ -46,6 +37,10 @@ map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
 map('n', '<S-Up>', '<cmd>m.-2<cr>')
 map('n', '<S-Down>', '<cmd>m.+1<cr>')
+map('n', '0', '<nop>')
+for i = 1, 9 do
+  vim.keymap.set('n', '0' .. i, tostring(i), { noremap = true })
+end
 
 -- visual
 map('v', '<C-y>', "y']")
@@ -95,3 +90,15 @@ map('n', '(', function()
   trouble.previous({ skip_groups = true, jump = true })
 end)
 map('n', '_', '<cmd>TroubleToggle<cr>')
+
+-- noplist
+local noplist = {
+  '1', '2', '3', '4', '5', '6', '7', '8', '9', 'f', 'F', 'S', 'X',
+  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
+  '+', '|', '~', '{', '}', '"', ',', '?',
+}
+for _,m in ipairs(noplist) do
+  map('n', m, function ()
+    print('These keys are not mapped: ' .. table.concat(noplist, ' '))
+  end, {expr=true})
+end

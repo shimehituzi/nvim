@@ -7,6 +7,6 @@ return {
     set("n", "#", "<cmd>lua vim.lsp.buf.definition()<CR>")
     set("n", "$", "<cmd>lua vim.lsp.buf.rename()<CR>")
     set("n", "'", "<cmd>lua vim.lsp.buf.format()<CR>")
-    set("n", "0", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+    set("n", "-", "<cmd>lua vim.lsp.buf.code_action()<CR>")
   end
 }
