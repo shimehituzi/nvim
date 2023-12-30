@@ -89,3 +89,5 @@ end)
 -- plugins/lsp/nvim-cmp.lua
 -- plugins/ui/neo-tree.lua
 -- plugins/git/gitsigns.lua
+-- plugins/git/gitsigns.lua
+-- plugins/git/diffview.lua
