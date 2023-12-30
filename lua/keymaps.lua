@@ -6,8 +6,9 @@ map('', 'j', 'gj')
 map('', 'k', 'gk')
 map('', 'H', '^')
 map('', 'L', '$')
-map('', '<Home>', 'gg')
+map('', '-', 'G')
 map('', '<End>', 'G')
+map('', '<Home>', 'gg')
 map('', '<C-f>', '<C-d>')
 map('', '<C-d>', '<C-u>')
 
@@ -71,20 +72,21 @@ map('n', '<S-k>', '<cmd>BufferLineMovePrev<cr>')
 map('n', '^', '<cmd>IBLToggle<cr>')
 map('n', '&', '<cmd>DiffviewFileHistory<cr>')
 map('n', '*', '<cmd>DiffviewOpen<cr>')
-map('n', '}', function()
+map('n', ')', function()
   local trouble = require('trouble')
   if not (trouble.is_open()) then
     trouble.open()
   end
   trouble.next({ skip_groups = true, jump = true })
 end)
-map('n', '{', function()
+map('n', '(', function()
   local trouble = require('trouble')
   if not (trouble.is_open()) then
     trouble.open()
   end
   trouble.previous({ skip_groups = true, jump = true })
 end)
+map('n', '_', '<cmd>TroubleToggle<cr>')
 
 -- **EXPORT**
 local M = {}
