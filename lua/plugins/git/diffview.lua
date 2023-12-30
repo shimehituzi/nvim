@@ -91,7 +91,7 @@ return {
         DiffviewFileHistory = {},
       },
       hooks = {},             -- See ':h diffview-config-hooks'
-      keymaps = require('keymaps').diffview(actions).keymaps,
+      keymaps = require('keymaps.diffview')(actions).keymaps
     })
   end
 }
