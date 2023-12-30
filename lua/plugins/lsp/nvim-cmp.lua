@@ -17,7 +17,7 @@ return {
           vim.fn["vsnip#anonymous"](args.body)
         end,
       },
-      mapping = require('keymaps.nvim-cmp')(cmp).mapping,
+      mapping = require('keymaps.nvim-cmp').mapping,
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'vsnip' },

@@ -1,5 +1,5 @@
 return {
-  on_attach = function(client, bufnr)
+  on_attach = function(_, _)
     local set = vim.keymap.set
     set("n", "<space><space>", "<cmd>lua vim.lsp.buf.hover()<CR>")
     set("n", "!", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
