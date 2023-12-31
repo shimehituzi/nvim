@@ -8,4 +8,16 @@ return {
 
     vim.keymap.set(mode, lhs, rhs, options)
   end,
+
+  extend = function(...)
+    local dst = {}
+    for _, src in ipairs({ ... }) do
+      if type(src) == "table" then
+        for k, v in pairs(src) do
+          dst[k] = v
+        end
+      end
+    end
+    return dst
+  end
 }
