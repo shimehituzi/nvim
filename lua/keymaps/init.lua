@@ -91,14 +91,14 @@ map('n', '(', function()
 end)
 map('n', '_', '<cmd>TroubleToggle<cr>')
 
--- noplist
+-- **NOP**
 local noplist = {
   '1', '2', '3', '4', '5', '6', '7', '8', '9', 'f', 'F', 'S', 'X',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
   '+', '|', '~', '{', '}', '"', ',', '?',
 }
-for _,m in ipairs(noplist) do
-  map('n', m, function ()
+for _, m in ipairs(noplist) do
+  map('n', m, function()
     print('These keys are not mapped: ' .. table.concat(noplist, ' '))
-  end, {expr=true})
+  end, { expr = true })
 end
