@@ -15,6 +15,8 @@ return {
       ["<cr>"] = "open",
       ["l"] = "open",
       ["h"] = 'close_all_subnodes',
+      ["e"] = 'expand_all_nodes',
+      ["z"] = 'close_all_nodes',
       ["o"] = { "add", config = { show_path = "none" } },
       ["O"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
       ["d"] = "delete",
@@ -53,7 +55,6 @@ return {
     mappings = extend({
       ["H"] = "navigate_up",
       ["L"] = "set_root",
-      ["d"] = "buffer_delete",
     }, ordermap),
   },
   git_status = {
