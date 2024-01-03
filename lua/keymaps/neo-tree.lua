@@ -17,8 +17,7 @@ return {
       ["h"] = 'close_all_subnodes',
       ["e"] = 'expand_all_nodes',
       ["z"] = 'close_all_nodes',
-      ["o"] = { "add", config = { show_path = "none" } },
-      ["O"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+      ["a"] = { "add", config = { show_path = "none" } },
       ["d"] = "delete",
       ["r"] = "rename",
       ["y"] = "copy_to_clipboard",
