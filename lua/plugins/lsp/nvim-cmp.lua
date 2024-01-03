@@ -14,8 +14,10 @@ return {
       end
     },
     { "saadparwaiz1/cmp_luasnip" },
+    { "onsails/lspkind.nvim" },
   },
   config = function()
+    local lspkind = require('lspkind')
     local cmp = require 'cmp'
     cmp.setup({
       snippet = {
@@ -29,7 +31,15 @@ return {
         { name = 'luasnip' },
       }, {
         { name = 'buffer' },
-      })
+      }),
+      ---@diagnostic disable-next-line: missing-fields
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = 'symbol_text',
+          maxwidth = 50,
+          ellipsis_char = '...'
+        })
+      }
     })
 
     cmp.setup.cmdline('/', {
