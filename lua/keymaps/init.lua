@@ -45,33 +45,27 @@ end
 -- visual
 map('v', '<C-y>', "y']")
 
--- operator-pending
-map('o', 'aa', 'a>')
-map('o', 'ia', 'i>')
-map('o', 'as', 'a[')
-map('o', 'is', 'i[')
-map('o', 'ad', 'a"')
-map('o', 'id', 'i"')
-map('v', 'aa', 'a>')
-map('v', 'ia', 'i>')
-map('v', 'as', 'a[')
-map('v', 'is', 'i[')
-map('v', 'ad', 'a"')
-map('v', 'id', 'i"')
-
 -- insert
 map('i', '<C-h>', '<C-g>U<Left>')
 map('i', '<C-l>', '<C-g>U<Right>')
 map('i', '<C-e>', '<C-g>U<End>')
 map('i', '<C-d>', '<Del>')
 
+-- textobject
+map({ 'v', 'o' }, 'aa', 'a>')
+map({ 'v', 'o' }, 'ia', 'i>')
+map({ 'v', 'o' }, 'as', 'a[')
+map({ 'v', 'o' }, 'is', 'i[')
+map({ 'v', 'o' }, 'ad', 'a"')
+map({ 'v', 'o' }, 'id', 'i"')
+
 -- **PLUGINS**
 -- normal
 map('n', ';', '<cmd>Neotree float<cr>')
+map('n', 'J', function () require('illuminate').goto_next_reference() end)
+map('n', 'K', function () require('illuminate').goto_prev_reference() end)
 map('n', '<C-j>', '<cmd>BufferLineCycleNext<cr>')
 map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
-map('n', '<S-j>', '<cmd>BufferLineMoveNext<cr>')
-map('n', '<S-k>', '<cmd>BufferLineMovePrev<cr>')
 map('n', '^', '<cmd>IBLToggle<cr>')
 map('n', '&', '<cmd>DiffviewFileHistory<cr>')
 map('n', '*', '<cmd>DiffviewOpen<cr>')
@@ -90,6 +84,9 @@ map('n', '(', function()
   trouble.previous({ skip_groups = true, jump = true })
 end)
 map('n', '_', '<cmd>TroubleToggle<cr>')
+
+-- textobject
+map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
 
 -- **NOP**
 local noplist = {
