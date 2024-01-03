@@ -39,7 +39,7 @@ map('n', '<S-Up>', '<cmd>m.-2<cr>')
 map('n', '<S-Down>', '<cmd>m.+1<cr>')
 map('n', '0', '<nop>')
 for i = 1, 9 do
-  vim.keymap.set('n', '0' .. i, tostring(i), { noremap = true })
+  map('n', '0' .. i, tostring(i))
 end
 
 -- visual
