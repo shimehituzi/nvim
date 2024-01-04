@@ -15,6 +15,7 @@ require("lazy").setup({
   { import = "plugins.colorscheme" },
   { import = "plugins.treesitter" },
   { import = "plugins.lsp" },
+  { import = "plugins.context"},
   { import = "plugins.ui" },
   { import = "plugins.coding" },
   { import = "plugins.git" },
