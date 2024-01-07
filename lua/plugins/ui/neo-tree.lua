@@ -25,6 +25,12 @@ return {
       open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
       sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
       sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
+      sources = {
+        "filesystem",
+        "buffers",
+        "git_status",
+        "document_symbols",
+      },
       default_component_configs = {
         container = {
           enable_character_fade = true
@@ -159,6 +165,12 @@ return {
         window = {
           position = "float",
           mappings = keymaps.git_status.mappings
+        }
+      },
+      document_symbols = {
+        follow_cursor = true,
+        window = {
+          mappings = keymaps.document_symbols.mappings
         }
       }
     })

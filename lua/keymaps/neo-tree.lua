@@ -31,8 +31,7 @@ return {
       ["<C-k>"] = "prev_source",
       ["<C-j>"] = "next_source",
       ["<Esc>"] = "cancel", -- close preview or floating neo-tree window
-      ["q"] = "cancel", -- close preview or floating neo-tree window
-      [";"] = "cancel", -- close preview or floating neo-tree window
+      ["q"] = "cancel",     -- close preview or floating neo-tree window
     },
   },
   filesystems = {
@@ -66,5 +65,28 @@ return {
       ["gp"] = "git_push",
       ["gg"] = "git_commit_and_push",
     }, ordermap),
+  },
+  document_symbols = {
+    mappings = {
+      ["l"] = "toggle_node",
+      ["h"] = 'close_all_subnodes',
+      ["<cr>"] = "jump_to_symbol",
+      ["<space>"] = "rename",
+      ["`"] = "refresh",
+      ["?"] = "show_help",
+      ["z"] = 'close_all_nodes',
+      ["a"] = "none",
+      ["d"] = "none",
+      ["y"] = "none",
+      ["x"] = "none",
+      ["p"] = "none",
+      ["c"] = "none",
+      ["m"] = "none",
+      ["i"] = "none",
+      [";"] = "none",
+      ["<C-k>"] = "none",
+      ["<C-j>"] = "none",
+      ["e"] = 'none',
+    }
   },
 }

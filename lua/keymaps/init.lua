@@ -64,9 +64,22 @@ map('c', '<tab>', '<nop>')
 
 -- **PLUGINS**
 -- normal
-map('n', ';', '<cmd>Neotree float<cr>')
-map('n', 'J', function () require('illuminate').goto_next_reference() end)
-map('n', 'K', function () require('illuminate').goto_prev_reference() end)
+map('n', ';', '<cmd>Neotree float toggle<cr>')
+map('n', ',', function()
+  if vim.bo.filetype == "neo-tree" then
+    local full_path = vim.api.nvim_buf_get_name(0)
+    local filename_only = full_path:match("^.+/(.+)$")
+    if filename_only
+        and filename_only:find("neo%-tree")
+        and not filename_only:find("document_symbols")
+    then
+      vim.cmd('Neotree close')
+    end
+  end
+  vim.cmd('Neotree document_symbols right toggle')
+end)
+map('n', 'J', function() require('illuminate').goto_next_reference() end)
+map('n', 'K', function() require('illuminate').goto_prev_reference() end)
 map('n', '<C-j>', '<cmd>BufferLineCycleNext<cr>')
 map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
 map('n', '^', '<cmd>IBLToggle<cr>')
@@ -95,7 +108,7 @@ map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() e
 local noplist = {
   '1', '2', '3', '4', '5', '6', '7', '8', '9', 'f', 'F', 'S', 'X',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
-  '+', '|', '~', '{', '}', '"', ',', '?',
+  '+', '|', '~', '{', '}', '"', '?',
 }
 for _, m in ipairs(noplist) do
   map('n', m, function()
