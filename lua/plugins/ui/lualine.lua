@@ -24,9 +24,8 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { { 'navic', color_correction = nil } },
+        lualine_c = { 'filetype' },
         lualine_x = {
-          'filetype',
           { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ', } },
           -- {'fileformat', symbols = { unix = '\\n', dos = '\\r\\n', mac = '\\r', }},
           'encoding',
@@ -34,16 +33,11 @@ return {
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
       },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { 'filename' },
-        lualine_x = { 'location' },
-        lualine_y = {},
-        lualine_z = {}
-      },
+      inactive_sections = {},
       tabline = {},
-      winbar = {},
+      winbar = {
+        lualine_c = { 'filename', { 'navic', color_correction = nil } },
+      },
       inactive_winbar = {},
       extensions = {}
     })
