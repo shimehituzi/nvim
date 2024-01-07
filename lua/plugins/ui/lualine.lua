@@ -25,13 +25,9 @@ return {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filetype' },
-        lualine_x = {
-          { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ', } },
-          -- {'fileformat', symbols = { unix = '\\n', dos = '\\r\\n', mac = '\\r', }},
-          'encoding',
-        },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_x = { { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ', } }, 'encoding', },
+        lualine_y = { 'searchcount', 'progress' },
+        lualine_z = { 'selectioncount', 'location' }
       },
       inactive_sections = {},
       tabline = {},

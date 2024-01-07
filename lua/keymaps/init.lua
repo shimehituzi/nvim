@@ -59,6 +59,9 @@ map({ 'v', 'o' }, 'is', 'i[')
 map({ 'v', 'o' }, 'ad', 'a"')
 map({ 'v', 'o' }, 'id', 'i"')
 
+-- commandline
+map('c', '<tab>', '<nop>')
+
 -- **PLUGINS**
 -- normal
 map('n', ';', '<cmd>Neotree float<cr>')
