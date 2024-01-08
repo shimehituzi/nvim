@@ -61,6 +61,13 @@ map({ 'v', 'o' }, 'id', 'i"')
 
 -- **PLUGINS**
 -- normal
+map("n", "<space><space>", "<cmd>lua vim.lsp.buf.hover()<CR>")
+map("n", "!", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+map("n", "@", "<cmd>lua vim.lsp.buf.references()<CR>")
+map("n", "#", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "$", "<cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "'", "<cmd>lua vim.lsp.buf.format()<CR>")
+map("n", "-", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 map('n', ';', '<cmd>Neotree float toggle<cr>')
 map('n', '+', function()
   if vim.bo.filetype == "neo-tree" then

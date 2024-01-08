@@ -18,7 +18,6 @@ return {
     require("mason-lspconfig").setup_handlers {
       function(server_name)
         require("lspconfig")[server_name].setup {
-          on_attach = require('keymaps.nvim-lspconfig').on_attach,
           capabilities = require('cmp_nvim_lsp').default_capabilities(),
           settings = {
             Lua = {
