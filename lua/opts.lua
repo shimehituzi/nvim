@@ -12,6 +12,10 @@ opt.expandtab = true -- Use spaces instead of tabs
 opt.fenc = "utf-8" -- Set file encoding to UTF-8
 opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " ", }  -- Characters to fill
 opt.fixeol = false -- Do not add EOL to the last line
+opt.foldcolumn = '1'
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
 opt.formatoptions = "jcroqlnt" -- Automatically formatting options
 opt.grepformat = "%f:%l:%c:%m" -- Format for grep command
 opt.grepprg = "rg --vimgrep" -- Use ripgrep instead of grep
