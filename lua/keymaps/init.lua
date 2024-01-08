@@ -59,13 +59,10 @@ map({ 'v', 'o' }, 'is', 'i[')
 map({ 'v', 'o' }, 'ad', 'a"')
 map({ 'v', 'o' }, 'id', 'i"')
 
--- commandline
-map('c', '<tab>', '<nop>')
-
 -- **PLUGINS**
 -- normal
 map('n', ';', '<cmd>Neotree float toggle<cr>')
-map('n', ',', function()
+map('n', '+', function()
   if vim.bo.filetype == "neo-tree" then
     local full_path = vim.api.nvim_buf_get_name(0)
     local filename_only = full_path:match("^.+/(.+)$")
@@ -108,7 +105,7 @@ map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() e
 local noplist = {
   '1', '2', '3', '4', '5', '6', '7', '8', '9', 'f', 'F', 'S', 'X',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
-  '+', '|', '~', '{', '}', '"', '?',
+  ',', '|', '~', '{', '}', '"', '?',
 }
 for _, m in ipairs(noplist) do
   map('n', m, function()

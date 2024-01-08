@@ -38,6 +38,8 @@ return {
     mappings = extend({
       ["H"] = "navigate_up",
       ["L"] = "set_root",
+      ["J"] = function () vim.cmd.normal('j') end,
+      ["K"] = function () vim.cmd.normal('k') end,
       ["."] = "toggle_hidden",
       ["<space>"] = "fuzzy_finder",
       ["<Tab>"] = "next_git_modified",
@@ -53,6 +55,8 @@ return {
     mappings = extend({
       ["H"] = "navigate_up",
       ["L"] = "set_root",
+      ["J"] = function () vim.cmd.normal('j') end,
+      ["K"] = function () vim.cmd.normal('k') end,
     }, ordermap),
   },
   git_status = {
@@ -73,6 +77,8 @@ return {
       ["<cr>"] = "jump_to_symbol",
       ["<space>"] = "rename",
       ["`"] = "refresh",
+      ["<Esc>"] = function() vim.cmd("Neotree close document_symbols") end,
+      ["q"] = function() vim.cmd("Neotree close document_symbols") end,
       ["?"] = "show_help",
       ["z"] = 'close_all_nodes',
       ["a"] = "none",
