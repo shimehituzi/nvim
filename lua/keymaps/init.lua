@@ -104,6 +104,7 @@ map('n', '(', function()
   trouble.previous({ skip_groups = true, jump = true })
 end)
 map('n', '_', '<cmd>TroubleToggle<cr>')
+map('v', '<CR>', '<cmd>Translate ja<cr>')
 
 -- textobject
 map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
@@ -112,7 +113,7 @@ map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() e
 local noplist = {
   '1', '2', '3', '4', '5', '6', '7', '8', '9', 'f', 'F', 'S', 'X',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
-  ',', '|', '~', '{', '}', '"', '?',
+  '|', '~', '{', '}', '"', '?',
 }
 for _, m in ipairs(noplist) do
   map('n', m, function()
