@@ -1,4 +1,18 @@
 local map = require('utils').map
+local functions = require('keymaps.functions')
+
+-- **NOP**
+local noplist = {
+  'f', 'F',
+  '5', '6', '7', '8', '9',
+  '!', '@', '#', '$', '^', '&', '*', '(', ')', '?',
+  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
+}
+for _, m in ipairs(noplist) do
+  map('n', m, function()
+    print('These keys are not mapped: ' .. table.concat(noplist, ' '))
+  end, { expr = true })
+end
 
 -- **BASIC**
 -- normal, visual, operator-pending
@@ -23,15 +37,15 @@ map('n', 'm', '@')
 map('n', 'M', 'q')
 map('n', 't', '<C-a>')
 map('n', 'T', '<C-x>')
-map('n', '`', '<C-l><cmd>nohl<cr>')
+map('n', '`', '<cmd>only<cr>')
+map('n', '~', '<C-l><cmd>nohl<cr>')
 map('n', 'G', '~')
 map('n', 'U', 'J')
-map('n', '<space>o', "<cmd>for i in range(v:count1) | call append(line('.'), '') | endfor<cr>")
-map('n', '<space>O', "<cmd>for i in range(v:count1) | call append(line('.')-1, '') | endfor<cr>")
-map('n', '<S-Tab>', '<C-i>')
+map('n', '-', "<cmd>for i in range(v:count1) | call append(line('.'), '') | endfor<cr>")
+map('n', '_', "<cmd>for i in range(v:count1) | call append(line('.')-1, '') | endfor<cr>")
 map('n', '<BS>', '<C-o>')
+map('n', '<M-BS>', '<C-i>')
 map('n', 'x', '"_x')
-map('n', 'X', '"_X')
 map('n', 's', '"_s')
 map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
@@ -61,62 +75,33 @@ map({ 'v', 'o' }, 'id', 'i"')
 
 -- **PLUGINS**
 -- normal
-map("n", "<space><space>", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "!", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-map("n", "@", "<cmd>lua vim.lsp.buf.references()<CR>")
-map("n", "#", "<cmd>lua vim.lsp.buf.definition()<CR>")
-map("n", "$", "<cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "'", "<cmd>lua vim.lsp.buf.format()<CR>")
-map("n", "-", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-map('n', ';', '<cmd>Neotree float toggle<cr>')
-map('n', '+', function()
-  if vim.bo.filetype == "neo-tree" then
-    local full_path = vim.api.nvim_buf_get_name(0)
-    local filename_only = full_path:match("^.+/(.+)$")
-    if filename_only
-        and filename_only:find("neo%-tree")
-        and not filename_only:find("document_symbols")
-    then
-      vim.cmd('Neotree close')
-    end
-  end
-  vim.cmd('Neotree document_symbols right toggle')
-end)
-map('n', 'J', function() require('illuminate').goto_next_reference() end)
-map('n', 'K', function() require('illuminate').goto_prev_reference() end)
 map('n', '<C-j>', '<cmd>BufferLineCycleNext<cr>')
 map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
-map('n', '^', '<cmd>IBLToggle<cr>')
-map('n', '&', '<cmd>DiffviewFileHistory<cr>')
-map('n', '*', '<cmd>DiffviewOpen<cr>')
-map('n', ')', function()
-  local trouble = require('trouble')
-  if not (trouble.is_open()) then
-    trouble.open()
-  end
-  trouble.next({ skip_groups = true, jump = true })
-end)
-map('n', '(', function()
-  local trouble = require('trouble')
-  if not (trouble.is_open()) then
-    trouble.open()
-  end
-  trouble.previous({ skip_groups = true, jump = true })
-end)
-map('n', '_', '<cmd>TroubleToggle<cr>')
+map('n', 'J', function() require('illuminate').goto_next_reference() end)
+map('n', 'K', function() require('illuminate').goto_prev_reference() end)
+map('n', ';', '<cmd>Neotree float toggle<cr>')
+map("n", "<space>", "<cmd>lua vim.lsp.buf.hover()<CR>")
+map("n", "4", "<cmd>lua vim.lsp.buf.format()<CR>")
+map("n", "<Tab>", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "<S-Tab>", "<cmd>lua vim.lsp.buf.references()<CR>")
+map("n", "1", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+map("n", "2", "<cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "3", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+map('n', "'", '<cmd>DiffviewOpen<cr>')
+map('n', '"', '<cmd>DiffviewFileHistory<cr>')
+map('n', '}', functions.trouble_next)
+map('n', '{', functions.trouble_prev)
+map('n', '+', functions.toggle_docment_symble)
+map('n', '|', '<cmd>IBLToggle<cr>')
+map('n', ',', '<Plug>(comment_toggle_linewise_current)')
+map('n', 'S', '<Plug>(nvim-surround-normal)')
+map('n', '<C-s>', '<Plug>(nvim-surround-change)')
+map('n', 'X', '<Plug>(nvim-surround-delete)')
+
+-- visual
 map('v', '<CR>', '<cmd>Translate ja<cr>')
+map('v', ',', '<Plug>(comment_toggle_linewise_visual)')
+map('v', 'S', '<Plug>(nvim-surround-visual)')
 
 -- textobject
 map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
-
--- **NOP**
-local noplist = {
-  '1', '2', '3', '4', '5', '6', '7', '8', '9', 'f', 'F', 'S', 'X',
-  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
-  '|', '~', '{', '}', '"', '?',
-}
-for _, m in ipairs(noplist) do
-  map('n', m, function()
-    print('These keys are not mapped: ' .. table.concat(noplist, ' '))
-  end, { expr = true })
-end

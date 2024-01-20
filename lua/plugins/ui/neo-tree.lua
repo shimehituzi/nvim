@@ -13,7 +13,7 @@ return {
     vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
     vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-    local keymaps = require('keymaps.neo-tree')
+    local keymaps = require('keymaps.plugins.neo-tree')
 
     require("neo-tree").setup({
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab

@@ -42,7 +42,7 @@ return {
       yadm                         = {
         enable = false
       },
-      on_attach                    = require('keymaps.gitsigns').on_attach
+      on_attach                    = require('keymaps.plugins.gitsigns').on_attach
     }
   end
 }

@@ -42,7 +42,7 @@ return {
           require('luasnip').lsp_expand(args.body)
         end,
       },
-      mapping = require('keymaps.nvim-cmp').mapping,
+      mapping = require('keymaps.plugins.nvim-cmp').mapping,
       sources = cmp.config.sources({
         { name = "copilot" },
         { name = 'nvim_lsp' },
