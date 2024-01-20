@@ -3,8 +3,6 @@ local functions = require('keymaps.functions')
 
 -- **NOP**
 local noplist = {
-  'f', 'F',
-  '2', '3', '4', '6', '5', '7', '8', '9',
   '@', '#', '$', '^', '%', '&', '*', '(', ')',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
@@ -94,6 +92,21 @@ map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal)')
 map('n', '<C-s>', '<Plug>(nvim-surround-change)')
 map('n', 'X', '<Plug>(nvim-surround-delete)')
+-- telescope
+local builtin = require('telescope.builtin')
+-- local extnsions = require('telescope').extensions
+map('n', 'f', builtin.find_files)
+map('n', 'F', builtin.builtin)
+-- map('n', ' ', builtin.live_grep)
+-- map('n', ' ', builtin.current_buffer_fuzzy_find)
+-- map('n', ' ', builtin.buffers)
+-- map('n', ' ', builtin.help_tags)
+-- map('n', ' ', extnsions.noice.noice)
+-- map('n', ' ', builtin.lsp_references)
+-- map('n', ' ', builtin.lsp_definitions)
+-- map('n', ' ', builtin.lsp_document_symbols)
+-- map('n', ' ', builtin.diagnostic)
+-- map('n', ' ', builtin.git_bcommits)
 
 -- visual
 map('v', '<CR>', '<cmd>Translate ja<cr>')
