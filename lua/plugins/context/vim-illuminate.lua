@@ -1,5 +1,5 @@
 return {
-  "RRethy/vim-illuminate",
+  'RRethy/vim-illuminate',
   config = function()
     -- default configuration
     require('illuminate').configure({
@@ -60,5 +60,5 @@ return {
     vim.keymap.set('', '<a-i>', '<nop>', { noremap = true })
     vim.keymap.set('', '<a-n>', '<nop>', { noremap = true })
     vim.keymap.set('', '<a-p>', '<nop>', { noremap = true })
-  end
+  end,
 }

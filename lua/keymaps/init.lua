@@ -9,9 +9,7 @@ local noplist = {
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
 for _, m in ipairs(noplist) do
-  map('n', m, function()
-    print('These keys are not mapped: ' .. table.concat(noplist, ' '))
-  end, { expr = true })
+  map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end, { expr = true })
 end
 
 -- **BASIC**
@@ -32,7 +30,7 @@ map('n', '<C-q>', '<cmd>q<CR>')
 map('n', '<S-q>', '<C-z>')
 map('n', '<C-l>', '<C-w>w')
 map('n', '<C-h>', '<C-w>W')
-map('n', '<C-p>', "p']")
+map('n', '<C-p>', 'p\']')
 map('n', 'm', '@')
 map('n', 'M', 'q')
 map('n', 't', '<C-a>')
@@ -41,8 +39,8 @@ map('n', '`', '<cmd>only<cr>')
 map('n', '~', '<C-l><cmd>nohl<cr>')
 map('n', 'G', '~')
 map('n', 'U', 'J')
-map('n', '-', "<cmd>for i in range(v:count1) | call append(line('.'), '') | endfor<cr>")
-map('n', '_', "<cmd>for i in range(v:count1) | call append(line('.')-1, '') | endfor<cr>")
+map('n', '-', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
+map('n', '_', '<cmd>for i in range(v:count1) | call append(line(\'.\')-1, \'\') | endfor<cr>')
 map('n', '<BS>', '<C-o>')
 map('n', '<M-BS>', '<C-i>')
 map('n', 'x', '"_x')
@@ -57,7 +55,7 @@ for i = 1, 9 do
 end
 
 -- visual
-map('v', '<C-y>', "y']")
+map('v', '<C-y>', 'y\']')
 
 -- insert
 map('i', '<C-h>', '<C-g>U<Left>')
@@ -80,14 +78,14 @@ map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
 map('n', 'J', function() require('illuminate').goto_next_reference() end)
 map('n', 'K', function() require('illuminate').goto_prev_reference() end)
 map('n', ';', '<cmd>Neotree float toggle<cr>')
-map("n", "<space>", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "4", "<cmd>lua vim.lsp.buf.format()<CR>")
-map("n", "<Tab>", "<cmd>lua vim.lsp.buf.definition()<CR>")
-map("n", "<S-Tab>", "<cmd>lua vim.lsp.buf.references()<CR>")
-map("n", "1", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-map("n", "2", "<cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "3", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-map('n', "'", '<cmd>DiffviewOpen<cr>')
+map('n', '<space>', '<cmd>lua vim.lsp.buf.hover()<CR>')
+map('n', '4', '<cmd>lua vim.lsp.buf.format()<CR>')
+map('n', '<Tab>', '<cmd>lua vim.lsp.buf.definition()<CR>')
+map('n', '<S-Tab>', '<cmd>lua vim.lsp.buf.references()<CR>')
+map('n', '1', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+map('n', '2', '<cmd>lua vim.lsp.buf.rename()<CR>')
+map('n', '3', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+map('n', '\'', '<cmd>DiffviewOpen<cr>')
 map('n', '"', '<cmd>DiffviewFileHistory<cr>')
 map('n', '}', functions.trouble_next)
 map('n', '{', functions.trouble_prev)

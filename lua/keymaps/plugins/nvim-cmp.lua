@@ -19,14 +19,14 @@ end
 
 return {
   mapping = {
-    ["<C-j>"] = cmp.mapping(function()
+    ['<C-j>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_next_item()
       else
         cmp.complete()
       end
     end, { 'i', 'c' }),
-    ["<C-k>"] = cmp.mapping(function()
+    ['<C-k>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
       else
@@ -48,7 +48,7 @@ return {
         else
           fallback()
         end
-      end
+      end,
     }),
     ['<C-e>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -66,18 +66,18 @@ return {
         else
           cmp.complete_common_string()
         end
-      end
+      end,
     }),
     ['<S-Tab>'] = cmp.mapping({
       i = luasnip_jump_prev,
       s = luasnip_jump_prev,
-      c = function ()
+      c = function()
         if cmp.visible() then
           cmp.select_prev_item()
         else
           cmp.complete_common_string()
         end
-      end
+      end,
     }),
-  }
+  },
 }

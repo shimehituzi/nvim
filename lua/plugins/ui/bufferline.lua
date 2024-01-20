@@ -1,19 +1,19 @@
 return {
   'akinsho/bufferline.nvim',
-  version = "*",
+  version = '*',
   dependencies = 'nvim-tree/nvim-web-devicons',
   config = function()
     local bufferline = require('bufferline')
-    bufferline.setup {
+    bufferline.setup({
       options = {
-        mode = "buffers", -- set to "tabs" to only show tabpages instead
+        mode = 'buffers', -- set to "tabs" to only show tabpages instead
         style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
         themable = true, -- | false, -- allows highlight groups to be overriden i.e. sets highlights as default
-        numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-        close_command = "bwipeout! %d",       -- can be a string | function, | false see "Mouse actions"
-        right_mouse_command = "bwipeout! %d", -- can be a string | function | false, see "Mouse actions"
-        left_mouse_command = "buffer %d",    -- can be a string | function, | false see "Mouse actions"
-        middle_mouse_command = nil,          -- can be a string | function, | false see "Mouse actions"
+        numbers = 'none', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+        close_command = 'bwipeout! %d', -- can be a string | function, | false see "Mouse actions"
+        right_mouse_command = 'bwipeout! %d', -- can be a string | function | false, see "Mouse actions"
+        left_mouse_command = 'buffer %d', -- can be a string | function, | false see "Mouse actions"
+        middle_mouse_command = nil, -- can be a string | function, | false see "Mouse actions"
         indicator = {
           icon = '▎', -- this should be omitted if indicator style is not 'icon'
           style = 'icon', -- | 'underline' | 'none',
@@ -38,7 +38,7 @@ return {
         max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
         truncate_names = true, -- whether or not tab names should be truncated
         tab_size = 18,
-        diagnostics = "nvim_lsp", -- | false  | "coc",
+        diagnostics = 'nvim_lsp', -- | false  | "coc",
         diagnostics_update_in_insert = false,
         -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -66,11 +66,11 @@ return {
         -- end,
         offsets = {
           {
-            filetype = "neo-tree",
-            text = "neo-tree", -- | function ,
-            text_align = "left", -- | "center" | "right"
-            separator = true
-          }
+            filetype = 'neo-tree',
+            text = 'neo-tree', -- | function ,
+            text_align = 'left', -- | "center" | "right"
+            separator = true,
+          },
         },
         color_icons = true, -- | false, -- whether or not to add the filetype icon highlights
         get_element_icon = function(element)
@@ -93,19 +93,19 @@ return {
         move_wraps_at_ends = false, -- whether or not the move command "wraps" at the first or last position
         -- can also be a table containing 2 custom separators
         -- [focused and unfocused]. eg: { '|', '|' }
-        separator_style = "thin", -- | "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
+        separator_style = 'thin', -- | "slant" | "slope" | "thick" | "thin" | { 'any', 'any' },
         enforce_regular_tabs = false, -- | true,
         always_show_bufferline = true, -- | false,
         hover = {
           enabled = true,
           delay = 200,
-          reveal = {'close'}
+          reveal = { 'close' },
         },
         sort_by = 'insert_after_current', --  |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
-          -- add custom logic
+        -- add custom logic
         --   return buffer_a.modified > buffer_b.modified
         -- end
-      }
-    }
-  end
+      },
+    })
+  end,
 }

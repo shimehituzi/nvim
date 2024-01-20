@@ -1,5 +1,5 @@
 return {
-  "uga-rosa/translate.nvim",
+  'uga-rosa/translate.nvim',
   config = function()
     require('translate').setup({
       defauls = {

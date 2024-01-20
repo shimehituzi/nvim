@@ -1,53 +1,47 @@
 return {
-  "hrsh7th/nvim-cmp",
+  'hrsh7th/nvim-cmp',
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-nvim-lsp-document-symbol" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lsp-document-symbol' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-cmdline' },
     {
-      "saadparwaiz1/cmp_luasnip",
+      'saadparwaiz1/cmp_luasnip',
       dependencies = {
-        "L3MON4D3/LuaSnip",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end
+        'L3MON4D3/LuaSnip',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
       },
     },
     {
-      "zbirenbaum/copilot-cmp",
+      'zbirenbaum/copilot-cmp',
       dependencies = {
-        "zbirenbaum/copilot.lua",
+        'zbirenbaum/copilot.lua',
         config = function()
-          require("copilot").setup({
+          require('copilot').setup({
             suggestion = { enabled = false },
             panel = { enabled = false },
           })
-        end
+        end,
       },
-      config = function()
-        require("copilot_cmp").setup()
-      end
+      config = function() require('copilot_cmp').setup() end,
     },
-    { "onsails/lspkind.nvim" },
+    { 'onsails/lspkind.nvim' },
   },
   config = function()
     local lspkind = require('lspkind')
-    local cmp = require 'cmp'
+    local cmp = require('cmp')
     cmp.setup({
       snippet = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body)
-        end,
+        expand = function(args) require('luasnip').lsp_expand(args.body) end,
       },
       mapping = require('keymaps.plugins.nvim-cmp').mapping,
       sources = cmp.config.sources({
-        { name = "copilot" },
+        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'path' }
+        { name = 'path' },
       }, {
         { name = 'buffer' },
       }),
@@ -57,13 +51,13 @@ return {
           mode = 'symbol_text',
           maxwidth = 50,
           ellipsis_char = '...',
-          symbol_map = { Copilot = "" }
-        })
+          symbol_map = { Copilot = '' },
+        }),
       },
       sorting = {
         priority_weight = 2,
         comparators = {
-          require("copilot_cmp.comparators").prioritize,
+          require('copilot_cmp.comparators').prioritize,
 
           -- Below is the default comparitor list and order for nvim-cmp
           cmp.config.compare.offset,
@@ -82,18 +76,18 @@ return {
 
     cmp.setup.cmdline('/', {
       sources = cmp.config.sources({
-        { name = 'nvim_lsp_document_symbol' }
+        { name = 'nvim_lsp_document_symbol' },
       }, {
-        { name = 'buffer' }
-      })
+        { name = 'buffer' },
+      }),
     })
 
     cmp.setup.cmdline(':', {
       sources = cmp.config.sources({
-        { name = 'path' }
+        { name = 'path' },
       }, {
-        { name = 'cmdline' }
-      })
+        { name = 'cmdline' },
+      }),
     })
-  end
+  end,
 }

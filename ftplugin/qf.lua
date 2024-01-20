@@ -1,3 +1,3 @@
 local map = require('utils').map
 
-map('n', '<CR>', '<CR>', {buffer=true})
+map('n', '<CR>', '<CR>', { buffer = true })

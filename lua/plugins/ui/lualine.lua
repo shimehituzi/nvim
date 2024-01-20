@@ -1,5 +1,5 @@
 return {
-  "nvim-lualine/lualine.nvim",
+  'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup({
@@ -19,15 +19,15 @@ return {
           statusline = 1000,
           tabline = 1000,
           winbar = 1000,
-        }
+        },
       },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filetype' },
-        lualine_x = { { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ', } }, 'encoding', },
+        lualine_x = { { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ' } }, 'encoding' },
         lualine_y = { 'searchcount', 'progress' },
-        lualine_z = { 'selectioncount', 'location' }
+        lualine_z = { 'selectioncount', 'location' },
       },
       inactive_sections = {},
       tabline = {},
@@ -35,7 +35,7 @@ return {
         lualine_c = { 'filename', { 'navic', color_correction = nil } },
       },
       inactive_winbar = {},
-      extensions = {}
+      extensions = {},
     })
-  end
+  end,
 }
