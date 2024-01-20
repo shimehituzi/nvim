@@ -4,8 +4,8 @@ local functions = require('keymaps.functions')
 -- **NOP**
 local noplist = {
   'f', 'F',
-  '5', '6', '7', '8', '9',
-  '!', '@', '#', '$', '^', '&', '*', '(', ')', '?',
+  '2', '3', '4', '6', '5', '7', '8', '9',
+  '@', '#', '$', '^', '%', '&', '*', '(', ')',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
 for _, m in ipairs(noplist) do
@@ -45,10 +45,9 @@ map('n', '<BS>', '<C-o>')
 map('n', '<M-BS>', '<C-i>')
 map('n', 'x', '"_x')
 map('n', 's', '"_s')
+map('n', '?', '%', { noremap = false })
 map('n', 'n', 'nzz')
 map('n', 'N', 'Nzz')
-map('n', '<S-Up>', '<cmd>m.-2<cr>')
-map('n', '<S-Down>', '<cmd>m.+1<cr>')
 map('n', '0', '<nop>')
 for i = 1, 9 do
   map('n', '0' .. i, tostring(i))
@@ -79,14 +78,14 @@ map('n', 'J', function() require('illuminate').goto_next_reference() end)
 map('n', 'K', function() require('illuminate').goto_prev_reference() end)
 map('n', ';', '<cmd>Neotree float toggle<cr>')
 map('n', '<space>', '<cmd>lua vim.lsp.buf.hover()<CR>')
-map('n', '4', '<cmd>lua vim.lsp.buf.format()<CR>')
+map('n', '\'', '<cmd>lua vim.lsp.buf.format()<CR>')
+map('n', '"', '<cmd>lua vim.lsp.buf.rename()<CR>')
+map('n', '!', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 map('n', '<Tab>', '<cmd>lua vim.lsp.buf.definition()<CR>')
 map('n', '<S-Tab>', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', '1', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-map('n', '2', '<cmd>lua vim.lsp.buf.rename()<CR>')
-map('n', '3', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-map('n', '\'', '<cmd>DiffviewOpen<cr>')
-map('n', '"', '<cmd>DiffviewFileHistory<cr>')
+map('n', '<S-Up>', '<cmd>DiffviewOpen<cr>')
+map('n', '<S-Down>', '<cmd>DiffviewFileHistory<cr>')
 map('n', '}', functions.trouble_next)
 map('n', '{', functions.trouble_prev)
 map('n', '+', functions.toggle_docment_symble)

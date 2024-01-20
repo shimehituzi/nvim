@@ -23,12 +23,9 @@ return {
 
     -- Actions
     map('n', '<Right>', gs.stage_hunk)
-    map('v', '<Right>', function() gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end)
     map('n', '<S-Right>', gs.undo_stage_hunk)
     map('n', '<Left>', gs.preview_hunk)
-    map('n', '<S-Left>', function() gs.blame_line({ full = true }) end)
-    map('n', '<C-u>', gs.reset_hunk)
-    map('v', '<C-u>', function() gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end)
+    map('n', '<S-Left>', gs.reset_hunk)
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
