@@ -70,13 +70,14 @@ map({ 'v', 'o' }, 'id', 'i"')
 -- **PLUGINS**
 -- normal
 local builtin = require('telescope.builtin')
--- local extnsions = require('telescope').extensions
+local extnsions = require('telescope').extensions
 map('n', 'f', builtin.find_files)
 map('n', 'F', builtin.live_grep)
 map('n', '?', builtin.current_buffer_fuzzy_find)
+map('n', '2', extnsions.file_browser.file_browser)
 -- map('n', ' ', builtin.builtin)
 -- map('n', ' ', builtin.buffers)
--- map('n', ' ', builtin.help_tags)
+map('n', '3', builtin.help_tags)
 -- map('n', ' ', extnsions.noice.noice)
 -- map('n', ' ', builtin.lsp_document_symbols)
 -- map('n', ' ', builtin.diagnostic)
