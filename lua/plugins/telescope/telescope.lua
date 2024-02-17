@@ -12,7 +12,7 @@ return {
     local telescope = require('telescope')
     local actions = require('telescope.actions')
     local trouble = require('trouble.providers.telescope')
-    local fb_actions = require "telescope".extensions.file_browser.actions
+    local f = require("telescope").extensions.file_browser.actions
 
     telescope.setup({
       defaults = {
@@ -44,6 +44,22 @@ return {
           hijack_netrw = true,
           mappings = {
             i = {
+              ['<C-h>'] = f.goto_parent_dir,
+              ['<C-l>'] = actions.select_default,
+              ['<BS>'] = f.backspace,
+              ['<C-a>'] = f.create,
+              ['<C-r>'] = f.rename,
+              ['<C-x>'] = f.move,
+              ['<C-c>'] = f.copy,
+              ['<C-d>'] = f.remove,
+              ['<C-o>'] = f.open,
+              ['<C-f>'] = f.toggle_browser,
+              ['<C-t>'] = f.toggle_all,
+              ['<C-s>'] = f.select_all,
+              ['<Up>'] = f.toggle_hidden,
+              ['<Down>'] = f.toggle_respect_gitignore,
+              ['<Left>'] = f.sort_by_size,
+              ['<Right>'] = f.sort_by_date,
             },
           },
         },
