@@ -166,12 +166,6 @@ return {
           mappings = keymaps.git_status.mappings,
         },
       },
-      document_symbols = {
-        follow_cursor = true,
-        window = {
-          mappings = keymaps.document_symbols.mappings,
-        },
-      },
     })
   end,
 }
