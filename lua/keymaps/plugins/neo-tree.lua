@@ -23,15 +23,15 @@ return {
       ['y'] = 'copy_to_clipboard',
       ['x'] = 'cut_to_clipboard',
       ['p'] = 'paste_from_clipboard',
-      ['c'] = 'copy', -- takes text input for destination, also accepts the optional config.show_path option like "add":
-      ['m'] = 'move', -- takes text input for destination, also accepts the optional config.show_path option like "add".
+      ['c'] = 'copy',
+      ['m'] = 'move',
       ['i'] = 'show_file_details',
       ['`'] = 'refresh',
       ['?'] = 'show_help',
       ['<C-k>'] = 'prev_source',
       ['<C-j>'] = 'next_source',
-      ['<Esc>'] = 'cancel', -- close preview or floating neo-tree window
-      ['q'] = 'cancel', -- close preview or floating neo-tree window
+      ['<Esc>'] = function() vim.cmd('NeoTree close') end,
+      ['q'] = function() vim.cmd('NeoTree close') end,
     },
   },
   filesystems = {
@@ -46,7 +46,7 @@ return {
       ['<S-Tab>'] = 'prev_git_modified',
       ['1'] = 'order_by_git_status',
     }, ordermap),
-    fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
+    fuzzy_finder_mappings = {
       ['<C-j>'] = 'move_cursor_down',
       ['<C-k>'] = 'move_cursor_up',
     },
@@ -77,8 +77,6 @@ return {
       ['<cr>'] = 'jump_to_symbol',
       ['<space>'] = 'rename',
       ['`'] = 'refresh',
-      ['<Esc>'] = function() vim.cmd('Neotree close document_symbols') end,
-      ['q'] = function() vim.cmd('Neotree close document_symbols') end,
       ['?'] = 'show_help',
       ['z'] = 'close_all_nodes',
       ['a'] = 'none',
