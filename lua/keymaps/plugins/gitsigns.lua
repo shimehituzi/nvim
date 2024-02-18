@@ -23,9 +23,8 @@ return {
 
     -- Actions
     map('n', '<Right>', gs.stage_hunk)
-    map('n', '<S-Right>', gs.undo_stage_hunk)
     map('n', '<Left>', gs.preview_hunk)
-    map('n', '<S-Left>', gs.reset_hunk)
+    map('n', '<C-u>', gs.reset_hunk)
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
