@@ -42,6 +42,9 @@ return {
         },
         file_browser = {
           hijack_netrw = true,
+          hide_parent_dir = true,
+          grouped = true,
+          auto_depth = true,
           mappings = {
             i = {
               [';'] = actions.close,
