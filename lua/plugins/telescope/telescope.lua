@@ -12,7 +12,7 @@ return {
     local telescope = require('telescope')
     local actions = require('telescope.actions')
     local trouble = require('trouble.providers.telescope')
-    local f = require('telescope').extensions.file_browser.actions
+    local fb_actions = require('telescope').extensions.file_browser.actions
 
     telescope.setup({
       defaults = {
@@ -49,22 +49,22 @@ return {
           mappings = {
             i = {
               ['<space>'] = actions.close,
-              ['<C-h>'] = f.goto_parent_dir,
+              ['<C-h>'] = fb_actions.goto_parent_dir,
               ['<C-l>'] = actions.select_default,
-              ['<BS>'] = f.backspace,
-              ['<C-a>'] = f.create,
-              ['<C-r>'] = f.rename,
-              ['<C-x>'] = f.move,
-              ['<C-c>'] = f.copy,
-              ['<C-d>'] = f.remove,
-              ['<C-o>'] = f.open,
-              ['<C-f>'] = f.toggle_browser,
-              ['<C-t>'] = f.toggle_all,
-              ['<C-s>'] = f.select_all,
-              ['<Up>'] = f.toggle_hidden,
-              ['<Down>'] = f.toggle_respect_gitignore,
-              ['<Left>'] = f.sort_by_size,
-              ['<Right>'] = f.sort_by_date,
+              ['<BS>'] = fb_actions.backspace,
+              ['<C-a>'] = fb_actions.create,
+              ['<C-r>'] = fb_actions.rename,
+              ['<C-x>'] = fb_actions.move,
+              ['<C-c>'] = fb_actions.copy,
+              ['<C-d>'] = fb_actions.remove,
+              ['<C-o>'] = fb_actions.open,
+              ['<C-f>'] = fb_actions.toggle_browser,
+              ['<C-t>'] = fb_actions.toggle_all,
+              ['<C-s>'] = fb_actions.select_all,
+              ['<Up>'] = fb_actions.toggle_hidden,
+              ['<Down>'] = fb_actions.toggle_respect_gitignore,
+              ['<Left>'] = fb_actions.sort_by_size,
+              ['<Right>'] = fb_actions.sort_by_date,
             },
           },
         },
