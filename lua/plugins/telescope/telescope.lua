@@ -12,7 +12,7 @@ return {
 
     telescope.setup({
       defaults = {
-        mappings = require('keymaps.plugins.telescope').default,
+        mappings = require('keymaps.plugins.telescope').defaults,
         layout_strategy = 'horizontal',
         sorting_strategy = 'ascending',
         layout_config = {

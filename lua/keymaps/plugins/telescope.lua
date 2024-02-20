@@ -1,8 +1,42 @@
-local extend = require('utils').extend
 local actions = require('telescope.actions')
 local fb_actions = require('telescope').extensions.file_browser.actions
 
-local default_false = {
+local defaults_mapping = {
+  i = {
+    ['<CR>'] = actions.select_default,
+    ['<esc>'] = actions.close,
+    ['<C-q>'] = actions.close,
+    ['<C-j>'] = actions.move_selection_next,
+    ['<C-k>'] = actions.move_selection_previous,
+    ['<C-z>'] = actions.which_key,
+  },
+  n = {},
+}
+
+local file_browser_mapping = {
+  i = {
+    ['<space>'] = actions.close,
+    ['<C-h>'] = fb_actions.goto_parent_dir,
+    ['<C-l>'] = actions.select_default,
+    ['<BS>'] = fb_actions.backspace,
+    ['<C-a>'] = fb_actions.create,
+    ['<C-r>'] = fb_actions.rename,
+    ['<C-x>'] = fb_actions.move,
+    ['<C-c>'] = fb_actions.copy,
+    ['<C-d>'] = fb_actions.remove,
+    ['<C-o>'] = fb_actions.open,
+    ['<C-f>'] = fb_actions.toggle_browser,
+    ['<C-t>'] = fb_actions.toggle_all,
+    ['<C-s>'] = fb_actions.select_all,
+    ['<Up>'] = fb_actions.toggle_hidden,
+    ['<Down>'] = fb_actions.toggle_respect_gitignore,
+    ['<Left>'] = fb_actions.sort_by_size,
+    ['<Right>'] = fb_actions.sort_by_date,
+  },
+  n = {},
+}
+
+local defaults_false = {
   i = {
     ["<C-n>"] = false,
     ["<C-p>"] = false,
@@ -54,20 +88,8 @@ local default_false = {
   },
 }
 
-local default = {
-  i = extend(default_false.i, {
-    ['<CR>'] = actions.select_default,
-    ['<esc>'] = actions.close,
-    ['<C-q>'] = actions.close,
-    ['<C-j>'] = actions.move_selection_next,
-    ['<C-k>'] = actions.move_selection_previous,
-    ['<C-z>'] = actions.which_key,
-  }),
-  n = default_false.n,
-}
-
-local default_false_fb = {
-  ["i"] = {
+local file_browser_false = {
+  i = {
     ["<A-c>"] = false,
     ["<S-CR>"] = false,
     ["<A-r>"] = false,
@@ -84,7 +106,7 @@ local default_false_fb = {
     ["<C-s>"] = false,
     ["<bs>"] = false,
   },
-  ["n"] = {
+  n = {
     ["c"] = false,
     ["r"] = false,
     ["m"] = false,
@@ -101,30 +123,15 @@ local default_false_fb = {
   },
 }
 
-local file_browser = {
-  i = extend(default_false_fb.i, {
-    ['<space>'] = actions.close,
-    ['<C-h>'] = fb_actions.goto_parent_dir,
-    ['<C-l>'] = actions.select_default,
-    ['<BS>'] = fb_actions.backspace,
-    ['<C-a>'] = fb_actions.create,
-    ['<C-r>'] = fb_actions.rename,
-    ['<C-x>'] = fb_actions.move,
-    ['<C-c>'] = fb_actions.copy,
-    ['<C-d>'] = fb_actions.remove,
-    ['<C-o>'] = fb_actions.open,
-    ['<C-f>'] = fb_actions.toggle_browser,
-    ['<C-t>'] = fb_actions.toggle_all,
-    ['<C-s>'] = fb_actions.select_all,
-    ['<Up>'] = fb_actions.toggle_hidden,
-    ['<Down>'] = fb_actions.toggle_respect_gitignore,
-    ['<Left>'] = fb_actions.sort_by_size,
-    ['<Right>'] = fb_actions.sort_by_date,
-  }),
-  n = default_false_fb.n,
-}
+local extend = require('utils').extend
 
 return {
-  default = default,
-  file_browser = file_browser,
+  defaults = {
+    i = extend(defaults_false.i, defaults_mapping.i),
+    n = extend(defaults_false.n, defaults_mapping.n),
+  },
+  file_browser = {
+    i = extend(file_browser_false.i, file_browser_mapping.i),
+    n = extend(file_browser_false.n, file_browser_mapping.n),
+  },
 }
