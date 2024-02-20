@@ -3,7 +3,6 @@ return {
   tag = '0.1.5',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
-    { 'folke/trouble.nvim' },
     { 'folke/noice.nvim' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
@@ -11,7 +10,6 @@ return {
   config = function()
     local telescope = require('telescope')
     local actions = require('telescope.actions')
-    local trouble = require('trouble.providers.telescope')
     local fb_actions = require('telescope').extensions.file_browser.actions
 
     telescope.setup({
@@ -22,7 +20,6 @@ return {
             ['<C-q>'] = actions.close,
             ['<C-j>'] = actions.move_selection_next,
             ['<C-k>'] = actions.move_selection_previous,
-            ['<C-t>'] = trouble.open_with_trouble,
           },
         },
         layout_strategy = 'horizontal',

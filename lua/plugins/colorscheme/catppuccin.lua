@@ -48,7 +48,6 @@ return {
         },
         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         illuminate = true,
-        lsp_trouble = true,
         symbols_outline = true,
         ufo = true,
         treesitter_context = true,

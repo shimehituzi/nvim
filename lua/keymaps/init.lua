@@ -1,5 +1,4 @@
 local map = require('utils').map
-local functions = require('keymaps.functions')
 
 -- **NOP**
 local noplist = {
@@ -75,6 +74,8 @@ map('n', '<S-Tab>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
 map('n', ';', '<cmd>lua vim.lsp.buf.format()<CR>')
 map('n', '\'', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 map('n', '"', '<cmd>lua vim.lsp.buf.rename()<CR>')
+map('n', '}', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+map('n', '{', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 map('n', '<Space>', extnsions.file_browser.file_browser)
 map('n', 'f', builtin.lsp_references)
 map('n', 'F', builtin.lsp_definitions)
@@ -94,8 +95,6 @@ map('n', 'K', function() require('illuminate').goto_prev_reference() end)
 map('n', '+', '<cmd>Neotree filesystem reveal right toggle<cr>')
 map('n', '-', '<cmd>DiffviewOpen<cr>')
 map('n', '_', '<cmd>DiffviewFileHistory<cr>')
-map('n', '}', functions.trouble_next)
-map('n', '{', functions.trouble_prev)
 map('n', '|', '<cmd>IBLToggle<cr>')
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal)')
