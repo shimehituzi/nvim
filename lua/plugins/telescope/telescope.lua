@@ -12,7 +12,7 @@ return {
     local telescope = require('telescope')
     local actions = require('telescope.actions')
     local trouble = require('trouble.providers.telescope')
-    local f = require("telescope").extensions.file_browser.actions
+    local f = require('telescope').extensions.file_browser.actions
 
     telescope.setup({
       defaults = {
@@ -25,20 +25,20 @@ return {
             ['<C-t>'] = trouble.open_with_trouble,
           },
         },
-        layout_strategy = "horizontal",
-        sorting_strategy = "ascending",
+        layout_strategy = 'horizontal',
+        sorting_strategy = 'ascending',
         layout_config = {
           horizontal = {
             width = 0.9,
             height = 0.9,
             preview_width = 0.6,
-            prompt_position = "top",
+            prompt_position = 'top',
           },
         },
       },
       extensions = {
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown(),
+        ['ui-select'] = {
+          require('telescope.themes').get_dropdown(),
         },
         file_browser = {
           hijack_netrw = true,
@@ -68,10 +68,10 @@ return {
             },
           },
         },
-      }
+      },
     })
-    require("telescope").load_extension("file_browser")
-    require("telescope").load_extension("ui-select")
-    require("telescope").load_extension("noice")
-  end
+    require('telescope').load_extension('file_browser')
+    require('telescope').load_extension('ui-select')
+    require('telescope').load_extension('noice')
+  end,
 }

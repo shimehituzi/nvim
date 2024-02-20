@@ -69,5 +69,5 @@ return {
       ['gp'] = 'git_push',
       ['gg'] = 'git_commit_and_push',
     }, ordermap),
-  }
+  },
 }
