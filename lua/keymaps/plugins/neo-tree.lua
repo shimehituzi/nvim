@@ -30,8 +30,8 @@ return {
       ['?'] = 'show_help',
       ['<C-k>'] = 'prev_source',
       ['<C-j>'] = 'next_source',
-      ['<Esc>'] = function() vim.cmd('NeoTree close') end,
-      ['q'] = function() vim.cmd('NeoTree close') end,
+      ['<Esc>'] = function() vim.cmd('Neotree close') end,
+      ['q'] = function() vim.cmd('Neotree close') end,
     },
   },
   filesystems = {

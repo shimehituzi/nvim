@@ -45,9 +45,10 @@ return {
           hide_parent_dir = true,
           grouped = true,
           auto_depth = true,
+          display_stat = false,
           mappings = {
             i = {
-              [';'] = actions.close,
+              ['<space>'] = actions.close,
               ['<C-h>'] = f.goto_parent_dir,
               ['<C-l>'] = actions.select_default,
               ['<BS>'] = f.backspace,
