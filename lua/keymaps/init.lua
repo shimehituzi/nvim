@@ -3,8 +3,8 @@ local functions = require('keymaps.functions')
 
 -- **NOP**
 local noplist = {
-  '@', '#', '$', '^', '%', '&', '*', '(', ')',
-  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
+  '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-g>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
 for _, m in ipairs(noplist) do
   map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end, { expr = true })
@@ -37,8 +37,7 @@ map('n', '`', '<cmd>only<cr>')
 map('n', '~', '<C-l><cmd>nohl<cr>')
 map('n', 'G', '~')
 map('n', 'U', 'J')
--- map('n', '-', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
--- map('n', '_', '<cmd>for i in range(v:count1) | call append(line(\'.\')-1, \'\') | endfor<cr>')
+map('n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
 map('n', '<BS>', '<C-o>')
 map('n', '<Del>', '<C-i>')
 map('n', 'x', '"_x')
