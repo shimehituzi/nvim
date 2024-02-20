@@ -44,6 +44,7 @@ return {
           hijack_netrw = true,
           mappings = {
             i = {
+              [';'] = actions.close,
               ['<C-h>'] = f.goto_parent_dir,
               ['<C-l>'] = actions.select_default,
               ['<BS>'] = f.backspace,
