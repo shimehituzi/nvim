@@ -33,7 +33,7 @@ return {
         cmp.complete()
       end
     end, { 'i', 'c' }),
-    ['<CR>'] = cmp.mapping({
+    ['<C-f>'] = cmp.mapping({
       i = function(fallback)
         if cmp.visible() then
           cmp.confirm({ select = true })
@@ -50,7 +50,7 @@ return {
         end
       end,
     }),
-    ['<C-e>'] = cmp.mapping(function(fallback)
+    ['<C-d>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.abort()
       else
