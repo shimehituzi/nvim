@@ -9,21 +9,21 @@ return {
     end
 
     -- Navigation
-    map('n', ']', function()
+    map('n', '<Down>', function()
       if vim.wo.diff then return ']c' end
       vim.schedule(function() gs.next_hunk() end)
       return '<Ignore>'
     end, { expr = true })
 
-    map('n', '[', function()
+    map('n', '<Up>', function()
       if vim.wo.diff then return '[c' end
       vim.schedule(function() gs.prev_hunk() end)
       return '<Ignore>'
     end, { expr = true })
 
     -- Actions
-    map('n', '-', gs.stage_hunk)
-    map('n', '_', gs.preview_hunk)
+    map('n', '<Right>', gs.stage_hunk)
+    map('n', '<Left>', gs.preview_hunk)
     map('n', 'U', gs.undo_stage_hunk)
     map('n', '<C-u>', gs.reset_hunk)
 
