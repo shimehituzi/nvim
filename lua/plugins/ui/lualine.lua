@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -25,7 +26,14 @@ return {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = { 'filetype' },
-        lualine_x = { { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ' } }, 'encoding' },
+        lualine_x = {
+          {
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
+          },
+          { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ' } },
+          'encoding',
+        },
         lualine_y = { 'searchcount', 'progress' },
         lualine_z = { 'selectioncount', 'location' },
       },
