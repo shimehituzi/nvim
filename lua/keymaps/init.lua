@@ -3,7 +3,7 @@ local map = require('utils').map
 -- **NOP**
 local noplist = {
   '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
-  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-g>', '<C-n>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
+  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-g>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
 for _, m in ipairs(noplist) do
   map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end, { expr = true })
@@ -35,7 +35,7 @@ map('n', 'T', '<C-x>')
 map('n', '`', '<cmd>only<cr>')
 map('n', '~', '<C-l><cmd>nohl<cr>')
 map('n', 'G', '~')
-map('n', 'U', 'J')
+map('n', 'X', 'J')
 map('n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
 map('n', '<BS>', '<C-o>')
 map('n', '<Del>', '<C-i>')
@@ -97,9 +97,10 @@ map('n', '-', '<cmd>DiffviewOpen<cr>')
 map('n', '_', '<cmd>DiffviewFileHistory<cr>')
 map('n', '|', '<cmd>IBLToggle<cr>')
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
-map('n', 'S', '<Plug>(nvim-surround-normal)')
-map('n', '<C-s>', '<Plug>(nvim-surround-change)')
-map('n', 'X', '<Plug>(nvim-surround-delete)')
+map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
+map('n', 'ys', '<Plug>(nvim-surround-normal)')
+map('n', 'cs', '<Plug>(nvim-surround-change)')
+map('n', 'ds', '<Plug>(nvim-surround-delete)')
 
 -- visual
 map('v', '<CR>', '<cmd>Translate ja<cr>')
