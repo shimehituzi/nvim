@@ -24,13 +24,28 @@ map('', '<C-d>', '<C-u>')
 
 -- normal
 map('n', '<CR>', '<cmd>w<cr>')
-map('n', 'q', '<cmd>bd<cr>')
-map('n', '<C-q>', '<cmd>q<CR>')
+map('n', 'q', '<cmd>cclose<cr><cmd>bd<cr>')
+map('n', '<C-q>', '<cmd>cclose<cr><cmd>q<CR>')
 map('n', '<S-q>', '<C-z>')
 map('n', 'f', '<cmd>cnext<cr>')
 map('n', 'F', '<cmd>cprev<cr>')
-map('n', 't', '<cmd>cnewer<cr>')
-map('n', 'T', '<cmd>colder<cr>')
+map('n', 't', function()
+  local is_quickfix_open = false
+---@diagnostic disable-next-line: param-type-mismatch
+  for _, wininfo in ipairs(vim.fn.getwininfo()) do
+    if wininfo.quickfix == 1 then
+      is_quickfix_open = true
+      break
+    end
+  end
+
+  if is_quickfix_open then
+    vim.cmd('cclose')
+  else
+    vim.cmd('copen')
+    -- vim.cmd('wincmd p')
+  end
+end)
 map('n', '<C-l>', '<C-w>w')
 map('n', '<C-h>', '<C-w>W')
 map('n', '<C-p>', 'p\']')
@@ -53,10 +68,10 @@ map('n', '<S-Up>', 'Vgk')
 map('v', '<S-Up>', 'gk')
 map('n', '<S-Down>', 'Vgj')
 map('v', '<S-Down>', 'gj')
-map('n', '<S-Left>', '<cmd>move -2<cr>==', {silent = true})
-map('v', '<S-Left>', ':move -2<cr>gv=gv', {silent = true})
-map('n', '<S-Right>', '<cmd>move +1<cr>==', {silent = true})
-map('v', '<S-Right>', ':move \'>+<cr>gv=gv', {silent = true})
+map('n', '<S-Left>', '<cmd>move -2<cr>==', { silent = true })
+map('v', '<S-Left>', ':move -2<cr>gv=gv', { silent = true })
+map('n', '<S-Right>', '<cmd>move +1<cr>==', { silent = true })
+map('v', '<S-Right>', ':move \'>+<cr>gv=gv', { silent = true })
 map('n', '<C-S-Down>', '<C-w>j')
 map('n', '<C-S-Up>', '<C-w>k')
 map('n', '<C-S-Left>', '<C-w>h')
@@ -98,15 +113,16 @@ map('n', '{', '<cmd>lua vim.diagnostics.goto_prev()<CR>')
 map('n', '<Tab>', builtin.lsp_definitions)
 map('n', '<S-Tab>', builtin.lsp_references)
 map('n', '<Space>', extnsions.file_browser.file_browser)
+map('n', 'T', builtin.quickfix)
 map('n', '1', builtin.resume)
-map('n', '2', builtin.lsp_document_symbols)
-map('n', '3', builtin.diagnostics)
+map('n', '2', builtin.registers)
+map('n', '3', builtin.live_grep)
 map('n', '4', builtin.current_buffer_fuzzy_find)
-map('n', '5', builtin.live_grep)
+map('n', '5', builtin.quickfixhistory)
 map('n', '6', builtin.builtin)
 map('n', '7', extnsions.noice.noice)
-map('n', '8', builtin.quickfixhistory)
-map('n', '9', builtin.quickfix)
+map('n', '8', builtin.lsp_document_symbols)
+map('n', '9', builtin.diagnostics)
 map('n', '?', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
 map('n', 'ys', '<Plug>(nvim-surround-normal)')
@@ -122,3 +138,4 @@ map('v', 'S', '<Plug>(nvim-surround-visual)')
 
 -- textobject
 map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
+

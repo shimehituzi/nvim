@@ -1,17 +1,27 @@
 local actions = require('telescope.actions')
 local fb_actions = require('telescope').extensions.file_browser.actions
+local action_state = require('telescope.actions.state')
+
+local custom_actions = {}
+function custom_actions.default_or_selected_to_qflist(prompt_bufnr)
+  if #action_state.get_current_picker(prompt_bufnr):get_multi_selection() > 1 then
+    actions.send_selected_to_qflist(prompt_bufnr)
+    actions.open_qflist(prompt_bufnr)
+  else
+    actions.select_default(prompt_bufnr)
+  end
+end
 
 local defaults_mapping = {
   i = {
     ['<esc>'] = actions.close,
     ['<C-q>'] = actions.close,
-    ['<CR>'] = actions.select_default,
+    ['<CR>'] = custom_actions.default_or_selected_to_qflist,
     ['<C-j>'] = actions.move_selection_next,
     ['<C-k>'] = actions.move_selection_previous,
     ['<C-z>'] = actions.which_key,
     ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
     ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-    ["<C-e>"] = actions.smart_send_to_qflist,
     ["<Up>"] = actions.preview_scrolling_up,
     ["<Down>"] = actions.preview_scrolling_down,
     -- ["<Left>"] = actions.preview_scrolling_left,
