@@ -1,6 +1,8 @@
 local map = require('utils').map
+local functions = require('keymaps.functions')
 local builtin = require('telescope.builtin')
 local extnsions = require('telescope').extensions
+
 
 -- **NOP**
 local noplist = {
@@ -29,23 +31,7 @@ map('n', '<C-q>', '<cmd>cclose<cr><cmd>q<CR>')
 map('n', '<S-q>', '<C-z>')
 map('n', 'f', '<cmd>cnext<cr>')
 map('n', 'F', '<cmd>cprev<cr>')
-map('n', 't', function()
-  local is_quickfix_open = false
----@diagnostic disable-next-line: param-type-mismatch
-  for _, wininfo in ipairs(vim.fn.getwininfo()) do
-    if wininfo.quickfix == 1 then
-      is_quickfix_open = true
-      break
-    end
-  end
-
-  if is_quickfix_open then
-    vim.cmd('cclose')
-  else
-    vim.cmd('copen')
-    -- vim.cmd('wincmd p')
-  end
-end)
+map('n', 't', functions.toggle_qf)
 map('n', '<C-l>', '<C-w>w')
 map('n', '<C-h>', '<C-w>W')
 map('n', '<C-p>', 'p\']')
