@@ -34,11 +34,11 @@ return {
       end
     end, { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping({
-      i = function(fallback)
+      i = function()
         if cmp.visible() then
           cmp.confirm({ select = true })
         else
-          fallback()
+          cmp.complete()
         end
       end,
       c = function(fallback)
@@ -46,7 +46,7 @@ return {
           cmp.confirm()
           cmp.close()
         else
-          fallback()
+          cmp.complete()
         end
       end,
     }),
