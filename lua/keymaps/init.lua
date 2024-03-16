@@ -115,6 +115,7 @@ map('n', 'cs', '<Plug>(nvim-surround-change)')
 map('n', 'ds', '<Plug>(nvim-surround-delete)')
 map('n', '+', '<cmd>Neotree filesystem reveal right toggle<cr>')
 map('n', '|', '<cmd>IBLToggle<cr>')
+map('n', 'G', '<cmd>CopilotChatToggle<cr>')
 
 -- visual
 map('v', '<CR>', '<cmd>Translate ja<cr>')
