@@ -24,6 +24,11 @@ return {
           },
         },
       },
+      pickers = {
+        git_status = {
+          mappings = require('keymaps.plugins.telescope').defaults,
+        },
+      },
       extensions = {
         ['ui-select'] = {
           require('telescope.themes').get_dropdown(),

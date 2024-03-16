@@ -1,38 +1,24 @@
 local actions = require('telescope.actions')
 local fb_actions = require('telescope').extensions.file_browser.actions
-local action_state = require('telescope.actions.state')
-
-local custom_actions = {}
-function custom_actions.default_or_selected_to_qflist(prompt_bufnr)
-  if #action_state.get_current_picker(prompt_bufnr):get_multi_selection() > 1 then
-    actions.send_selected_to_qflist(prompt_bufnr)
-    actions.open_qflist(prompt_bufnr)
-  else
-    actions.select_default(prompt_bufnr)
-  end
-end
 
 local defaults_mapping = {
   i = {
     ['<esc>'] = actions.close,
     ['<C-q>'] = actions.close,
-    ['<CR>'] = custom_actions.default_or_selected_to_qflist,
+    ['<CR>'] = actions.select_default,
+    ['<space>'] = function(prompt_bufnr) actions.select_default(prompt_bufnr) require('telescope.builtin').resume() end,
+    ['<Tab>'] = actions.move_selection_next,
     ['<C-j>'] = actions.move_selection_next,
+    ['<S-Tab>'] = actions.move_selection_previous,
     ['<C-k>'] = actions.move_selection_previous,
-    ['<C-z>'] = actions.which_key,
-    ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-    ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-    ["<Up>"] = actions.preview_scrolling_up,
-    ["<Down>"] = actions.preview_scrolling_down,
-    -- ["<Left>"] = actions.preview_scrolling_left,
-    -- ["<Right>"] = actions.preview_scrolling_right,
+    ['<Up>'] = actions.preview_scrolling_up,
+    ['<Down>'] = actions.preview_scrolling_down,
   },
   n = {},
 }
 
 local file_browser_mapping = {
   i = {
-    ['<space>'] = actions.close,
     ['<C-h>'] = fb_actions.goto_parent_dir,
     ['<C-l>'] = actions.select_default,
     ['<BS>'] = fb_actions.backspace,
@@ -115,7 +101,7 @@ local file_browser_false = {
     ["<A-d>"] = false,
     ["<C-o>"] = false,
     ["<C-g>"] = false,
-    -- ["<C-e>"] = false,
+    ["<C-e>"] = false,
     ["<C-w>"] = false,
     ["<C-t>"] = false,
     ["<C-f>"] = false,
