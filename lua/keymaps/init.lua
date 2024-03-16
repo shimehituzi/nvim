@@ -1,5 +1,4 @@
 local map = require('utils').map
-local functions = require('keymaps.functions')
 local builtin = require('telescope.builtin')
 local extnsions = require('telescope').extensions
 
