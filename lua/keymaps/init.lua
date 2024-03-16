@@ -1,4 +1,5 @@
 local map = require('utils').map
+local nummap = require('utils').nummap
 local builtin = require('telescope.builtin')
 local extnsions = require('telescope').extensions
 
@@ -98,15 +99,15 @@ map('n', 'F', builtin.lsp_references)
 map('n', '<Space>', extnsions.file_browser.file_browser)
 map('n', '<Tab>', builtin.resume)
 map('n', '<S-Tab>', builtin.resume)
-map('n', '1', builtin.git_status)
-map('n', '2', builtin.registers)
-map('n', '3', builtin.live_grep)
-map('n', '4', builtin.current_buffer_fuzzy_find)
-map('n', '5', builtin.jumplist)
-map('n', '6', builtin.builtin)
-map('n', '7', extnsions.noice.noice)
-map('n', '8', builtin.lsp_document_symbols)
-map('n', '9', builtin.diagnostics)
+nummap('n', '1', '<cmd>lua require(\'telescope.builtin\').git_status()<CR>')
+nummap('n', '2', '<cmd>lua require(\'telescope.builtin\').registers()<CR>')
+nummap('n', '3', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
+nummap('n', '4', '<cmd>lua require(\'telescope.builtin\').current_buffer_fuzzy_find()<CR>')
+nummap('n', '5', '<cmd>lua require(\'telescope.builtin\').jumplist()<CR>')
+nummap('n', '6', '<cmd>lua require(\'telescope.builtin\').builtin()<CR>')
+nummap('n', '7', '<cmd>lua require(\'telescope\').extensions.noice.noice()<CR>')
+nummap('n', '8', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<CR>')
+nummap('n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
 map('n', 'ys', '<Plug>(nvim-surround-normal)')
@@ -122,4 +123,3 @@ map('v', 'S', '<Plug>(nvim-surround-visual)')
 
 -- textobject
 map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
-
