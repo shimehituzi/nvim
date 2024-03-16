@@ -6,7 +6,7 @@ local extnsions = require('telescope').extensions
 
 -- **NOP**
 local noplist = {
-  '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+  '!', '@', '#', '$', '%', '^', '&', '*',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-g>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
 for _, m in ipairs(noplist) do
@@ -19,8 +19,8 @@ map('', 'j', 'gj')
 map('', 'k', 'gk')
 map('', 'H', '^')
 map('', 'L', '$')
-map('', '<End>', 'G')
-map('', '<Home>', 'gg')
+map('', '-', 'G')
+map('', '_', 'gg')
 map('', '<C-f>', '<C-d>')
 map('', '<C-d>', '<C-u>')
 
@@ -34,16 +34,16 @@ map('n', '<C-h>', '<C-w>W')
 map('n', '<C-p>', 'p\']')
 map('n', 'm', '@')
 map('n', 'M', 'q')
-map('n', 't', '<C-a>')
-map('n', 'T', '<C-x>')
+map('n', ')', '<C-a>')
+map('n', '(', '<C-x>')
 map('n', '`', '<C-l><cmd>nohl<cr>')
 map('n', '~', '<cmd>only<cr>')
 map('n', 'X', 'J')
 map('n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
 map('n', '<BS>', '<C-o>')
 map('n', '<Del>', '<C-i>')
-map('n', '-', '~')
-map('n', '_', '"zx"zp<cmd>let @z=@_<cr>')
+map('n', 't', '~')
+map('n', 'T', '"zx"zp<cmd>let @z=@_<cr>')
 map('n', 'x', '"_x')
 map('n', 's', '"_s')
 map('n', 'n', 'nzz')
