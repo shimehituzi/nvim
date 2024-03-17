@@ -6,10 +6,10 @@ return {
         enabled = true,
         auto_refresh = true,
         keymap = {
-          jump_prev = '<up>',
-          jump_next = '<down>',
-          accept = '<left>',
-          refresh = '<right>',
+          jump_next = '<C-j>',
+          jump_prev = '<C-k>',
+          accept = '<cr>',
+          refresh = '<C-g>',
           open = '<C-g>',
         },
         layout = {

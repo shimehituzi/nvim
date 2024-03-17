@@ -33,23 +33,27 @@ return {
         cmp.complete()
       end
     end, { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping({
-      i = function()
-        if cmp.visible() then
-          cmp.confirm({ select = true })
-        else
-          cmp.complete()
-        end
-      end,
-      c = function(fallback)
-        if cmp.visible() then
-          cmp.confirm()
-          cmp.close()
-        else
-          cmp.complete()
-        end
-      end,
-    }),
+    ['<C-l>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.complete({ config = { sources = { { name = 'copilot' } } } })
+      else
+        fallback()
+      end
+    end, { 'i' }),
+    ['<C-h>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { 'i' }),
+    ['<C-f>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.confirm({ select = true })
+      else
+        cmp.complete()
+      end
+    end, { 'i', 'c' }),
     ['<C-d>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.abort()
