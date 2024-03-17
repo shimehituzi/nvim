@@ -9,8 +9,8 @@ return {
           jump_next = '<C-j>',
           jump_prev = '<C-k>',
           accept = '<cr>',
-          refresh = '<C-g>',
-          open = '<C-g>',
+          refresh = '<C-s>',
+          open = '<C-s>',
         },
         layout = {
           position = "right", -- | top | left | right

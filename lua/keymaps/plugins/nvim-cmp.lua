@@ -33,20 +33,6 @@ return {
         cmp.complete()
       end
     end, { 'i', 'c' }),
-    ['<C-l>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.complete({ config = { sources = { { name = 'copilot' } } } })
-      else
-        fallback()
-      end
-    end, { 'i' }),
-    ['<C-h>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.complete()
-      else
-        fallback()
-      end
-    end, { 'i' }),
     ['<C-f>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.confirm({ select = true })
@@ -54,13 +40,18 @@ return {
         cmp.complete()
       end
     end, { 'i', 'c' }),
-    ['<C-d>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.abort()
-      else
-        fallback()
-      end
+    ['<C-d>'] = cmp.mapping(function()
+      cmp.abort()
     end, { 'i', 'c' }),
+    ['<C-g>'] = cmp.mapping(function()
+      cmp.complete({
+        config = {
+          sources = {
+            { name = 'copilot' }
+          }
+        }
+      })
+    end, { 'i' }),
     ['<Tab>'] = cmp.mapping({
       i = luasnip_jump_next,
       s = luasnip_jump_next,

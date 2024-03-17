@@ -3,7 +3,6 @@ local nummap = require('utils').nummap
 local builtin = require('telescope.builtin')
 local extnsions = require('telescope').extensions
 
-
 -- **NOP**
 local noplist = {
   '!', '@', '#', '$', '%', '^', '&', '*',
@@ -70,7 +69,6 @@ map('v', '<C-y>', 'y\']')
 map('i', '<C-h>', '<C-g>U<Left>')
 map('i', '<C-l>', '<C-g>U<Right>')
 map('i', '<C-e>', '<C-g>U<End>')
-map('i', '<C-d>', '<Del>')
 
 -- textobject
 map({ 'v', 'o' }, 'aa', 'a>')
