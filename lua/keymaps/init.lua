@@ -21,6 +21,7 @@ map('', 'L', '$')
 map('', '<C-f>', '<C-d>')
 map('', '<C-d>', '<C-u>')
 map('', '-', 'G')
+map('', '_', 'gg')
 
 -- normal
 map('n', '<CR>', '<cmd>w<cr>')
@@ -41,7 +42,6 @@ map('n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\'
 map('n', '<BS>', '<C-o>')
 map('n', '<Del>', '<C-i>')
 map('n', '+', '~')
-map('n', '_', '"zx"zp<cmd>let @z=@_<cr>')
 map('n', 'x', '"_x')
 map('n', 's', '"_s')
 map('n', 'n', 'nzz')
