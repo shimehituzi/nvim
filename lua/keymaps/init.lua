@@ -5,7 +5,7 @@ local extnsions = require('telescope').extensions
 
 -- **NOP**
 local noplist = {
-  '!', '@', '#', '$', '%', '^', '&', '*',
+  '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
   '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-g>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
 }
 for _, m in ipairs(noplist) do
@@ -20,6 +20,7 @@ map('', 'H', '^')
 map('', 'L', '$')
 map('', '<C-f>', '<C-d>')
 map('', '<C-d>', '<C-u>')
+map('', '-', 'G')
 
 -- normal
 map('n', '<CR>', '<cmd>w<cr>')
@@ -39,7 +40,7 @@ map('n', 'X', 'J')
 map('n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
 map('n', '<BS>', '<C-o>')
 map('n', '<Del>', '<C-i>')
-map('n', '-', '~')
+map('n', '+', '~')
 map('n', '_', '"zx"zp<cmd>let @z=@_<cr>')
 map('n', 'x', '"_x')
 map('n', 's', '"_s')
@@ -97,25 +98,28 @@ map('n', '<Tab>', builtin.resume)
 map('n', '<S-Tab>', builtin.resume)
 nummap('n', '1', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<CR>')
 nummap('n', '2', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
-nummap('n', '3', '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').help_actions())<CR>')
-nummap('n', '4', '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').prompt_actions())<CR>')
+nummap('n', '3',
+  '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').help_actions())<CR>')
+nummap('n', '4',
+  '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').prompt_actions())<CR>')
 nummap('n', '5', '<cmd>lua require(\'telescope.builtin\').git_status()<CR>')
 nummap('n', '6', '<cmd>lua require(\'telescope\').extensions.noice.noice()<CR>')
 nummap('n', '7', '<cmd>lua require(\'telescope.builtin\').builtin()<CR>')
 nummap('n', '8', '<cmd>lua require(\'telescope.builtin\').live_grep()<CR>')
 nummap('n', '9', '<cmd>lua require(\'telescope.builtin\').current_buffer_fuzzy_find()<CR>')
+map('n', 'G', '<cmd>CopilotChatToggle<cr>')
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
 map('n', 'ys', '<Plug>(nvim-surround-normal)')
 map('n', 'cs', '<Plug>(nvim-surround-change)')
 map('n', 'ds', '<Plug>(nvim-surround-delete)')
-map('n', '+', '<cmd>Neotree filesystem reveal right toggle<cr>')
 map('n', '|', '<cmd>IBLToggle<cr>')
 
 -- visual
-map('v', '<CR>', '<cmd>Translate ja<cr>')
+map('v', 'G', ':CopilotChat<cr>')
 map('v', ',', '<Plug>(comment_toggle_linewise_visual)')
 map('v', 'S', '<Plug>(nvim-surround-visual)')
+map('v', '<CR>', '<cmd>Translate ja<cr>')
 
 -- textobject
 map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
