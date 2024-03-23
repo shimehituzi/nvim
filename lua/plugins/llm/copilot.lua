@@ -13,7 +13,7 @@ return {
           open = '<C-s>',
         },
         layout = {
-          position = "right", -- | top | left | right
+          position = "right",
           ratio = 0.4
         },
       },
