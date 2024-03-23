@@ -2,7 +2,7 @@ return {
   'kevinhwang91/nvim-ufo',
   dependencies = { 'kevinhwang91/promise-async' },
   opts = {
-    filetype_exclude = { 'help', 'neo-tree', 'lazy', 'mason', 'qf' },
+    filetype_exclude = { 'help', 'lazy', 'mason', 'qf' },
   },
   config = function(_, opts)
     vim.api.nvim_create_autocmd('FileType', {

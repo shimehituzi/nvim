@@ -64,14 +64,7 @@ return {
           --   return true
           -- end
         end,
-        offsets = {
-          {
-            filetype = 'neo-tree',
-            text = 'neo-tree', -- | function ,
-            text_align = 'left', -- | "center" | "right"
-            separator = true,
-          },
-        },
+        offsets = {},
         color_icons = true, -- | false, -- whether or not to add the filetype icon highlights
         get_element_icon = function(element)
           -- element consists of {filetype: string, path: string, extension: string, directory: string}

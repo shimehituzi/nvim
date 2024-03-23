@@ -12,7 +12,7 @@ return {
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
           statusline = {},
-          winbar = { 'neo-tree', 'help', 'text' },
+          winbar = { 'help', 'text' },
         },
         ignore_focus = {},
         always_divide_middle = true,
