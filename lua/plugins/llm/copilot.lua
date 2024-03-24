@@ -13,8 +13,8 @@ return {
           open = '<C-s>',
         },
         layout = {
-          position = "right",
-          ratio = 0.4
+          position = 'right',
+          ratio = 0.4,
         },
       },
       suggestion = {

@@ -40,18 +40,19 @@ return {
         cmp.complete()
       end
     end, { 'i', 'c' }),
-    ['<C-d>'] = cmp.mapping(function()
-      cmp.abort()
-    end, { 'i', 'c' }),
-    ['<C-g>'] = cmp.mapping(function()
-      cmp.complete({
-        config = {
-          sources = {
-            { name = 'copilot' }
-          }
-        }
-      })
-    end, { 'i' }),
+    ['<C-d>'] = cmp.mapping(function() cmp.abort() end, { 'i', 'c' }),
+    ['<C-g>'] = cmp.mapping(
+      function()
+        cmp.complete({
+          config = {
+            sources = {
+              { name = 'copilot' },
+            },
+          },
+        })
+      end,
+      { 'i' }
+    ),
     ['<Tab>'] = cmp.mapping({
       i = luasnip_jump_next,
       s = luasnip_jump_next,

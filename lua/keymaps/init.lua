@@ -5,8 +5,27 @@ local extnsions = require('telescope').extensions
 
 -- **NOP**
 local noplist = {
-  '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
-  '<C-a>', '<C-b>', '<C-c>', '<C-e>', '<C-g>', '<C-n>', '<C-s>', '<C-t>', '<C-x>', '<C-y>', '<C-z>',
+  '!',
+  '@',
+  '#',
+  '$',
+  '%',
+  '^',
+  '&',
+  '*',
+  '(',
+  ')',
+  '<C-a>',
+  '<C-b>',
+  '<C-c>',
+  '<C-e>',
+  '<C-g>',
+  '<C-n>',
+  '<C-s>',
+  '<C-t>',
+  '<C-x>',
+  '<C-y>',
+  '<C-z>',
 }
 for _, m in ipairs(noplist) do
   map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end, { expr = true })
@@ -98,10 +117,8 @@ map('n', '<Tab>', builtin.resume)
 map('n', '<S-Tab>', builtin.resume)
 nummap('n', '1', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<CR>')
 nummap('n', '2', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
-nummap('n', '3',
-  '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').help_actions())<CR>')
-nummap('n', '4',
-  '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').prompt_actions())<CR>')
+nummap('n', '3', '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').help_actions())<CR>')
+nummap('n', '4', '<cmd>lua require(\'CopilotChat.integrations.telescope\').pick(require(\'CopilotChat.actions\').prompt_actions())<CR>')
 nummap('n', '5', '<cmd>lua require(\'telescope.builtin\').git_status()<CR>')
 nummap('n', '6', '<cmd>lua require(\'telescope\').extensions.noice.noice()<CR>')
 nummap('n', '7', '<cmd>lua require(\'telescope.builtin\').builtin()<CR>')

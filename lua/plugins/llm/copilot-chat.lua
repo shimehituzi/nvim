@@ -1,10 +1,10 @@
 return {
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    'CopilotC-Nvim/CopilotChat.nvim',
+    branch = 'canary',
     dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
+      { 'zbirenbaum/copilot.lua' },
+      { 'nvim-lua/plenary.nvim' },
     },
     config = function()
       local prompts = require('CopilotChat.prompts')
@@ -12,7 +12,7 @@ return {
 
       local lang_prompt = ' MUST ANSWER IN JAPANESE.'
       local lang_prompt_commit =
-      'The gitcommit block must be written in ENGLISH. Additionally, add an explanation of the gitcommit block. The explanation must be written in JAPANESE.'
+        'The gitcommit block must be written in ENGLISH. Additionally, add an explanation of the gitcommit block. The explanation must be written in JAPANESE.'
 
       require('CopilotChat').setup({
         debug = false,
@@ -35,50 +35,38 @@ return {
         history_path = vim.fn.stdpath('data') .. '/copilotchat_history',
         callback = nil,
 
-        selection = function(source)
-          return select.visual(source) or select.buffer(source)
-        end,
+        selection = function(source) return select.visual(source) or select.buffer(source) end,
 
         prompts = {
           Explain = {
-            prompt =
-                '/COPILOT_EXPLAIN Write an explanation for the code above as paragraphs of text.' .. lang_prompt,
+            prompt = '/COPILOT_EXPLAIN Write an explanation for the code above as paragraphs of text.' .. lang_prompt,
           },
           Tests = {
-            prompt =
-                '/COPILOT_TESTS Write a set of detailed unit test functions for the code above.' .. lang_prompt,
+            prompt = '/COPILOT_TESTS Write a set of detailed unit test functions for the code above.' .. lang_prompt,
           },
           Fix = {
-            prompt =
-                '/COPILOT_FIX There is a problem in this code. Rewrite the code to show it with the bug fixed.' ..
-                lang_prompt,
+            prompt = '/COPILOT_FIX There is a problem in this code. Rewrite the code to show it with the bug fixed.' .. lang_prompt,
           },
           Optimize = {
-            prompt =
-                '/COPILOT_REFACTOR Optimize the selected code to improve performance and readablilty.' .. lang_prompt,
+            prompt = '/COPILOT_REFACTOR Optimize the selected code to improve performance and readablilty.' .. lang_prompt,
           },
           Docs = {
-            prompt =
-                '/COPILOT_REFACTOR Write documentation for the selected code. The reply should be a codeblock containing the original code with the documentation added as comments. Use the most appropriate documentation style for the programming language used (e.g. JSDoc for JavaScript, docstrings for Python etc.' ..
-                lang_prompt,
+            prompt = '/COPILOT_REFACTOR Write documentation for the selected code. The reply should be a codeblock containing the original code with the documentation added as comments. Use the most appropriate documentation style for the programming language used (e.g. JSDoc for JavaScript, docstrings for Python etc.'
+              .. lang_prompt,
           },
           FixDiagnostic = {
             prompt = 'Please assist with the following diagnostic issue in file.' .. lang_prompt,
             selection = select.diagnostics,
           },
           Commit = {
-            prompt =
-                'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.' ..
-                lang_prompt_commit,
+            prompt = 'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.'
+              .. lang_prompt_commit,
             selection = select.gitdiff,
           },
           CommitStaged = {
-            prompt =
-                'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.' ..
-                lang_prompt_commit,
-            selection = function(source)
-              return select.gitdiff(source, true)
-            end,
+            prompt = 'Write commit message for the change with commitizen convention. Make sure the title has maximum 50 characters and message is wrapped at 72 characters. Wrap the whole message in code block with language gitcommit.'
+              .. lang_prompt_commit,
+            selection = function(source) return select.gitdiff(source, true) end,
           },
         },
 
@@ -102,7 +90,7 @@ return {
           },
           close = {
             normal = 'q',
-            insert = nil
+            insert = nil,
           },
           reset = {
             normal = '`',
@@ -110,20 +98,20 @@ return {
           },
           submit_prompt = {
             normal = '<CR>',
-            insert = nil
+            insert = nil,
           },
           accept_diff = {
             normal = nil,
-            insert = nil
+            insert = nil,
           },
           show_diff = {
-            normal = nil
+            normal = nil,
           },
           show_system_prompt = {
-            normal = nil
+            normal = nil,
           },
           show_user_selection = {
-            normal = nil
+            normal = nil,
           },
         },
       })
