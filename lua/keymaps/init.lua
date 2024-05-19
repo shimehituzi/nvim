@@ -19,7 +19,6 @@ local noplist = {
   '<C-b>',
   '<C-c>',
   '<C-e>',
-  '<C-g>',
   '<C-n>',
   '<C-s>',
   '<C-t>',
