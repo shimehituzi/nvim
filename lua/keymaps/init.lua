@@ -1,7 +1,11 @@
 local map = require('utils').map
 local nummap = require('utils').nummap
 local builtin = require('telescope.builtin')
-local extnsions = require('telescope').extensions
+local extensions = require('telescope').extensions
+local chat = require('CopilotChat')
+local chat_telescope = require('CopilotChat.integrations.telescope')
+local chat_actions = require('CopilotChat.actions')
+local chat_select = require('CopilotChat.select')
 
 -- **NOP**
 local noplist = {
@@ -101,15 +105,17 @@ map('n', '<C-j>', '<cmd>BufferLineCycleNext<cr>')
 map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
 map('n', 'J', function() require('illuminate').goto_next_reference() end)
 map('n', 'K', function() require('illuminate').goto_prev_reference() end)
-map('n', '?', builtin.current_buffer_fuzzy_find)
-map('n', '"', builtin.live_grep)
-map('n', '-', builtin.builtin)
-map('n', '_', require('telescope').extensions.noice.noice)
-map('n', '<Space>', extnsions.file_browser.file_browser)
-map('n', '<Tab>', builtin.resume)
-map('n', '<S-Tab>', builtin.resume)
+map('n', '<Space>', extensions.file_browser.file_browser)
+map('n', 'f', builtin.current_buffer_fuzzy_find)
+map('n', 'F', builtin.live_grep)
+map('n', '"', builtin.builtin)
+map('n', '?', extensions.noice.noice)
+map('n', '-', builtin.resume)
+map('n', '_', builtin.jumplist)
+
 map('n', ';', '<cmd>lua vim.lsp.buf.hover()<CR>')
 map('n', '\'', '<cmd>lua vim.lsp.buf.format()<CR>')
+
 nummap('n', '1', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 nummap('n', '2', '<cmd>lua vim.lsp.buf.rename()<CR>')
 nummap('n', '3', '<cmd>lua require(\'telescope.builtin\').lsp_definitions()<CR>')
@@ -121,8 +127,8 @@ nummap('n', '8', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()
 nummap('n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
 map('n', '}', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 map('n', '{', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-map('n', 'f', '<cmd>CopilotChatToggle<cr>')
-map('n', 'F', function() require('CopilotChat.integrations.telescope').pick(require('CopilotChat.actions').prompt_actions()) end)
+map('n', '<Tab>', function() chat.toggle({ window = { layout = 'float' }, selection = chat_select.buffer }) end)
+map('n', '<S-Tab>', function() chat_telescope.pick(chat_actions.prompt_actions({ selection = chat_select.buffer })) end)
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
 map('n', 'ys', '<Plug>(nvim-surround-normal)')
@@ -131,10 +137,11 @@ map('n', 'ds', '<Plug>(nvim-surround-delete)')
 map('n', '|', '<cmd>IBLToggle<cr>')
 
 -- visual
-map('v', '<CR>', ':CopilotChat<cr>')
+map('v', '<Tab>', function() chat.toggle({ window = { layout = 'float' }, selection = chat_select.visual }) end)
+map('v', '<S-Tab>', function() chat_telescope.pick(chat_actions.prompt_actions({ selection = chat_select.visual })) end)
 map('v', ',', '<Plug>(comment_toggle_linewise_visual)')
 map('v', 'S', '<Plug>(nvim-surround-visual)')
-map('v', '<Tab>', '<cmd>Translate ja<cr>')
+map('v', '<CR>', '<cmd>Translate ja<cr>')
 
 -- textobject
 map({ 'v', 'o' }, '<space>', function() require('illuminate').textobj_select() end)
