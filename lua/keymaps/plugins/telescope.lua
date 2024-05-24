@@ -6,13 +6,11 @@ local defaults_mapping = {
     ['<esc>'] = actions.close,
     ['<C-q>'] = actions.close,
     ['<CR>'] = actions.select_default,
-    ['<space>'] = function(prompt_bufnr)
+    ['<Tab>'] = function(prompt_bufnr)
       actions.select_default(prompt_bufnr)
       require('telescope.builtin').resume()
     end,
-    ['<Tab>'] = actions.move_selection_next,
     ['<C-j>'] = actions.move_selection_next,
-    ['<S-Tab>'] = actions.move_selection_previous,
     ['<C-k>'] = actions.move_selection_previous,
     ['<Up>'] = actions.preview_scrolling_up,
     ['<Down>'] = actions.preview_scrolling_down,
