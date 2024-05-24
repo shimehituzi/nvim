@@ -22,5 +22,6 @@ require('lazy').setup({
   { import = 'plugins.coding' },
   { import = 'plugins.git' },
   { import = 'plugins.telescope' },
+  { import = 'plugins.dap' },
   { import = 'plugins.utils' },
 })
