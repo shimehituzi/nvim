@@ -6,19 +6,11 @@ local chat = require('CopilotChat')
 local chat_telescope = require('CopilotChat.integrations.telescope')
 local chat_actions = require('CopilotChat.actions')
 local chat_select = require('CopilotChat.select')
+local dapui = require('dapui')
+local dap = require('dap')
 
 -- **NOP**
 local noplist = {
-  '!',
-  '@',
-  '#',
-  '$',
-  '%',
-  '^',
-  '&',
-  '*',
-  '(',
-  ')',
   '<C-a>',
   '<C-b>',
   '<C-c>',
@@ -133,6 +125,25 @@ map('n', 'ys', '<Plug>(nvim-surround-normal)')
 map('n', 'cs', '<Plug>(nvim-surround-change)')
 map('n', 'ds', '<Plug>(nvim-surround-delete)')
 map('n', '|', '<cmd>IBLToggle<cr>')
+
+-- map('n', '!', dapui.toggle)
+-- map('n', '@', dapui.eval)
+-- map('n', '#', extensions.dap.commands)
+-- map('n', '$', extensions.dap.configurations)
+-- map('n', '%', extensions.dap.list_breakpoints)
+-- map('n', '^', extensions.dap.variables)
+-- map('n', '&', extensions.dap.frames)
+map('n', '!', dap.continue)
+map('n', '@', dap.toggle_breakpoint)
+map('n', '#', dap.step_over)
+map('n', '$', dap.step_into)
+map('n', '%', dap.step_out)
+map('n', '^', dap.step_back)
+map('n', '&', dap.terminate)
+map('n', '*', dap.repl.toggle)
+map('n', '(', dap.restart)
+map('n', ')', dap.run_last)
+
 
 -- visual
 map('v', '<Tab>', function() chat.toggle({ window = { layout = 'float' }, selection = chat_select.visual }) end)
