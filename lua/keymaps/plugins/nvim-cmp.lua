@@ -18,6 +18,11 @@ local luasnip_jump_prev = function(fallback)
   end
 end
 
+local move_cursor_next_line = function()
+  local key = vim.api.nvim_replace_termcodes('<Down>', true, false, true)
+  vim.api.nvim_feedkeys(key, 'i', false)
+end
+
 return {
   mapping = {
     ['<C-j>'] = cmp.mapping(function()
@@ -56,18 +61,9 @@ return {
     end, { 'i', 'c' }),
     ['<C-g>'] = cmp.mapping(function()
       if copilot.is_visible() then
-        if cmp.visible() then
-          cmp.abort()
-        end
-        copilot.accept_word()
-      end
-    end, { 'i' }),
-    ['<C-t>'] = cmp.mapping(function()
-      if copilot.is_visible() then
-        if cmp.visible() then
-          cmp.abort()
-        end
+        if cmp.visible() then cmp.abort() end
         copilot.accept_line()
+        move_cursor_next_line()
       end
     end, { 'i' }),
     ['<C-s>'] = cmp.mapping(function()
