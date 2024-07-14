@@ -54,6 +54,22 @@ return {
         copilot.dismiss()
       end
     end, { 'i', 'c' }),
+    ['<C-g>'] = cmp.mapping(function()
+      if copilot.is_visible() then
+        if cmp.visible() then
+          cmp.abort()
+        end
+        copilot.accept_word()
+      end
+    end, { 'i' }),
+    ['<C-t>'] = cmp.mapping(function()
+      if copilot.is_visible() then
+        if cmp.visible() then
+          cmp.abort()
+        end
+        copilot.accept_line()
+      end
+    end, { 'i' }),
     ['<C-s>'] = cmp.mapping(function()
       if copilot.is_visible() then copilot.dismiss() end
       copilot.toggle_auto_trigger()

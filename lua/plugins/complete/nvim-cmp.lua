@@ -15,12 +15,8 @@ return {
         config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
       },
     },
-    {
-      'zbirenbaum/copilot-cmp',
-      dependencies = 'zbirenbaum/copilot.lua',
-      config = function() require('copilot_cmp').setup() end,
-    },
     { 'onsails/lspkind.nvim' },
+    { 'zbirenbaum/copilot.lua' },
   },
   config = function()
     local lspkind = require('lspkind')
@@ -44,7 +40,6 @@ return {
           mode = 'symbol_text',
           maxwidth = 50,
           ellipsis_char = '...',
-          symbol_map = { Copilot = '' },
         }),
       },
     })
