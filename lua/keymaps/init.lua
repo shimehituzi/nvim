@@ -82,6 +82,7 @@ map('v', '<C-y>', 'y\']')
 map('i', '<C-h>', '<C-g>U<Left>')
 map('i', '<C-l>', '<C-g>U<Right>')
 map('i', '<C-e>', '<C-g>U<End>')
+map('i', '<C-t>', '<C-f>')
 
 -- textobject
 map({ 'v', 'o' }, 'aa', 'a>')
