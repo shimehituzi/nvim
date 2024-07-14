@@ -41,6 +41,13 @@ return {
                 callSnippet = 'Replace',
               },
             },
+            python = {
+              venvPath = '.',
+              pythonPath = './.venv/bin/python',
+              analysis = {
+                extraPaths = { '.' },
+              },
+            },
           },
         })
       end,
