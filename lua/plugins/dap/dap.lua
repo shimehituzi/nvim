@@ -84,4 +84,53 @@ return {
     ft = 'python',
     config = function() require('dap-python').setup('./.venv/bin/python') end,
   },
+  {
+    'mxsdev/nvim-dap-vscode-js',
+    ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+    dependencies = {
+      'microsoft/vscode-js-debug',
+      build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+    },
+    config = function()
+      local dap = require('dap')
+
+      require('dap-vscode-js').setup({
+        debugger_path = vim.fn.stdpath('data') .. '/lazy/vscode-js-debug',
+        adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+      })
+
+      for _, language in ipairs({ 'typescript', 'javascript', 'typescriptreact' }) do
+        dap.configurations[language] = {
+          {
+            type = 'pwa-node',
+            request = 'launch',
+            name = 'Launch file',
+            program = '${file}',
+            cwd = '${workspaceFolder}',
+          },
+          {
+            type = 'pwa-node',
+            request = 'attach',
+            name = 'Attach',
+            processId = require('dap.utils').pick_process,
+            cwd = '${workspaceFolder}',
+          },
+          {
+            type = 'pwa-node',
+            request = 'launch',
+            name = 'Debug Jest Tests',
+            runtimeExecutable = 'node',
+            runtimeArgs = {
+              './node_modules/jest/bin/jest.js',
+              '--runInBand',
+            },
+            rootPath = '${workspaceFolder}',
+            cwd = '${workspaceFolder}',
+            console = 'integratedTerminal',
+            internalConsoleOptions = 'neverOpen',
+          },
+        }
+      end
+    end,
+  },
 }
