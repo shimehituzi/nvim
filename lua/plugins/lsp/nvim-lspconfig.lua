@@ -20,7 +20,7 @@ return {
   config = function()
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls', 'tsserver', 'bashls', 'html', 'eslint', 'gopls', 'hls', 'pyright', 'denols' },
+      ensure_installed = { 'lua_ls', 'tsserver', 'bashls', 'html', 'gopls', 'hls', 'pyright', 'denols' },
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -30,62 +30,56 @@ return {
       lineFoldingOnly = true,
     }
 
+    local lspconfig = require('lspconfig')
+
     require('mason-lspconfig').setup_handlers({
       function(server_name)
-        local lspconfig = require('lspconfig')
-        if server_name == 'denols' then
-          lspconfig['denols'].setup({
-            capabilities = capabilities,
-            root_dir = lspconfig.util.root_pattern('deno.json'),
-            init_options = {
-              lint = true,
-              unstable = true,
-              suggest = {
-                imports = {
-                  hosts = {
-                    ['https://deno.land'] = true,
-                    ['https://cdn.nest.land'] = true,
-                    ['https://crux.land'] = true,
-                  },
+        local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts', 'import_map.json')
+        local is_deno_root = deno_root_dir(vim.fn.getcwd()) ~= nil
+
+        local opts = {}
+
+        if server_name == 'tsserver' then
+          opts.root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json')
+          if is_deno_root then opts.single_file_support = false end
+        elseif server_name == 'denols' then
+          opts.root_dir = deno_root_dir
+          opts.init_options = {
+            lint = true,
+            unstable = true,
+            suggest = {
+              imports = {
+                hosts = {
+                  ['https://deno.land'] = true,
+                  ['https://cdn.nest.land'] = true,
+                  ['https://crux.land'] = true,
                 },
               },
             },
-          })
-        elseif server_name == 'tsserver' then
-          lspconfig['tsserver'].setup({
-            capabilities = capabilities,
-            root_dir = lspconfig.util.root_pattern('package.json'),
-          })
+          }
         elseif server_name == 'pyright' then
-          lspconfig['pyright'].setup({
-            capabilities = capabilities,
-            settings = {
-              python = {
-                venvPath = '.',
-                pythonPath = './.venv/bin/python',
-                analysis = {
-                  extraPaths = { '.' },
-                },
+          opts.settings = {
+            python = {
+              venvPath = '.',
+              pythonPath = './.venv/bin/python',
+              analysis = {
+                extraPaths = { '.' },
               },
             },
-          })
+          }
         elseif server_name == 'lua_ls' then
-          lspconfig['lua_ls'].setup({
-            capabilities = capabilities,
-            settings = {
-              Lua = {
-                completion = {
-                  callSnippet = 'Replace',
-                },
+          opts.settings = {
+            Lua = {
+              completion = {
+                callSnippet = 'Replace',
               },
             },
-          })
-        else
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-            settings = settings,
-          })
+          }
         end
+
+        opts.capabilities = capabilities
+
+        lspconfig[server_name].setup(opts)
       end,
     })
   end,
