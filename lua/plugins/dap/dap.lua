@@ -110,6 +110,19 @@ return {
           },
           {
             type = 'pwa-node',
+            request = 'launch',
+            name = 'Launch file (Deno)',
+            program = '${file}',
+            cwd = '${workspaceFolder}',
+            runtimeExecutable = 'deno',
+            runtimeArgs = {
+              'run',
+              '--inspect-wait',
+              '--allow-all',
+            },
+          },
+          {
+            type = 'pwa-node',
             request = 'attach',
             name = 'Attach',
             processId = require('dap.utils').pick_process,
