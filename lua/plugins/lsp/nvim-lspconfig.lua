@@ -16,6 +16,7 @@ return {
       end,
     },
     { 'kevinhwang91/nvim-ufo' },
+    { 'kyoh86/climbdir.nvim' },
   },
   config = function()
     require('mason').setup()
@@ -32,15 +33,27 @@ return {
 
     local lspconfig = require('lspconfig')
 
+    local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts', 'import_map.json')
+    local node_root_dir = function(path)
+      local marker = require('climbdir.marker')
+      return require('climbdir').climb(path,
+        marker.one_of(marker.has_readable_file('package.json'), marker.has_directory('node_modules')), {
+        halt = marker.one_of(
+          marker.has_readable_file('deno.json'),
+          marker.has_readable_file('deno.jsonc'),
+          marker.has_readable_file('deps.ts'),
+          marker.has_readable_file('import_map.json')
+        ),
+      })
+    end
+    local is_deno_root = deno_root_dir(vim.fn.getcwd()) ~= nil
+
     require('mason-lspconfig').setup_handlers({
       function(server_name)
-        local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts', 'import_map.json')
-        local is_deno_root = deno_root_dir(vim.fn.getcwd()) ~= nil
-
         local opts = {}
 
         if server_name == 'tsserver' then
-          opts.root_dir = lspconfig.util.root_pattern('tsconfig.json', 'jsconfig.json', 'package.json')
+          opts.root_dir = node_root_dir
           if is_deno_root then opts.single_file_support = false end
         elseif server_name == 'denols' then
           opts.root_dir = deno_root_dir
