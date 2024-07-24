@@ -30,6 +30,10 @@ return {
           dismiss = false,
         },
       },
+      filetypes = {
+        markdown = true,
+        yaml = true,
+      },
     })
   end,
 }
