@@ -11,14 +11,12 @@ local dap = require('dap')
 
 -- **NOP**
 local noplist = {
-  '<C-a>',
   '<C-b>',
   '<C-c>',
   '<C-e>',
   '<C-n>',
   '<C-s>',
   '<C-t>',
-  '<C-x>',
   '<C-y>',
   '<C-z>',
 }
@@ -45,8 +43,6 @@ map('n', '<C-h>', '<C-w>W')
 map('n', '<C-p>', 'p\']')
 map('n', 'm', '@')
 map('n', 'M', 'q')
-map('n', 't', '<C-a>')
-map('n', 'T', '<C-x>')
 map('n', '`', '<C-l><cmd>nohl<cr>')
 map('n', '~', '<cmd>only<cr>')
 map('n', 'X', 'J')
@@ -112,10 +108,10 @@ nummap('n', '8', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()
 nummap('n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
 map('n', '}', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 map('n', '{', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-map('n', 'f', builtin.current_buffer_fuzzy_find)
-map('n', 'F', builtin.live_grep)
-map('n', '?', extensions.noice.noice)
-map('n', '"', builtin.builtin)
+map('n', '?', builtin.current_buffer_fuzzy_find)
+map('n', '"', builtin.live_grep)
+map('n', 'T', extensions.noice.noice)
+map('n', 't', builtin.builtin)
 map('n', '<Tab>', function() chat.toggle({ window = { layout = 'float' }, selection = chat_select.buffer }) end)
 map('n', '<S-Tab>', function() chat_telescope.pick(chat_actions.prompt_actions({ selection = chat_select.buffer })) end)
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
