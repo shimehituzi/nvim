@@ -18,11 +18,6 @@ local luasnip_jump_prev = function(fallback)
   end
 end
 
-local move_cursor_next_line = function()
-  local key = vim.api.nvim_replace_termcodes('<Down>', true, false, true)
-  vim.api.nvim_feedkeys(key, 'i', false)
-end
-
 return {
   mapping = {
     ['<C-j>'] = cmp.mapping(function()
@@ -61,16 +56,15 @@ return {
         copilot.next()
       end
     end, { 'i', 'c' }),
-    ['<C-g>'] = cmp.mapping(function()
-      if copilot.is_visible() then
-        if cmp.visible() then cmp.abort() end
-        copilot.accept_line()
-        move_cursor_next_line()
-      end
-    end, { 'i' }),
     ['<C-s>'] = cmp.mapping(function()
-      if copilot.is_visible() then copilot.dismiss() end
       copilot.toggle_auto_trigger()
+      if vim.b.copilot_suggestion_auto_trigger then
+        copilot.next()
+        print('copilot suggestion enabled')
+      else
+        if copilot.is_visible() then copilot.dismiss() end
+        print('copilot suggestion disabled')
+      end
     end, { 'i' }),
     ['<Tab>'] = cmp.mapping({
       i = luasnip_jump_next,
