@@ -57,6 +57,8 @@ return {
         cmp.abort()
       elseif copilot.is_visible() then
         copilot.dismiss()
+      else
+        copilot.next()
       end
     end, { 'i', 'c' }),
     ['<C-g>'] = cmp.mapping(function()
