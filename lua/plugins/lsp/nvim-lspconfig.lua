@@ -21,7 +21,7 @@ return {
   config = function()
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls', 'tsserver', 'bashls', 'html', 'gopls', 'hls', 'pyright', 'denols' },
+      ensure_installed = { 'lua_ls', 'ts_ls', 'bashls', 'html', 'gopls', 'hls', 'pyright', 'denols' },
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -52,7 +52,7 @@ return {
       function(server_name)
         local opts = {}
 
-        if server_name == 'tsserver' then
+        if server_name == 'ts_ls' then
           opts.root_dir = node_root_dir
           if is_deno_root then opts.single_file_support = false end
         elseif server_name == 'denols' then
