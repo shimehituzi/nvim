@@ -21,7 +21,7 @@ return {
   config = function()
     require('mason').setup()
     require('mason-lspconfig').setup({
-      ensure_installed = { 'lua_ls', 'ts_ls', 'bashls', 'html', 'gopls', 'hls', 'pyright', 'denols' },
+      ensure_installed = { 'lua_ls', 'ts_ls', 'bashls', 'html', 'gopls', 'hls', 'pyright', 'denols', 'rust_analyzer' },
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -38,13 +38,13 @@ return {
       local marker = require('climbdir.marker')
       return require('climbdir').climb(path,
         marker.one_of(marker.has_readable_file('package.json'), marker.has_directory('node_modules')), {
-        halt = marker.one_of(
-          marker.has_readable_file('deno.json'),
-          marker.has_readable_file('deno.jsonc'),
-          marker.has_readable_file('deps.ts'),
-          marker.has_readable_file('import_map.json')
-        ),
-      })
+          halt = marker.one_of(
+            marker.has_readable_file('deno.json'),
+            marker.has_readable_file('deno.jsonc'),
+            marker.has_readable_file('deps.ts'),
+            marker.has_readable_file('import_map.json')
+          ),
+        })
     end
     local is_deno_root = deno_root_dir(vim.fn.getcwd()) ~= nil
 
@@ -52,7 +52,15 @@ return {
       function(server_name)
         local opts = {}
 
-        if server_name == 'ts_ls' then
+        if server_name == 'rust_analyzer' then
+          opts.settings = {
+            ["rust-analyzer"] = {
+              check = {
+                command = "clippy",
+              },
+            },
+          }
+        elseif server_name == 'ts_ls' then
           opts.root_dir = node_root_dir
           if is_deno_root then opts.single_file_support = false end
         elseif server_name == 'denols' then
