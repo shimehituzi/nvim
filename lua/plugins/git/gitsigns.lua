@@ -10,14 +10,16 @@ return {
         changedelete = { text = '~' },
         untracked = { text = '┆' },
       },
+      signs_staged_enable = true,
       signcolumn = true,
-      numhl = false,
-      linehl = false,
-      word_diff = false,
+      numhl      = false,
+      linehl     = false,
+      word_diff  = false,
       watch_gitdir = {
-        follow_files = true,
+        follow_files = true
       },
-      attach_to_untracked = true,
+      auto_attach = true,
+      attach_to_untracked = false,
       current_line_blame = false,
       current_line_blame_opts = {
         virt_text = true,
@@ -25,8 +27,9 @@ return {
         delay = 1000,
         ignore_whitespace = false,
         virt_text_priority = 100,
+        use_focus = true,
       },
-      current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
+      current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
       sign_priority = 6,
       update_debounce = 100,
       status_formatter = nil,
@@ -36,10 +39,7 @@ return {
         style = 'minimal',
         relative = 'cursor',
         row = 0,
-        col = 1,
-      },
-      yadm = {
-        enable = false,
+        col = 1
       },
       on_attach = require('keymaps.plugins.gitsigns').on_attach,
     })
