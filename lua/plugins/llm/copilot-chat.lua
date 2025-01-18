@@ -7,7 +7,6 @@ return {
     },
     config = function()
       local prompts = require('CopilotChat.prompts')
-      local select = require('CopilotChat.select')
 
       local lang_prompt = ' MUST ANSWER IN JAPANESE.'
       local lang_prompt_commit =
