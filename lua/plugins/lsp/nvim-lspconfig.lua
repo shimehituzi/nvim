@@ -61,8 +61,8 @@ return {
             },
           }
         elseif server_name == 'ts_ls' then
+          if is_deno_root then return end
           opts.root_dir = node_root_dir
-          if is_deno_root then opts.single_file_support = false end
         elseif server_name == 'denols' then
           opts.root_dir = deno_root_dir
           opts.init_options = {
