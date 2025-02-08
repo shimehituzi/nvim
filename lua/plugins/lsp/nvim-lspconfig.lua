@@ -33,7 +33,7 @@ return {
 
     local lspconfig = require('lspconfig')
 
-    local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc', 'deps.ts', 'import_map.json')
+    local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.lock', 'deno.jsonc', 'deps.ts', 'import_map.json')
     local node_root_dir = function(path)
       local marker = require('climbdir.marker')
       return require('climbdir').climb(path,
