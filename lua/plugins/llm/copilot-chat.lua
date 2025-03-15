@@ -6,14 +6,14 @@ return {
       { 'nvim-lua/plenary.nvim' },
     },
     config = function()
-      local prompts = require('CopilotChat.prompts')
+      local prompts = require('CopilotChat.config.prompts')
 
       local lang_prompt = ' MUST ANSWER IN JAPANESE.'
       local lang_prompt_commit =
         'The gitcommit block must be written in ENGLISH. Additionally, add an explanation of the gitcommit block. The explanation must be written in JAPANESE.'
 
       require('CopilotChat').setup({
-        system_prompt = prompts.COPILOT_INSTRUCTIONS .. lang_prompt,
+        system_prompt = prompts.COPILOT_INSTRUCTIONS.system_prompt .. lang_prompt,
         show_help = false,
 
         prompts = {
