@@ -12,7 +12,6 @@ local noplist = {
   '<C-e>',
   '<C-n>',
   '<C-s>',
-  '<C-t>',
   '<C-y>',
   '<C-z>',
 }
@@ -44,7 +43,7 @@ map('n', '~', '<cmd>only<cr>')
 map('n', 'X', 'J')
 map('n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>')
 map('n', '<BS>', '<C-o>')
-map('n', '<Del>', '<C-i>')
+map('n', '<S-BS>', '<C-i>')
 map('n', '+', '~')
 map('n', 'x', '"_x')
 map('n', 's', '"_s')
