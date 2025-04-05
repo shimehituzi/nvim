@@ -2,9 +2,6 @@ local map = require('utils').map
 local nummap = require('utils').nummap
 local builtin = require('telescope.builtin')
 local extensions = require('telescope').extensions
-local chat = require('CopilotChat')
-local chat_telescope = require('CopilotChat.integrations.telescope')
-local chat_actions = require('CopilotChat.actions')
 local dapui = require('dapui')
 local dap = require('dap')
 
@@ -111,8 +108,6 @@ map('n', '?', builtin.current_buffer_fuzzy_find)
 map('n', '"', builtin.live_grep)
 map('n', 'T', extensions.noice.noice)
 map('n', 't', builtin.builtin)
-map('n', '<Tab>', function() chat.toggle() end)
-map('n', '<S-Tab>', function() chat_telescope.pick(chat_actions.prompt_actions()) end)
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
 map('n', 'ys', '<Plug>(nvim-surround-normal)')
