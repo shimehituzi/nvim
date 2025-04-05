@@ -130,8 +130,6 @@ map('n', '_', dap.continue)
 
 
 -- visual
-map('v', '<Tab>', function() chat.toggle() end)
-map('v', '<S-Tab>', function() chat_telescope.pick(chat_actions.prompt_actions()) end)
 map('v', ',', '<Plug>(comment_toggle_linewise_visual)')
 map('v', 'S', '<Plug>(nvim-surround-visual)')
 map('v', '<CR>', '<cmd>Translate ja<cr>')
