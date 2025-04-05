@@ -7,6 +7,7 @@ return {
         auto_attach = true,
       },
       highlight = true,
+      click = true,
     })
   end,
 }

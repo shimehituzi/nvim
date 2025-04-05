@@ -29,7 +29,10 @@ return {
         diagnostics = 'nvim_lsp',
         diagnostics_update_in_insert = false,
         custom_filter = function(buf_number, buf_numbers)
-          if vim.bo[buf_number].filetype ~= 'qf' then return true end
+          local filetype = vim.bo[buf_number].filetype
+          if filetype ~= 'qf' then
+            return true
+          end
         end,
         offsets = {},
         color_icons = true,
