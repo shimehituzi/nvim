@@ -35,8 +35,25 @@ return {
   },
   config = function()
     local opts = {
-      provider = "copilot",
-      auto_suggestions_provider = "copilot",
+      provider = 'copilot-claude-37',
+      disabled_tools = {
+        'python',
+      },
+      vendors = {
+        ['copilot-claude-35'] = {
+          __inherited_from = 'copilot',
+          display_name = 'Claude 3.5 Sonnet',
+          model = 'claude-3.5-sonnet',
+          max_tokens = 8000,
+        },
+
+        ['copilot-claude-37'] = {
+          __inherited_from = 'copilot',
+          display_name = 'Claude 3.7 Sonnet',
+          model = 'claude-3.7-sonnet',
+          max_tokens = 8000,
+        },
+      },
       behaviour = {
         auto_focus_sidebar = true,
         auto_suggestions = false,
@@ -48,6 +65,7 @@ return {
         minimize_diff = true,
         enable_token_counting = true,
         use_cwd_as_project_root = true,
+        enable_claude_text_editor_tool_mode = true,
       },
       mappings = {
         diff = {
