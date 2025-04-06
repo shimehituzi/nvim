@@ -116,10 +116,13 @@ return {
     map('n', '<S-Tab>', '<Plug>(AvanteToggle)')
     map('v', '<Tab>', '<Plug>(AvanteAsk)<Esc>')
     map('v', '<S-Tab>', '<Plug>(AvanteEdit)')
-    map('n', '<Del>', function()
-      vim.cmd('AvanteClear history')
-      vim.cmd('AvanteClear memory')
-      require("avante.path").clear()
+    map('n', '<Del>', '<cmd>AvanteHistory<cr>')
+    map('n', '<S-Del>', function()
+      if vim.fn.confirm("Avante: Are you sure you want to clear history and memory?", "&Yes\n&No", 2) == 1 then
+        vim.cmd('AvanteClear history')
+        vim.cmd('AvanteClear memory')
+        require("avante.path").clear()
+      end
     end)
   end,
 }
