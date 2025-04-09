@@ -36,6 +36,13 @@ return {
   config = function()
     local opts = {
       provider = 'copilot-claude-37',
+      web_search_engine = {
+        providers = {
+          tavily = {
+            api_key_name = {"gopass", "show", "-o", "tavily/api_key",},
+          }
+        }
+      },
       disabled_tools = {
         'python',
       },
