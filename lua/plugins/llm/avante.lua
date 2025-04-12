@@ -36,26 +36,30 @@ return {
   config = function()
     local opts = {
       provider = 'copilot-claude-37',
-      claude = {
-        endpoint = "https://api.anthropic.com",
-        model = "claude-3-7-sonnet-20250219",
-        timeout = 30000,
-        temperature = 0,
-        max_tokens = 20480,
-        api_key_name = { "gopass", "show", "-o", "anthropic/api_key", },
-      },
       vendors = {
-        ['copilot-claude-35'] = {
-          __inherited_from = 'copilot',
-          display_name = 'Claude 3.5 Sonnet',
-          model = 'claude-3.5-sonnet',
-          max_tokens = 8000,
+        ['anthropic-claude-37'] = {
+          __inherited_from = 'claude',
+          display_name = 'custom/anthropic-claude-3.7-sonnet',
+          model = 'claude-3-7-sonnet-20250219',
+          max_tokens = 64000,
+          api_key_name = { "gopass", "show", "-o", "anthropic/api_key", },
+        },
+        ['anthropic-claude-35'] = {
+          __inherited_from = 'claude',
+          display_name = 'custom/anthropic-claude-3.5-sonnet',
+          model = 'claude-3-5-sonnet-20241022',
+          max_tokens = 8192,
+          api_key_name = { "gopass", "show", "-o", "anthropic/api_key", },
         },
         ['copilot-claude-37'] = {
           __inherited_from = 'copilot',
-          display_name = 'Claude 3.7 Sonnet',
+          display_name = 'custom/copilot-claude-3.7-sonnet',
           model = 'claude-3.7-sonnet',
-          max_tokens = 8000,
+        },
+        ['copilot-claude-35'] = {
+          __inherited_from = 'copilot',
+          display_name = 'custom/copilot-claude-3.5-sonnet',
+          model = 'claude-3.5-sonnet',
         },
       },
       web_search_engine = {
@@ -97,7 +101,7 @@ return {
         },
         submit = {
           normal = "<CR>",
-          insert = "<C-s>",
+          insert = "<S-Tab>",
         },
         sidebar = {
           switch_windows = "<C-j>",
@@ -142,7 +146,7 @@ return {
     require('avante').setup(opts)
     local map = require('utils').map
     map('n', '<Tab>', '<Plug>(AvanteFocus)')
-    map('n', '<S-Tab>', '<Plug>(AvanteToggle)')
+    map('n', '<S-Tab>', '<Plug>(AvanteSelectModel)')
     map('v', '<Tab>', '<Plug>(AvanteAsk)<Esc>')
     map('v', '<S-Tab>', '<Plug>(AvanteEdit)')
     map('n', '<Del>', '<cmd>AvanteHistory<cr>')
