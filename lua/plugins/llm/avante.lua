@@ -35,7 +35,7 @@ return {
   },
   config = function()
     local opts = {
-      provider = 'claude',
+      provider = 'copilot-claude-37',
       claude = {
         endpoint = "https://api.anthropic.com",
         model = "claude-3-7-sonnet-20250219",
@@ -43,16 +43,6 @@ return {
         temperature = 0,
         max_tokens = 20480,
         api_key_name = { "gopass", "show", "-o", "anthropic/api_key", },
-      },
-      web_search_engine = {
-        providers = {
-          tavily = {
-            api_key_name = { "gopass", "show", "-o", "tavily/api_key", },
-          }
-        }
-      },
-      disabled_tools = {
-        'python',
       },
       vendors = {
         ['copilot-claude-35'] = {
@@ -68,10 +58,20 @@ return {
           max_tokens = 8000,
         },
       },
+      web_search_engine = {
+        providers = {
+          tavily = {
+            api_key_name = { "gopass", "show", "-o", "tavily/api_key", },
+          }
+        }
+      },
+      disabled_tools = {
+        'python',
+      },
       behaviour = {
         auto_focus_sidebar = true,
         auto_suggestions = false,
-        auto_apply_diff_after_generation = false,
+        auto_apply_diff_after_generation = true,
         auto_set_keymaps = false,
         auto_set_highlight_group = true,
         jump_result_buffer_on_finish = false,
@@ -98,9 +98,6 @@ return {
         submit = {
           normal = "<CR>",
           insert = "<C-s>",
-        },
-        cancel = {
-          normal = { "<Esc>", "q" },
         },
         sidebar = {
           switch_windows = "<C-j>",
@@ -156,5 +153,6 @@ return {
         require("avante.path").clear()
       end
     end)
+    map('n', '<C-c>', '<cmd>AvanteStop<cr>')
   end,
 }

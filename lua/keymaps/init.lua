@@ -8,7 +8,6 @@ local dap = require('dap')
 -- **NOP**
 local noplist = {
   '<C-b>',
-  '<C-c>',
   '<C-e>',
   '<C-n>',
   '<C-s>',
