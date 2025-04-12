@@ -35,11 +35,19 @@ return {
   },
   config = function()
     local opts = {
-      provider = 'copilot-claude-37',
+      provider = 'claude',
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        model = "claude-3-7-sonnet-20250219",
+        timeout = 30000,
+        temperature = 0,
+        max_tokens = 20480,
+        api_key_name = { "gopass", "show", "-o", "anthropic/api_key", },
+      },
       web_search_engine = {
         providers = {
           tavily = {
-            api_key_name = {"gopass", "show", "-o", "tavily/api_key",},
+            api_key_name = { "gopass", "show", "-o", "tavily/api_key", },
           }
         }
       },
@@ -53,7 +61,6 @@ return {
           model = 'claude-3.5-sonnet',
           max_tokens = 8000,
         },
-
         ['copilot-claude-37'] = {
           __inherited_from = 'copilot',
           display_name = 'Claude 3.7 Sonnet',
