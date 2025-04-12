@@ -101,7 +101,7 @@ return {
         },
         submit = {
           normal = "<CR>",
-          insert = "<S-Tab>",
+          insert = "<M-CR>",
         },
         sidebar = {
           switch_windows = "<C-j>",
