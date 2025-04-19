@@ -12,7 +12,6 @@ return {
     "hrsh7th/nvim-cmp",
     "nvim-tree/nvim-web-devicons",
     "zbirenbaum/copilot.lua",
-    "ravitemer/mcphub.nvim",
     {
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",

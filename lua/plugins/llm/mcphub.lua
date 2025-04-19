@@ -9,10 +9,10 @@ return {
       port = 37373,
       config = vim.fn.expand("~/.config/mcphub/servers.json"),
       native_servers = {},
-      auto_approve = true,
+      auto_approve = false,
       extensions = {
         avante = {
-          make_slash_commands = true,
+          make_slash_commands = false,
         },
       },
 
@@ -31,15 +31,6 @@ return {
       on_error = function(err)
         vim.notify("MCPHub error: " .. err, vim.log.levels.ERROR)
       end,
-
-      use_bundled_binary = false,
-      shutdown_delay = 600000,
-      log = {
-        level = vim.log.levels.INFO, -- More verbose logging to help with troubleshooting
-        to_file = true,
-        file_path = vim.fn.expand("~/.config/mcphub/mcphub.log"),
-        prefix = "MCPHub",
-      },
     })
   end,
 }
