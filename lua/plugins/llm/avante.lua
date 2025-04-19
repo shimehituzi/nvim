@@ -63,13 +63,6 @@ return {
           model = 'claude-3.5-sonnet',
         },
       },
-      web_search_engine = {
-        providers = {
-          tavily = {
-            api_key_name = { "gopass", "show", "-o", "tavily/api_key", },
-          }
-        }
-      },
       system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
         return hub:get_active_servers_prompt()
@@ -81,6 +74,9 @@ return {
       end,
       disabled_tools = {
         'python',
+        "ls",
+        "glob",
+        "view",
         "list_files",
         "search_files",
         "read_file",
@@ -91,6 +87,8 @@ return {
         "rename_dir",
         "delete_dir",
         "bash",
+        "dispatch_agent",
+        "web_search",
       },
       behaviour = {
         auto_focus_sidebar = true,
