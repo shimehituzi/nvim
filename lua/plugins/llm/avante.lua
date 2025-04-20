@@ -36,20 +36,21 @@ return {
   config = function()
     local opts = {
       provider = 'anthropic-claude-37',
+      claude = {
+        api_key_name = "cmd:gopass show -o anthropic/api_key",
+      },
       vendors = {
         ['anthropic-claude-37'] = {
           __inherited_from = 'claude',
           display_name = 'custom/anthropic-claude-3.7-sonnet',
           model = 'claude-3-7-sonnet-20250219',
           max_tokens = 64000,
-          api_key_cmd = { "gopass", "show", "-o", "anthropic/api_key", },
         },
         ['anthropic-claude-35'] = {
           __inherited_from = 'claude',
           display_name = 'custom/anthropic-claude-3.5-sonnet',
           model = 'claude-3-5-sonnet-20241022',
           max_tokens = 8192,
-          api_key_cmd = { "gopass", "show", "-o", "anthropic/api_key", },
         },
         ['copilot-claude-37'] = {
           __inherited_from = 'copilot',
