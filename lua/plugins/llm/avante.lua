@@ -65,7 +65,15 @@ return {
       },
       system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
-        return hub:get_active_servers_prompt()
+        local prompt = ""
+        if hub and hub:is_ready() then
+          prompt = hub:get_active_servers_prompt()
+        end
+        prompt = prompt .. [[
+## Additional Guideline
+If more than one approach can satisfy a request, you must always prefer an MCP tool whenever one is available.
+]]
+        return prompt
       end,
       custom_tools = function()
         return {
