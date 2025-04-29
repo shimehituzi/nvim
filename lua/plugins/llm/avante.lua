@@ -12,6 +12,7 @@ return {
     "hrsh7th/nvim-cmp",
     "nvim-tree/nvim-web-devicons",
     "zbirenbaum/copilot.lua",
+    'MeanderingProgrammer/render-markdown.nvim',
     {
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",
@@ -24,13 +25,6 @@ return {
           },
         },
       },
-    },
-    {
-      'MeanderingProgrammer/render-markdown.nvim',
-      opts = {
-        file_types = { "markdown", "Avante" },
-      },
-      ft = { "markdown", "Avante" },
     },
   },
   config = function()
