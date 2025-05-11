@@ -1,12 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    {
-      'williamboman/mason-lspconfig.nvim',
-      dependencies = {
-        'williamboman/mason.nvim',
-      },
-    },
+    { "mason-org/mason.nvim",           version = "^1.0.0" },
+    { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
     {
       'folke/neodev.nvim',
       config = function()
@@ -33,7 +29,8 @@ return {
 
     local lspconfig = require('lspconfig')
 
-    local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.lock', 'deno.jsonc', 'deps.ts', 'import_map.json')
+    local deno_root_dir = lspconfig.util.root_pattern('deno.json', 'deno.lock', 'deno.jsonc', 'deps.ts',
+      'import_map.json')
     local node_root_dir = function(path)
       local marker = require('climbdir.marker')
       return require('climbdir').climb(path,
