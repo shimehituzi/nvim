@@ -58,8 +58,7 @@ return {
       end
     end
 
-    -- ファクトリー名は現行 master で mcp_tool / resource
-    wrap_factory("mcp_tool") -- → use_mcp_tool
-    wrap_factory("resource") -- → access_mcp_resource
+    wrap_factory("mcp_tool")
+    wrap_factory("resource")
   end,
 }
