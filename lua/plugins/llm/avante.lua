@@ -28,10 +28,29 @@ return {
     },
   },
   config = function()
+    --[[ web_search hot-fix  (avante.nvim adae032, 2025-05-11)
+      env.parse() runs cmd async → nil on first call → 1st Tavily search fails.
+      Below replaces parse() with sync version (vim.fn.systemlist).
+      Keep until upstream makes web_search sync / adds parse_api_key.
+    --]]
+    -- begin hot-fix
+    do
+      local env = require("avante.utils.environment")
+      env.parse = function(k)
+        local ck = type(k) == "table" and table.concat(k, "__") or k
+        if env.cache[ck] ~= nil then return env.cache[ck] end
+        local cmd = type(k) == "table" and table.concat(k, " ") or k:match("^cmd:(.*)")
+        local v = cmd and (vim.fn.systemlist(cmd)[1] or ""):gsub("\n", "") or os.getenv(k)
+        env.cache[ck] = v
+        return v
+      end
+    end
+    -- end hot-fix
     local opts = {
       provider = 'anthropic-claude-37',
       claude = {
-        api_key_name = "cmd:gopass show -o anthropic/api_key",
+        -- api_key_name = "cmd:gopass show -o anthropic/api_key",
+        api_key_name = { "gopass", "show", "-o", "anthropic/api_key" },
       },
       vendors = {
         ['anthropic-claude-37'] = {
@@ -57,6 +76,14 @@ return {
           model = 'claude-3.5-sonnet',
         },
       },
+      web_search_engine = {
+        providers = {
+          tavily = {
+            -- api_key_name = "cmd:gopass show -o tavily/api_key",
+            api_key_name = { "gopass", "show", "-o", "tavily/api_key" },
+          }
+        }
+      },
       system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
         return hub:get_active_servers_prompt()
@@ -66,13 +93,6 @@ return {
           require("mcphub.extensions.avante").mcp_tool(),
         }
       end,
-      web_search_engine = {
-        providers = {
-          tavily = {
-            api_key_name = "cmd:gopass show -o tavily/api_key"
-          }
-        }
-      },
       disabled_tools = {
         'python',
       },
@@ -157,8 +177,7 @@ return {
     map('n', '<S-Del>', function()
       if vim.fn.confirm("Avante: Are you sure you want to clear history and memory?", "&Yes\n&No", 2) == 1 then
         vim.cmd('AvanteClear history')
-        vim.cmd('AvanteClear memory')
-        require("avante.path").clear()
+        vim.cmd('AvanteClear cache')
       end
     end)
     map('n', '<C-c>', '<cmd>AvanteStop<cr>')
