@@ -59,38 +59,22 @@ return {
       },
       system_prompt = function()
         local hub = require("mcphub").get_hub_instance()
-        local prompt = ""
-        if hub and hub:is_ready() then
-          prompt = hub:get_active_servers_prompt()
-        end
-        prompt = prompt .. [[
-## Additional Guideline
-If more than one approach can satisfy a request, you must always prefer an MCP tool whenever one is available.
-]]
-        return prompt
+        return hub:get_active_servers_prompt()
       end,
       custom_tools = function()
         return {
           require("mcphub.extensions.avante").mcp_tool(),
         }
       end,
+      web_search_engine = {
+        providers = {
+          tavily = {
+            api_key_name = "cmd:gopass show -o tavily/api_key"
+          }
+        }
+      },
       disabled_tools = {
         'python',
-        "ls",
-        "glob",
-        "view",
-        "list_files",
-        "search_files",
-        "read_file",
-        "create_file",
-        "rename_file",
-        "delete_file",
-        "create_dir",
-        "rename_dir",
-        "delete_dir",
-        "bash",
-        "dispatch_agent",
-        "web_search",
       },
       behaviour = {
         auto_focus_sidebar = true,
