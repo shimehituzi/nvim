@@ -48,22 +48,25 @@ return {
     -- end hot-fix
     local opts = {
       provider = 'anthropic-claude-37',
-      claude = {
-        -- api_key_name = "cmd:gopass show -o anthropic/api_key",
-        api_key_name = { "gopass", "show", "-o", "anthropic/api_key" },
-      },
-      vendors = {
+      providers = {
+        claude = {
+          api_key_name = { "gopass", "show", "-o", "anthropic/api_key" },
+        },
         ['anthropic-claude-37'] = {
           __inherited_from = 'claude',
           display_name = 'custom/anthropic-claude-3.7-sonnet',
           model = 'claude-3-7-sonnet-20250219',
-          max_tokens = 64000,
+          extra_request_body = {
+            max_tokens = 64000,
+          }
         },
         ['anthropic-claude-35'] = {
           __inherited_from = 'claude',
           display_name = 'custom/anthropic-claude-3.5-sonnet',
           model = 'claude-3-5-sonnet-20241022',
-          max_tokens = 8192,
+          extra_request_body = {
+            max_tokens = 8192,
+          }
         },
         ['copilot-claude-37'] = {
           __inherited_from = 'copilot',
@@ -79,7 +82,6 @@ return {
       web_search_engine = {
         providers = {
           tavily = {
-            -- api_key_name = "cmd:gopass show -o tavily/api_key",
             api_key_name = { "gopass", "show", "-o", "tavily/api_key" },
           }
         }
