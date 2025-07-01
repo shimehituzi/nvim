@@ -47,7 +47,7 @@ return {
     end
     -- end hot-fix
     local opts = {
-      provider = 'anthropic-claude-37',
+      provider = 'anthropic-claude-4',
       providers = {
         claude = {
           api_key_name = { "gopass", "show", "-o", "anthropic/api_key" },
@@ -77,6 +77,14 @@ return {
           __inherited_from = 'copilot',
           display_name = 'custom/copilot-claude-3.5-sonnet',
           model = 'claude-3.5-sonnet',
+        },
+        ['anthropic-claude-4'] = {
+          __inherited_from = 'claude',
+          display_name = 'custom/anthropic-claude-4-sonnet',
+          model = 'claude-4-sonnet-20250514',
+          extra_request_body = {
+            max_tokens = 64000,
+          }
         },
       },
       web_search_engine = {
