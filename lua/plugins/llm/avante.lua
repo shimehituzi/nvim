@@ -157,7 +157,7 @@ return {
         wrap = true,
         width = 50,
         sidebar_header = {
-          enabled = false,
+          enabled = true,
         },
         input = {
           prefix = "",
