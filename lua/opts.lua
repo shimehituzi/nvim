@@ -11,6 +11,7 @@ opt.display = 'lastline' -- Display long messages on the last line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.fenc = 'utf-8' -- Set file encoding to UTF-8
 opt.fillchars = { foldopen = '', foldclose = '', fold = ' ', foldsep = ' ', diff = '╱', eob = ' ' } -- Characters to fill
+opt.fillchars:append({ vert = '┃', vertleft = '┃', vertright = '┃', verthoriz = '┿' }) -- Thicker window separators
 opt.fixeol = false -- Do not add EOL to the last line
 opt.foldcolumn = '1'
 opt.foldlevel = 99
