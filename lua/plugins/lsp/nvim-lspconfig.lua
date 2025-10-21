@@ -27,13 +27,34 @@ return {
       lineFoldingOnly = true,
     }
 
-    local function deno_root_dir(path)
-      return vim.fs.root(path or 0, { 'deno.json', 'deno.lock', 'deno.jsonc', 'deps.ts', 'import_map.json' })
+    local function make_root_dir(finder)
+      return function(path, on_dir)
+        local root = finder(path)
+        if type(on_dir) == 'function' then
+          if root then on_dir(root) end
+        else
+          return root
+        end
+      end
     end
 
-    local node_root_dir = function(path)
-      local marker = require('climbdir.marker')
-      return require('climbdir').climb(path,
+    local deno_markers = { 'deno.json', 'deno.lock', 'deno.jsonc', 'deps.ts', 'import_map.json' }
+
+    local function find_deno_root(path)
+      return vim.fs.root(path or 0, deno_markers)
+    end
+
+    local climbdir = require('climbdir')
+    local marker = require('climbdir.marker')
+
+    local function find_node_root(path)
+      if type(path) == 'number' then
+        path = vim.api.nvim_buf_get_name(path)
+      end
+      if not path or path == '' then
+        path = vim.fn.getcwd()
+      end
+      return climbdir.climb(path,
         marker.one_of(marker.has_readable_file('package.json'), marker.has_directory('node_modules')), {
           halt = marker.one_of(
             marker.has_readable_file('deno.json'),
@@ -43,11 +64,15 @@ return {
           ),
         })
     end
-    local is_deno_root = deno_root_dir(vim.fn.getcwd()) ~= nil
+
+    local deno_root_dir = make_root_dir(find_deno_root)
+    local node_root_dir = make_root_dir(find_node_root)
+    local is_deno_root = find_deno_root(vim.fn.getcwd()) ~= nil
 
     require('mason-lspconfig').setup_handlers({
       function(server_name)
         local opts = {}
+        local disable = false
 
         if server_name == 'rust_analyzer' then
           opts.settings = {
@@ -58,8 +83,11 @@ return {
             },
           }
         elseif server_name == 'ts_ls' then
-          if is_deno_root then return end
-          opts.root_dir = node_root_dir
+          if is_deno_root then
+            disable = true
+          else
+            opts.root_dir = node_root_dir
+          end
         elseif server_name == 'denols' then
           opts.root_dir = deno_root_dir
           opts.init_options = {
@@ -97,7 +125,16 @@ return {
 
         opts.capabilities = capabilities
 
+        if disable then
+          vim.lsp.enable(server_name, false)
+          return
+        end
+
         vim.lsp.config(server_name, opts)
+
+        if not vim.lsp.is_enabled(server_name) then
+          vim.lsp.enable(server_name)
+        end
       end,
     })
   end,
