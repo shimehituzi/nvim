@@ -5,7 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "yetone/avante.nvim",
   },
-  build = "npm install -g mcp-hub@latest",
+  build = "npm install -g mcp-hub@4.2.0", -- グローバルインストール（バージョン固定）
   config = function()
     require("mcphub").setup({
       port = 37373,
