@@ -1,7 +1,7 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  version = false, -- Never set this value to "*"! Never!
+  version = "v0.0.27", -- 安定版に固定（2025-07-28リリース）
   build = "make",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
@@ -28,63 +28,33 @@ return {
     },
   },
   config = function()
-    --[[ web_search hot-fix  (avante.nvim adae032, 2025-05-11)
-      env.parse() runs cmd async → nil on first call → 1st Tavily search fails.
-      Below replaces parse() with sync version (vim.fn.systemlist).
-      Keep until upstream makes web_search sync / adds parse_api_key.
-    --]]
-    -- begin hot-fix
-    do
-      local env = require("avante.utils.environment")
-      env.parse = function(k)
-        local ck = type(k) == "table" and table.concat(k, "__") or k
-        if env.cache[ck] ~= nil then return env.cache[ck] end
-        local cmd = type(k) == "table" and table.concat(k, " ") or k:match("^cmd:(.*)")
-        local v = cmd and (vim.fn.systemlist(cmd)[1] or ""):gsub("\n", "") or os.getenv(k)
-        env.cache[ck] = v
-        return v
-      end
-    end
-    -- end hot-fix
     local opts = {
-      provider = 'anthropic-claude-4',
+      provider = 'anthropic-claude-sonnet-45',
+      mode = 'agentic', -- "agentic" (AI自動実行) or "legacy" (手動承認)
       providers = {
         claude = {
           api_key_name = { "gopass", "show", "-o", "anthropic/api_key" },
         },
-        ['anthropic-claude-37'] = {
+        ['anthropic-claude-sonnet-45'] = {
           __inherited_from = 'claude',
-          display_name = 'custom/anthropic-claude-3.7-sonnet',
-          model = 'claude-3-7-sonnet-20250219',
+          display_name = 'anthropic/claude-sonnet-4.5',
+          model = 'claude-sonnet-4-5-20250929',
           extra_request_body = {
             max_tokens = 64000,
           }
         },
-        ['anthropic-claude-35'] = {
+        ['anthropic-claude-haiku-45'] = {
           __inherited_from = 'claude',
-          display_name = 'custom/anthropic-claude-3.5-sonnet',
-          model = 'claude-3-5-sonnet-20241022',
-          extra_request_body = {
-            max_tokens = 8192,
-          }
-        },
-        ['copilot-claude-37'] = {
-          __inherited_from = 'copilot',
-          display_name = 'custom/copilot-claude-3.7-sonnet',
-          model = 'claude-3.7-sonnet',
-        },
-        ['copilot-claude-35'] = {
-          __inherited_from = 'copilot',
-          display_name = 'custom/copilot-claude-3.5-sonnet',
-          model = 'claude-3.5-sonnet',
-        },
-        ['anthropic-claude-4'] = {
-          __inherited_from = 'claude',
-          display_name = 'custom/anthropic-claude-4-sonnet',
-          model = 'claude-4-sonnet-20250514',
+          display_name = 'anthropic/claude-haiku-4.5',
+          model = 'claude-haiku-4-5-20251001',
           extra_request_body = {
             max_tokens = 64000,
           }
+        },
+        ['copilot-claude-sonnet-45'] = {
+          __inherited_from = 'copilot',
+          display_name = 'copilot/claude-sonnet-4.5',
+          model = 'claude-4.5-sonnet',
         },
       },
       web_search_engine = {

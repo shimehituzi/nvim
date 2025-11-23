@@ -1,5 +1,6 @@
 return {
   "ravitemer/mcphub.nvim",
+  version = "v6.2.0", -- 安定版に固定（2025-07-31リリース）
   dependencies = {
     "nvim-lua/plenary.nvim",
     "yetone/avante.nvim",
@@ -45,12 +46,15 @@ return {
         local func_orig = schema.func
 
         schema.func     = function(args, on_log, on_complete)
-          on_log(string.format(
-            "MCP ► %s / %s %s",
-            args.server_name or "?",
-            args.tool_name or args.uri or "?",
-            vim.fn.json_encode(args.tool_input or {})
-          ))
+          -- on_logが関数の場合のみ呼び出す
+          if type(on_log) == "function" then
+            on_log(string.format(
+              "MCP ► %s / %s %s",
+              args.server_name or "?",
+              args.tool_name or args.uri or "?",
+              vim.fn.json_encode(args.tool_input or {})
+            ))
+          end
           return func_orig(args, on_log, on_complete)
         end
 
