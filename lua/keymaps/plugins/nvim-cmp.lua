@@ -1,18 +1,19 @@
 local cmp = package.loaded.cmp
-local luasnip = package.loaded.luasnip
 local copilot = package.loaded['copilot.suggestion']
 
 local luasnip_jump_next = function(fallback)
-  if luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
+  local ls = package.loaded.luasnip
+  if ls and ls.expand_or_jumpable() then
+    ls.expand_or_jump()
   else
     fallback()
   end
 end
 
 local luasnip_jump_prev = function(fallback)
-  if luasnip.jumpable(-1) then
-    luasnip.jump(-1)
+  local ls = package.loaded.luasnip
+  if ls and ls.jumpable(-1) then
+    ls.jump(-1)
   else
     fallback()
   end
