@@ -1,3 +1,3 @@
-local map = require('utils').map
+local map = require('config.util').map
 
 map('n', '<CR>', '<CR>', { buffer = true })
