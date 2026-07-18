@@ -1,15 +1,20 @@
--- デバッグ (DAP。キーマップは lua/config/keymaps/init.lua)
+-- デバッグ (DAP)
 return {
+  -- DAP クライアント本体
+  -- ロード: 起動時 / 操作: - _ * ( ) ^ & → keymaps/init.lua
   {
     'mfussenegger/nvim-dap',
     version = '*',
   },
+
+  -- デバッグ UI
+  -- ロード: 起動時 / 操作: ! % → keymaps/init.lua (セッション開始・終了で自動開閉)
   {
     'rcarriga/nvim-dap-ui',
     -- v4.0.0 タグにも vim.tbl_flatten が残っているため、修正済みの master に
     -- コミット固定 (クールダウン方針: 7日以上前のコミット、2026-07-08 時点)
     commit = '1a66caba',
-    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' }, -- 両方とも公式 README が必須と明記
     config = function()
       local dap, dapui = require('dap'), require('dapui')
       dapui.setup()
@@ -19,13 +24,21 @@ return {
       dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
     end,
   },
+
+  -- 変数の値をインライン表示
+  -- ロード: 起動時 / 操作: なし (デバッグ中に自動表示)
   {
     'theHamsta/nvim-dap-virtual-text',
+    dependencies = { 'mfussenegger/nvim-dap' }, -- 公式 README が必須と明記
     opts = {},
   },
+
+  -- Go 用アダプタ (外部依存: dlv)
+  -- ロード: ft=go / 操作: <leader>t <leader>T → ftplugin/go.lua
   {
     'leoluz/nvim-dap-go',
     ft = 'go',
+    dependencies = { 'mfussenegger/nvim-dap' }, -- 公式 README が必須と明記
     config = function()
       require('dap-go').setup()
       local dap = require('dap')
@@ -78,11 +91,16 @@ return {
       }
     end,
   },
+
+  -- JavaScript / TypeScript 用アダプタ (vscode-js-debug を利用)
+  -- ロード: ft=javascript/typescript/jsx/tsx / 操作: keymaps/init.lua の DAP キー
   {
     'mxsdev/nvim-dap-vscode-js',
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
     dependencies = {
+      'mfussenegger/nvim-dap', -- 公式 README が必須と明記
       {
+        -- デバッガ本体 (公式 README の指定どおりビルドして debugger_path で参照する)
         'microsoft/vscode-js-debug',
         build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
       },

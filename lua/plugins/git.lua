@@ -1,4 +1,5 @@
 -- Git 連携
+-- ロード: 起動時 / 操作: <Up> <Down> <Right> <Left> U <C-u> ih → keymaps/gitsigns.lua (バッファ attach 時に設定)
 return {
   'lewis6991/gitsigns.nvim',
   opts = {

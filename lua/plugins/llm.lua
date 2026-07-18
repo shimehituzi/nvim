@@ -1,20 +1,26 @@
--- LLM アシスタント (Avante + MCP。キーマップは lua/config/keymaps/init.lua)
+-- LLM アシスタント (Avante + MCP)
 return {
+  -- AI コーディングアシスタント
+  -- ロード: VeryLazy (公式推奨) / 操作: <Tab> <S-Tab> <Del> <S-Del> <C-c> → keymaps/init.lua、
+  -- サイドバー内キー → keymaps/avante.lua
   {
     'yetone/avante.nvim',
-    event = 'VeryLazy',
-    -- クールダウン方針: 7日以上前のコミットに固定 (2026-07-08 時点)。更新時も同様に選ぶ
+    -- クールダウン方針: コミット日 2026-07-08 の main に固定 (固定時点で7日以上経過済み)。
+    -- 更新時も「7日以上前のコミット」を選んで貼り替える
     commit = '2183acf',
+    event = 'VeryLazy',
     build = 'make',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
+      -- 必須 (公式 README)
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
-      'nvim-telescope/telescope.nvim',
-      'hrsh7th/nvim-cmp',
-      'nvim-tree/nvim-web-devicons',
-      'MeanderingProgrammer/render-markdown.nvim',
+      -- 任意 (この設定で使っている機能のため)
+      'nvim-telescope/telescope.nvim', -- file_selector provider に指定
+      'hrsh7th/nvim-cmp', -- Avante コマンド・メンションの補完
+      'nvim-tree/nvim-web-devicons', -- アイコン表示
+      'MeanderingProgrammer/render-markdown.nvim', -- 応答の Markdown 表示 (設定は plugins/lang.lua)
       {
+        -- 画像のクリップボードペースト対応
         'HakonHarnes/img-clip.nvim',
         event = 'VeryLazy',
         opts = {
@@ -108,13 +114,14 @@ return {
   },
 
   -- MCP サーバーランチャー (サーバー定義は ~/.config/mcphub/servers.json でバージョン固定)
+  -- ロード: 起動時 / 操作: :MCPHub
   {
     'ravitemer/mcphub.nvim',
-    version = 'v6.2.0', -- 安定版に固定(2025-07-31 リリース)
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
+    version = 'v6.2.0', -- 安定版に固定 (2025-07-31 リリース)
     build = 'npm install -g mcp-hub@4.2.0', -- グローバルインストール (バージョン固定)
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- 公式ドキュメントが必須と明記
+    },
     opts = {
       auto_approve = true,
       extensions = {

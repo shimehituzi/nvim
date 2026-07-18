@@ -1,9 +1,10 @@
 -- 見た目・表示まわり
 return {
-  -- バッファタブ
+  -- バッファをタブ状に表示
+  -- ロード: 起動時 / 操作: <C-j> <C-k> で切替 → keymaps/init.lua
   {
     'akinsho/bufferline.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons', -- 公式では任意だが get_element_icon で直接使用
     opts = {
       options = {
         close_command = 'bwipeout! %d',
@@ -28,9 +29,13 @@ return {
   },
 
   -- ステータスライン / winbar
+  -- ロード: 起動時 / 操作: なし (表示のみ)
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons', -- アイコン表示用 (公式では任意)
+      'folke/noice.nvim', -- config が noice.api を参照するためロード順を保証する
+    },
     config = function()
       require('lualine').setup({
         options = {
@@ -64,9 +69,18 @@ return {
   },
 
   -- メッセージ / コマンドライン UI
+  -- ロード: 起動時 (公式推奨は VeryLazy だが、lualine と telescope 拡張から参照されるため)
+  -- 操作: T (:Telescope noice) → keymaps/init.lua
   {
     'folke/noice.nvim',
-    -- telescope の拡張・lualine のステータス表示から参照されるため実際は起動時ロードになる
+    dependencies = {
+      'MunifTanjim/nui.nvim', -- 公式 README が必須と明記
+      {
+        -- 通知ビュー用 (公式では任意。無ければ mini にフォールバックする)
+        'rcarriga/nvim-notify',
+        opts = { stages = 'static' },
+      },
+    },
     opts = {
       routes = (function()
         local ignored_warn_messages = {
@@ -83,25 +97,21 @@ return {
         return routes
       end)(),
     },
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      {
-        'rcarriga/nvim-notify',
-        opts = { stages = 'static' },
-      },
-    },
   },
 
   -- vim.ui.select / vim.ui.input の UI 改善 (LSP リネーム入力等で使用)
+  -- ロード: 起動時 / 操作: なし (自動適用)
+  -- 2025-02 にアーカイブ済み (作者は snacks.nvim を後継として案内)。現状は動作する
   {
     'stevearc/dressing.nvim',
     opts = {},
   },
 
   -- winbar のコードコンテキスト (lualine の 'navic' コンポーネントで表示)
+  -- ロード: 起動時 / 操作: なし (表示のみ)
   {
     'SmiteshP/nvim-navic',
-    dependencies = { 'neovim/nvim-lspconfig' },
+    dependencies = { 'neovim/nvim-lspconfig' }, -- 公式 README が必須と明記
     opts = {
       lsp = {
         auto_attach = true,
@@ -112,17 +122,18 @@ return {
   },
 
   -- 画面上部に現在のスコープを表示
+  -- ロード: 起動時 / 操作: なし (表示のみ)。パーサは nvim-treesitter が管理 (プラグイン依存は公式に不要)
   {
     'nvim-treesitter/nvim-treesitter-context',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
     opts = {},
   },
 
-  -- インデントガイド (| でトグル)
+  -- インデントガイド
+  -- ロード: 起動時 / 操作: | でトグル → keymaps/init.lua
   {
     'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    version = '3.9.1', -- nvim 0.12 の vim.tbl_flatten 非推奨警告が解消されたリリース (2026-02-17)
+    main = 'ibl', -- v3 系のモジュール名 (公式 README のインストール例どおり)
+    version = '3.9.1', -- vim.tbl_flatten 非推奨警告の出ない安定版に固定 (2026-02-17 リリース)
     config = function()
       local highlight = {
         'RainbowRed',
@@ -150,8 +161,9 @@ return {
   },
 
   -- カラーコードの背景色プレビュー
+  -- ロード: 起動時 / 操作: なし (自動適用)
   {
-    'NvChad/nvim-colorizer.lua',
+    'catgoose/nvim-colorizer.lua', -- NvChad/nvim-colorizer.lua から移転済み (同一リポジトリ)
     opts = {},
   },
 }

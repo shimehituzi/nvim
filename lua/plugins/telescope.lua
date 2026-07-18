@@ -1,13 +1,18 @@
--- ファジーファインダ (ピッカー内のキーは lua/config/keymaps/telescope.lua)
+-- ファジーファインダ
+-- ロード: 起動時 / 操作: <Space> ? " t T → keymaps/init.lua、ピッカー内キー → keymaps/telescope.lua
 return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
   dependencies = {
-    { 'nvim-lua/plenary.nvim' },
-    { 'folke/noice.nvim' },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
-    { 'nvim-telescope/telescope-file-browser.nvim' },
-    { 'nvim-telescope/telescope-dap.nvim' },
+    'nvim-lua/plenary.nvim', -- 公式 README が必須と明記
+    -- 以下は拡張。下の load_extension より先にロードされている必要がある
+    'nvim-telescope/telescope-file-browser.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
+    {
+      'nvim-telescope/telescope-dap.nvim',
+      dependencies = { 'mfussenegger/nvim-dap' }, -- 拡張側の必須依存 (設定は plugins/dap.lua)
+    },
+    'folke/noice.nvim', -- load_extension('noice') のため (設定は plugins/ui.lua)
   },
   config = function()
     local telescope = require('telescope')
@@ -46,6 +51,9 @@ return {
         },
       },
     })
+    -- 拡張の登録は telescope.setup の後に行う (各拡張の公式 README の要求)。
+    -- 上の keymaps モジュールが file_browser 拡張を先行ロードしているが (下記コメント参照)、
+    -- ここでの load_extension が実際の設定値で setup し直すため最終状態は正しい
     telescope.load_extension('file_browser')
     telescope.load_extension('ui-select')
     telescope.load_extension('noice')

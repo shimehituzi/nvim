@@ -1,4 +1,6 @@
 local actions = require('telescope.actions')
+-- この参照は file_browser 拡張を空設定で先行 setup させる (telescope の extension manager の仕様)。
+-- 実際の設定は plugins/telescope.lua の load_extension('file_browser') で上書き適用される
 local fb_actions = require('telescope').extensions.file_browser.actions
 
 -- 方針: デフォルトマップは false テーブルで全列挙して無効化し、使うキーだけ
