@@ -8,11 +8,10 @@ return {
   end,
 
   nummap = function(mode, lhs, rhs, opts)
-    vim.validate({
-      mode = { mode, 's' },
-      lhs = { lhs, 's' },
-      rhs = { rhs, 's' },
-    })
+    -- vim.validate のテーブル形式は非推奨 (Nvim 1.0 で削除予定) のため新形式で
+    vim.validate('mode', mode, 'string')
+    vim.validate('lhs', lhs, 'string')
+    vim.validate('rhs', rhs, 'string')
 
     local options = { noremap = true, expr = true }
 

@@ -101,8 +101,9 @@ nummap('n', '6', '<cmd>lua require(\'telescope.builtin\').lsp_outgoing_calls()<C
 nummap('n', '7', '<cmd>lua require(\'telescope.builtin\').lsp_incoming_calls()<CR>')
 nummap('n', '8', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<CR>')
 nummap('n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
-map('n', '}', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-map('n', '{', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+-- vim.diagnostic.goto_next/prev は非推奨 (nvim 0.11+) のため jump に置き換え
+map('n', '}', function() vim.diagnostic.jump({ count = 1, float = true }) end)
+map('n', '{', function() vim.diagnostic.jump({ count = -1, float = true }) end)
 map('n', '?', builtin.current_buffer_fuzzy_find)
 map('n', '"', builtin.live_grep)
 map('n', 'T', extensions.noice.noice)
