@@ -109,6 +109,18 @@ return {
     opts = {},
   },
 
+  -- キーマップの一覧表示 (desc は lua/config/keymaps.lua の定義から拾われる)
+  -- ロード: VeryLazy (公式推奨) / 操作: <C-b> → lua/config/keymaps.lua
+  {
+    'folke/which-key.nvim',
+    version = 'v3.17.0', -- 安定版に固定 (2025-02-22 リリース)
+    event = 'VeryLazy',
+    opts = {
+      -- キー入力の途中で自動表示はしない (<C-b> で明示的に開くだけ)
+      triggers = {},
+    },
+  },
+
   -- winbar のコードコンテキスト (lualine の 'navic' コンポーネントで表示)
   -- ロード: 起動時 / 操作: なし (表示のみ)
   {

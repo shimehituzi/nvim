@@ -60,5 +60,6 @@
   "translate.nvim": { "branch": "main", "commit": "1a841e56407ba02e919ed9af573dbe531404aebb" },
   "vim-illuminate": { "branch": "master", "commit": "8629e6b2dfa8c66677b9d489eb02480cbcfa9599" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
-  "vscode-js-debug": { "branch": "main", "commit": "32ccce5d29e35bb9bf0a67e10617fdc66547b270" }
+  "vscode-js-debug": { "branch": "main", "commit": "32ccce5d29e35bb9bf0a67e10617fdc66547b270" },
+  "which-key.nvim": { "branch": "main", "commit": "fcbf4eea17cb299c02557d576f0d568878e354a4" }
 }

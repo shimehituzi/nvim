@@ -3,8 +3,9 @@
 --
 -- 全てのキー割当をこのファイルの一覧で管理する。動作の実装は lua/config/actions.lua。
 -- ここに無いのはファイルタイプ固有の ftplugin/*.lua だけ。
+-- <C-b> で which-key が一覧を表示する (説明は各エントリの desc)。
 --
--- 書式: { モード, キー, 動作 }
+-- 書式: { モード, キー, 動作, desc = '説明' }
 --   モード: 'n' 'v' 'i' 等を連結した文字列 ('nxo' = n+x+o)。'' は n+v+o
 --   動作:   コマンド文字列 / キー文字列 / act.関数名
 --   追加フィールド: silent = true / expr = true / nummap = true (下記 LSP 参照)
@@ -15,182 +16,191 @@ local M = {}
 -- ============================================================================
 -- 未割当キー (押すと act.print_unmapped がこの一覧を表示する)
 -- ============================================================================
-M.unmapped = { '<C-b>', '<C-n>', '<C-s>', '<C-y>', '<C-z>' }
+M.unmapped = { '<C-n>', '<C-s>', '<C-y>', '<C-z>' }
 
 -- ============================================================================
 -- グローバル
 -- ============================================================================
 M.global = {
+  -- キーマップ一覧
+  { 'n', '<C-b>', act.which_key, desc = 'キーマップの一覧を表示する' },
+
   -- vim-illuminate の既定マップを無効化 (参照移動は J/K を使う)
-  { '', '<a-i>', '<nop>' },
-  { '', '<a-n>', '<nop>' },
-  { '', '<a-p>', '<nop>' },
+  { '', '<a-i>', '<nop>', desc = '無効 (vim-illuminate の既定キー)' },
+  { '', '<a-n>', '<nop>', desc = '無効 (vim-illuminate の既定キー)' },
+  { '', '<a-p>', '<nop>', desc = '無効 (vim-illuminate の既定キー)' },
 
   -- 基本操作
-  { '', 'j', 'gj' },
-  { '', 'k', 'gk' },
-  { '', 'H', '^' },
-  { '', 'L', '$' },
-  { '', '<C-f>', '<C-d>' },
-  { '', '<C-d>', '<C-u>' },
+  { '', 'j', 'gj', desc = '表示行で下に移動する' },
+  { '', 'k', 'gk', desc = '表示行で上に移動する' },
+  { '', 'H', '^', desc = '行頭に移動する' },
+  { '', 'L', '$', desc = '行末に移動する' },
+  { '', '<C-f>', '<C-d>', desc = '半ページ下にスクロールする' },
+  { '', '<C-d>', '<C-u>', desc = '半ページ上にスクロールする' },
 
   -- ファイル・バッファ・ウィンドウ
-  { 'n', '<CR>', '<cmd>w<cr>' },
-  { 'n', 'q', '<cmd>bw<cr>' },
-  { 'n', '<C-q>', '<cmd>q<CR>' },
-  { 'n', '<S-q>', '<C-z>' },
-  { 'n', '<C-e>', '<cmd>e<cr>' },
-  { 'n', '~', '<cmd>only<cr>' },
-  { 'n', '<C-l>', '<C-w>w' },
-  { 'n', '<C-h>', '<C-w>W' },
-  { 'n', '<C-S-Down>', '<C-w>j' },
-  { 'n', '<C-S-Up>', '<C-w>k' },
-  { 'n', '<C-S-Left>', '<C-w>h' },
-  { 'n', '<C-S-Right>', '<C-w>l' },
-  { 'n', '<C-j>', '<cmd>BufferLineCycleNext<cr>' },
-  { 'n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>' },
+  { 'n', '<CR>', '<cmd>w<cr>', desc = 'ファイルを保存する' },
+  { 'n', 'q', '<cmd>bw<cr>', desc = 'バッファを閉じる' },
+  { 'n', '<C-q>', '<cmd>q<CR>', desc = 'ウィンドウを閉じる' },
+  { 'n', '<S-q>', '<C-z>', desc = 'nvim を一時停止する (fg で戻る)' },
+  { 'n', '<C-e>', '<cmd>e<cr>', desc = 'ファイルを読み直す' },
+  { 'n', '~', '<cmd>only<cr>', desc = '他のウィンドウを全て閉じる' },
+  { 'n', '<C-l>', '<C-w>w', desc = '次のウィンドウに移動する' },
+  { 'n', '<C-h>', '<C-w>W', desc = '前のウィンドウに移動する' },
+  { 'n', '<C-S-Down>', '<C-w>j', desc = '下のウィンドウに移動する' },
+  { 'n', '<C-S-Up>', '<C-w>k', desc = '上のウィンドウに移動する' },
+  { 'n', '<C-S-Left>', '<C-w>h', desc = '左のウィンドウに移動する' },
+  { 'n', '<C-S-Right>', '<C-w>l', desc = '右のウィンドウに移動する' },
+  { 'n', '<C-j>', '<cmd>BufferLineCycleNext<cr>', desc = '次のバッファに切り替える' },
+  { 'n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>', desc = '前のバッファに切り替える' },
 
   -- 編集
-  { 'n', '<C-p>', 'p\']' },
-  { 'v', '<C-y>', 'y\']' },
-  { 'n', 'X', 'J' },
-  { 'n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>' },
-  { 'n', '+', '~' },
-  { 'n', 'x', '"_x' },
-  { 'n', 's', '"_s' },
+  { 'n', '<C-p>', 'p\']', desc = '貼り付けて末尾に移動する' },
+  { 'v', '<C-y>', 'y\']', desc = 'コピーして末尾に移動する' },
+  { 'n', 'X', 'J', desc = '次の行を連結する' },
+  { 'n', '<C-o>', '<cmd>for i in range(v:count1) | call append(line(\'.\'), \'\') | endfor<cr>', desc = '下に空行を追加する' },
+  { 'n', '+', '~', desc = '大文字と小文字を切り替える' },
+  { 'n', 'x', '"_x', desc = '1文字削除する (レジスタを汚さない)' },
+  { 'n', 's', '"_s', desc = '1文字置き換える (レジスタを汚さない)' },
 
   -- マクロ
-  { 'n', 'm', '@' },
-  { 'n', 'M', 'q' },
+  { 'n', 'm', '@', desc = 'マクロを実行する' },
+  { 'n', 'M', 'q', desc = 'マクロの記録を開始・終了する' },
 
   -- 検索・ジャンプ
-  { 'n', 'n', 'nzz' },
-  { 'n', 'N', 'Nzz' },
-  { 'n', '`', '<C-l><cmd>nohl<cr>' },
-  { 'n', '<BS>', '<C-o>' },
-  { 'n', '<S-BS>', '<C-i>' },
+  { 'n', 'n', 'nzz', desc = '次の検索結果に移動する' },
+  { 'n', 'N', 'Nzz', desc = '前の検索結果に移動する' },
+  { 'n', '`', '<C-l><cmd>nohl<cr>', desc = '検索ハイライトを消して再描画する' },
+  { 'n', '<BS>', '<C-o>', desc = 'ジャンプ履歴を戻る' },
+  { 'n', '<S-BS>', '<C-i>', desc = 'ジャンプ履歴を進む' },
 
   -- 行選択・行移動 (Shift + 矢印)
-  { 'n', '<S-Up>', 'Vgk' },
-  { 'v', '<S-Up>', 'gk' },
-  { 'n', '<S-Down>', 'Vgj' },
-  { 'v', '<S-Down>', 'gj' },
-  { 'n', '<S-Left>', '<cmd>move -2<cr>==', silent = true },
-  { 'v', '<S-Left>', ':move -2<cr>gv=gv', silent = true },
-  { 'n', '<S-Right>', '<cmd>move +1<cr>==', silent = true },
-  { 'v', '<S-Right>', ':move \'>+<cr>gv=gv', silent = true },
+  { 'n', '<S-Up>', 'Vgk', desc = '行選択を始めて上に伸ばす' },
+  { 'v', '<S-Up>', 'gk', desc = '選択を上に伸ばす' },
+  { 'n', '<S-Down>', 'Vgj', desc = '行選択を始めて下に伸ばす' },
+  { 'v', '<S-Down>', 'gj', desc = '選択を下に伸ばす' },
+  { 'n', '<S-Left>', '<cmd>move -2<cr>==', silent = true, desc = '行を上に移動する' },
+  { 'v', '<S-Left>', ':move -2<cr>gv=gv', silent = true, desc = '選択行を上に移動する' },
+  { 'n', '<S-Right>', '<cmd>move +1<cr>==', silent = true, desc = '行を下に移動する' },
+  { 'v', '<S-Right>', ':move \'>+<cr>gv=gv', silent = true, desc = '選択行を下に移動する' },
 
   -- 数字キー: 0 は無効化し、01〜09 でカウント入力できるようにする
-  { 'n', '0', '<nop>' },
-  { 'n', '01', '1' },
-  { 'n', '02', '2' },
-  { 'n', '03', '3' },
-  { 'n', '04', '4' },
-  { 'n', '05', '5' },
-  { 'n', '06', '6' },
-  { 'n', '07', '7' },
-  { 'n', '08', '8' },
-  { 'n', '09', '9' },
+  { 'n', '0', '<nop>', desc = '無効 (カウントは 01〜09 で入力する)' },
+  { 'n', '01', '1', desc = 'カウント 1 を入力する' },
+  { 'n', '02', '2', desc = 'カウント 2 を入力する' },
+  { 'n', '03', '3', desc = 'カウント 3 を入力する' },
+  { 'n', '04', '4', desc = 'カウント 4 を入力する' },
+  { 'n', '05', '5', desc = 'カウント 5 を入力する' },
+  { 'n', '06', '6', desc = 'カウント 6 を入力する' },
+  { 'n', '07', '7', desc = 'カウント 7 を入力する' },
+  { 'n', '08', '8', desc = 'カウント 8 を入力する' },
+  { 'n', '09', '9', desc = 'カウント 9 を入力する' },
 
   -- Insert モードのカーソル移動
-  { 'i', '<C-h>', '<C-g>U<Left>' },
-  { 'i', '<C-l>', '<C-g>U<Right>' },
-  { 'i', '<C-e>', '<C-g>U<End>' },
-  { 'i', '<C-t>', '<C-f>' },
+  { 'i', '<C-h>', '<C-g>U<Left>', desc = 'カーソルを左に移動する' },
+  { 'i', '<C-l>', '<C-g>U<Right>', desc = 'カーソルを右に移動する' },
+  { 'i', '<C-e>', '<C-g>U<End>', desc = '行末に移動する' },
+  { 'i', '<C-t>', '<C-f>', desc = '行のインデントを整える' },
 
   -- テキストオブジェクト
-  { 'vo', 'aa', 'a>' },
-  { 'vo', 'ia', 'i>' },
-  { 'vo', 'as', 'a[' },
-  { 'vo', 'is', 'i[' },
-  { 'vo', 'ad', 'a"' },
-  { 'vo', 'id', 'i"' },
-  { 'vo', '<space>', act.reference_select },
+  { 'vo', 'aa', 'a>', desc = '<> の外側' },
+  { 'vo', 'ia', 'i>', desc = '<> の内側' },
+  { 'vo', 'as', 'a[', desc = '[] の外側' },
+  { 'vo', 'is', 'i[', desc = '[] の内側' },
+  { 'vo', 'ad', 'a"', desc = '"" の外側' },
+  { 'vo', 'id', 'i"', desc = '"" の内側' },
+  { 'vo', '<space>', act.reference_select, desc = 'カーソル下の単語と同じ参照を選択する' },
 
   -- LSP (nummap = true の数字キーは、カウント入力中は数字として動く。実装は util.nummap)
-  { 'n', ';', act.lsp_hover },
-  { 'n', '\'', act.lsp_format },
-  { 'n', '1', '<cmd>lua vim.lsp.buf.code_action()<CR>', nummap = true },
-  { 'n', '2', '<cmd>lua vim.lsp.buf.rename()<CR>', nummap = true },
-  { 'n', '3', '<cmd>lua require(\'telescope.builtin\').lsp_definitions()<CR>', nummap = true },
-  { 'n', '4', '<cmd>lua require(\'telescope.builtin\').lsp_references()<CR>', nummap = true },
-  { 'n', '5', '<cmd>lua require(\'telescope.builtin\').lsp_implementations()<CR>', nummap = true },
-  { 'n', '6', '<cmd>lua require(\'telescope.builtin\').lsp_outgoing_calls()<CR>', nummap = true },
-  { 'n', '7', '<cmd>lua require(\'telescope.builtin\').lsp_incoming_calls()<CR>', nummap = true },
-  { 'n', '8', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<CR>', nummap = true },
-  { 'n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>', nummap = true },
+  { 'n', ';', act.lsp_hover, desc = 'ホバー情報を表示する' },
+  { 'n', '\'', act.lsp_format, desc = 'フォーマットする' },
+  { 'n', '1', '<cmd>lua vim.lsp.buf.code_action()<CR>', nummap = true, desc = 'コードアクションを実行する' },
+  { 'n', '2', '<cmd>lua vim.lsp.buf.rename()<CR>', nummap = true, desc = '名前を変更する' },
+  { 'n', '3', '<cmd>lua require(\'telescope.builtin\').lsp_definitions()<CR>', nummap = true, desc = '定義に移動する' },
+  { 'n', '4', '<cmd>lua require(\'telescope.builtin\').lsp_references()<CR>', nummap = true, desc = '参照の一覧を表示する' },
+  { 'n', '5', '<cmd>lua require(\'telescope.builtin\').lsp_implementations()<CR>', nummap = true, desc = '実装に移動する' },
+  {
+    'n',
+    '6',
+    '<cmd>lua require(\'telescope.builtin\').lsp_outgoing_calls()<CR>',
+    nummap = true,
+    desc = '呼び出している関数の一覧を表示する',
+  },
+  { 'n', '7', '<cmd>lua require(\'telescope.builtin\').lsp_incoming_calls()<CR>', nummap = true, desc = '呼び出し元の一覧を表示する' },
+  { 'n', '8', '<cmd>lua require(\'telescope.builtin\').lsp_document_symbols()<CR>', nummap = true, desc = 'シンボルの一覧を表示する' },
+  { 'n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>', nummap = true, desc = '診断の一覧を表示する' },
 
   -- 診断ジャンプ
-  { 'n', '}', act.diagnostic_next },
-  { 'n', '{', act.diagnostic_prev },
+  { 'n', '}', act.diagnostic_next, desc = '次の診断に移動する' },
+  { 'n', '{', act.diagnostic_prev, desc = '前の診断に移動する' },
 
   -- 参照ハイライトの移動 (vim-illuminate)
-  { 'n', 'J', act.reference_next },
-  { 'n', 'K', act.reference_prev },
+  { 'n', 'J', act.reference_next, desc = '次の参照に移動する' },
+  { 'n', 'K', act.reference_prev, desc = '前の参照に移動する' },
 
   -- Telescope
-  { 'n', '<Space>', act.file_browser },
-  { 'n', '?', act.buffer_fuzzy_find },
-  { 'n', '"', act.live_grep },
-  { 'n', 't', act.picker_list },
-  { 'n', 'T', act.noice_history },
+  { 'n', '<Space>', act.file_browser, desc = 'ファイルブラウザを開く' },
+  { 'n', '?', act.buffer_fuzzy_find, desc = '現在のバッファ内を検索する' },
+  { 'n', '"', act.live_grep, desc = 'プロジェクト全体を文字列検索する' },
+  { 'n', 't', act.picker_list, desc = 'Telescope の機能一覧を開く' },
+  { 'n', 'T', act.noice_history, desc = '通知の履歴を開く' },
 
   -- コメント・サラウンド・インデントガイド
-  { 'n', ',', '<Plug>(comment_toggle_linewise_current)' },
-  { 'v', ',', '<Plug>(comment_toggle_linewise_visual)' },
-  { 'n', 'S', '<Plug>(nvim-surround-normal-cur)' },
-  { 'v', 'S', '<Plug>(nvim-surround-visual)' },
-  { 'n', 'ys', '<Plug>(nvim-surround-normal)' },
-  { 'n', 'cs', '<Plug>(nvim-surround-change)' },
-  { 'n', 'ds', '<Plug>(nvim-surround-delete)' },
-  { 'n', '|', '<cmd>IBLToggle<cr>' },
+  { 'n', ',', '<Plug>(comment_toggle_linewise_current)', desc = '行のコメントを切り替える' },
+  { 'v', ',', '<Plug>(comment_toggle_linewise_visual)', desc = '選択行のコメントを切り替える' },
+  { 'n', 'S', '<Plug>(nvim-surround-normal-cur)', desc = '現在行を囲む' },
+  { 'v', 'S', '<Plug>(nvim-surround-visual)', desc = '選択範囲を囲む' },
+  { 'n', 'ys', '<Plug>(nvim-surround-normal)', desc = '範囲を指定して囲む' },
+  { 'n', 'cs', '<Plug>(nvim-surround-change)', desc = '囲みを変更する' },
+  { 'n', 'ds', '<Plug>(nvim-surround-delete)', desc = '囲みを削除する' },
+  { 'n', '|', '<cmd>IBLToggle<cr>', desc = 'インデントガイドの表示を切り替える' },
 
   -- f/F/t/T (leap.nvim による clever-f 風の1文字検索)
   -- n モードの t/T は Telescope/Noice に割当済みのため x/o のみ
-  { 'nxo', 'f', act.leap_f },
-  { 'nxo', 'F', act.leap_F },
-  { 'xo', 't', act.leap_t },
-  { 'xo', 'T', act.leap_T },
+  { 'nxo', 'f', act.leap_f, desc = '前方に1文字検索する' },
+  { 'nxo', 'F', act.leap_F, desc = '後方に1文字検索する' },
+  { 'xo', 't', act.leap_t, desc = '前方に1文字検索して手前に止まる' },
+  { 'xo', 'T', act.leap_T, desc = '後方に1文字検索して手前に止まる' },
 
   -- DAP (デバッグ)
-  { 'n', '-', act.dap_breakpoint },
-  { 'n', '_', act.dap_continue },
-  { 'n', '*', act.dap_step_over },
-  { 'n', '(', act.dap_step_out },
-  { 'n', ')', act.dap_step_into },
-  { 'n', '^', act.dap_terminate },
-  { 'n', '&', act.dap_restart },
-  { 'n', '!', act.dap_eval },
-  { 'n', '%', act.dap_ui_toggle },
-  { 'n', '@', act.dap_commands },
-  { 'n', '#', act.dap_frames },
-  { 'n', '$', act.dap_breakpoint_list },
+  { 'n', '-', act.dap_breakpoint, desc = 'ブレークポイントを切り替える' },
+  { 'n', '_', act.dap_continue, desc = 'デバッグを開始・再開する' },
+  { 'n', '*', act.dap_step_over, desc = 'ステップオーバーする' },
+  { 'n', '(', act.dap_step_out, desc = 'ステップアウトする' },
+  { 'n', ')', act.dap_step_into, desc = 'ステップインする' },
+  { 'n', '^', act.dap_terminate, desc = 'デバッグを終了する' },
+  { 'n', '&', act.dap_restart, desc = 'デバッグを再起動する' },
+  { 'n', '!', act.dap_eval, desc = 'カーソル下の式を評価する' },
+  { 'n', '%', act.dap_ui_toggle, desc = 'デバッグ UI を開閉する' },
+  { 'n', '@', act.dap_commands, desc = 'DAP のコマンド一覧を開く' },
+  { 'n', '#', act.dap_frames, desc = 'スタックフレームの一覧を開く' },
+  { 'n', '$', act.dap_breakpoint_list, desc = 'ブレークポイントの一覧を開く' },
 
   -- LLM (Avante)
-  { 'n', '<Tab>', '<Plug>(AvanteFocus)' },
-  { 'n', '<S-Tab>', '<Plug>(AvanteSelectModel)' },
-  { 'v', '<Tab>', '<Plug>(AvanteAsk)<Esc>' },
-  { 'v', '<S-Tab>', '<Plug>(AvanteEdit)' },
-  { 'n', '<Del>', '<cmd>AvanteHistory<cr>' },
-  { 'n', '<S-Del>', act.avante_clear_history },
-  { 'n', '<C-c>', '<cmd>AvanteStop<cr>' },
+  { 'n', '<Tab>', '<Plug>(AvanteFocus)', desc = 'Avante のサイドバーにフォーカスする' },
+  { 'n', '<S-Tab>', '<Plug>(AvanteSelectModel)', desc = 'Avante のモデルを選択する' },
+  { 'v', '<Tab>', '<Plug>(AvanteAsk)<Esc>', desc = '選択範囲について Avante に質問する' },
+  { 'v', '<S-Tab>', '<Plug>(AvanteEdit)', desc = '選択範囲を Avante で編集する' },
+  { 'n', '<Del>', '<cmd>AvanteHistory<cr>', desc = 'Avante の履歴を開く' },
+  { 'n', '<S-Del>', act.avante_clear_history, desc = 'Avante の履歴とメモリを消去する' },
+  { 'n', '<C-c>', '<cmd>AvanteStop<cr>', desc = 'Avante の生成を中断する' },
 
   -- 翻訳
-  { 'v', '<CR>', '<cmd>Translate ja<cr>' },
+  { 'v', '<CR>', '<cmd>Translate ja<cr>', desc = '選択範囲を日本語に翻訳する' },
 }
 
 -- ============================================================================
 -- Telescope ピッカー内 (動作: 文字列 = telescope.actions の関数名)
 -- ============================================================================
 M.telescope = {
-  { 'i', '<esc>', 'close' },
-  { 'i', '<C-q>', 'close' },
-  { 'i', '<CR>', 'select_default' },
-  { 'i', '<Tab>', act.telescope_select_and_resume },
-  { 'i', '<C-j>', 'move_selection_next' },
-  { 'i', '<C-k>', 'move_selection_previous' },
-  { 'i', '<Up>', 'preview_scrolling_up' },
-  { 'i', '<Down>', 'preview_scrolling_down' },
+  { 'i', '<esc>', 'close', desc = '閉じる' },
+  { 'i', '<C-q>', 'close', desc = '閉じる' },
+  { 'i', '<CR>', 'select_default', desc = '開く' },
+  { 'i', '<Tab>', act.telescope_select_and_resume, desc = '開いてピッカーを再開する' },
+  { 'i', '<C-j>', 'move_selection_next', desc = '次の候補を選ぶ' },
+  { 'i', '<C-k>', 'move_selection_previous', desc = '前の候補を選ぶ' },
+  { 'i', '<Up>', 'preview_scrolling_up', desc = 'プレビューを上にスクロールする' },
+  { 'i', '<Down>', 'preview_scrolling_down', desc = 'プレビューを下にスクロールする' },
 }
 
 -- 既定マップの無効化一覧 (使うキーだけを上の一覧で定義し直す方針)
@@ -250,19 +260,19 @@ M.telescope_disabled = {
 -- Telescope ファイルブラウザ内 (動作: 'fb:' 付き = file_browser 拡張、それ以外 = telescope.actions)
 -- ============================================================================
 M.telescope_file_browser = {
-  { 'i', '<C-h>', 'fb:goto_parent_dir' },
-  { 'i', '<C-l>', 'select_default' },
-  { 'i', '<BS>', 'fb:backspace' },
-  { 'i', '<C-s>', 'toggle_selection' },
-  { 'i', '<C-a>', 'fb:create' },
-  { 'i', '<C-r>', 'fb:rename' },
-  { 'i', '<C-p>', 'fb:move' },
-  { 'i', '<C-c>', 'fb:copy' },
-  { 'i', '<C-d>', 'fb:remove' },
-  { 'i', '<C-o>', 'fb:open' },
-  { 'i', '<C-f>', 'fb:toggle_browser' },
-  { 'i', '<C-z>', 'fb:toggle_hidden' },
-  { 'i', '<C-x>', 'fb:toggle_respect_gitignore' },
+  { 'i', '<C-h>', 'fb:goto_parent_dir', desc = '親ディレクトリに移動する' },
+  { 'i', '<C-l>', 'select_default', desc = '開く' },
+  { 'i', '<BS>', 'fb:backspace', desc = '文字を消す (空なら親ディレクトリへ)' },
+  { 'i', '<C-s>', 'toggle_selection', desc = '選択を切り替える' },
+  { 'i', '<C-a>', 'fb:create', desc = 'ファイル・ディレクトリを作成する' },
+  { 'i', '<C-r>', 'fb:rename', desc = '名前を変更する' },
+  { 'i', '<C-p>', 'fb:move', desc = '移動する' },
+  { 'i', '<C-c>', 'fb:copy', desc = 'コピーする' },
+  { 'i', '<C-d>', 'fb:remove', desc = '削除する' },
+  { 'i', '<C-o>', 'fb:open', desc = 'システムの標準アプリで開く' },
+  { 'i', '<C-f>', 'fb:toggle_browser', desc = 'ブラウザ表示を切り替える' },
+  { 'i', '<C-z>', 'fb:toggle_hidden', desc = '隠しファイルの表示を切り替える' },
+  { 'i', '<C-x>', 'fb:toggle_respect_gitignore', desc = 'gitignore の適用を切り替える' },
 }
 
 M.telescope_file_browser_disabled = {
@@ -304,29 +314,29 @@ M.telescope_file_browser_disabled = {
 -- 補完ポップアップ内 (nvim-cmp + Copilot。モード: i=挿入 c=コマンドライン s=スニペット選択)
 -- ============================================================================
 M.cmp = {
-  { 'ic', '<C-j>', act.cmp_next },
-  { 'ic', '<C-k>', act.cmp_prev },
-  { 'ic', '<C-f>', act.cmp_accept },
-  { 'ic', '<C-d>', act.cmp_dismiss },
-  { 'i', '<C-s>', act.copilot_toggle },
-  { 'is', '<Tab>', act.snippet_jump_next },
-  { 'c', '<Tab>', act.cmdline_next },
-  { 'is', '<S-Tab>', act.snippet_jump_prev },
-  { 'c', '<S-Tab>', act.cmdline_prev },
+  { 'ic', '<C-j>', act.cmp_next, desc = '次の補完候補を選ぶ' },
+  { 'ic', '<C-k>', act.cmp_prev, desc = '前の補完候補を選ぶ' },
+  { 'ic', '<C-f>', act.cmp_accept, desc = '補完を確定する' },
+  { 'ic', '<C-d>', act.cmp_dismiss, desc = '補完を閉じる' },
+  { 'i', '<C-s>', act.copilot_toggle, desc = 'Copilot の自動提案を切り替える' },
+  { 'is', '<Tab>', act.snippet_jump_next, desc = 'スニペットの次の入力位置に移動する' },
+  { 'c', '<Tab>', act.cmdline_next, desc = '次の候補を選ぶ (コマンドライン)' },
+  { 'is', '<S-Tab>', act.snippet_jump_prev, desc = 'スニペットの前の入力位置に移動する' },
+  { 'c', '<S-Tab>', act.cmdline_prev, desc = '前の候補を選ぶ (コマンドライン)' },
 }
 
 -- ============================================================================
 -- Git ハンク操作 (バッファ attach 時に適用。動作: 文字列 = gitsigns の関数名 / ':' 始まり = コマンド)
 -- ============================================================================
 M.gitsigns = {
-  { 'n', '<Down>', act.hunk_next, expr = true },
-  { 'n', '<Up>', act.hunk_prev, expr = true },
-  { 'n', '<Right>', 'stage_hunk' },
-  { 'n', '<Left>', 'preview_hunk' },
+  { 'n', '<Down>', act.hunk_next, expr = true, desc = '次の変更箇所に移動する' },
+  { 'n', '<Up>', act.hunk_prev, expr = true, desc = '前の変更箇所に移動する' },
+  { 'n', '<Right>', 'stage_hunk', desc = '変更箇所をステージする' },
+  { 'n', '<Left>', 'preview_hunk', desc = '変更箇所をプレビューする' },
   -- undo_stage_hunk は非推奨だが、セッション内で stage を undo できる挙動のため意図的に使用
-  { 'n', 'U', 'undo_stage_hunk' },
-  { 'n', '<C-u>', 'reset_hunk' },
-  { 'ox', 'ih', ':<C-U>Gitsigns select_hunk<CR>' },
+  { 'n', 'U', 'undo_stage_hunk', desc = 'ステージを取り消す' },
+  { 'n', '<C-u>', 'reset_hunk', desc = '変更箇所を元に戻す' },
+  { 'ox', 'ih', ':<C-U>Gitsigns select_hunk<CR>', desc = '変更箇所のテキストオブジェクト' },
 }
 
 -- ============================================================================
@@ -334,35 +344,35 @@ M.gitsigns = {
 -- ============================================================================
 M.avante = {
   diff = {
-    ours = '1',
-    theirs = '2',
-    cursor = '3',
-    all_theirs = '4',
-    both = '5',
-    next = 'J',
-    prev = 'K',
+    ours = '1', -- 自分側の変更を採用する
+    theirs = '2', -- AI 側の変更を採用する
+    cursor = '3', -- カーソル位置の変更を採用する
+    all_theirs = '4', -- AI 側の変更を全て採用する
+    both = '5', -- 両方を残す
+    next = 'J', -- 次の差分に移動する
+    prev = 'K', -- 前の差分に移動する
   },
   jump = {
-    next = 'J',
-    prev = 'K',
+    next = 'J', -- 次の結果に移動する
+    prev = 'K', -- 前の結果に移動する
   },
   submit = {
-    normal = '<CR>',
-    insert = '<M-CR>',
+    normal = '<CR>', -- 送信する (ノーマルモード)
+    insert = '<M-CR>', -- 送信する (挿入モード)
   },
   sidebar = {
-    switch_windows = '<C-j>',
-    reverse_switch_windows = '<C-k>',
-    apply_all = 'A',
-    apply_cursor = 'a',
-    retry_user_request = 'r',
-    edit_user_request = 'e',
-    add_file = 'a',
-    remove_file = 'd',
-    close = { 'q' },
+    switch_windows = '<C-j>', -- 次のペインに移動する
+    reverse_switch_windows = '<C-k>', -- 前のペインに移動する
+    apply_all = 'A', -- 提案を全て適用する
+    apply_cursor = 'a', -- カーソル位置の提案を適用する
+    retry_user_request = 'r', -- 直前の依頼をやり直す
+    edit_user_request = 'e', -- 直前の依頼を編集する
+    add_file = 'a', -- ファイルを追加する (ファイル一覧で)
+    remove_file = 'd', -- ファイルを外す (ファイル一覧で)
+    close = { 'q' }, -- 閉じる
   },
   files = {
-    add_current = '<C-t>',
+    add_current = '<C-t>', -- 現在のファイルを追加する
   },
 }
 
@@ -384,7 +394,7 @@ function M.apply()
     end
   end
   for _, key in ipairs(M.unmapped) do
-    vim.keymap.set('n', key, act.print_unmapped)
+    vim.keymap.set('n', key, act.print_unmapped, { desc = '未割当 (押すと一覧を表示する)' })
   end
 end
 
