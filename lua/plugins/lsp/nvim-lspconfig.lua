@@ -15,7 +15,21 @@ return {
     { 'kyoh86/climbdir.nvim' },
   },
   config = function()
-    require('mason').setup()
+    -- サプライチェーン対策: レジストリを「7日以上前のスナップショットリリース」に固定する。
+    -- ピンは update.sh が .config/nvim/mason-registry-pin.txt に書き込む。
+    -- これによりバージョン未指定の MasonInstall / :Mason の更新も
+    -- スナップショット時点のバージョンまでしか進まない
+    local mason_registry = 'github:mason-org/mason-registry'
+    local pin_file = vim.fn.stdpath('config') .. '/mason-registry-pin.txt'
+    local f = io.open(pin_file, 'r')
+    if f then
+      local tag = f:read('*l')
+      f:close()
+      if tag and tag ~= '' then
+        mason_registry = mason_registry .. '@' .. tag
+      end
+    end
+    require('mason').setup({ registries = { mason_registry } })
     require('mason-lspconfig').setup({
       ensure_installed = { 'lua_ls', 'ts_ls', 'bashls', 'html', 'gopls', 'hls', 'pyright', 'denols', 'rust_analyzer', 'jsonls' },
     })
