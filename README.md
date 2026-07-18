@@ -282,6 +282,16 @@ Insert / Command モードでの動作:
 | `lua/config/init.lua` | 読み込み順の一元管理 (options → plugins → keymaps → autocmds) |
 | `lua/config/keymaps/init.lua` | **グローバルキーマップの唯一の定義場所** (このリファレンスの実体) |
 | `lua/config/keymaps/{telescope,cmp,gitsigns,avante}.lua` | プラグインに渡すキーテーブル (ピッカー内・補完・ハンク操作・Avante サイドバー) |
+| `lua/config/keymaps/{actions,leap}.lua` | 複数行になるキーマップアクションの実体 (init.lua から参照) |
 | `lua/config/options.lua` / `autocmds.lua` / `lazy.lua` / `util.lua` | オプション / autocmd / lazy.nvim / ヘルパ |
 | `lua/plugins/*.lua` | プラグイン定義 (1カテゴリ = 1ファイル、計11) |
 | `ftplugin/*.lua` | ファイルタイプ固有設定 (buffer-local) |
+
+### プラグイン定義の読み方
+
+`lua/plugins/` の各 spec には次の2行ヘッダが付いています:
+
+- **ロード**: いつロードされるか (起動時 / VeryLazy / InsertEnter / ft=... )。公式推奨がある場合はその旨を明記
+- **操作**: ユーザが使うキー・コマンドと、その定義場所 (キーマップは全て `lua/config/keymaps/` にあり、spec 側には書かない)
+
+依存 (`dependencies`) には「公式 README が必須とするもの」と「この設定での用途上必要なもの」だけを、理由コメント付きで列挙しています。
