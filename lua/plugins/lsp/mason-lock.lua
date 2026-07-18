@@ -4,9 +4,7 @@ return {
   -- mason を 2.x に上げるときはこの固定を外す
   commit = '86614f7',
   dependencies = { 'mason-org/mason.nvim' },
-  config = function()
-    require('mason-lock').setup({
-      lockfile_path = vim.fn.stdpath('config') .. '/mason-lock.json',
-    })
-  end,
+  opts = {
+    lockfile_path = vim.fn.stdpath('config') .. '/mason-lock.json',
+  },
 }

@@ -1,3 +1,5 @@
+-- providers 以外はデフォルト値と同一だったため削除済み
+-- (delay=100, filetypes_denylist={'dirbuf','dirvish','fugitive'} 等は固定コミットのデフォルト)
 return {
   'RRethy/vim-illuminate',
   config = function()
@@ -8,27 +10,10 @@ return {
         'lsp',
         'regex',
       },
-      delay = 100,
-      filetype_overrides = {},
-      filetypes_denylist = {
-        'dirbuf',
-        'dirvish',
-        'fugitive',
-      },
-      filetypes_allowlist = {},
-      modes_denylist = {},
-      modes_allowlist = {},
-      providers_regex_syntax_denylist = {},
-      providers_regex_syntax_allowlist = {},
-      under_cursor = true,
-      large_file_cutoff = nil,
-      large_file_overrides = nil,
-      min_count_to_highlight = 1,
-      should_enable = function(bufnr) return true end,
-      case_insensitive_regex = false,
     })
-    vim.keymap.set('', '<a-i>', '<nop>', { noremap = true })
-    vim.keymap.set('', '<a-n>', '<nop>', { noremap = true })
-    vim.keymap.set('', '<a-p>', '<nop>', { noremap = true })
+    -- プラグイン既定の <a-i>/<a-n>/<a-p> マッピングを潰す
+    vim.keymap.set('', '<a-i>', '<nop>')
+    vim.keymap.set('', '<a-n>', '<nop>')
+    vim.keymap.set('', '<a-p>', '<nop>')
   end,
 }

@@ -1,16 +1,14 @@
 return {
   'jay-babu/mason-null-ls.nvim',
   dependencies = {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     {
       'nvimtools/none-ls.nvim',
       dependencies = 'nvim-lua/plenary.nvim',
       config = true,
     },
   },
-  config = function()
-    require("mason-null-ls").setup({
-      ensure_installed = { 'stylua', 'prettier' },
-    })
-  end,
+  -- 注意: handlers 未指定のため stylua/prettier は mason でインストールされるだけで
+  -- none-ls のソースとしては登録されない (フォーマットは LSP サーバに任せる現状の挙動)
+  opts = { ensure_installed = { 'stylua', 'prettier' } },
 }

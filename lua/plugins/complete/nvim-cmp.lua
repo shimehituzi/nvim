@@ -10,9 +10,12 @@ return {
     {
       'saadparwaiz1/cmp_luasnip',
       dependencies = {
-        'L3MON4D3/LuaSnip',
-        dependencies = { 'rafamadriz/friendly-snippets' },
-        config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
+        -- フラットなテーブルに spec キーを混在させると依存追加時に壊れるため明示的にネスト
+        {
+          'L3MON4D3/LuaSnip',
+          dependencies = { 'rafamadriz/friendly-snippets' },
+          config = function() require('luasnip.loaders.from_vscode').lazy_load() end,
+        },
       },
     },
     { 'onsails/lspkind.nvim' },
@@ -26,12 +29,12 @@ return {
         expand = function(args) require('luasnip').lsp_expand(args.body) end,
       },
       mapping = require('keymaps.plugins.nvim-cmp').mapping,
+      -- render-markdown ソースは completions.lsp 有効時には登録されないため削除済み
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'luasnip' },
         { name = 'path' },
-        { name = 'render-markdown' },
       }, {
         { name = 'buffer' },
       }),

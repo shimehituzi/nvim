@@ -1,6 +1,7 @@
 return {
   'kevinhwang91/nvim-ufo',
   dependencies = { 'kevinhwang91/promise-async' },
+  -- filetype_exclude は ufo 本体のオプションではなく、下の autocmd 用の独自キー
   opts = {
     filetype_exclude = { 'help', 'lazy', 'mason', 'qf' },
   },
@@ -11,7 +12,6 @@ return {
       callback = function() require('ufo').detach() end,
     })
 
-    vim.opt.foldlevelstart = 99
     require('ufo').setup(opts)
   end,
 }

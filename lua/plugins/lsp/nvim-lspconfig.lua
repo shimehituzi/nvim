@@ -1,8 +1,9 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { "mason-org/mason.nvim",           version = "^1.0.0" },
-    { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
+    { 'mason-org/mason.nvim', version = '^1.0.0' },
+    { 'mason-org/mason-lspconfig.nvim', version = '^1.0.0' },
+    { 'hrsh7th/cmp-nvim-lsp' },
     {
       -- neodev.nvim は開発終了。後継の lazydev.nvim に移行
       -- (lua_ls に vim ランタイムの型情報を与え、Undefined global 'vim' を解消する)
@@ -15,7 +16,6 @@ return {
         },
       },
     },
-    { 'kevinhwang91/nvim-ufo' },
     { 'kyoh86/climbdir.nvim' },
   },
   config = function()
@@ -29,9 +29,7 @@ return {
     if f then
       local tag = f:read('*l')
       f:close()
-      if tag and tag ~= '' then
-        mason_registry = mason_registry .. '@' .. tag
-      end
+      if tag and tag ~= '' then mason_registry = mason_registry .. '@' .. tag end
     end
     require('mason').setup({ registries = { mason_registry } })
     require('mason-lspconfig').setup({
@@ -39,120 +37,99 @@ return {
     })
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
 
+    -- root ディレクトリ検出 (vim.lsp.config の root_dir は fn(bufnr, on_dir) 形式)
     local function make_root_dir(finder)
-      return function(path, on_dir)
-        local root = finder(path)
-        if type(on_dir) == 'function' then
-          if root then on_dir(root) end
-        else
-          return root
-        end
+      return function(bufnr, on_dir)
+        local root = finder(bufnr)
+        if root then on_dir(root) end
       end
     end
 
     local deno_markers = { 'deno.json', 'deno.lock', 'deno.jsonc', 'deps.ts', 'import_map.json' }
 
-    local function find_deno_root(path)
-      return vim.fs.root(path or 0, deno_markers)
-    end
+    local function find_deno_root(path) return vim.fs.root(path or 0, deno_markers) end
 
     local climbdir = require('climbdir')
     local marker = require('climbdir.marker')
 
     local function find_node_root(path)
-      if type(path) == 'number' then
-        path = vim.api.nvim_buf_get_name(path)
-      end
-      if not path or path == '' then
-        path = vim.fn.getcwd()
-      end
-      return climbdir.climb(path,
-        marker.one_of(marker.has_readable_file('package.json'), marker.has_directory('node_modules')), {
-          halt = marker.one_of(
-            marker.has_readable_file('deno.json'),
-            marker.has_readable_file('deno.jsonc'),
-            marker.has_readable_file('deps.ts'),
-            marker.has_readable_file('import_map.json')
-          ),
-        })
+      if type(path) == 'number' then path = vim.api.nvim_buf_get_name(path) end
+      if not path or path == '' then path = vim.fn.getcwd() end
+      return climbdir.climb(path, marker.one_of(marker.has_readable_file('package.json'), marker.has_directory('node_modules')), {
+        -- deno プロジェクト内では node root として扱わない (マーカーは deno_markers と同一ソース)
+        halt = marker.one_of(unpack(vim.tbl_map(marker.has_readable_file, deno_markers))),
+      })
     end
 
     local deno_root_dir = make_root_dir(find_deno_root)
     local node_root_dir = make_root_dir(find_node_root)
     local is_deno_root = find_deno_root(vim.fn.getcwd()) ~= nil
 
+    -- サーバ固有設定 (ここに無いサーバは capabilities のみ付与される)
+    local server_opts = {
+      rust_analyzer = {
+        settings = {
+          ['rust-analyzer'] = {
+            check = { command = 'clippy' },
+          },
+        },
+      },
+      ts_ls = { root_dir = node_root_dir },
+      denols = {
+        root_dir = deno_root_dir,
+        init_options = {
+          lint = true,
+          unstable = true,
+          suggest = {
+            imports = {
+              hosts = {
+                ['https://deno.land'] = true,
+                ['https://cdn.nest.land'] = true,
+                ['https://crux.land'] = true,
+              },
+            },
+          },
+        },
+      },
+      pyright = {
+        settings = {
+          python = {
+            venvPath = '.',
+            pythonPath = './.venv/bin/python',
+            analysis = {
+              extraPaths = { '.' },
+            },
+          },
+        },
+      },
+      lua_ls = {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
+            },
+          },
+        },
+      },
+    }
+
     require('mason-lspconfig').setup_handlers({
       function(server_name)
-        local opts = {}
-        local disable = false
-
-        if server_name == 'rust_analyzer' then
-          opts.settings = {
-            ["rust-analyzer"] = {
-              check = {
-                command = "clippy",
-              },
-            },
-          }
-        elseif server_name == 'ts_ls' then
-          if is_deno_root then
-            disable = true
-          else
-            opts.root_dir = node_root_dir
-          end
-        elseif server_name == 'denols' then
-          opts.root_dir = deno_root_dir
-          opts.init_options = {
-            lint = true,
-            unstable = true,
-            suggest = {
-              imports = {
-                hosts = {
-                  ['https://deno.land'] = true,
-                  ['https://cdn.nest.land'] = true,
-                  ['https://crux.land'] = true,
-                },
-              },
-            },
-          }
-        elseif server_name == 'pyright' then
-          opts.settings = {
-            python = {
-              venvPath = '.',
-              pythonPath = './.venv/bin/python',
-              analysis = {
-                extraPaths = { '.' },
-              },
-            },
-          }
-        elseif server_name == 'lua_ls' then
-          opts.settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          }
-        end
-
-        opts.capabilities = capabilities
-
-        if disable then
+        -- deno プロジェクトを cwd とするセッションでは ts_ls を無効化する
+        if server_name == 'ts_ls' and is_deno_root then
           vim.lsp.enable(server_name, false)
           return
         end
 
+        local opts = server_opts[server_name] or {}
+        opts.capabilities = capabilities
         vim.lsp.config(server_name, opts)
-
-        if not vim.lsp.is_enabled(server_name) then
-          vim.lsp.enable(server_name)
-        end
+        vim.lsp.enable(server_name)
       end,
     })
   end,

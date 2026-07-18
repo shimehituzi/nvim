@@ -6,13 +6,15 @@ return {
     { 'folke/noice.nvim' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-file-browser.nvim' },
+    { 'nvim-telescope/telescope-dap.nvim' },
   },
   config = function()
     local telescope = require('telescope')
+    local keymaps = require('keymaps.plugins.telescope')
 
     telescope.setup({
       defaults = {
-        mappings = require('keymaps.plugins.telescope').defaults,
+        mappings = keymaps.defaults,
         layout_strategy = 'horizontal',
         sorting_strategy = 'ascending',
         layout_config = {
@@ -26,7 +28,7 @@ return {
       },
       pickers = {
         git_status = {
-          mappings = require('keymaps.plugins.telescope').defaults,
+          mappings = keymaps.defaults,
         },
       },
       extensions = {
@@ -39,13 +41,13 @@ return {
           grouped = true,
           auto_depth = true,
           display_stat = false,
-          mappings = require('keymaps.plugins.telescope').file_browser,
+          mappings = keymaps.file_browser,
         },
       },
     })
-    require('telescope').load_extension('file_browser')
-    require('telescope').load_extension('ui-select')
-    require('telescope').load_extension('noice')
-    require('telescope').load_extension('dap')
+    telescope.load_extension('file_browser')
+    telescope.load_extension('ui-select')
+    telescope.load_extension('noice')
+    telescope.load_extension('dap')
   end,
 }

@@ -1,25 +1,5 @@
+-- 旧設定は全項目がデフォルト値と同一だったため opts = {} に縮約済み
 return {
   'NvChad/nvim-colorizer.lua',
-  config = function()
-    require('colorizer').setup({
-      filetypes = { '*' },
-      user_default_options = {
-        RGB = true,
-        RRGGBB = true,
-        names = true,
-        RRGGBBAA = false,
-        AARRGGBB = false,
-        rgb_fn = false,
-        hsl_fn = false,
-        css = false,
-        css_fn = false,
-        mode = 'background',
-        tailwind = false,
-        sass = { enable = false, parsers = { 'css' } },
-        virtualtext = '■',
-        always_update = false,
-      },
-      buftypes = {},
-    })
-  end,
+  opts = {},
 }

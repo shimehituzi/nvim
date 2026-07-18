@@ -1,25 +1,13 @@
----@diagnostic disable: undefined-field
+-- デフォルト値と同一の設定は削除済み (固定コミットの config.lua と照合)
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('lualine').setup({
       options = {
-        icons_enabled = true,
-        theme = 'auto',
         globalstatus = true,
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
         disabled_filetypes = {
-          statusline = {},
-          winbar = { '', 'help', 'text',  'Avante', 'AvanteInput', 'AvanteSelectedFiles' },
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        refresh = {
-          statusline = 1000,
-          tabline = 1000,
-          winbar = 1000,
+          winbar = { '', 'help', 'text', 'Avante', 'AvanteInput', 'AvanteSelectedFiles' },
         },
       },
       sections = {
@@ -31,19 +19,17 @@ return {
             require('noice').api.status.mode.get,
             cond = require('noice').api.status.mode.has,
           },
-          { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ' } },
+          { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ' } },
           'encoding',
         },
         lualine_y = { 'searchcount', 'progress' },
         lualine_z = { 'selectioncount', 'location' },
       },
+      -- 非アクティブウィンドウにはステータスライン内容を出さない (デフォルトは filename 等が出る)
       inactive_sections = {},
-      tabline = {},
       winbar = {
-        lualine_c = { 'filename', { 'navic', color_correction = nil } },
+        lualine_c = { 'filename', 'navic' },
       },
-      inactive_winbar = {},
-      extensions = {},
     })
   end,
 }

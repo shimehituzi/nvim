@@ -23,8 +23,9 @@ return {
     config = true,
   },
   {
+    -- 拡張の登録は telescope.lua の load_extension('dap') で行う
+    -- (config = true は main 解決の都合で誤って telescope.setup({}) を呼んでいた)
     'nvim-telescope/telescope-dap.nvim',
-    config = true,
   },
   {
     'leoluz/nvim-dap-go',
@@ -34,7 +35,7 @@ return {
       local dap = require('dap')
 
       dap.adapters.go = function(callback, config)
-        local stdout = vim.loop.new_pipe(false)
+        local stdout = vim.uv.new_pipe(false)
         local handle
         local pid_or_err
         local port = 38697
@@ -43,7 +44,7 @@ return {
           args = { 'dap', '-l', '127.0.0.1:' .. port },
           detached = true,
         }
-        handle, pid_or_err = vim.loop.spawn('dlv', opts, function(code)
+        handle, pid_or_err = vim.uv.spawn('dlv', opts, function(code)
           stdout:close()
           handle:close()
           if code ~= 0 then print('dlv exited with code', code) end
@@ -85,8 +86,10 @@ return {
     'mxsdev/nvim-dap-vscode-js',
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
     dependencies = {
-      'microsoft/vscode-js-debug',
-      build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+      {
+        'microsoft/vscode-js-debug',
+        build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+      },
     },
     config = function()
       local dap = require('dap')
@@ -96,7 +99,7 @@ return {
         adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
       })
 
-      for _, language in ipairs({ 'typescript', 'javascript', 'typescriptreact' }) do
+      for _, language in ipairs({ 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }) do
         dap.configurations[language] = {
           {
             type = 'pwa-node',

@@ -1,3 +1,5 @@
+-- デフォルト値と同一の設定は削除済み (固定コミットの init.lua と全項目照合)
+-- cmp / gitsigns / illuminate / ufo / treesitter-context / flash 等はデフォルト有効
 return {
   'catppuccin/nvim',
   name = 'catppuccin',
@@ -10,56 +12,21 @@ return {
         dark = 'frappe',
       },
       transparent_background = true,
-      show_end_of_buffer = false,
-      term_colors = false,
-      dim_inactive = {
-        enabled = false,
-        shade = 'dark',
-        percentage = 0.15,
-      },
-      no_italic = false,
-      no_bold = false,
-      no_underline = false,
-      styles = {
-        comments = { 'italic' },
-        conditionals = { 'italic' },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-      },
-      color_overrides = {},
-      custom_highlights = {},
       integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = true,
         mini = {
           enabled = true,
           indentscope_color = '',
         },
-        illuminate = true,
-        symbols_outline = true,
-        ufo = true,
-        treesitter_context = true,
         navic = {
           enabled = true,
           custom_bg = 'NONE',
         },
-        noice = true,
+        notify = true,
         mason = true,
-        flash = true,
         indent_blankline = {
           enabled = true,
-          colored_indent_levels = true,
+          -- colored_indent_levels は indent-blankline.lua 側の HIGHLIGHT_SETUP フックが
+          -- Rainbow* を固定 hex で上書きするため効果がなく削除した
           scope_color = 'lavender',
         },
       },
