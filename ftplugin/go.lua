@@ -6,5 +6,6 @@ vim.bo.softtabstop = 4
 
 local map = require('utils').map
 
-map('n', '<leader>t', require('dap-go').debug_test)
-map('n', '<leader>T', require('dap-go').debug_last_test)
+-- ftplugin なので buffer-local にする (以前はグローバルに漏れていた)
+map('n', '<leader>t', function() require('dap-go').debug_test() end, { buffer = true })
+map('n', '<leader>T', function() require('dap-go').debug_last_test() end, { buffer = true })
