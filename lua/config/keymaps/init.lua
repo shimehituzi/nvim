@@ -7,23 +7,19 @@
 --   - Git ハンク操作 (buffer-local) → lua/config/keymaps/gitsigns.lua
 --   - Avante サイドバー内のキー   → lua/config/keymaps/avante.lua
 --   - ファイルタイプ固有          → ftplugin/*.lua
+-- 複数行になるアクションの実体は actions.lua / leap.lua に定義する
 -- 一覧リファレンスは README.md を参照
 -- ============================================================================
 local map = require('config.util').map
 local nummap = require('config.util').nummap
+local actions = require('config.keymaps.actions')
+local leap = require('config.keymaps.leap')
 
 -- ============================================================================
 -- NOP (未割当キーの明示)
 -- ============================================================================
-local noplist = {
-  '<C-b>',
-  '<C-n>',
-  '<C-s>',
-  '<C-y>',
-  '<C-z>',
-}
-for _, m in ipairs(noplist) do
-  map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end)
+for _, key in ipairs(actions.unmapped_keys) do
+  map('n', key, actions.print_unmapped_keys)
 end
 
 -- vim-illuminate の既定マップを無効化 (参照移動は J/K を使う)
@@ -162,27 +158,11 @@ map('n', '|', '<cmd>IBLToggle<cr>')
 -- ============================================================================
 -- f/F/t/T (leap.nvim による clever-f 風の1文字検索)
 -- ============================================================================
-local function leap_ft(kwargs)
-  require('leap').leap(vim.tbl_deep_extend('keep', kwargs, {
-    inputlen = 1,
-    inclusive = true,
-    opts = {
-      -- Force autojump.
-      labels = '',
-      -- Match the modes where you don't need labels (`:h mode()`).
-      safe_labels = vim.fn.mode(1):match('no?') and '' or nil,
-    },
-  }))
-end
--- トリガーキー自身でリピートできるようにする (clever-f 風)
-local clever_f = require('leap.user').with_traversal_keys('f', 'F')
-local clever_t = require('leap.user').with_traversal_keys('t', 'T')
-
-map({ 'n', 'x', 'o' }, 'f', function() leap_ft({ opts = clever_f }) end)
-map({ 'n', 'x', 'o' }, 'F', function() leap_ft({ backward = true, opts = clever_f }) end)
+map({ 'n', 'x', 'o' }, 'f', leap.f)
+map({ 'n', 'x', 'o' }, 'F', leap.F)
 -- n モードの t/T は Telescope/Noice に割当済みのため x/o のみ
-map({ 'x', 'o' }, 't', function() leap_ft({ offset = -1, opts = clever_t }) end)
-map({ 'x', 'o' }, 'T', function() leap_ft({ backward = true, offset = 1, opts = clever_t }) end)
+map({ 'x', 'o' }, 't', leap.t)
+map({ 'x', 'o' }, 'T', leap.T)
 
 -- ============================================================================
 -- DAP (デバッグ)
@@ -208,12 +188,7 @@ map('n', '<S-Tab>', '<Plug>(AvanteSelectModel)')
 map('v', '<Tab>', '<Plug>(AvanteAsk)<Esc>')
 map('v', '<S-Tab>', '<Plug>(AvanteEdit)')
 map('n', '<Del>', '<cmd>AvanteHistory<cr>')
-map('n', '<S-Del>', function()
-  if vim.fn.confirm('Avante: Are you sure you want to clear history and memory?', '&Yes\n&No', 2) == 1 then
-    vim.cmd('AvanteClear history')
-    vim.cmd('AvanteClear cache')
-  end
-end)
+map('n', '<S-Del>', actions.avante_clear_history)
 map('n', '<C-c>', '<cmd>AvanteStop<cr>')
 
 -- ============================================================================
