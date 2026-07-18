@@ -2,9 +2,10 @@ return {
   'RRethy/vim-illuminate',
   config = function()
     require('illuminate').configure({
+      -- treesitter プロバイダは nvim 0.12 でクラッシュするため外す
+      -- (上流も 91313e5 でデフォルトから削除済み)
       providers = {
         'lsp',
-        'treesitter',
         'regex',
       },
       delay = 100,
