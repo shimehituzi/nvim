@@ -4,7 +4,7 @@
 -- 「setup が参照するものを先にロードする」ための一般的な慣行に従っている
 return {
   -- 補完エンジン本体
-  -- ロード: 起動時 / 操作: <C-j> <C-k> <C-f> <C-d> <C-s> <Tab> <S-Tab> → keymaps/cmp.lua
+  -- ロード: 起動時 / 操作: <C-j> <C-k> <C-f> <C-d> <C-s> <Tab> <S-Tab> → lua/config/keymaps.lua
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -29,7 +29,7 @@ return {
       },
       -- 表示・連携
       { 'onsails/lspkind.nvim' }, -- 補完メニューのアイコン整形 (下の formatting で使用)
-      { 'zbirenbaum/copilot.lua' }, -- keymaps/cmp.lua が copilot.suggestion を参照する (設定は下の spec)
+      { 'zbirenbaum/copilot.lua' }, -- lua/config/keymaps.lua が copilot.suggestion を参照する (設定は下の spec)
     },
     config = function()
       local lspkind = require('lspkind')
@@ -38,7 +38,7 @@ return {
         snippet = {
           expand = function(args) require('luasnip').lsp_expand(args.body) end,
         },
-        mapping = require('config.keymaps.cmp').mapping,
+        mapping = require('config.keymaps').cmp_mapping(),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'nvim_lsp_signature_help' },
@@ -77,7 +77,7 @@ return {
 
   -- Copilot (インライン提案のみ)
   -- ロード: 起動時 (nvim-cmp の依存として。公式推奨は遅延ロードだが、cmp のキーマップが
-  -- ロード済みを前提とするため同時にロードする) / 操作: keymaps/cmp.lua で cmp と統合
+  -- ロード済みを前提とするため同時にロードする) / 操作: lua/config/keymaps.lua で cmp と統合
   {
     'zbirenbaum/copilot.lua',
     opts = {
@@ -88,7 +88,7 @@ return {
         enabled = true,
         auto_trigger = false,
         debounce = 75, -- デフォルト (15ms) より長め
-        -- キー操作は nvim-cmp 側 (keymaps/cmp.lua) で行うため既定マップは無効化
+        -- キー操作は nvim-cmp 側 (lua/config/keymaps.lua) で行うため既定マップは無効化
         keymap = {
           accept = false,
           accept_word = false,

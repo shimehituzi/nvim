@@ -1,8 +1,7 @@
 -- LLM アシスタント (Avante + MCP)
 return {
   -- AI コーディングアシスタント
-  -- ロード: VeryLazy (公式推奨) / 操作: <Tab> <S-Tab> <Del> <S-Del> <C-c> → keymaps/init.lua、
-  -- サイドバー内キー → keymaps/avante.lua
+  -- ロード: VeryLazy (公式推奨) / 操作: <Tab> <S-Tab> <Del> <S-Del> <C-c> とサイドバー内キー → lua/config/keymaps.lua
   {
     'yetone/avante.nvim',
     -- クールダウン方針: コミット日 2026-07-08 の main に固定 (固定時点で7日以上経過済み)。
@@ -86,7 +85,7 @@ return {
         enable_claude_text_editor_tool_mode = true,
       },
       -- サイドバー・diff 内のキーは keymaps 側で一元管理
-      mappings = require('config.keymaps.avante').mappings,
+      mappings = require('config.keymaps').avante,
       windows = {
         position = 'right',
         wrap = true,

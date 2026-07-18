@@ -1,7 +1,7 @@
 -- 言語ツール・ファイルタイプ固有のプラグイン
 return {
   -- 翻訳 (デフォルトの Google エンジン。外部依存: curl)
-  -- ロード: 起動時 / 操作: Visual <CR> で :Translate ja → keymaps/init.lua
+  -- ロード: 起動時 / 操作: Visual <CR> で :Translate ja → lua/config/keymaps.lua
   {
     'uga-rosa/translate.nvim',
     opts = {},

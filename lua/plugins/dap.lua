@@ -1,14 +1,14 @@
 -- デバッグ (DAP)
 return {
   -- DAP クライアント本体
-  -- ロード: 起動時 / 操作: - _ * ( ) ^ & → keymaps/init.lua
+  -- ロード: 起動時 / 操作: - _ * ( ) ^ & → lua/config/keymaps.lua
   {
     'mfussenegger/nvim-dap',
     version = '*',
   },
 
   -- デバッグ UI
-  -- ロード: 起動時 / 操作: ! % → keymaps/init.lua (セッション開始・終了で自動開閉)
+  -- ロード: 起動時 / 操作: ! % → lua/config/keymaps.lua (セッション開始・終了で自動開閉)
   {
     'rcarriga/nvim-dap-ui',
     -- v4.0.0 タグにも vim.tbl_flatten が残っているため、修正済みの master に
@@ -94,7 +94,7 @@ return {
   },
 
   -- JavaScript / TypeScript 用アダプタ (vscode-js-debug を利用)
-  -- ロード: ft=javascript/typescript/jsx/tsx / 操作: keymaps/init.lua の DAP キー
+  -- ロード: ft=javascript/typescript/jsx/tsx / 操作: lua/config/keymaps.lua の DAP キー
   {
     'mxsdev/nvim-dap-vscode-js',
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },

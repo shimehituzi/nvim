@@ -1,5 +1,5 @@
 -- Git 連携
--- ロード: 起動時 / 操作: <Up> <Down> <Right> <Left> U <C-u> ih → keymaps/gitsigns.lua (バッファ attach 時に設定)
+-- ロード: 起動時 / 操作: <Up> <Down> <Right> <Left> U <C-u> ih → lua/config/keymaps.lua (バッファ attach 時に設定)
 return {
   'lewis6991/gitsigns.nvim',
   opts = {
@@ -19,6 +19,6 @@ return {
       row = 0,
       col = 1,
     },
-    on_attach = require('config.keymaps.gitsigns').on_attach,
+    on_attach = require('config.keymaps').gitsigns_on_attach,
   },
 }

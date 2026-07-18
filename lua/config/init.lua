@@ -3,5 +3,5 @@
 -- (プラグインが定義する既定マップをここで上書きするため)
 require('config.options')
 require('config.lazy')
-require('config.keymaps')
+require('config.keymaps').apply()
 require('config.autocmds')

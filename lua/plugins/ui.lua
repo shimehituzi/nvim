@@ -1,7 +1,7 @@
 -- 見た目・表示まわり
 return {
   -- バッファをタブ状に表示
-  -- ロード: 起動時 / 操作: <C-j> <C-k> で切替 → keymaps/init.lua
+  -- ロード: 起動時 / 操作: <C-j> <C-k> で切替 → lua/config/keymaps.lua
   {
     'akinsho/bufferline.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons', -- 公式では任意だが get_element_icon で直接使用
@@ -72,7 +72,7 @@ return {
 
   -- メッセージ / コマンドライン UI
   -- ロード: 起動時 (公式推奨は VeryLazy だが、lualine と telescope 拡張から参照されるため)
-  -- 操作: T (:Telescope noice) → keymaps/init.lua
+  -- 操作: T (:Telescope noice) → lua/config/keymaps.lua
   {
     'folke/noice.nvim',
     dependencies = {
@@ -131,7 +131,7 @@ return {
   },
 
   -- インデントガイド
-  -- ロード: 起動時 / 操作: | でトグル → keymaps/init.lua
+  -- ロード: 起動時 / 操作: | でトグル → lua/config/keymaps.lua
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl', -- v3 系のモジュール名 (公式 README のインストール例どおり)

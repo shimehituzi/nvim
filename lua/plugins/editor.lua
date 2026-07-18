@@ -1,7 +1,7 @@
 -- 編集支援 (モーション・サラウンド・コメント・参照ハイライト・折りたたみ)
 return {
   -- f/F/t/T の1文字検索
-  -- ロード: 起動時 (公式が「自前で遅延するので遅延ロード不要」と明言) / 操作: keymaps/leap.lua 経由で keymaps/init.lua
+  -- ロード: 起動時 (公式が「自前で遅延するので遅延ロード不要」と明言) / 操作: f F t T → lua/config/keymaps.lua
   {
     url = 'https://codeberg.org/andyg/leap.nvim',
     name = 'leap.nvim',
@@ -9,7 +9,7 @@ return {
   },
 
   -- サラウンド操作
-  -- ロード: VeryLazy (公式推奨) / 操作: S ys cs ds → keymaps/init.lua
+  -- ロード: VeryLazy (公式推奨) / 操作: S ys cs ds → lua/config/keymaps.lua
   {
     'kylechui/nvim-surround',
     version = '*',
@@ -20,7 +20,7 @@ return {
   },
 
   -- コメントトグル
-  -- ロード: 起動時 / 操作: , → keymaps/init.lua
+  -- ロード: 起動時 / 操作: , → lua/config/keymaps.lua
   {
     'numToStr/Comment.nvim',
     dependencies = 'JoosepAlviste/nvim-ts-context-commentstring', -- pre_hook で使用 (tsx/jsx の文脈対応)
@@ -37,7 +37,7 @@ return {
   },
 
   -- カーソル下の単語の参照ハイライト
-  -- ロード: 起動時 / 操作: J K で参照間移動 → keymaps/init.lua
+  -- ロード: 起動時 / 操作: J K で参照間移動 → lua/config/keymaps.lua
   {
     'RRethy/vim-illuminate',
     config = function()

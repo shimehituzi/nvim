@@ -33,7 +33,7 @@ return {
   },
 
   -- LSP クライアント設定
-  -- ロード: 起動時 / 操作: keymaps/init.lua の LSP セクション (; ' 1〜9 { })
+  -- ロード: 起動時 / 操作: lua/config/keymaps.lua の LSP セクション (; ' 1〜9 { })
   {
     'neovim/nvim-lspconfig',
     dependencies = {

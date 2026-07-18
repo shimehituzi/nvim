@@ -1,5 +1,5 @@
 -- ファジーファインダ
--- ロード: 起動時 / 操作: <Space> ? " t T → keymaps/init.lua、ピッカー内キー → keymaps/telescope.lua
+-- ロード: 起動時 / 操作: <Space> ? " t T とピッカー内キー → lua/config/keymaps.lua
 return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
@@ -16,7 +16,7 @@ return {
   },
   config = function()
     local telescope = require('telescope')
-    local keymaps = require('config.keymaps.telescope')
+    local keymaps = require('config.keymaps').telescope_mappings()
 
     telescope.setup({
       defaults = {
@@ -52,7 +52,7 @@ return {
       },
     })
     -- 拡張の登録は telescope.setup の後に行う (各拡張の公式 README の要求)。
-    -- 上の keymaps モジュールが file_browser 拡張を先行ロードしているが (下記コメント参照)、
+    -- 上の telescope_mappings() が file_browser 拡張を先行ロードしているが、
     -- ここでの load_extension が実際の設定値で setup し直すため最終状態は正しい
     telescope.load_extension('file_browser')
     telescope.load_extension('ui-select')
