@@ -1,21 +1,16 @@
 local map = require('utils').map
 local nummap = require('utils').nummap
-local builtin = require('telescope.builtin')
-local extensions = require('telescope').extensions
-local dapui = require('dapui')
-local dap = require('dap')
 
 -- **NOP**
 local noplist = {
   '<C-b>',
-  '<C-e>',
   '<C-n>',
   '<C-s>',
   '<C-y>',
   '<C-z>',
 }
 for _, m in ipairs(noplist) do
-  map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end, { expr = true })
+  map('n', m, function() print('These keys are not mapped: ' .. table.concat(noplist, ' ')) end)
 end
 
 -- **BASIC**
@@ -84,14 +79,15 @@ map({ 'v', 'o' }, 'ad', 'a"')
 map({ 'v', 'o' }, 'id', 'i"')
 
 -- **PLUGINS**
+-- プラグイン参照はすべてクロージャで遅延取得する (読み込み順への依存をなくすため)
 -- normal
 map('n', '<C-j>', '<cmd>BufferLineCycleNext<cr>')
 map('n', '<C-k>', '<cmd>BufferLineCyclePrev<cr>')
 map('n', 'J', function() require('illuminate').goto_next_reference() end)
 map('n', 'K', function() require('illuminate').goto_prev_reference() end)
-map('n', '<Space>', extensions.file_browser.file_browser)
-map('n', ';', '<cmd>lua vim.lsp.buf.hover()<CR>')
-map('n', '\'', '<cmd>lua vim.lsp.buf.format()<CR>')
+map('n', '<Space>', function() require('telescope').extensions.file_browser.file_browser() end)
+map('n', ';', function() vim.lsp.buf.hover() end)
+map('n', '\'', function() vim.lsp.buf.format() end)
 nummap('n', '1', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 nummap('n', '2', '<cmd>lua vim.lsp.buf.rename()<CR>')
 nummap('n', '3', '<cmd>lua require(\'telescope.builtin\').lsp_definitions()<CR>')
@@ -104,10 +100,10 @@ nummap('n', '9', '<cmd>lua require(\'telescope.builtin\').diagnostics()<CR>')
 -- vim.diagnostic.goto_next/prev は非推奨 (nvim 0.11+) のため jump に置き換え
 map('n', '}', function() vim.diagnostic.jump({ count = 1, float = true }) end)
 map('n', '{', function() vim.diagnostic.jump({ count = -1, float = true }) end)
-map('n', '?', builtin.current_buffer_fuzzy_find)
-map('n', '"', builtin.live_grep)
-map('n', 'T', extensions.noice.noice)
-map('n', 't', builtin.builtin)
+map('n', '?', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
+map('n', '"', function() require('telescope.builtin').live_grep() end)
+map('n', 'T', function() require('telescope').extensions.noice.noice() end)
+map('n', 't', function() require('telescope.builtin').builtin() end)
 map('n', ',', '<Plug>(comment_toggle_linewise_current)')
 map('n', 'S', '<Plug>(nvim-surround-normal-cur)')
 map('n', 'ys', '<Plug>(nvim-surround-normal)')
@@ -115,19 +111,18 @@ map('n', 'cs', '<Plug>(nvim-surround-change)')
 map('n', 'ds', '<Plug>(nvim-surround-delete)')
 map('n', '|', '<cmd>IBLToggle<cr>')
 
-map('n', '!', dapui.eval)
-map('n', '@', extensions.dap.commands)
-map('n', '#', extensions.dap.frames)
-map('n', '$', extensions.dap.list_breakpoints)
-map('n', '%', dapui.toggle)
-map('n', '^', dap.terminate)
-map('n', '&', dap.restart)
-map('n', '*', dap.step_over)
-map('n', '(', dap.step_out)
-map('n', ')', dap.step_into)
-map('n', '-', dap.toggle_breakpoint)
-map('n', '_', dap.continue)
-
+map('n', '!', function() require('dapui').eval() end)
+map('n', '@', function() require('telescope').extensions.dap.commands() end)
+map('n', '#', function() require('telescope').extensions.dap.frames() end)
+map('n', '$', function() require('telescope').extensions.dap.list_breakpoints() end)
+map('n', '%', function() require('dapui').toggle() end)
+map('n', '^', function() require('dap').terminate() end)
+map('n', '&', function() require('dap').restart() end)
+map('n', '*', function() require('dap').step_over() end)
+map('n', '(', function() require('dap').step_out() end)
+map('n', ')', function() require('dap').step_into() end)
+map('n', '-', function() require('dap').toggle_breakpoint() end)
+map('n', '_', function() require('dap').continue() end)
 
 -- visual
 map('v', ',', '<Plug>(comment_toggle_linewise_visual)')

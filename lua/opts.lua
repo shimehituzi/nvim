@@ -1,33 +1,36 @@
 local opt = vim.opt
 
-opt.autoindent = true -- Enable auto indentation
-opt.autoread = true -- Automatically read the file if it's changed externally
-opt.backup = false -- Do not create backup files
+-- nvim デフォルトと同値の設定 (autoindent, autoread, backup, display, foldenable,
+-- hidden, hlsearch, incsearch, showcmd, timeout, timeoutlen, wrapscan 等) は削除済み
 opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 opt.completeopt = 'menu,menuone,noselect' -- Completion options
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
-opt.display = 'lastline' -- Display long messages on the last line
 opt.expandtab = true -- Use spaces instead of tabs
-opt.fenc = 'utf-8' -- Set file encoding to UTF-8
-opt.fillchars = { foldopen = '', foldclose = '', fold = ' ', foldsep = ' ', diff = '╱', eob = ' ' } -- Characters to fill
-opt.fillchars:append({ vert = '┃', vertleft = '┃', vertright = '┃', verthoriz = '┿' }) -- Thicker window separators
+opt.fileencoding = 'utf-8' -- Set file encoding to UTF-8 (statusline の encoding 表示にも使われる)
+opt.fillchars = { -- Characters to fill (fold marks + thicker window separators)
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+  diff = '╱',
+  eob = ' ',
+  vert = '┃',
+  vertleft = '┃',
+  vertright = '┃',
+  verthoriz = '┿',
+}
 opt.fixeol = false -- Do not add EOL to the last line
 opt.foldcolumn = '1'
 opt.foldlevel = 99
 opt.foldlevelstart = 99
-opt.foldenable = true
 opt.formatoptions = 'jcroqlnt' -- Automatically formatting options
 opt.grepformat = '%f:%l:%c:%m' -- Format for grep command
 opt.grepprg = 'rg --vimgrep' -- Use ripgrep instead of grep
-opt.hidden = true -- Hide unsaved buffers in the background
-opt.hlsearch = true -- Highlight search strings
 opt.ignorecase = true -- Ignore case
 opt.inccommand = 'nosplit' -- preview incremental substitute
-opt.incsearch = true -- Enable incremental search
 opt.laststatus = 3 -- global statusline
 opt.list = true -- Show some invisible characters (tabs...
-opt.matchtime = 1 -- Set the display time for shown match items
 opt.mouse = 'a' -- Enable mouse mode
 opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
@@ -38,7 +41,6 @@ opt.shadafile = 'NONE' -- Disable shada file
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
 opt.shortmess:append({ W = true, I = true, c = true, C = true }) -- Shorten messages to avoid hit-enter prompts
-opt.showcmd = true -- Show partial commands during command input
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift the text each time
@@ -52,13 +54,10 @@ opt.splitright = true -- Put new windows right of current
 opt.swapfile = false -- Do not create a swap file
 opt.tabstop = 2 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
-opt.timeout = true -- Enable the use of timed waits for mapped key sequences. This affects how Vim handles key mappings.
-opt.timeoutlen = 1000 -- Time in milliseconds to wait for a mapped sequence to complete
 opt.undolevels = 10000 -- Maximum number of undo levels
 opt.updatetime = 100 -- The length of time Vim waits after you stop typing before it triggers the plugin
 opt.virtualedit = 'block' -- Allow cursor to move where there is no text in visual block mode
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
-opt.wrapscan = true -- Searches do not stop at the end of the file
 opt.writebackup = false -- Do not create a backup when writing

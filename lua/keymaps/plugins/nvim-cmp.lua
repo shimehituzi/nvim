@@ -1,5 +1,6 @@
-local cmp = package.loaded.cmp
-local copilot = package.loaded['copilot.suggestion']
+-- (このモジュールは cmp.setup 内から require されるため、両プラグインともロード済み)
+local cmp = require('cmp')
+local copilot = require('copilot.suggestion')
 
 local luasnip_jump_next = function(fallback)
   local ls = package.loaded.luasnip

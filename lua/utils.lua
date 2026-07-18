@@ -1,38 +1,15 @@
 return {
-  map = function(mode, lhs, rhs, opts)
-    local options = { noremap = true }
+  -- vim.keymap.set の薄いラッパ (noremap がデフォルトなので指定不要)
+  map = function(mode, lhs, rhs, opts) vim.keymap.set(mode, lhs, rhs, opts) end,
 
-    if opts then options = vim.tbl_extend('force', options, opts) end
-
-    vim.keymap.set(mode, lhs, rhs, options)
-  end,
-
+  -- カウント入力中は数字として、それ以外は rhs として動くマッピング
+  -- (例: `03` で count=3 を作ってから LSP キーを使う。詳細は README 参照)
   nummap = function(mode, lhs, rhs, opts)
-    -- vim.validate のテーブル形式は非推奨 (Nvim 1.0 で削除予定) のため新形式で
     vim.validate('mode', mode, 'string')
     vim.validate('lhs', lhs, 'string')
     vim.validate('rhs', rhs, 'string')
+    if not string.match(lhs, '^%d$') then error('lhs of nummap must be a single digit') end
 
-    local options = { noremap = true, expr = true }
-
-    if opts then options = vim.tbl_extend('force', options, opts) end
-
-    if not string.match(lhs, '^%d$') then error('lhs of nummap must be a number') end
-
-    local command = 'v:count ? "' .. lhs .. '" : "' .. rhs .. '"'
-
-    vim.api.nvim_set_keymap(mode, lhs, command, options)
-  end,
-
-  extend = function(...)
-    local dst = {}
-    for _, src in ipairs({ ... }) do
-      if type(src) == 'table' then
-        for k, v in pairs(src) do
-          dst[k] = v
-        end
-      end
-    end
-    return dst
+    vim.keymap.set(mode, lhs, function() return vim.v.count > 0 and lhs or rhs end, vim.tbl_extend('force', { expr = true }, opts or {}))
   end,
 }

@@ -1,6 +1,9 @@
 local actions = require('telescope.actions')
 local fb_actions = require('telescope').extensions.file_browser.actions
 
+-- false での無効化テーブルとマッピングを後勝ちマージする
+local function extend(base, override) return vim.tbl_extend('force', base, override) end
+
 local defaults_mapping = {
   i = {
     ['<esc>'] = actions.close,
@@ -123,8 +126,6 @@ local file_browser_false = {
     ['s'] = false,
   },
 }
-
-local extend = require('utils').extend
 
 return {
   defaults = {
