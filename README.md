@@ -12,6 +12,13 @@
 | `Ctrl-f` | 半ページ下 |
 | `Ctrl-d` | 半ページ上 |
 
+### 1文字検索 (leap.nvim)
+
+| キー | モード | 動作 |
+|------|--------|------|
+| `f` / `F` | Normal / Visual / Operator-pending | 前方/後方への1文字検索 (同キー連打でリピート) |
+| `t` / `T` | Visual / Operator-pending のみ | 直前/直後への1文字検索 (Normal の t/T は Telescope/Noice に割当済み) |
+
 ### ファイル・バッファ・ウィンドウ (Normal)
 
 | キー | 動作 |
@@ -25,6 +32,7 @@
 | `Ctrl-e` | ファイル再読み込み (`:e`) |
 | `~` | 現在のウィンドウのみ表示 (`:only`) |
 | `Ctrl-Shift-↑↓←→` | ウィンドウ間移動 |
+| `Ctrl-j` / `Ctrl-k` | 次/前のバッファタブ |
 
 ### 編集 (Normal)
 
@@ -110,7 +118,7 @@
 | `}` | 次の診断へ |
 | `{` | 前の診断へ |
 
-> `1`〜`9` は `nummap` で定義されており、カウント入力後に数字キーを押すと LSP 機能が発動します（例: `03` で定義へ移動）。素の数字を入力するには `01`〜`09` を使用してください。
+> `1`〜`9` は `nummap` で定義されており、カウント未入力の状態で押すと LSP 機能が発動します（例: 素の `3` で定義へ移動）。カウント入力中は通常の数字として動くため、カウントは `01`〜`09` で開始してください（例: `03j` で3行下へ移動）。
 
 ## Telescope / 検索
 
@@ -225,11 +233,31 @@ Insert / Command モードでの動作:
 | `Shift-Del` | Normal | 履歴とキャッシュをクリア |
 | `Ctrl-c` | Normal | 停止 |
 
+### Avante サイドバー・diff 内 (lua/config/keymaps/avante.lua)
+
+| キー | 動作 |
+|------|------|
+| `1`〜`5` | diff の競合解決 (ours/theirs/cursor/all theirs/both) |
+| `J` / `K` | 次/前 (diff・ジャンプ共通) |
+| `Enter` / `Alt-Enter` | 送信 (Normal / Insert) |
+| `Ctrl-j` / `Ctrl-k` | サイドバー内ウィンドウ切替 |
+| `A` / `a` | 全て適用 / カーソル位置を適用 |
+| `r` / `e` | リクエスト再試行 / 編集 |
+| `a` / `d` | ファイル追加 / 削除 (ファイルリスト) |
+| `Ctrl-t` | 現在のファイルを追加 |
+| `q` | 閉じる |
+
 ## その他
 
 | キー | 動作 |
 |------|------|
 | `\|` | インデントガイド表示切り替え (IBLToggle) |
+
+## Quickfix (ftplugin)
+
+| キー | 動作 |
+|------|------|
+| `Enter` | 項目へジャンプ (グローバルの保存マップを上書きして復元) |
 
 ## Go ファイル (ftplugin)
 
@@ -238,8 +266,22 @@ Insert / Command モードでの動作:
 | `<leader>t` | カーソル下のテストをデバッグ |
 | `<leader>T` | 最後のテストを再デバッグ |
 
+> leader キーは未設定のためデフォルトの `\` です。
+
 ## 無効化されたキー (Normal)
 
 以下のキーは NOP に設定されており、押すと未割当キーの一覧が表示されます:
 
-`Ctrl-b`, `Ctrl-e`, `Ctrl-n`, `Ctrl-s`, `Ctrl-y`, `Ctrl-z`
+`Ctrl-b`, `Ctrl-n`, `Ctrl-s`, `Ctrl-y`, `Ctrl-z`
+
+## 設定ファイルの構成
+
+| パス | 役割 |
+|------|------|
+| `init.lua` | `lua/config/` を読み込むだけ |
+| `lua/config/init.lua` | 読み込み順の一元管理 (options → plugins → keymaps → autocmds) |
+| `lua/config/keymaps/init.lua` | **グローバルキーマップの唯一の定義場所** (このリファレンスの実体) |
+| `lua/config/keymaps/{telescope,cmp,gitsigns,avante}.lua` | プラグインに渡すキーテーブル (ピッカー内・補完・ハンク操作・Avante サイドバー) |
+| `lua/config/options.lua` / `autocmds.lua` / `lazy.lua` / `util.lua` | オプション / autocmd / lazy.nvim / ヘルパ |
+| `lua/plugins/*.lua` | プラグイン定義 (1カテゴリ = 1ファイル、計11) |
+| `ftplugin/*.lua` | ファイルタイプ固有設定 (buffer-local) |
