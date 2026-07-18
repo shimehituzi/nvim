@@ -5,7 +5,9 @@ return {
   },
   {
     'rcarriga/nvim-dap-ui',
-    version = '3.9.3',
+    -- v4.0.0 タグにも vim.tbl_flatten が残っているため、修正済みの master に
+    -- コミット固定 (クールダウン方針: 7日以上前のコミット、2026-07-08 時点)
+    commit = '1a66caba',
     dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
     config = function()
       local dap, dapui = require('dap'), require('dapui')

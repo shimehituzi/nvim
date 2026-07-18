@@ -1,7 +1,7 @@
 return {
   'lukas-reineke/indent-blankline.nvim',
   main = 'ibl',
-  version = '3.4.2',
+  version = '3.9.1', -- nvim 0.12 の vim.tbl_flatten 非推奨警告が解消されたリリース (2026-02-17)
   config = function()
     local highlight = {
       'RainbowRed',
