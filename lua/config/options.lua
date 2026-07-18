@@ -60,3 +60,6 @@ opt.wildmode = 'longest:full,full'
 opt.winminwidth = 5
 opt.wrap = false
 opt.writebackup = false
+
+-- gopls が宣言する gotmpl filetype は nvim 未登録のため補う (checkhealth vim.lsp の警告対策)
+vim.filetype.add({ extension = { gotmpl = 'gotmpl' } })

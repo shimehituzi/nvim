@@ -89,7 +89,17 @@ return {
             },
           },
         },
-        ts_ls = { root_dir = node_root_dir },
+        ts_ls = {
+          root_dir = node_root_dir,
+          init_options = {
+            tsserver = {
+              -- mason 同梱の typescript 7.x はネイティブ版で tsserver.js を持たず ts_ls が起動不能。
+              -- ワークスペースに typescript が無い場合のフォールバックを明示する
+              -- (インストール: npm install --prefix ~/.local/share/nvim/ts-fallback typescript@5)
+              fallbackPath = vim.fn.expand('~/.local/share/nvim/ts-fallback/node_modules/typescript/lib/tsserver.js'),
+            },
+          },
+        },
         denols = {
           root_dir = deno_root_dir,
           init_options = {
@@ -149,7 +159,9 @@ return {
   -- ロード: ft=lua (公式推奨) / 操作: なし
   {
     'folke/lazydev.nvim',
-    version = 'v1.10.0', -- 安定版に固定 (2025-10-23 リリース)
+    -- v1.10.0 には「lua_ls の初回設定プルに library が反映されない」バグ (issue #136) があり
+    -- Undefined global `vim` が出る。修正コミットに固定 (2026-03-14、クールダウン7日以上経過)
+    commit = 'ff2cbcb',
     ft = 'lua',
     opts = {
       library = {
