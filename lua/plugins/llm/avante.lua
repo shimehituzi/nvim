@@ -1,7 +1,10 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  version = "v0.0.27", -- 安定版に固定（2025-07-28リリース）
+  -- クールダウン方針に基づき「7日以上前の main」にコミット固定 (2026-07-08 時点)。
+  -- claude-opus-4-8 系に必要な temperature 自動除去 (2026-06-04, 4465809) を含む。
+  -- 更新するときは同様に7日以上前のコミットを選んで貼り替える
+  commit = "2183acf",
   build = "make",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
@@ -29,32 +32,21 @@ return {
   },
   config = function()
     local opts = {
-      provider = 'anthropic-claude-sonnet-45',
+      provider = 'anthropic-claude-opus-48',
       mode = 'agentic', -- "agentic" (AI自動実行) or "legacy" (手動承認)
       providers = {
         claude = {
           api_key_name = { "gopass", "show", "-o", "anthropic/api_key" },
         },
-        ['anthropic-claude-sonnet-45'] = {
+        ['anthropic-claude-opus-48'] = {
           __inherited_from = 'claude',
-          display_name = 'anthropic/claude-sonnet-4.5',
-          model = 'claude-sonnet-4-5-20250929',
+          display_name = 'anthropic/claude-opus-4.8',
+          model = 'claude-opus-4-8',
+          context_window = 1000000,
+          -- 親 claude 由来の temperature は avante 側が opus 系では自動除去する
           extra_request_body = {
             max_tokens = 64000,
           }
-        },
-        ['anthropic-claude-haiku-45'] = {
-          __inherited_from = 'claude',
-          display_name = 'anthropic/claude-haiku-4.5',
-          model = 'claude-haiku-4-5-20251001',
-          extra_request_body = {
-            max_tokens = 64000,
-          }
-        },
-        ['copilot-claude-sonnet-45'] = {
-          __inherited_from = 'copilot',
-          display_name = 'copilot/claude-sonnet-4.5',
-          model = 'claude-4.5-sonnet',
         },
       },
       web_search_engine = {
