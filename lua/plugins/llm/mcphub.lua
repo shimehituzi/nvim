@@ -1,68 +1,27 @@
+-- デフォルト値と同一の設定 (port, config パス, native_servers, on_ready, ui.wo) は削除済み
 return {
-  "ravitemer/mcphub.nvim",
-  version = "v6.2.0", -- 安定版に固定（2025-07-31リリース）
+  'ravitemer/mcphub.nvim',
+  version = 'v6.2.0', -- 安定版に固定（2025-07-31リリース）
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "yetone/avante.nvim",
+    'nvim-lua/plenary.nvim',
   },
-  build = "npm install -g mcp-hub@4.2.0", -- グローバルインストール（バージョン固定）
-  config = function()
-    require("mcphub").setup({
-      port = 37373,
-      config = vim.fn.expand("~/.config/mcphub/servers.json"),
-      native_servers = {},
-      auto_approve = true,
-      extensions = {
-        avante = {
-          make_slash_commands = false,
-        },
+  build = 'npm install -g mcp-hub@4.2.0', -- グローバルインストール（バージョン固定）
+  opts = {
+    auto_approve = true,
+    extensions = {
+      avante = {
+        make_slash_commands = false,
       },
-
-      ui = {
-        window = {
-          width = 0.8,
-          height = 0.8,
-          relative = "editor",
-          zindex = 50,
-          border = "rounded",
-        },
-        wo = {
-        },
+    },
+    ui = {
+      window = {
+        width = 0.8,
+        height = 0.8,
+        relative = 'editor',
+        zindex = 50,
+        border = 'rounded',
       },
-      on_ready = function() end,
-      on_error = function(err)
-        vim.notify("MCPHub error: " .. err, vim.log.levels.ERROR)
-      end,
-    })
-
-    local avext = require("mcphub.extensions.avante")
-
-    local function wrap_factory(fname)
-      if type(avext[fname]) ~= "function" then return end
-      local factory_orig = avext[fname]
-
-      avext[fname] = function(...)
-        local schema    = factory_orig(...)
-        local func_orig = schema.func
-
-        schema.func     = function(args, on_log, on_complete)
-          -- on_logが関数の場合のみ呼び出す
-          if type(on_log) == "function" then
-            on_log(string.format(
-              "MCP ► %s / %s %s",
-              args.server_name or "?",
-              args.tool_name or args.uri or "?",
-              vim.fn.json_encode(args.tool_input or {})
-            ))
-          end
-          return func_orig(args, on_log, on_complete)
-        end
-
-        return schema
-      end
-    end
-
-    wrap_factory("mcp_tool")
-    wrap_factory("resource")
-  end,
+    },
+    on_error = function(err) vim.notify('MCPHub error: ' .. err, vim.log.levels.ERROR) end,
+  },
 }
