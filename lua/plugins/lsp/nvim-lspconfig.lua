@@ -4,12 +4,16 @@ return {
     { "mason-org/mason.nvim",           version = "^1.0.0" },
     { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
     {
-      'folke/neodev.nvim',
-      config = function()
-        require('neodev').setup({
-          library = { plugins = { 'nvim-dap-ui' }, types = true },
-        })
-      end,
+      -- neodev.nvim は開発終了。後継の lazydev.nvim に移行
+      -- (lua_ls に vim ランタイムの型情報を与え、Undefined global 'vim' を解消する)
+      'folke/lazydev.nvim',
+      version = 'v1.10.0', -- 安定版に固定 (2025-10-23 リリース)
+      ft = 'lua',
+      opts = {
+        library = {
+          { path = 'nvim-dap-ui', words = { 'dapui' } },
+        },
+      },
     },
     { 'kevinhwang91/nvim-ufo' },
     { 'kyoh86/climbdir.nvim' },
