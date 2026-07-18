@@ -50,7 +50,9 @@ return {
           lualine_c = { 'filetype' },
           lualine_x = {
             {
+              ---@diagnostic disable-next-line: undefined-field
               require('noice').api.status.mode.get,
+              ---@diagnostic disable-next-line: undefined-field
               cond = require('noice').api.status.mode.has,
             },
             { 'fileformat', symbols = { unix = ' ', dos = '', mac = 'old ' } },

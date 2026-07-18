@@ -25,6 +25,7 @@ return {
     map('n', '<Right>', gs.stage_hunk)
     map('n', '<Left>', gs.preview_hunk)
     -- undo_stage_hunk は非推奨だが、セッション内で stage を undo できる挙動のため意図的に使用
+    ---@diagnostic disable-next-line: deprecated
     map('n', 'U', gs.undo_stage_hunk)
     map('n', '<C-u>', gs.reset_hunk)
 

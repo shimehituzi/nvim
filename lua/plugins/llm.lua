@@ -61,6 +61,7 @@ return {
       },
       system_prompt = function()
         local hub = require('mcphub').get_hub_instance()
+        ---@diagnostic disable-next-line: need-check-nil
         return hub:get_active_servers_prompt()
       end,
       custom_tools = function()

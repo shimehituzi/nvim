@@ -43,8 +43,8 @@ return {
       require('dap-go').setup()
       local dap = require('dap')
 
-      dap.adapters.go = function(callback, config)
-        local stdout = vim.uv.new_pipe(false)
+      dap.adapters.go = function(callback, _)
+        local stdout = assert(vim.uv.new_pipe(false))
         local handle
         local pid_or_err
         local port = 38697
@@ -55,6 +55,7 @@ return {
         }
         handle, pid_or_err = vim.uv.spawn('dlv', opts, function(code)
           stdout:close()
+          ---@diagnostic disable-next-line: need-check-nil
           handle:close()
           if code ~= 0 then print('dlv exited with code', code) end
         end)
@@ -108,6 +109,7 @@ return {
     config = function()
       local dap = require('dap')
 
+      ---@diagnostic disable-next-line: missing-fields
       require('dap-vscode-js').setup({
         debugger_path = vim.fn.stdpath('data') .. '/lazy/vscode-js-debug',
         adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
